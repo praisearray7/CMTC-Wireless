@@ -179,7 +179,7 @@ const ContactUs = () => {
                                             fullWidth
                                             sx={{ py: 1.5, borderRadius: 2, borderStyle: 'dashed' }}
                                         >
-                                            {image ? `Selected: ${image.name}` : "Upload Image (Optional)"}
+                                            {image ? `Selected: ${image.name}` : "Upload Your DeviceImage (Optional)"}
                                             <input
                                                 type="file"
                                                 hidden
