@@ -7,6 +7,6 @@ export default defineConfig(({ command }) => ({
   plugins: [react()],
   base: command === 'serve' ? '/' : '/CMTC-Wireless/',
   build: {
-    outDir: 'docs',
+    outDir: 'dist',
   },
 }))

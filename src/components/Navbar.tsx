@@ -87,7 +87,7 @@ const Navbar = () => {
     );
 
     return (
-        <AppBar position="sticky" color="inherit" elevation={0} sx={{ borderBottom: '1px solid #f0f0f0', backdropFilter: 'blur(10px)', backgroundColor: 'rgba(255,255,255,0.95)' }}>
+        <AppBar position="sticky" color="inherit" elevation={0} sx={{ backdropFilter: 'blur(10px)', backgroundColor: 'rgba(255,255,255,0.95)' }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters sx={{ height: 90 }}>
                     {/* Logo */}
@@ -117,7 +117,22 @@ const Navbar = () => {
                                                     fontWeight: 600,
                                                     fontSize: '0.95rem',
                                                     mx: 0.5,
-                                                    '&:hover': { color: theme.palette.primary.main, backgroundColor: 'transparent' }
+                                                    px: 2,
+                                                    minWidth: 'auto',
+                                                    height: 90,
+                                                    borderRadius: 0,
+                                                    boxShadow: 'none', // Override global theme
+                                                    borderTop: '3px solid transparent',
+                                                    borderBottom: '3px solid transparent',
+                                                    transition: 'color 0.2s', // Simpler transition
+                                                    '&:hover': {
+                                                        color: theme.palette.primary.main,
+                                                        backgroundColor: 'transparent',
+                                                        borderTopColor: '#78E335',
+                                                        borderBottomColor: '#78E335',
+                                                        boxShadow: 'none', // Override global hover shadow
+                                                        transform: 'none', // Override global hover transform
+                                                    }
                                                 }}
                                             >
                                                 {link.title}
@@ -190,7 +205,21 @@ const Navbar = () => {
                                             fontWeight: 600,
                                             fontSize: '0.95rem',
                                             mx: 0.5,
-                                            '&:hover': { color: theme.palette.primary.main, backgroundColor: 'transparent' }
+                                            px: 2,
+                                            minWidth: 'auto',
+                                            height: 90,
+                                            borderRadius: 0,
+                                            boxShadow: 'none',
+                                            borderTop: '3px solid transparent',
+                                            borderBottom: '3px solid transparent',
+                                            transition: 'color 0.2s',
+                                            '&:hover': {
+                                                color: theme.palette.primary.main,
+                                                backgroundColor: 'transparent',
+                                                borderTopColor: '#78E335',
+                                                boxShadow: 'none',
+                                                transform: 'none',
+                                            }
                                         }}
                                     >
                                         {link.title}
