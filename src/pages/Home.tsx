@@ -151,12 +151,15 @@ const Home = () => {
 
             {/* Value Props / Why Choose Us */}
             <Container maxWidth="xl" sx={{ py: 10 }}>
+                <Typography variant="h3" sx={{ textAlign: 'center', mb: 6, fontWeight: 800, color: '#2C3E50' }}>
+                    Why Choose Us
+                </Typography>
                 <Grid container spacing={4}>
                     {[
-                        { icon: <BuildOutlinedIcon sx={{ fontSize: 40, color: primaryGreen }} />, title: 'Same Day Repairs', desc: 'Most repairs are completed within hours.' },
-                        { icon: <VerifiedUserOutlinedIcon sx={{ fontSize: 40, color: primaryGreen }} />, title: 'Lifetime Warranty', desc: 'We stand behind our parts and labor.' },
-                        { icon: <ThumbUpOutlinedIcon sx={{ fontSize: 40, color: primaryGreen }} />, title: 'Expert Technicians', desc: 'Certified pros with years of experience.' },
-                        { icon: <CheckCircleOutlineIcon sx={{ fontSize: 40, color: primaryGreen }} />, title: 'Quality Parts', desc: 'We use only the highest quality replacement parts.' },
+                        { icon: <BuildOutlinedIcon sx={{ fontSize: 40, color: primaryGreen }} />, title: 'Same-Day Repairs', desc: 'Most repairs completed within hours.' },
+                        { icon: <ThumbUpOutlinedIcon sx={{ fontSize: 40, color: primaryGreen }} />, title: 'Certified Technicians', desc: 'Our team is highly trained and certified.' },
+                        { icon: <VerifiedUserOutlinedIcon sx={{ fontSize: 40, color: primaryGreen }} />, title: 'Customer Satisfaction', desc: 'We prioritize your satisfaction.' },
+                        { icon: <CheckCircleOutlineIcon sx={{ fontSize: 40, color: primaryGreen }} />, title: 'Quality Parts', desc: 'We use only high-quality replacement parts.' },
                     ].map((item, index) => (
                         <Grid size={{ xs: 12, sm: 6, md: 3 }} key={index}>
                             <Card elevation={0} sx={{ height: '100%', bgcolor: '#F9FAFB', borderRadius: 4, transition: '0.3s', '&:hover': { transform: 'translateY(-5px)' } }}>
@@ -170,6 +173,21 @@ const Home = () => {
                     ))}
                 </Grid>
             </Container>
+
+            {/* BBB Accreditation Section */}
+            <Box sx={{ bgcolor: '#f9f9f9', py: 8 }}>
+                <Container maxWidth="xl" sx={{ textAlign: 'center' }}>
+                    <Typography variant="h4" sx={{ fontWeight: 800, mb: 4, color: '#2C3E50' }}>
+                        BBB Accreditation
+                    </Typography>
+                    <Box
+                        component="img"
+                        src={getImagePath(imagePaths.bbbAccreditation)}
+                        alt="BBB Accredited Business"
+                        sx={{ maxWidth: '100%', height: 'auto', maxHeight: 150 }}
+                    />
+                </Container>
+            </Box>
 
             {/* Service Categories Section */}
             <Box id="repair-services" sx={{ bgcolor: '#ffffff', py: 10 }}>

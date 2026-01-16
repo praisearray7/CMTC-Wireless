@@ -173,7 +173,13 @@ export const repairServices: RepairCategory[] = [
           { name: 'Apple Watch', id: 'apple-watch'}, { name: 'Galaxy Watch', id: 'galaxy-watch'}, { name: 'Pixel Watch', id: 'pixel-watch'}
       ]
   },
-
+  {
+    id: 'computer-repair',
+    name: 'Computer Repair',
+    models: [
+        { name: 'Desktop', id: 'desktop' }, { name: 'Laptop', id: 'laptop' }, { name: 'All in One', id: 'all-in-one' }
+    ]
+  },
   {
       id: 'desktop-repair',
       name: 'Desktop Repair',

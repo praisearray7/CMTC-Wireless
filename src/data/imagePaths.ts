@@ -7,6 +7,7 @@ export const imagePaths = {
   heroDevices: 'hero_devices.png',
   iphoneRepair: 'iphone_repair.png',
   logo: 'cmtc_logo.png',
+  bbbAccreditation: 'https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/uDmomXFf05qK26VIqjaa/media/68bb1597f3b9973237e8c42e.jpeg',
   
   // External placeholders
   placeholders: {
