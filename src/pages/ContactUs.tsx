@@ -117,7 +117,7 @@ const ContactUs = () => {
                     <Grid size={{ xs: 12, md: 7 }}>
                         <Card sx={{ borderRadius: 4, boxShadow: '0 10px 40px rgba(0,0,0,0.1)', height: '100%' }}>
                             <CardContent sx={{ p: { xs: 3, md: 5 } }}>
-                                <Typography variant="h5" sx={{ fontWeight: 700, mb: 4, color: '#2C3E50' }}>Send us a Message</Typography>
+                                <Typography variant="h5" sx={{ fontWeight: 700, mb: 4, color: '#2C3E50' }}>Get Instant Quote</Typography>
                                 <Grid container spacing={3}>
                                     <Grid size={{ xs: 12, sm: 6 }}>
                                         <TextField label="Full Name" fullWidth variant="outlined" InputProps={{ sx: { borderRadius: 2 } }} />
