@@ -35,7 +35,7 @@ function App() {
           </Box>
           <Footer />
         </Box>
-      </BrowserRouter>
+      </HashRouter>
     </ThemeProvider>
   );
 }
