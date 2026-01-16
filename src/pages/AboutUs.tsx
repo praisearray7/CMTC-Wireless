@@ -6,6 +6,7 @@ import TimerIcon from '@mui/icons-material/Timer';
 import TrackChangesIcon from '@mui/icons-material/TrackChanges';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import GoogleReviews from '../components/GoogleReviews';
+import { imagePaths, getImagePath } from '../data/imagePaths';
 
 const AboutUs = () => {
     return (
@@ -80,9 +81,19 @@ const AboutUs = () => {
                     <Grid size={{ xs: 12, md: 6 }}>
                         <Box sx={{ position: 'relative' }}>
                             {/* Placeholder for About Us Image */}
-                            <Box sx={{ width: '100%', height: 400, bgcolor: '#f0f0f0', borderRadius: 4, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                <Typography variant="body1" color="textSecondary">High Quality Team/Shop Photo</Typography>
-                            </Box>
+                            {/* About Us Image */}
+                            <Box
+                                component="img"
+                                src={getImagePath(imagePaths.aboutStore)}
+                                alt="CMTC Wireless Store"
+                                sx={{
+                                    width: '100%',
+                                    height: 400,
+                                    objectFit: 'cover',
+                                    borderRadius: 4,
+                                    boxShadow: '0 20px 60px rgba(0,0,0,0.1)'
+                                }}
+                            />
                             <Box sx={{ position: 'absolute', bottom: -20, right: -20, bgcolor: '#ffffff', p: 3, borderRadius: 3, boxShadow: '0 10px 40px rgba(0,0,0,0.1)' }}>
                                 <Typography variant="h6" sx={{ fontWeight: 700, color: '#2C3E50' }}>Authorized Specialists</Typography>
                                 <Stack direction="row" spacing={1} sx={{ mt: 1 }}>

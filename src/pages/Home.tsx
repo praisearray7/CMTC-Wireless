@@ -252,7 +252,7 @@ const Home = () => {
             </Container>
 
             {/* BBB Accreditation Section */}
-            <Box sx={{ bgcolor: '#f9f9f9', py: 8 }}>
+            <Box sx={{ py: 8 }}>
                 <Container maxWidth="xl" sx={{ textAlign: 'center' }}>
                     <Typography variant="h4" sx={{ fontWeight: 800, mb: 4, color: '#2C3E50' }}>
                         BBB Accreditation
