@@ -11,6 +11,7 @@ import BuyDevice from './pages/BuyDevice';
 import UnlockDevice from './pages/UnlockDevice';
 import Reviews from './pages/Reviews';
 import ServiceDetail from './pages/ServiceDetail';
+import Warranty from './pages/Warranty';
 
 import ScrollToTop from './components/ScrollToTop';
 
@@ -29,6 +30,7 @@ function App() {
               <Route path="/contact-us" element={<ContactUs />} />
               <Route path="/buy-device" element={<BuyDevice />} />
               <Route path="/unlock-device" element={<UnlockDevice />} />
+              <Route path="/warranty" element={<Warranty />} />
               <Route path="/reviews" element={<Reviews />} />
               <Route path="/service/:id" element={<ServiceDetail />} />
             </Routes>
