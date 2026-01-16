@@ -1,7 +1,7 @@
 
 import { useState, Fragment, useRef } from 'react';
 import type { MouseEvent, KeyboardEvent } from 'react';
-import { AppBar, Toolbar, Button, Container, Box, IconButton, Drawer, List, ListItem, ListItemText, useTheme, useMediaQuery, Stack, Menu, Typography, Grid, ListItemButton } from '@mui/material';
+import { AppBar, Toolbar, Button, Container, Box, IconButton, Drawer, List, ListItem, ListItemText, useTheme, useMediaQuery, Stack, Menu, Typography, ListItemButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Link } from 'react-router-dom';
@@ -149,48 +149,42 @@ const Navbar = () => {
                                                         onMouseEnter: handleMenuEnter,
                                                         onMouseLeave: handleMenuLeave,
                                                         sx: {
-                                                            mt: 0.5, // Reduced margin to minimize gap
-                                                            width: 900,
-                                                            maxWidth: '95vw',
-                                                            p: 5,
+                                                            mt: 0.5,
+                                                            minWidth: 200, // Standard dropdown width
+                                                            p: 1, // Reduced padding
                                                             borderRadius: 2,
-                                                            boxShadow: '0 10px 40px rgba(0,0,0,0.1)',
-                                                            pointerEvents: 'auto' // ensure events are captured
+                                                            boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+                                                            pointerEvents: 'auto'
                                                         }
                                                     }
                                                 }}
                                             >
-                                                <Grid container spacing={4}>
+                                                <Stack spacing={0.5}>
                                                     {menuItems.map((service) => (
-                                                        <Grid size={{ xs: 12, md: 4 }} key={service.id}>
-                                                            <Typography
-                                                                variant="h6"
-                                                                component={Link}
-                                                                to={isBuyMenu ? `/buy-device?category=${service.id}` : `/service/${service.id}`}
-                                                                onClick={handleMenuLeave}
-                                                                sx={{ fontWeight: 800, color: '#2C3E50', textDecoration: 'none', '&:hover': { color: theme.palette.primary.main }, display: 'block', mb: 2, fontSize: '1rem', letterSpacing: 0.5 }}
-                                                            >
+                                                        <Box
+                                                            key={service.id}
+                                                            component={Link}
+                                                            to={isBuyMenu ? `/buy-device?category=${service.id}` : `/service/${service.id}`}
+                                                            onClick={handleMenuLeave}
+                                                            sx={{
+                                                                textDecoration: 'none',
+                                                                color: '#2C3E50',
+                                                                py: 1.5,
+                                                                px: 2,
+                                                                borderRadius: 1,
+                                                                transition: 'background-color 0.2s',
+                                                                '&:hover': {
+                                                                    backgroundColor: '#f5f5f5',
+                                                                    color: theme.palette.primary.main
+                                                                }
+                                                            }}
+                                                        >
+                                                            <Typography variant="body1" sx={{ fontWeight: 500 }}>
                                                                 {service.name}
                                                             </Typography>
-                                                            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, mb: 2 }}>
-                                                                {(service.subCategories || service.models)?.slice(0, 4).map((item: any) => (
-                                                                    <Typography key={item.name} variant="body2" color="textSecondary" sx={{ fontSize: '0.9rem', fontWeight: 500, color: '#546E7A' }}>
-                                                                        {item.name}
-                                                                    </Typography>
-                                                                ))}
-                                                            </Box>
-                                                            <Typography
-                                                                variant="caption"
-                                                                component={Link}
-                                                                to={isBuyMenu ? `/buy-device?category=${service.id}` : `/service/${service.id}`}
-                                                                onClick={handleMenuLeave}
-                                                                sx={{ fontWeight: 800, cursor: 'pointer', textDecoration: 'none', display: 'block', color: '#78E335', textTransform: 'uppercase', fontSize: '0.75rem', letterSpacing: 1 }}
-                                                            >
-                                                                View All {service.name} &rarr;
-                                                            </Typography>
-                                                        </Grid>
+                                                        </Box>
                                                     ))}
-                                                </Grid>
+                                                </Stack>
                                             </Menu>
                                         </Box>
                                     );

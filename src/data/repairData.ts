@@ -170,14 +170,35 @@ export const repairServices: RepairCategory[] = [
       id: 'smart-watch-repair',
       name: 'Smart Watch Repair',
       models: [
-          { name: 'Apple Watch', id: 'apple-watch'}
+          { name: 'Apple Watch', id: 'apple-watch'}, { name: 'Galaxy Watch', id: 'galaxy-watch'}, { name: 'Pixel Watch', id: 'pixel-watch'}
       ]
   },
   {
-      id: 'computer-repair',
-      name: 'Computer Repair',
+    id: 'computer-repair',
+    name: 'Computer Repair',
+    models: [
+        { name: 'Desktop', id: 'desktop' }, { name: 'Laptop', id: 'laptop' }, { name: 'All in One', id: 'all-in-one' }
+    ]
+  },
+  {
+      id: 'desktop-repair',
+      name: 'Desktop Repair',
       models: [
-          { name: 'Desktop', id: 'desktop' }, { name: 'Laptop', id: 'laptop' }, { name: 'All in One', id: 'all-in-one' }
+          { name: 'Gaming', id: 'gaming-desktop' }, { name: 'Workstation', id: 'workstation' }, { name: 'Home/Office', id: 'home-office' }
+      ]
+  },
+  {
+      id: 'laptop-repair',
+      name: 'Laptop Repair',
+      models: [
+           { name: 'MacBook', id: 'macbook-repair' }, { name: 'Windows Laptop', id: 'windows-laptop' }, { name: 'Chromebook', id: 'chromebook-repair' }
+      ]
+  },
+  {
+      id: 'aio-repair',
+      name: 'All-In-One Repair',
+      models: [
+          { name: 'iMac', id: 'imac-repair' }, { name: 'HP', id: 'hp-aio' }, { name: 'Dell', id: 'dell-aio' }
       ]
   },
   {
