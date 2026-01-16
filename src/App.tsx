@@ -1,5 +1,5 @@
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Box, CssBaseline, ThemeProvider } from '@mui/material';
 import theme from './theme/theme';
 import Navbar from './components/Navbar';
@@ -18,7 +18,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <HashRouter>
         <ScrollToTop />
         <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
           <Navbar />
