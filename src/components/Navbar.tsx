@@ -1,5 +1,5 @@
 
-import { useState, Fragment } from 'react';
+import { useState, Fragment, useRef } from 'react';
 import type { MouseEvent, KeyboardEvent } from 'react';
 import { AppBar, Toolbar, Button, Container, Box, IconButton, Drawer, List, ListItem, ListItemText, useTheme, useMediaQuery, Stack, Menu, Typography, Grid, ListItemButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -15,15 +15,27 @@ const Navbar = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const [activeMenu, setActiveMenu] = useState<string | null>(null);
+    const timeoutRef = useRef<number | null>(null);
 
     const handleMenuOpen = (event: MouseEvent<HTMLElement>, menuTitle: string) => {
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+        }
         setAnchorEl(event.currentTarget);
         setActiveMenu(menuTitle);
     };
 
-    const handleMenuClose = () => {
-        setAnchorEl(null);
-        setActiveMenu(null);
+    const handleMenuLeave = () => {
+        timeoutRef.current = window.setTimeout(() => {
+            setAnchorEl(null);
+            setActiveMenu(null);
+        }, 100);
+    };
+
+    const handleMenuEnter = () => {
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+        }
     };
 
     const toggleDrawer = (open: boolean) => (event: KeyboardEvent | MouseEvent) => {
@@ -97,6 +109,8 @@ const Navbar = () => {
                                         <Box key={link.title}>
                                             <Button
                                                 onClick={(e) => handleMenuOpen(e, link.title)}
+                                                onMouseEnter={(e) => handleMenuOpen(e, link.title)}
+                                                onMouseLeave={handleMenuLeave}
                                                 endIcon={<KeyboardArrowDownIcon />}
                                                 sx={{
                                                     color: '#2C3E50',
@@ -111,8 +125,11 @@ const Navbar = () => {
                                             <Menu
                                                 anchorEl={anchorEl}
                                                 open={Boolean(anchorEl) && activeMenu === link.title}
-                                                onClose={handleMenuClose}
-                                                MenuListProps={{ onMouseLeave: handleMenuClose }}
+                                                onClose={handleMenuLeave}
+                                                MenuListProps={{
+                                                    onMouseEnter: handleMenuEnter,
+                                                    onMouseLeave: handleMenuLeave
+                                                }}
                                                 PaperProps={{ sx: { mt: 2, width: 900, maxWidth: '95vw', p: 5, borderRadius: 2, boxShadow: '0 10px 40px rgba(0,0,0,0.1)' } }}
                                             >
                                                 <Grid container spacing={4}>
@@ -122,7 +139,7 @@ const Navbar = () => {
                                                                 variant="h6"
                                                                 component={Link}
                                                                 to={isBuyMenu ? `/buy-device?category=${service.id}` : `/service/${service.id}`}
-                                                                onClick={handleMenuClose}
+                                                                onClick={handleMenuLeave}
                                                                 sx={{ fontWeight: 800, color: '#2C3E50', textDecoration: 'none', '&:hover': { color: theme.palette.primary.main }, display: 'block', mb: 2, fontSize: '1rem', letterSpacing: 0.5 }}
                                                             >
                                                                 {service.name}
@@ -138,7 +155,7 @@ const Navbar = () => {
                                                                 variant="caption"
                                                                 component={Link}
                                                                 to={isBuyMenu ? `/buy-device?category=${service.id}` : `/service/${service.id}`}
-                                                                onClick={handleMenuClose}
+                                                                onClick={handleMenuLeave}
                                                                 sx={{ fontWeight: 800, cursor: 'pointer', textDecoration: 'none', display: 'block', color: '#78E335', textTransform: 'uppercase', fontSize: '0.75rem', letterSpacing: 1 }}
                                                             >
                                                                 View All {service.name} &rarr;
