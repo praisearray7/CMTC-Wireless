@@ -149,6 +149,83 @@ const Home = () => {
                 </Container>
             </Box>
 
+            {/* Hero Cards Section (Repair, Buy, Unlock) */}
+            <Container maxWidth="xl" sx={{ py: 8 }}>
+                <Grid container spacing={4} justifyContent="center">
+                    {[
+                        {
+                            title: 'Repair a Device',
+                            desc: 'Broken phone? We fix screens, batteries, charging ports, and more — fast.',
+                            img: getImagePath(imagePaths.homeCardRepair),
+                            btnText: 'Get a Free Quote',
+                            link: '/contact-us'
+                        },
+                        {
+                            title: 'Buy a Device',
+                            desc: 'Certified pre-owned phones at unbeatable prices, fully tested and ready to go.',
+                            img: getImagePath(imagePaths.homeCardBuy),
+                            btnText: 'Shop Now',
+                            link: '/buy-device'
+                        },
+                        {
+                            title: 'Unlock Any Device',
+                            desc: 'Unlock your device today — no hassle, no waiting.',
+                            btnText: 'Get a Free Quote', // Consistent text with screenshot
+                            img: getImagePath(imagePaths.homeCardUnlock),
+                            link: '/unlock-device' // Assuming route
+                        }
+                    ].map((item, index) => (
+                        <Grid size={{ xs: 12, md: 4 }} key={index}>
+                            <Card
+                                elevation={0}
+                                sx={{
+                                    height: '100%',
+                                    bgcolor: '#dcedc8', // Light green similar to screenshot
+                                    borderRadius: 6,
+                                    overflow: 'hidden',
+                                    textAlign: 'center',
+                                    p: 4,
+                                    transition: 'transform 0.3s',
+                                    '&:hover': { transform: 'translateY(-8px)' }
+                                }}
+                            >
+                                <Box
+                                    component="img"
+                                    src={item.img}
+                                    alt={item.title}
+                                    sx={{
+                                        width: '180px',
+                                        height: 'auto',
+                                        mb: 3,
+                                        mixBlendMode: 'multiply', // Helps blend if png has white bg, though these are transparent likely
+                                        filter: 'drop-shadow(0 10px 15px rgba(0,0,0,0.1))'
+                                    }}
+                                />
+                                <Typography variant="h4" sx={{ fontWeight: 600, mb: 2, color: '#1a1a1a' }}>
+                                    {item.title}
+                                </Typography>
+                                <Typography variant="body1" sx={{ mb: 4, color: '#37474f', lineHeight: 1.5 }}>
+                                    {item.desc}
+                                </Typography>
+                                <Button
+                                    component={Link}
+                                    to={item.link}
+                                    variant="text"
+                                    sx={{
+                                        color: '#78E335', // Bright green text
+                                        fontWeight: 700,
+                                        fontSize: '1.1rem',
+                                        '&:hover': { bgcolor: 'transparent', textDecoration: 'underline' }
+                                    }}
+                                >
+                                    {item.btnText}
+                                </Button>
+                            </Card>
+                        </Grid>
+                    ))}
+                </Grid>
+            </Container>
+
             {/* Value Props / Why Choose Us */}
             <Container maxWidth="xl" sx={{ py: 10 }}>
                 <Typography variant="h3" sx={{ textAlign: 'center', mb: 6, fontWeight: 800, color: '#2C3E50' }}>

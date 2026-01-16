@@ -2,6 +2,10 @@
 import { Box, Container, Grid, Typography, Card, CardContent, Button, Chip, Stack } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import SmartphoneIcon from '@mui/icons-material/Smartphone';
+import FactCheckOutlinedIcon from '@mui/icons-material/FactCheckOutlined';
+import SavingsOutlinedIcon from '@mui/icons-material/SavingsOutlined';
+import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
+import { imagePaths, getImagePath } from '../data/imagePaths';
 
 const BuyDevice = () => {
     const navigate = useNavigate();
@@ -74,8 +78,75 @@ const BuyDevice = () => {
                         </Card>
                     </Grid>
                 </Grid>
+
+
+                {/* Value Props Section */}
+                <Box sx={{ mt: 12, textAlign: 'center' }}>
+                    <Typography variant="h3" sx={{ fontWeight: 800, color: '#2C3E50', mb: 3 }}>
+                        We Offer a Variety of Devices
+                    </Typography>
+                    <Typography variant="body1" sx={{ color: '#546E7A', mb: 8, maxWidth: 800, mx: 'auto', fontSize: '1.1rem' }}>
+                        Let us know which device you are looking for and we will have one of our device consultants reach out with some of our current deals!
+                    </Typography>
+
+                    <Grid container spacing={4}>
+                        {[
+                            {
+                                icon: <FactCheckOutlinedIcon sx={{ fontSize: 40, color: '#78E335' }} />,
+                                title: 'Fully Inspected & Refurbished',
+                                desc: 'Checked for hardware and software issues and refurbished to factory standard functionality for a device that feels new.'
+                            },
+                            {
+                                icon: <SavingsOutlinedIcon sx={{ fontSize: 40, color: '#78E335' }} />,
+                                title: 'Higher Savings',
+                                desc: 'Save up to 30% off retail price when you buy a new device. We have unbeatable prices and a wide selection.'
+                            },
+                            {
+                                icon: <ThumbUpOutlinedIcon sx={{ fontSize: 40, color: '#78E335' }} />,
+                                title: 'Top Customer Service',
+                                desc: 'Let us know which device you are looking for and we will have one of our device consultants reach out with some of our current deals!'
+                            }
+                        ].map((item, index) => (
+                            <Grid size={{ xs: 12, md: 4 }} key={index}>
+                                <Card
+                                    elevation={0}
+                                    sx={{
+                                        height: '100%',
+                                        border: '1px solid #e0e0e0',
+                                        borderRadius: 4,
+                                        p: 2,
+                                        textAlign: 'left'
+                                    }}
+                                >
+                                    <CardContent>
+                                        <Box sx={{ mb: 2 }}>{item.icon}</Box>
+                                        <Typography variant="h6" sx={{ fontWeight: 700, mb: 2, color: '#2C3E50' }}>
+                                            {item.title}
+                                        </Typography>
+                                        <Typography variant="body2" color="textSecondary" sx={{ lineHeight: 1.6 }}>
+                                            {item.desc}
+                                        </Typography>
+                                    </CardContent>
+                                </Card>
+                            </Grid>
+                        ))}
+                    </Grid>
+                </Box>
+
+                {/* BBB Accreditation Section */}
+                <Box sx={{ mt: 10, textAlign: 'center' }}>
+                    <Typography variant="h4" sx={{ fontWeight: 800, mb: 4, color: '#2C3E50' }}>
+                        BBB Accreditation
+                    </Typography>
+                    <Box
+                        component="img"
+                        src={getImagePath(imagePaths.bbbAccreditation)}
+                        alt="BBB Accredited Business"
+                        sx={{ maxWidth: '100%', height: 'auto', maxHeight: 120 }}
+                    />
+                </Box>
             </Container>
-        </Box>
+        </Box >
     );
 };
 

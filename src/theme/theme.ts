@@ -10,10 +10,6 @@ const theme = createTheme({
         main: '#2C3E50', // CMTC Navy/Dark
         contrastText: '#ffffff',
     },
-    background: {
-      default: '#ffffff',
-      paper: '#f9f9f9',
-    },
     text: {
       primary: '#2C3E50', // Dark Navy for text
       secondary: '#546E7A',
