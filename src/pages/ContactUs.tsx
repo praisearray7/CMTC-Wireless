@@ -12,7 +12,7 @@ import GoogleReviews from '../components/GoogleReviews';
 const ContactUs = () => {
     const location = useLocation();
     const [deviceModel, setDeviceModel] = useState<string | null>(null);
-    const [serviceNeeded, setServiceNeeded] = useState('Repair Service');
+    const [serviceNeeded, setServiceNeeded] = useState('');
 
     useEffect(() => {
         if (location.state?.deviceModel) {
