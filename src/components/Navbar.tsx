@@ -126,15 +126,28 @@ const Navbar = () => {
                                                 anchorEl={anchorEl}
                                                 open={Boolean(anchorEl) && activeMenu === link.title}
                                                 onClose={handleMenuLeave}
-                                                MenuListProps={{
-                                                    onMouseEnter: handleMenuEnter,
-                                                    onMouseLeave: handleMenuLeave
+                                                hideBackdrop
+                                                disableScrollLock
+                                                sx={{ pointerEvents: 'none' }}
+                                                slotProps={{
+                                                    paper: {
+                                                        onMouseEnter: handleMenuEnter,
+                                                        onMouseLeave: handleMenuLeave,
+                                                        sx: {
+                                                            mt: 0.5, // Reduced margin to minimize gap
+                                                            width: 900,
+                                                            maxWidth: '95vw',
+                                                            p: 5,
+                                                            borderRadius: 2,
+                                                            boxShadow: '0 10px 40px rgba(0,0,0,0.1)',
+                                                            pointerEvents: 'auto' // ensure events are captured
+                                                        }
+                                                    }
                                                 }}
-                                                PaperProps={{ sx: { mt: 2, width: 900, maxWidth: '95vw', p: 5, borderRadius: 2, boxShadow: '0 10px 40px rgba(0,0,0,0.1)' } }}
                                             >
                                                 <Grid container spacing={4}>
                                                     {menuItems.map((service) => (
-                                                        <Grid size={{ xs: 6, md: 4 }} key={service.id}>
+                                                        <Grid size={{ xs: 12, md: 4 }} key={service.id}>
                                                             <Typography
                                                                 variant="h6"
                                                                 component={Link}
