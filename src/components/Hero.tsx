@@ -1,6 +1,6 @@
 
 import { Box, Container, Grid, Typography, Button, Stack, Rating } from '@mui/material';
-// import HeroImage from '../assets/hero_devices.png'; // To be added
+import { imagePaths, getImagePath } from '../data/imagePaths';
 
 const Hero = () => {
     return (
@@ -10,7 +10,7 @@ const Hero = () => {
                     {/* Left: Content */}
                     <Grid size={{ xs: 12, md: 6 }}>
                         <Typography variant="h2" component="h1" sx={{ fontWeight: 800, mb: 3, fontSize: { xs: '2.5rem', md: '3.5rem' }, color: '#333', lineHeight: 1.1 }}>
-                            A better way to support your technology.
+                            A better way to supporting your technology.
                         </Typography>
                         <Typography variant="h6" sx={{ color: '#666', mb: 4, fontWeight: 400, lineHeight: 1.6 }}>
                             Gophermods is the premier repair partner for K-12 schools and businesses. We keep your devices running so you can focus on what matters.
@@ -42,7 +42,7 @@ const Hero = () => {
                     <Grid size={{ xs: 12, md: 6 }}>
                         <Box
                             component="img"
-                            src="/hero_devices.png"
+                            src={getImagePath(imagePaths.heroDevices)}
                             alt="Devices"
                             sx={{ width: '100%', height: 'auto', borderRadius: 2 }}
                         />

@@ -10,6 +10,8 @@ import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import StarIcon from '@mui/icons-material/Star';
 import { repairServices } from '../data/repairData';
 
+import { imagePaths, getImagePath } from '../data/imagePaths';
+
 const Home = () => {
     // CMTC Brand Colors
     const primaryGreen = '#78E335';
@@ -26,12 +28,12 @@ const Home = () => {
     };
 
     const getCategoryImage = (id: string) => {
-        if (id === 'iphone-repair') return '/iphone_repair.png';
-        if (id === 'ipad-repair') return 'https://placehold.co/300x200/f5f5f5/2C3E50?text=iPad';
-        if (id === 'cell-phone-repair') return 'https://placehold.co/300x200/f5f5f5/2C3E50?text=Cell+Phone';
-        if (id === 'smart-watch-repair') return 'https://placehold.co/300x200/f5f5f5/2C3E50?text=Smart+Watch';
-        if (id === 'computer-repair') return 'https://placehold.co/300x200/f5f5f5/2C3E50?text=Computer';
-        if (id === 'tablet-repair') return 'https://placehold.co/300x200/f5f5f5/2C3E50?text=Tablet';
+        if (id === 'iphone-repair') return getImagePath(imagePaths.iphoneRepair);
+        if (id === 'ipad-repair') return imagePaths.placeholders.ipad;
+        if (id === 'cell-phone-repair') return imagePaths.placeholders.cellPhone;
+        if (id === 'smart-watch-repair') return imagePaths.placeholders.smartWatch;
+        if (id === 'computer-repair') return imagePaths.placeholders.computer;
+        if (id === 'tablet-repair') return imagePaths.placeholders.tablet;
         return `https://placehold.co/300x200/f5f5f5/2C3E50?text=${id.split('-')[0]}`;
     };
 
@@ -137,7 +139,7 @@ const Home = () => {
                                 />
                                 <Box
                                     component="img"
-                                    src="/hero_devices.png" // Reusing the high quality one
+                                    src={getImagePath(imagePaths.heroDevices)} // Reusing the high quality one
                                     alt="Devices"
                                     sx={{ width: '100%', height: 'auto', borderRadius: 4, position: 'relative', zIndex: 1, boxShadow: '0 20px 80px rgba(0,0,0,0.1)' }}
                                 />

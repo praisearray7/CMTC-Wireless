@@ -7,6 +7,8 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Link } from 'react-router-dom';
 import { navLinks, repairServices, buyServices } from '../data/repairData';
 
+import { imagePaths, getImagePath } from '../data/imagePaths';
+
 const Navbar = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('lg')); // Switched to lg break for more menu items
@@ -78,7 +80,7 @@ const Navbar = () => {
                 <Toolbar disableGutters sx={{ height: 90 }}>
                     {/* Logo */}
                     <Box component={Link} to="/" sx={{ flexGrow: 0, mr: 4, textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-                        <img src="/cmtc_logo.png" alt="CMTC Wireless" style={{ height: 50, objectFit: 'contain' }} onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+                        <img src={getImagePath(imagePaths.logo)} alt="CMTC Wireless" style={{ height: 50, objectFit: 'contain' }} onError={(e) => { e.currentTarget.style.display = 'none'; }} />
                     </Box>
 
                     <Box sx={{ flexGrow: 1 }} />
