@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Box, Container, Grid, Typography, Card, CardContent, TextField, Button, Stack, Autocomplete, MenuItem } from '@mui/material';
+import { Box, Container, Grid, Typography, Card, CardContent, TextField, Button, Stack, Autocomplete } from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
@@ -147,20 +147,27 @@ const ContactUs = () => {
                                         />
                                     </Grid>
                                     <Grid size={{ xs: 12, sm: 6 }}>
-                                        <TextField
-                                            select
-                                            label="Service Needed"
-                                            fullWidth
-                                            variant="outlined"
+                                        <Autocomplete
+                                            freeSolo
+                                            forcePopupIcon
+                                            options={[
+                                                "Repair Service",
+                                                "Buy a Phone",
+                                                "Check Availability",
+                                                "Get Instant Quote"
+                                            ]}
                                             value={serviceNeeded}
-                                            onChange={(e) => setServiceNeeded(e.target.value)}
-                                            InputProps={{ sx: { borderRadius: 2 } }}
-                                        >
-                                            <MenuItem value="Repair Service">Repair Service</MenuItem>
-                                            <MenuItem value="Buy a Phone">Buy a Phone</MenuItem>
-                                            <MenuItem value="Check Availability">Check Availability</MenuItem>
-                                            <MenuItem value="Get Instant Quote">Get Instant Quote</MenuItem>
-                                        </TextField>
+                                            onChange={(_, newValue) => setServiceNeeded(newValue || '')}
+                                            onInputChange={(_, newInputValue) => setServiceNeeded(newInputValue)}
+                                            renderInput={(params) => (
+                                                <TextField
+                                                    {...params}
+                                                    label="Service Needed"
+                                                    variant="outlined"
+                                                    InputProps={{ ...params.InputProps, sx: { borderRadius: 2 } }}
+                                                />
+                                            )}
+                                        />
                                     </Grid>
                                     <Grid size={{ xs: 12 }}>
                                         <TextField label="How can we help?" multiline rows={4} fullWidth variant="outlined" InputProps={{ sx: { borderRadius: 2 } }} />
