@@ -48,7 +48,7 @@ const Footer = () => {
                         <Stack spacing={2}>
                             <Box>
                                 <Typography variant="body2" sx={{ color: '#78E335', fontWeight: 600, mb: 0.5 }}>PHONE</Typography>
-                                <Typography variant="body1" sx={{ color: '#B0BEC5' }}>(555) 123-4567</Typography>
+                                <Typography variant="body1" sx={{ color: '#B0BEC5' }}>(612) 446-0559</Typography>
                             </Box>
                             <Box>
                                 <Typography variant="body2" sx={{ color: '#78E335', fontWeight: 600, mb: 0.5 }}>EMAIL</Typography>
