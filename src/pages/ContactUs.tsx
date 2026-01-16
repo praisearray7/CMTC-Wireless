@@ -13,6 +13,7 @@ const ContactUs = () => {
     const location = useLocation();
     const [deviceModel, setDeviceModel] = useState<string | null>(null);
     const [serviceNeeded, setServiceNeeded] = useState('');
+    const [image, setImage] = useState<File | null>(null);
 
     useEffect(() => {
         if (location.state?.deviceModel) {
@@ -163,6 +164,26 @@ const ContactUs = () => {
                                     </Grid>
                                     <Grid size={{ xs: 12 }}>
                                         <TextField label="How can we help?" multiline rows={4} fullWidth variant="outlined" InputProps={{ sx: { borderRadius: 2 } }} />
+                                    </Grid>
+                                    <Grid size={{ xs: 12 }}>
+                                        <Button
+                                            component="label"
+                                            variant="outlined"
+                                            fullWidth
+                                            sx={{ py: 1.5, borderRadius: 2, borderStyle: 'dashed' }}
+                                        >
+                                            {image ? `Selected: ${image.name}` : "Upload Image (Optional)"}
+                                            <input
+                                                type="file"
+                                                hidden
+                                                accept="image/*"
+                                                onChange={(e) => {
+                                                    if (e.target.files && e.target.files[0]) {
+                                                        setImage(e.target.files[0]);
+                                                    }
+                                                }}
+                                            />
+                                        </Button>
                                     </Grid>
                                     <Grid size={{ xs: 12 }}>
                                         <Button variant="contained" color="primary" size="large" fullWidth endIcon={<SendIcon />} sx={{ py: 1.5, fontSize: '1.1rem' }}>
