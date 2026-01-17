@@ -6,6 +6,8 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 
 import { navLinks } from '../data/repairData';
 
+import { Link as RouterLink } from 'react-router-dom';
+
 const Footer = () => {
     return (
         <Box sx={{ bgcolor: '#1a252f', color: 'white', pt: 10, pb: 6 }}>
@@ -22,7 +24,7 @@ const Footer = () => {
                         <Stack direction="row" spacing={1}>
                             <IconButton color="inherit" aria-label="facebook" href="https://www.facebook.com/MetroBrooklynParkMN10222653/" sx={{ bgcolor: 'rgba(255,255,255,0.05)' }}><FacebookIcon /></IconButton>
                             <IconButton color="inherit" aria-label="twitter" sx={{ bgcolor: 'rgba(255,255,255,0.05)' }}><TwitterIcon /></IconButton>
-                            <IconButton color="inherit" aria-label="instagram"  sx={{ bgcolor: 'rgba(255,255,255,0.05)' }}><InstagramIcon /></IconButton>
+                            <IconButton color="inherit" aria-label="instagram" sx={{ bgcolor: 'rgba(255,255,255,0.05)' }}><InstagramIcon /></IconButton>
                         </Stack>
                     </Grid>
 
@@ -33,7 +35,14 @@ const Footer = () => {
                         </Typography>
                         <Stack spacing={2}>
                             {navLinks.slice(0, 5).map(link => (
-                                <MuiLink key={link.title} href={link.path} underline="hover" color="inherit" sx={{ fontSize: '1rem', color: '#B0BEC5', '&:hover': { color: '#78E335' } }}>
+                                <MuiLink
+                                    key={link.title}
+                                    component={RouterLink}
+                                    to={link.path}
+                                    underline="hover"
+                                    color="inherit"
+                                    sx={{ fontSize: '1rem', color: '#B0BEC5', '&:hover': { color: '#78E335' } }}
+                                >
                                     {link.title}
                                 </MuiLink>
                             ))}
