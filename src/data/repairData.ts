@@ -14,7 +14,7 @@ export interface RepairCategory {
 }
 
 export const navLinks = [
-  { title: 'Repair Services', path: '/repair-services', isDropdown: true },
+  { title: 'Repair Services', path: '/#repair-services', isDropdown: true },
   { title: 'Buy a Device', path: '/buy-device', isDropdown: true },
   { title: 'Warranty', path: '/warranty' },
   { title: 'Blog', path: '/blog' },
