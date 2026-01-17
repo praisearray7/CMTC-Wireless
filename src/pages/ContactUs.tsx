@@ -153,6 +153,7 @@ const ContactUs = () => {
                                             options={[
                                                 "Repair Service",
                                                 "Buy a Phone",
+                                                "Unlock any Phone",
                                                 "Check Availability",
                                                 "Get Instant Quote"
                                             ]}

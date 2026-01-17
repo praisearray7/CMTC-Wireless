@@ -5,6 +5,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+  /* Account for 90px header + 10px buffer */
+}
+
 a {
   text-decoration: none;
   color: inherit;
