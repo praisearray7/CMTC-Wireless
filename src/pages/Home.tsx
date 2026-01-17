@@ -129,9 +129,9 @@ const Home = () => {
                                     sx={{
                                         position: 'absolute',
                                         top: -40,
-                                        right: -40,
-                                        width: 300,
-                                        height: 300,
+                                        right: { xs: -20, md: -40 },
+                                        width: { xs: 200, md: 300 },
+                                        height: { xs: 200, md: 300 },
                                         bgcolor: '#f5f5f5',
                                         borderRadius: '50%',
                                         zIndex: 0

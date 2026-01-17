@@ -23,7 +23,7 @@ function App() {
       <CssBaseline />
       <HashRouter>
         <ScrollToTop />
-        <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', width: '100%', overflowX: 'hidden' }}>
           <Navbar />
           <Box component="main" sx={{ flexGrow: 1 }}>
             <Routes>
