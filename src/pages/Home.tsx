@@ -1,6 +1,6 @@
 
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Grid, Typography, Card, CardContent, Box, Button, CardMedia, Paper, Stack, Menu, MenuItem } from '@mui/material';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
@@ -26,6 +26,15 @@ const Home = () => {
     const handleViewServicesClose = () => {
         setViewServicesAnchorEl(null);
     };
+
+    // Hero Carousel Logic
+    const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentHeroSlide((prev) => (prev + 1) % 5);
+        }, 4000); // Change every 4 seconds
+        return () => clearInterval(timer);
+    }, []);
 
     const getCategoryImage = (id: string) => {
         if (id === 'iphone-repair') return getImagePath(imagePaths.iphoneRepair);
@@ -124,25 +133,43 @@ const Home = () => {
 
                         {/* Right: Modern Visuals */}
                         <Grid size={{ xs: 12, md: 6 }}>
-                            <Box sx={{ position: 'relative' }}>
-                                <Box
-                                    sx={{
-                                        position: 'absolute',
-                                        top: -40,
-                                        right: -40,
-                                        width: 300,
-                                        height: 300,
-                                        bgcolor: '#f5f5f5',
-                                        borderRadius: '50%',
-                                        zIndex: 0
-                                    }}
-                                />
-                                <Box
-                                    component="img"
-                                    src={getImagePath(imagePaths.heroDevices)} // Reusing the high quality one
-                                    alt="Devices"
-                                    sx={{ width: '100%', height: 'auto', borderRadius: 4, position: 'relative', zIndex: 1, boxShadow: '0 20px 80px rgba(0,0,0,0.1)' }}
-                                />
+                            <Box sx={{ position: 'relative', width: '100%', aspectRatio: '1/1', borderRadius: 4, overflow: 'hidden', boxShadow: '0 20px 80px rgba(0,0,0,0.1)' }}>
+                                {imagePaths.carousel.map((imgName, index) => (
+                                    <Box
+                                        key={imgName}
+                                        component="img"
+                                        src={getImagePath(imgName)}
+                                        alt={`Slide ${index + 1}`}
+                                        sx={{
+                                            position: 'absolute',
+                                            top: 0,
+                                            left: 0,
+                                            width: '100%',
+                                            height: '100%',
+                                            objectFit: 'cover',
+                                            transition: 'opacity 1s ease-in-out',
+                                            opacity: currentHeroSlide === index ? 1 : 0,
+                                            zIndex: currentHeroSlide === index ? 1 : 0
+                                        }}
+                                    />
+                                ))}
+                                {/* Carousel Indicators */}
+                                <Stack direction="row" spacing={1} sx={{ position: 'absolute', bottom: 20, left: '50%', transform: 'translateX(-50%)', zIndex: 2 }}>
+                                    {[0, 1, 2, 3, 4].map((index) => (
+                                        <Box
+                                            key={index}
+                                            onClick={() => setCurrentHeroSlide(index)}
+                                            sx={{
+                                                width: 10,
+                                                height: 10,
+                                                borderRadius: '50%',
+                                                bgcolor: currentHeroSlide === index ? '#78E335' : 'rgba(255,255,255,0.5)',
+                                                cursor: 'pointer',
+                                                transition: 'all 0.3s'
+                                            }}
+                                        />
+                                    ))}
+                                </Stack>
                             </Box>
                         </Grid>
                     </Grid>
@@ -158,7 +185,8 @@ const Home = () => {
                             desc: 'Broken phone? We fix screens, batteries, charging ports, and more — fast.',
                             img: getImagePath(imagePaths.homeCardRepair),
                             btnText: 'Get a Free Quote',
-                            link: '/contact-us'
+                            link: '/contact-us',
+                            state: { serviceNeeded: 'Repair Service' } // Added state
                         },
                         {
                             title: 'Buy a Device',
@@ -170,9 +198,9 @@ const Home = () => {
                         {
                             title: 'Unlock Any Device',
                             desc: 'Unlock your device today — no hassle, no waiting.',
-                            btnText: 'Get a Free Quote', // Consistent text with screenshot
+                            btnText: 'Get a Free Quote',
                             img: getImagePath(imagePaths.homeCardUnlock),
-                            link: '/unlock-device' // Assuming route
+                            link: '/unlock-device'
                         }
                     ].map((item, index) => (
                         <Grid size={{ xs: 12, md: 4 }} key={index}>
@@ -180,7 +208,7 @@ const Home = () => {
                                 elevation={0}
                                 sx={{
                                     height: '100%',
-                                    bgcolor: '#dcedc8', // Light green similar to screenshot
+                                    // bgcolor: '#dcedc8',
                                     borderRadius: 6,
                                     overflow: 'hidden',
                                     textAlign: 'center',
@@ -197,7 +225,7 @@ const Home = () => {
                                         width: '180px',
                                         height: 'auto',
                                         mb: 3,
-                                        mixBlendMode: 'multiply', // Helps blend if png has white bg, though these are transparent likely
+                                        mixBlendMode: 'multiply',
                                         filter: 'drop-shadow(0 10px 15px rgba(0,0,0,0.1))'
                                     }}
                                 />
@@ -210,12 +238,21 @@ const Home = () => {
                                 <Button
                                     component={Link}
                                     to={item.link}
-                                    variant="text"
+                                    state={item.state} // Pass the state
+                                    variant="contained"
                                     sx={{
-                                        color: '#78E335', // Bright green text
+                                        bgcolor: '#78E335',
+                                        color: '#fff',
                                         fontWeight: 700,
                                         fontSize: '1.1rem',
-                                        '&:hover': { bgcolor: 'transparent', textDecoration: 'underline' }
+                                        px: 4,
+                                        py: 1,
+                                        borderRadius: 2,
+                                        boxShadow: 'none',
+                                        '&:hover': {
+                                            bgcolor: '#66C22E',
+                                            boxShadow: '0 4px 12px rgba(120, 227, 53, 0.4)'
+                                        }
                                     }}
                                 >
                                     {item.btnText}
@@ -305,7 +342,7 @@ const Home = () => {
                                     <CardContent sx={{ p: 4, flexGrow: 1 }}>
 
                                         <Stack direction="row" flexWrap="wrap" gap={1} mb={3}>
-                                            {(service.subCategories || service.models)?.slice(0, 4).map((item: any) => (
+                                            {(service.subCategories || service.models)?.slice(0, 2).map((item: any) => (
                                                 <Paper key={item.name} elevation={0} sx={{ bgcolor: '#F0F4F8', px: 1.5, py: 0.5, borderRadius: 2 }}>
                                                     <Typography variant="caption" sx={{ fontWeight: 600, color: '#546E7A' }}>{item.name}</Typography>
                                                 </Paper>

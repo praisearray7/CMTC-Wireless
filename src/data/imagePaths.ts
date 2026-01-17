@@ -20,7 +20,16 @@ export const imagePaths = {
     smartWatch: 'https://placehold.co/300x200/f5f5f5/2C3E50?text=Smart+Watch',
     computer: 'https://placehold.co/300x200/f5f5f5/2C3E50?text=Computer',
     tablet: 'https://placehold.co/300x200/f5f5f5/2C3E50?text=Tablet',
-  }
+  },
+  
+  // Home Page Carousel
+  carousel: [
+    'cmtc6.jpg',
+    'cmtc2.jpg',
+    'cmtc3.jpg',
+    'cmtc4.jpg',
+    'cmtc5.jpg'
+  ]
 };
 
 // Helper function to resolve paths including the Base URL for deployment

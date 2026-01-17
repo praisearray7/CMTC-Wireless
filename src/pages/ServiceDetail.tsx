@@ -22,8 +22,8 @@ const ServiceDetail = () => {
                 <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={model.id}>
                     <Paper
                         component={Link}
-                        to="/contact-us"
-                        state={{ deviceModel: model.name }}
+                        to={`/service/${service?.id}/${model.id}`}
+                        // state={{ deviceModel: model.name }} // State no longer needed for navigation, but keeping it won't hurt. Removing for cleanliness.
                         elevation={0}
                         sx={{
                             p: 2,

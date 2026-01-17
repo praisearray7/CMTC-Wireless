@@ -11,6 +11,7 @@ import BuyDevice from './pages/BuyDevice';
 import UnlockDevice from './pages/UnlockDevice';
 import Reviews from './pages/Reviews';
 import ServiceDetail from './pages/ServiceDetail';
+import ModelDetail from './pages/ModelDetail';
 import Warranty from './pages/Warranty';
 import Blog from './pages/Blog';
 import PrepaidServices from './pages/PrepaidServices';
@@ -37,6 +38,7 @@ function App() {
               <Route path="/prepaid-services" element={<PrepaidServices />} />
               <Route path="/reviews" element={<Reviews />} />
               <Route path="/service/:id" element={<ServiceDetail />} />
+              <Route path="/service/:serviceId/:modelId" element={<ModelDetail />} />
             </Routes>
           </Box>
           <Footer />
