@@ -55,7 +55,7 @@ const ContactUs = () => {
                                 <CardContent sx={{ p: 4 }}>
                                     <Stack
                                         component="a"
-                                        href="https://www.google.com/maps/search/?api=1&query=920+E+Lake+St+Minneapolis+MN+55407"
+                                        href="https://www.google.com/maps/place/CMTC+Wireless+-+24%2F7+Minneapolis+MN/@44.9486757,-93.2607411,674m/data=!3m2!1e3!4b1!4m6!3m5!1s0x87f6281268b5bf95:0x9b46b4b64d7202cd!8m2!3d44.9486757!4d-93.2607411"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         direction="row"
@@ -71,7 +71,7 @@ const ContactUs = () => {
                                     </Stack>
                                     <Stack
                                         component="a"
-                                        href="https://www.google.com/maps/search/?api=1&query=957+Rice+St+St+Paul+MN+55117"
+                                        href="https://www.google.com/maps/place/CMTC+Wireless+-+24%2F7+Saint+Paul/@44.9700122,-93.106482,674m/data=!3m2!1e3!4b1!4m6!3m5!1s0x52b32bb295c62feb:0xb4e923ed2e4799ef!8m2!3d44.9700122!4d-93.106482"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         direction="row"
