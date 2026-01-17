@@ -61,7 +61,6 @@ const ModelDetail = () => {
 
     // 2. Find the Specific Model
     let model = null;
-    let categoryName = "";
 
     if (service) {
         if (service.models) {
@@ -74,7 +73,7 @@ const ModelDetail = () => {
                 const found = sub.models.find(m => m.id === modelId);
                 if (found) {
                     model = found;
-                    categoryName = sub.name; // Keep track of subcategory (e.g. "iPad Pro")
+                    // categoryName = sub.name; // Keep track of subcategory (e.g. "iPad Pro")
                     break;
                 }
             }
