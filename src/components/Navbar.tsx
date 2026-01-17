@@ -92,7 +92,7 @@ const Navbar = () => {
                 <Toolbar disableGutters sx={{ height: 90 }}>
                     {/* Logo */}
                     <Box component={Link} to="/" sx={{ flexGrow: 0, mr: 4, textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-                        <img src={getImagePath(imagePaths.logo)} alt="CMTC Wireless" style={{ height: 50, objectFit: 'contain' }} onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+                        <img src={getImagePath(imagePaths.logo)} alt="CMTC Wireless" style={{ height: 70, objectFit: 'contain' }} onError={(e) => { e.currentTarget.style.display = 'none'; }} />
                     </Box>
 
                     <Box sx={{ flexGrow: 1 }} />
