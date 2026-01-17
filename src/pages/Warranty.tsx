@@ -13,7 +13,7 @@ const Warranty = () => {
             <Box sx={{ bgcolor: '#2C3E50', color: 'white', py: 10, textAlign: 'center' }}>
                 <Container maxWidth="lg">
                     <VerifiedUserIcon sx={{ fontSize: 60, color: '#78E335', mb: 2 }} />
-                    <Typography variant="h2" sx={{ fontWeight: 800, mb: 2, color: 'Green' }}>
+                    <Typography variant="h2" sx={{ fontWeight: 800, mb: 2, color: '#78E335' }}>
                         Our Warranty Promise
                     </Typography>
                     <Typography variant="h6" sx={{ color: '#B0BEC5', maxWidth: '800px', mx: 'auto' }}>
