@@ -13,7 +13,7 @@ const Hero = () => {
                             A better way to supporting your technology.
                         </Typography>
                         <Typography variant="h6" sx={{ color: '#666', mb: 4, fontWeight: 400, lineHeight: 1.6 }}>
-                            Gophermods is the premier repair partner for K-12 schools and businesses. We keep your devices running so you can focus on what matters.
+                            CMTC Wireless is the premier repair partner for K-12 schools and businesses. We keep your devices running so you can focus on what matters.
                         </Typography>
 
                         <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ mb: 4 }}>

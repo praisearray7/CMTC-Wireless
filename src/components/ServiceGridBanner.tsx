@@ -1,0 +1,115 @@
+import { Box, Container, Grid, Typography, Paper } from '@mui/material';
+import { Link } from 'react-router-dom';
+import { getImagePath } from '../data/imagePaths';
+
+const items = [
+    { title: 'iPad Repair', image: 'https://www.gophermods.com/wp-content/uploads/2020/04/iPad-Repair-by-Gophermods-200x200-1.jpg', link: '/ipad-repair' },
+    { title: 'MacBook Repair', image: 'https://www.gophermods.com/wp-content/uploads/2018/03/MacBook-Repair.jpg', link: '/macbook-repair' },
+    { title: 'Chromebook Repair', image: 'https://www.gophermods.com/wp-content/uploads/2019/02/Chromebook-Repair.jpg', link: '/laptop-repair' },
+    { title: 'iPhone Repair', image: 'https://www.gophermods.com/wp-content/uploads/2025/06/iPhone-16-Repairs-Minneapolis.jpg', link: '/iphone-repair' },
+    { title: 'Computer Repair', image: 'https://www.gophermods.com/wp-content/uploads/2014/11/mac-200x200.jpg', link: '/computer-repair' },
+    { title: 'Cell Phone Repair', image: 'https://www.gophermods.com/wp-content/uploads/2025/06/Google-Pixel-Repairs-Minneapolis.jpg', link: '/cell-phone-repair' },
+    { title: 'Samsung Repair', image: 'https://www.gophermods.com/wp-content/uploads/2021/01/Galaxy-Note-20.jpg', link: '/cell-phone-repair/samsung' },
+    { title: 'Microsoft Surface Repair', image: 'https://www.gophermods.com/wp-content/uploads/2016/05/Microsoft-Surface-Repair.jpg', link: '/tablet-repair/surface' },
+];
+
+const ServiceGridBanner = () => {
+    return (
+        <Box sx={{ mb: 10 }}>
+            {/* Red Banner Section */}
+            <Box
+                sx={{
+                    bgcolor: '#78E335', // Bright red as requested
+                    py: 8,
+                    position: 'relative',
+                    textAlign: 'center',
+                    mb: 8 // Space for the triangle
+                }}
+            >
+                <Container maxWidth="xl">
+                    <Typography
+                        variant="h4"
+                        sx={{
+                            color: '#fff',
+                            fontWeight: 400,
+                            fontFamily: 'serif',
+                            maxWidth: 'md',
+                            mx: 'auto'
+                        }}
+                    >
+                        We are a depot repair and lifecycle partner for iPhone, iPad, Mac, Chromebooks, and Windows laptops.
+                    </Typography>
+                </Container>
+
+                {/* Triangle Pointer */}
+                <Box
+                    sx={{
+                        position: 'absolute',
+                        bottom: -20,
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        width: 0,
+                        height: 0,
+                        borderLeft: '25px solid transparent',
+                        borderRight: '25px solid transparent',
+                        borderTop: '25px solid #78E335',
+                    }}
+                />
+            </Box>
+
+            {/* Grid Section */}
+            <Container maxWidth="xl">
+                <Grid container spacing={4} justifyContent="center">
+                    {items.map((item) => (
+                        <Grid size={{ xs: 6, sm: 4, md: 3 }} key={item.title}>
+                            <Paper
+                                elevation={0}
+                                component={Link}
+                                to={item.link}
+                                sx={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    textDecoration: 'none',
+                                    cursor: 'pointer',
+                                    bgcolor: 'transparent',
+                                    transition: 'transform 0.3s ease',
+                                    '&:hover': {
+                                        transform: 'translateY(-5px)'
+                                    }
+                                }}
+                            >
+                                <Box
+                                    component="img"
+                                    src={getImagePath(item.image)}
+                                    alt={item.title}
+                                    sx={{
+                                        width: '100%',
+                                        maxWidth: 180,
+                                        height: 'auto',
+                                        aspectRatio: '1/1',
+                                        objectFit: 'contain',
+                                        mb: 2
+                                    }}
+                                />
+                                <Typography
+                                    variant="h6"
+                                    sx={{
+                                        color: '#666',
+                                        fontWeight: 400,
+                                        fontSize: '1rem',
+                                        textAlign: 'center'
+                                    }}
+                                >
+                                    {item.title}
+                                </Typography>
+                            </Paper>
+                        </Grid>
+                    ))}
+                </Grid>
+            </Container>
+        </Box>
+    );
+};
+
+export default ServiceGridBanner;

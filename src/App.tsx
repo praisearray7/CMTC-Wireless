@@ -10,8 +10,17 @@ import ContactUs from './pages/ContactUs';
 import BuyDevice from './pages/BuyDevice';
 import UnlockDevice from './pages/UnlockDevice';
 import Reviews from './pages/Reviews';
-import ServiceDetail from './pages/ServiceDetail';
 import ModelDetail from './pages/ModelDetail';
+import IpadRepair from './pages/IpadRepair';
+import MacbookRepair from './pages/MacbookRepair';
+import IphoneRepair from './pages/IphoneRepair';
+import CellphoneRepair from './pages/CellphoneRepair';
+import SmartwatchRepair from './pages/SmartwatchRepair';
+import ComputerRepair from './pages/ComputerRepair';
+import DesktopRepair from './pages/DesktopRepair';
+import LaptopRepair from './pages/LaptopRepair';
+import AllInOneRepair from './pages/AllInOneRepair';
+import TabletRepair from './pages/TabletRepair';
 import Warranty from './pages/Warranty';
 import Blog from './pages/Blog';
 import PrepaidServices from './pages/PrepaidServices';
@@ -37,8 +46,21 @@ function App() {
               <Route path="/blog" element={<Blog />} />
               <Route path="/prepaid-services" element={<PrepaidServices />} />
               <Route path="/reviews" element={<Reviews />} />
-              <Route path="/service/:id" element={<ServiceDetail />} />
-              <Route path="/service/:serviceId/:modelId" element={<ModelDetail />} />
+              <Route path="/reviews" element={<Reviews />} />
+
+              <Route path="/ipad-repair" element={<IpadRepair />} />
+              <Route path="/macbook-repair" element={<MacbookRepair />} />
+              <Route path="/iphone-repair" element={<IphoneRepair />} />
+              <Route path="/cell-phone-repair" element={<CellphoneRepair />} />
+              <Route path="/smart-watch-repair" element={<SmartwatchRepair />} />
+              <Route path="/computer-repair" element={<ComputerRepair />} />
+              <Route path="/desktop-repair" element={<DesktopRepair />} />
+              <Route path="/laptop-repair" element={<LaptopRepair />} />
+              <Route path="/aio-repair" element={<AllInOneRepair />} />
+              <Route path="/tablet-repair" element={<TabletRepair />} />
+
+              {/* Dynamic Route for Model Details - Placed last to avoid conflicts */}
+              <Route path="/:serviceId/:modelId" element={<ModelDetail />} />
             </Routes>
           </Box>
           <Footer />

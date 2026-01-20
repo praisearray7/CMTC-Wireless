@@ -3,8 +3,17 @@ import { Box, Container, Typography, Button, Grid, Paper, Breadcrumbs, Divider, 
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { repairServices } from '../data/repairData';
+import { seriesData as iphoneData } from '../data/iphone';
+import { cellphoneData } from '../data/cellphone';
+import { smartwatchData } from '../data/smartwatch';
+import { computerData } from '../data/computer';
+import { desktopData } from '../data/desktop';
+import { laptopData } from '../data/laptop';
+import { aioData } from '../data/aio';
+import { tabletData } from '../data/tablet';
+import { ipadData } from '../data/ipad';
+import { macbookData } from '../data/macbook';
 
-// Placeholder or reused image as requested
 const DEVICE_IMAGE_URL = "https://www.gophermods.com/wp-content/uploads/2025/06/iPhone-16-Repairs-Minneapolis.jpg";
 
 const faqs = [
@@ -59,28 +68,49 @@ const ModelDetail = () => {
     // 1. Find the Service Category
     const service = repairServices.find(s => s.id === serviceId);
 
-    // 2. Find the Specific Model
-    let model = null;
+    // 2. Find the Specific Model OR Series
+    let model: any = null;
+    let isSeries = false;
+    let seriesInfo: any = null;
 
-    if (service) {
+    // Aggregate all data sources
+    const allSeriesData = [
+        ...iphoneData,
+        ...cellphoneData,
+        ...smartwatchData,
+        ...computerData,
+        ...desktopData,
+        ...laptopData,
+        ...aioData,
+        ...tabletData,
+        ...ipadData,
+        ...macbookData
+    ];
+
+    // Check if it's a known Series/Data ID
+    const foundSeries = allSeriesData.find(s => s.id === modelId);
+
+    if (foundSeries) {
+        model = { name: foundSeries.title.replace(' Repair', '') }; // Create dummy model object for breadcrumbs
+        seriesInfo = foundSeries;
+        isSeries = true;
+    } else if (service) {
+        // Standard Model Lookup
         if (service.models) {
             model = service.models.find(m => m.id === modelId);
         }
-
-        // If not found in top-level models, check subcategories
         if (!model && service.subCategories) {
             for (const sub of service.subCategories) {
                 const found = sub.models.find(m => m.id === modelId);
                 if (found) {
                     model = found;
-                    // categoryName = sub.name; // Keep track of subcategory (e.g. "iPad Pro")
                     break;
                 }
             }
         }
     }
 
-    if (!service || !model) {
+    if ((!service && !isSeries) || !model) {
         return (
             <Container sx={{ py: 10, textAlign: 'center' }}>
                 <Typography variant="h4">Device Not Found</Typography>
@@ -95,7 +125,7 @@ const ModelDetail = () => {
                 {/* Breadcrumbs */}
                 <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb" sx={{ mb: 4 }}>
                     <Link to="/" style={{ color: '#9E9E9E', textDecoration: 'none' }}>Home</Link>
-                    <Link to={`/service/${service.id}`} style={{ color: '#9E9E9E', textDecoration: 'none' }}>{service.name}</Link>
+                    {service && <Link to={`/${service.id}`} style={{ color: '#9E9E9E', textDecoration: 'none' }}>{service.name}</Link>}
                     <Typography color="text.primary" fontWeight={400}>{model.name} Repair</Typography>
                 </Breadcrumbs>
 
@@ -103,45 +133,119 @@ const ModelDetail = () => {
                     {/* LEFT COLUMN (Main Content) */}
                     <Grid size={{ xs: 12, md: 9 }}>
                         <Typography variant="h2" component="h1" sx={{ fontWeight: 400, color: '#333', mb: 1, fontSize: '3rem' }}>
-                            {model.name} Series Repair
+                            {isSeries ? seriesInfo.title : `${model.name} Series Repair`}
                         </Typography>
 
                         {/* Intro Section with Image */}
                         <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, mb: 6, mt: 4 }}>
                             <Box sx={{ flexShrink: 0, width: { xs: '100%', md: 200 } }}>
-                                <img src={DEVICE_IMAGE_URL} alt={model.name} style={{ width: '100%', borderRadius: 8 }} />
-                                <Button
-                                    component={Link}
-                                    to="/contact-us"
-                                    state={{ deviceModel: model.name }}
-                                    variant="contained"
-                                    fullWidth
-                                    sx={{
-                                        mt: 2,
-                                        borderRadius: 2,
-                                        textTransform: 'none',
-                                        fontWeight: 700,
-                                        bgcolor: '#78E335',
-                                        '&:hover': {
-                                            bgcolor: '#66C22E'
-                                        }
-                                    }}
-                                >
-                                    Get Instant Quote
-                                </Button>
+                                <img
+                                    src={isSeries ? seriesInfo.image || DEVICE_IMAGE_URL : DEVICE_IMAGE_URL}
+                                    alt={model.name}
+                                    style={{ width: '100%', borderRadius: 8 }}
+                                />
+                                {(() => {
+                                    const getModelVariants = (name: string) => {
+                                        if (name.includes('iPhone 17')) return ['Pro Max', 'Pro', 'Plus', '17e', '17'];
+                                        if (name.includes('iPhone 16')) return ['Pro Max', 'Pro', 'Plus', '16e', '16'];
+                                        if (name.includes('iPhone 15')) return ['Pro Max', 'Pro', 'Plus', '15'];
+                                        if (name.includes('iPhone 14')) return ['Pro Max', 'Pro', 'Plus', '14'];
+                                        if (name.includes('iPhone 13')) return ['Pro Max', 'Pro', '13'];
+                                        if (name.includes('iPhone 12')) return ['Pro Max', 'Pro', '12'];
+                                        if (name.includes('iPhone 11')) return ['Pro Max', 'Pro', '11'];
+                                        if (name.includes('iPhone XS')) return ['Max', 'XS'];
+                                        return [];
+                                    };
+
+                                    const variants = getModelVariants(model.name);
+
+                                    if (variants.length > 0) {
+                                        return (
+                                            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mt: 2, justifyContent: 'center' }}>
+                                                {variants.map((variant) => (
+                                                    <Button
+                                                        key={variant}
+                                                        component={Link}
+                                                        to="/contact-us"
+                                                        state={{ deviceModel: `${model.name.replace(' Series', '')} ${variant}` }}
+                                                        variant="text"
+                                                        sx={{
+                                                            width: 'calc(50% - 4px)',
+                                                            minWidth: 'auto',
+                                                            borderRadius: 2,
+                                                            textTransform: 'none',
+                                                            fontWeight: 700,
+                                                            fontSize: '0.85rem',
+                                                            color: '#78E335',
+                                                            bgcolor: '#fff',
+                                                            boxShadow: '0 -4px 10px rgba(0,0,0,0.05), 0 4px 10px rgba(0,0,0,0.05)',
+                                                            border: '2px solid transparent',
+                                                            px: 1,
+                                                            py: 0.5,
+                                                            '&:hover': {
+                                                                bgcolor: '#fff',
+                                                                border: '2px solid #78E335',
+                                                                color: '#78E335',
+                                                                boxShadow: '0 -4px 10px rgba(0,0,0,0.05), 0 4px 10px rgba(0,0,0,0.05)'
+                                                            }
+                                                        }}
+                                                    >
+                                                        {variant}
+                                                    </Button>
+                                                ))}
+                                            </Box>
+                                        );
+                                    } else {
+                                        return (
+                                            <Button
+                                                component={Link}
+                                                to="/contact-us"
+                                                state={{ deviceModel: model.name }}
+                                                variant="contained"
+                                                fullWidth
+                                                sx={{
+                                                    mt: 2,
+                                                    borderRadius: 2,
+                                                    textTransform: 'none',
+                                                    fontWeight: 700,
+                                                    bgcolor: '#78E335',
+                                                    '&:hover': {
+                                                        bgcolor: '#66C22E'
+                                                    }
+                                                }}
+                                            >
+                                                Get Instant Quote
+                                            </Button>
+                                        );
+                                    }
+                                })()}
                             </Box>
                             <Box>
                                 <Typography variant="h5" sx={{ mb: 2, color: '#555', fontWeight: 400 }}>
-                                    {model.name} Repair Services by CMTC Wireless
+                                    {isSeries ? seriesInfo.subtitle : `${model.name} Repair Services by CMTC Wireless`}
                                 </Typography>
-                                <Typography variant="body1" sx={{ color: '#666', lineHeight: 1.8, mb: 2 }}>
-                                    Apple introduced the {model.name} lineup featuring advanced displays and processors.
-                                    However, accidents happen. When your device fails, you need a dependable partner that restores uptime fast.
-                                </Typography>
-                                <Typography variant="body1" sx={{ color: '#666', lineHeight: 1.8 }}>
-                                    CMTC Wireless provides depot repair programs designed for education and small business fleets, with consistent quality, clear SLAs, and streamlined logistics.
-                                </Typography>
-                                {/* Services List - Moved below Intro */}
+
+                                {isSeries ? (
+                                    <>
+                                        {seriesInfo.description.map((para: string, idx: number) => (
+                                            <Typography key={idx} variant="body1" sx={{ color: '#666', lineHeight: 1.8, mb: 2 }}>
+                                                {para}
+                                            </Typography>
+                                        ))}
+                                    </>
+                                ) : (
+                                    <>
+                                        <Typography variant="body1" sx={{ color: '#666', lineHeight: 1.8, mb: 2 }}>
+                                            Apple introduced the {model.name} lineup featuring advanced displays and processors.
+                                            However, accidents happen. When your device fails, you need a dependable partner that restores uptime fast.
+                                        </Typography>
+                                        <Typography variant="body1" sx={{ color: '#666', lineHeight: 1.8 }}>
+                                            CMTC Wireless provides depot repair programs designed for education and small business fleets, with consistent quality, clear SLAs, and streamlined logistics.
+                                        </Typography>
+                                    </>
+                                )}
+
+                                {/* Services List - Only show specific services list if needed, or keeping it for all */}
                                 <Typography variant="body1" sx={{ color: '#666', lineHeight: 1.8, mb: 2 }}>
                                     <br />
                                     <b>Our services include:</b>
@@ -157,8 +261,8 @@ const ModelDetail = () => {
                                     Every repair includes quality control and a one year warranty for covered work.
                                 </Typography>
 
-                                <Typography variant="body1" sx={{ color: '#d32f2f', mt: 3, fontWeight: 500 }}>
-                                    Ready to set up or expand your program? <Link to="/contact-us" style={{ color: '#d32f2f', textDecoration: 'none' }}>Request a quote or open an account.</Link>
+                                <Typography variant="body1" sx={{ color: '#78E335', mt: 3, fontWeight: 500 }}>
+                                    Ready to set up or expand your program? <Link to="/contact-us" style={{ color: '#78E335', textDecoration: 'none' }}>Request a quote or open an account.</Link>
                                 </Typography>
                             </Box>
                         </Box>
@@ -173,7 +277,7 @@ const ModelDetail = () => {
                             </Typography>
                             {faqs.map((faq, index) => (
                                 <Accordion key={index} elevation={0} disableGutters sx={{ '&:before': { display: 'none' }, borderBottom: '1px solid #eee' }}>
-                                    <AccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: '#d32f2f' }} />} sx={{ px: 0 }}>
+                                    <AccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: '#78E335' }} />} sx={{ px: 0 }}>
                                         <Typography variant="h6" sx={{ fontWeight: 600, color: '#333' }}>{faq.q}</Typography>
                                     </AccordionSummary>
                                     <AccordionDetails sx={{ px: 0 }}>
@@ -189,7 +293,7 @@ const ModelDetail = () => {
                     {/* RIGHT COLUMN (Sidebar) */}
                     <Grid size={{ xs: 12, md: 3 }}>
                         <Paper elevation={0} sx={{ bgcolor: '#F5F5F5', p: 4, borderRadius: 2 }}>
-                            <Typography variant="h5" sx={{ color: '#d32f2f', fontWeight: 700, mb: 3 }}>
+                            <Typography variant="h5" sx={{ color: '#78E335', fontWeight: 700, mb: 3 }}>
                                 What We Do
                             </Typography>
 
@@ -211,7 +315,7 @@ const ModelDetail = () => {
                                 disableElevation
                                 sx={{
                                     bgcolor: '#fff',
-                                    color: '#d32f2f',
+                                    color: '#78E335',
                                     fontWeight: 700,
                                     mt: 2,
                                     py: 1.5,

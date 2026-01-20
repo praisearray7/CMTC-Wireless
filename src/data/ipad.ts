@@ -1,0 +1,51 @@
+
+export interface SeriesData {
+    id: string;
+    title: string;
+    subtitle: string;
+    description: string[];
+    image: string;
+}
+
+export const ipadData: SeriesData[] = [
+    {
+        id: 'ipad-pro-repair',
+        title: 'iPad Pro Repair',
+        subtitle: 'Professional iPad Pro Repair Services',
+        image: 'https://www.gophermods.com/wp-content/uploads/2020/04/iPad-Pro-Repair-by-Gophermods-200x200.jpg',
+        description: [
+            "We offer comprehensive repair services for all iPad Pro models. From screen replacements to battery swaps and charging port repairs, our certified technicians ensure your device is restored to optimal performance.",
+            "Our depot repair service is perfect for schools and businesses, providing quick turnaround times and high-quality parts."
+        ]
+    },
+    {
+        id: 'ipad-air-repair',
+        title: 'iPad Air Repair',
+        subtitle: 'Expert iPad Air Repair Services',
+        image: 'https://www.gophermods.com/wp-content/uploads/2020/04/iPad-Air-Repair-by-Gophermods-200x200.jpg',
+        description: [
+            "Get your iPad Air fixed fast. We handle cracked screens, battery issues, and more for all iPad Air generations.",
+            "Trust our experienced team to bring your device back to life with premium quality repairs."
+        ]
+    },
+    {
+        id: 'ipad-mini-repair',
+        title: 'iPad Mini Repair',
+        subtitle: 'Reliable iPad Mini Repair Services',
+        image: 'https://www.gophermods.com/wp-content/uploads/2020/04/iPad-Mini-Repair-by-Gophermods-200x200x.jpg',
+        description: [
+            "Compact but powerful, the iPad Mini deserves the best care. We specialize in repairing all issues for the iPad Mini lineups.",
+            "Whether it's a broken display or a faulty button, we have you covered."
+        ]
+    },
+    {
+        id: 'ipad-repair',
+        title: 'iPad Repair',
+        subtitle: 'Standard iPad Repair Services',
+        image: 'https://www.gophermods.com/wp-content/uploads/2020/04/iPad-Repair-by-Gophermods-200x200-1.jpg',
+        description: [
+            "Support for the standard iPad models. Reliable, affordable, and quick repairs for education and enterprise.",
+            "We keep your fleet running smoothly with our efficient depot repair process."
+        ]
+    }
+];

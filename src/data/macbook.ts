@@ -1,0 +1,41 @@
+
+export interface SeriesData {
+    id: string;
+    title: string;
+    subtitle: string;
+    description: string[];
+    image: string;
+}
+
+export const macbookData: SeriesData[] = [
+    {
+        id: 'macbook-pro-repair',
+        title: 'MacBook Pro Repair',
+        subtitle: 'Professional MacBook Pro Repair Services',
+        image: 'https://www.gophermods.com/wp-content/uploads/2019/05/MacBook-Pro-Repair.jpg',
+        description: [
+            "We offer comprehensive repair services for all MacBook Pro models. From screen replacements to battery swaps and keyboard repairs, our certified technicians ensure your device is restored to optimal performance.",
+            "Our depot repair service is perfect for schools and businesses, providing quick turnaround times and high-quality parts."
+        ]
+    },
+    {
+        id: 'macbook-air-repair',
+        title: 'MacBook Air Repair',
+        subtitle: 'Expert MacBook Air Repair Services',
+        image: 'https://www.gophermods.com/wp-content/uploads/2019/05/MacBook-Air-Repairs.jpg',
+        description: [
+            "Get your MacBook Air fixed fast. We handle broken screens, battery issues, and more for all MacBook Air generations.",
+            "Trust our experienced team to bring your device back to life with premium quality repairs."
+        ]
+    },
+    {
+        id: 'macbook-repair',
+        title: 'MacBook Repair',
+        subtitle: 'Reliable MacBook Repair Services',
+        image: 'https://www.gophermods.com/wp-content/uploads/2019/05/MacBook-Repair.jpg',
+        description: [
+            "Support for the standard MacBook models (12-inch, etc.). Reliable, affordable, and quick repairs for education and enterprise.",
+            "We keep your fleet running smoothly with our efficient depot repair process."
+        ]
+    }
+];

@@ -159,6 +159,13 @@ export const repairServices: RepairCategory[] = [
     ]
   },
   {
+    id: 'macbook-repair',
+    name: 'MacBook Repair',
+    models: [
+      { name: 'MacBook Air', id: 'macbook-air' }, { name: 'MacBook Pro', id: 'macbook-pro' }, { name: 'MacBook', id: 'macbook' }
+    ]
+  },
+  {
     id: 'cell-phone-repair',
     name: 'Cell Phone Repair',
     models: [

@@ -1,0 +1,47 @@
+
+import React, { type ReactNode } from 'react';
+import { Box, Container, Grid } from '@mui/material';
+import WhyChoose from './WhyChoose';
+
+interface RepairServiceLayoutProps {
+    breadcrumbs: ReactNode;
+    children: ReactNode; // Left column content
+    rightContent?: ReactNode; // Right column content (defaults to WhyChoose)
+    bottomContent?: ReactNode; // Bottom section (e.g., model grid)
+}
+
+const RepairServiceLayout: React.FC<RepairServiceLayoutProps> = ({
+    breadcrumbs,
+    children,
+    rightContent,
+    bottomContent
+}) => {
+    return (
+        <Box sx={{ pb: 10 }}>
+            <Box sx={{ bgcolor: '#fff', py: 6, mb: 6 }}>
+                <Container maxWidth="xl">
+                    <Grid container spacing={8}>
+                        {/* Left Column: Title and Description */}
+                        <Grid size={{ xs: 12, md: 6 }} sx={{ pl: { md: 30 } }}>
+                            {breadcrumbs}
+                            {children}
+                        </Grid>
+
+                        {/* Right Column: Sidebar Card */}
+                        <Grid size={{ xs: 12, md: 6 }} sx={{ pr: { md: 30 }, mt: { md: 2 } }}>
+                            {rightContent || <WhyChoose />}
+                        </Grid>
+                    </Grid>
+                </Container>
+            </Box>
+
+            {bottomContent && (
+                <Container maxWidth="xl">
+                    {bottomContent}
+                </Container>
+            )}
+        </Box>
+    );
+};
+
+export default RepairServiceLayout;

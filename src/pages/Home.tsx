@@ -2,15 +2,15 @@
 
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Grid, Typography, Card, CardContent, Box, Button, CardMedia, Paper, Stack } from '@mui/material';
+import { Container, Grid, Typography, Card, CardContent, Box, Button, Stack } from '@mui/material';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import BuildOutlinedIcon from '@mui/icons-material/BuildOutlined';
 import VerifiedUserOutlinedIcon from '@mui/icons-material/VerifiedUserOutlined';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import StarIcon from '@mui/icons-material/Star';
-import { repairServices } from '../data/repairData';
 
 import { imagePaths, getImagePath } from '../data/imagePaths';
+import ServiceGridBanner from '../components/ServiceGridBanner';
 
 const Home = () => {
     // CMTC Brand Colors
@@ -25,16 +25,6 @@ const Home = () => {
         }, 4000); // Change every 4 seconds
         return () => clearInterval(timer);
     }, []);
-
-    const getCategoryImage = (id: string) => {
-        if (id === 'iphone-repair') return getImagePath(imagePaths.iphoneRepair);
-        if (id === 'ipad-repair') return imagePaths.placeholders.ipad;
-        if (id === 'cell-phone-repair') return imagePaths.placeholders.cellPhone;
-        if (id === 'smart-watch-repair') return imagePaths.placeholders.smartWatch;
-        if (id === 'computer-repair') return imagePaths.placeholders.computer;
-        if (id === 'tablet-repair') return imagePaths.placeholders.tablet;
-        return `https://placehold.co/300x200/f5f5f5/2C3E50?text=${id.split('-')[0]}`;
-    };
 
     return (
         <>
@@ -231,7 +221,10 @@ const Home = () => {
                 </Grid>
             </Container>
 
-            {/* Service Categories Section */}
+            {/* Service Grid Banner */}
+            <ServiceGridBanner />
+
+            {/* Service Categories Section
             <Box id="repair-services" sx={{ bgcolor: '#ffffff', py: 10 }}>
                 <Container maxWidth="xl">
                     <Typography variant="h3" sx={{ textAlign: 'center', mb: 2, fontWeight: 800, color: '#2C3E50' }}>
@@ -301,8 +294,8 @@ const Home = () => {
                         ))}
                     </Grid>
                 </Container>
-            </Box>
-            
+            </Box> */}
+
             {/* Value Props / Why Choose Us */}
             <Container maxWidth="xl" sx={{ py: 10 }}>
                 <Typography variant="h3" sx={{ textAlign: 'center', mb: 6, fontWeight: 800, color: '#2C3E50' }}>

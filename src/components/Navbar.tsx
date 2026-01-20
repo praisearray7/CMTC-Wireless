@@ -1,18 +1,20 @@
-
-import { useState, Fragment, useRef } from 'react';
+import { useState, useRef } from 'react';
 import type { MouseEvent, KeyboardEvent } from 'react';
 import { AppBar, Toolbar, Button, Container, Box, IconButton, Drawer, List, ListItem, ListItemText, useTheme, useMediaQuery, Stack, Menu, Typography, ListItemButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Link } from 'react-router-dom';
 import { navLinks, repairServices, buyServices } from '../data/repairData';
-
+import type { RepairCategory } from '../data/repairData';
 import { imagePaths, getImagePath } from '../data/imagePaths';
+import NavDropdown from './NavDropdown';
 
 const Navbar = () => {
     const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('lg')); // Switched to lg break for more menu items
+    const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
     const [drawerOpen, setDrawerOpen] = useState(false);
+
+    // State for inline menus (Buy Device)
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const [activeMenu, setActiveMenu] = useState<string | null>(null);
     const timeoutRef = useRef<number | null>(null);
@@ -45,11 +47,29 @@ const Navbar = () => {
         setDrawerOpen(open);
     };
 
+    const getLink = (service: RepairCategory, isBuyMenu: boolean) => {
+        if (isBuyMenu) {
+            return `/buy-device?category=${service.id}`;
+        }
+        if (service.id === 'ipad-repair') return '/ipad-repair';
+        if (service.id === 'macbook-repair') return '/macbook-repair';
+        if (service.id === 'iphone-repair') return '/iphone-repair';
+        if (service.id === 'cell-phone-repair') return '/cell-phone-repair';
+        if (service.id === 'smart-watch-repair') return '/smart-watch-repair';
+        if (service.id === 'computer-repair') return '/computer-repair';
+        if (service.id === 'desktop-repair') return '/desktop-repair';
+        if (service.id === 'laptop-repair') return '/laptop-repair';
+        if (service.id === 'aio-repair') return '/aio-repair';
+        if (service.id === 'tablet-repair') return '/tablet-repair';
+
+        return `/${service.id}`;
+    };
+
     const drawerContent = (
         <Box sx={{ width: 280 }} role="presentation">
             <List>
                 {navLinks.map((link) => (
-                    <Fragment key={link.title}>
+                    <Box key={link.title}>
                         <ListItem disablePadding>
                             <ListItemButton component={Link} to={link.path} onClick={toggleDrawer(false)}>
                                 <ListItemText primary={link.title} />
@@ -59,14 +79,18 @@ const Navbar = () => {
                             <Box sx={{ pl: 4 }}>
                                 {(link.title === 'Buy a Device' ? buyServices : repairServices).map((service) => (
                                     <ListItem key={service.id} disablePadding>
-                                        <ListItemButton component={Link} to={link.title === 'Buy a Device' ? `/buy-device?category=${service.id}` : `/service/${service.id}`} onClick={toggleDrawer(false)}>
+                                        <ListItemButton
+                                            component={Link}
+                                            to={getLink(service, link.title === 'Buy a Device')}
+                                            onClick={toggleDrawer(false)}
+                                        >
                                             <ListItemText primary={service.name} secondary={service.subCategories ? `${service.subCategories.length} Categories` : `${service.models?.length} Models`} />
                                         </ListItemButton>
                                     </ListItem>
                                 ))}
                             </Box>
                         )}
-                    </Fragment>
+                    </Box>
                 ))}
                 <ListItem sx={{ mt: 2 }}>
                     <Button
@@ -105,6 +129,19 @@ const Navbar = () => {
                                     const isBuyMenu = link.title === 'Buy a Device';
                                     const menuItems = isBuyMenu ? buyServices : repairServices;
 
+                                    // Use NavDropdown ONLY for Repair Services
+                                    if (link.title === 'Repair Services') {
+                                        return (
+                                            <NavDropdown
+                                                key={link.title}
+                                                title={link.title}
+                                                items={menuItems}
+                                                getLink={(service) => getLink(service, false)}
+                                            />
+                                        );
+                                    }
+
+                                    // Inline logic for other dropdowns (e.g., Buy a Device)
                                     return (
                                         <Box key={link.title}>
                                             <Button
@@ -121,17 +158,17 @@ const Navbar = () => {
                                                     minWidth: 'auto',
                                                     height: 90,
                                                     borderRadius: 0,
-                                                    boxShadow: 'none', // Override global theme
+                                                    boxShadow: 'none',
                                                     borderTop: '3px solid transparent',
                                                     borderBottom: '3px solid transparent',
-                                                    transition: 'color 0.2s', // Simpler transition
+                                                    transition: 'color 0.2s',
                                                     '&:hover': {
                                                         color: theme.palette.primary.main,
                                                         backgroundColor: 'transparent',
                                                         borderTopColor: '#78E335',
                                                         borderBottomColor: '#78E335',
-                                                        boxShadow: 'none', // Override global hover shadow
-                                                        transform: 'none', // Override global hover transform
+                                                        boxShadow: 'none',
+                                                        transform: 'none',
                                                     }
                                                 }}
                                             >
@@ -144,14 +181,16 @@ const Navbar = () => {
                                                 hideBackdrop
                                                 disableScrollLock
                                                 sx={{ pointerEvents: 'none' }}
+                                                MenuListProps={{
+                                                    onMouseEnter: handleMenuEnter,
+                                                    onMouseLeave: handleMenuLeave,
+                                                }}
                                                 slotProps={{
                                                     paper: {
-                                                        onMouseEnter: handleMenuEnter,
-                                                        onMouseLeave: handleMenuLeave,
                                                         sx: {
                                                             mt: 0.5,
-                                                            minWidth: 200, // Standard dropdown width
-                                                            p: 1, // Reduced padding
+                                                            minWidth: 200,
+                                                            p: 1,
                                                             borderRadius: 2,
                                                             boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
                                                             pointerEvents: 'auto'
@@ -164,7 +203,7 @@ const Navbar = () => {
                                                         <Box
                                                             key={service.id}
                                                             component={Link}
-                                                            to={isBuyMenu ? `/buy-device?category=${service.id}` : `/service/${service.id}`}
+                                                            to={getLink(service, isBuyMenu)}
                                                             onClick={handleMenuLeave}
                                                             sx={{
                                                                 textDecoration: 'none',
