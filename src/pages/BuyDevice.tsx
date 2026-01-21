@@ -18,7 +18,7 @@ const BuyDevice = () => {
             condition: 'Like New',
             price: 'Ask for Price',
             color: 'Natural Titanium',
-            image: 'https://images.unsplash.com/photo-1696446701796-da61225697cc?q=80&w=1000&auto=format&fit=crop'
+            image: 'https://images.pexels.com/photos/34624326/pexels-photo-34624326.jpeg?_gl=1*155wdu3*_ga*ODU3ODg3MjU0LjE3Njg5ODU3OTE.*_ga_8JE65Q40S6*czE3NjkwMDY3NDkkbzQkZzEkdDE3NjkwMDY3NjIkajQ3JGwwJGgw'
         },
         {
             id: 2,
