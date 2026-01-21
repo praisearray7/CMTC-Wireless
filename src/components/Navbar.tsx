@@ -1,7 +1,11 @@
 import { useState, useRef } from 'react';
 import type { MouseEvent, KeyboardEvent } from 'react';
-import { AppBar, Toolbar, Button, Container, Box, IconButton, Drawer, List, ListItem, ListItemText, useTheme, useMediaQuery, Stack, Menu, Typography, ListItemButton } from '@mui/material';
+import { AppBar, Toolbar, Button, Container, Box, IconButton, Drawer, List, ListItem, ListItemText, useTheme, useMediaQuery, Stack, Menu, Typography, ListItemButton, Collapse } from '@mui/material';
+import { alpha } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Link } from 'react-router-dom';
 import { navLinks, repairServices, buyServices } from '../data/repairData';
@@ -65,53 +69,101 @@ const Navbar = () => {
         return `/${service.id}`;
     };
 
+    // State for mobile dropdowns
+    const [mobileOpen, setMobileOpen] = useState<Record<string, boolean>>({});
+
+    const handleMobileClick = (title: string) => {
+        setMobileOpen((prev) => ({ ...prev, [title]: !prev[title] }));
+    };
+
     const drawerContent = (
-        <Box sx={{ width: 280 }} role="presentation">
-            <List>
-                {navLinks.map((link) => (
-                    <Box key={link.title}>
-                        <ListItem disablePadding>
-                            <ListItemButton component={Link} to={link.path} onClick={toggleDrawer(false)}>
-                                <ListItemText primary={link.title} />
-                            </ListItemButton>
-                        </ListItem>
-                        {link.isDropdown && (
-                            <Box sx={{ pl: 4 }}>
-                                {(link.title === 'Buy a Device' ? buyServices : repairServices).map((service) => (
-                                    <ListItem key={service.id} disablePadding>
-                                        <ListItemButton
-                                            component={Link}
-                                            to={getLink(service, link.title === 'Buy a Device')}
-                                            onClick={toggleDrawer(false)}
-                                        >
-                                            <ListItemText primary={service.name} secondary={service.subCategories ? `${service.subCategories.length} Categories` : `${service.models?.length} Models`} />
-                                        </ListItemButton>
-                                    </ListItem>
-                                ))}
-                            </Box>
-                        )}
-                    </Box>
-                ))}
-                <ListItem sx={{ mt: 2 }}>
-                    <Button
-                        component={Link}
-                        to="/contact-us"
-                        state={{ serviceNeeded: 'Get Instant Quote' }}
-                        onClick={toggleDrawer(false)}
-                        variant="contained"
-                        color="primary"
-                        fullWidth
-                        size="large"
-                    >
-                        Get Instant Quote
-                    </Button>
-                </ListItem>
+        <Box sx={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', bgcolor: 'background.paper' }} role="presentation">
+            {/* Drawer Header */}
+            <Box sx={{ p: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: `1px solid ${theme.palette.divider}` }}>
+                <Typography variant="h6" sx={{ fontWeight: 700, color: '#2C3E50' }}>Menu</Typography>
+                <IconButton onClick={toggleDrawer(false)}>
+                    <CloseIcon />
+                </IconButton>
+            </Box>
+
+            <List sx={{ flexGrow: 1, overflowY: 'auto', py: 2 }}>
+                {navLinks.map((link) => {
+                    const hasDropdown = link.isDropdown;
+                    const isOpen = mobileOpen[link.title] || false;
+                    const menuItems = link.title === 'Buy a Device' ? buyServices : repairServices;
+                    const isBuyMenu = link.title === 'Buy a Device';
+
+                    return (
+                        <Box key={link.title} sx={{ mb: 1 }}>
+                            {/* Main Link Item */}
+                            {hasDropdown ? (
+                                <ListItem disablePadding>
+                                    <ListItemButton onClick={() => handleMobileClick(link.title)} sx={{ py: 1.5 }}>
+                                        <ListItemText
+                                            primary={link.title}
+                                            primaryTypographyProps={{ fontWeight: 600, fontSize: '1.1rem', color: '#2C3E50' }}
+                                        />
+                                        {isOpen ? <ExpandLessIcon sx={{ color: theme.palette.primary.main }} /> : <ExpandMoreIcon />}
+                                    </ListItemButton>
+                                </ListItem>
+                            ) : (
+                                <ListItem disablePadding>
+                                    <ListItemButton component={Link} to={link.path} onClick={toggleDrawer(false)} sx={{ py: 1.5 }}>
+                                        <ListItemText
+                                            primary={link.title}
+                                            primaryTypographyProps={{ fontWeight: 600, fontSize: '1.1rem', color: '#2C3E50' }}
+                                        />
+                                    </ListItemButton>
+                                </ListItem>
+                            )}
+
+                            {/* Collapsible Content */}
+                            {hasDropdown && (
+                                <Collapse in={isOpen} timeout="auto" unmountOnExit>
+                                    <List component="div" disablePadding sx={{ bgcolor: alpha(theme.palette.primary.main, 0.05) }}>
+                                        {menuItems.map((service) => (
+                                            <ListItemButton
+                                                key={service.id}
+                                                component={Link}
+                                                to={getLink(service, isBuyMenu)}
+                                                onClick={toggleDrawer(false)}
+                                                sx={{ pl: 4, py: 1.5 }}
+                                            >
+                                                <ListItemText
+                                                    primary={service.name}
+                                                    secondary={service.subCategories ? `${service.subCategories.length} Categories` : undefined}
+                                                    primaryTypographyProps={{ fontSize: '0.95rem', fontWeight: 500 }}
+                                                />
+                                            </ListItemButton>
+                                        ))}
+                                    </List>
+                                </Collapse>
+                            )}
+                        </Box>
+                    );
+                })}
             </List>
+
+            <Box sx={{ p: 2, borderTop: `1px solid ${theme.palette.divider}` }}>
+                <Button
+                    component={Link}
+                    to="/contact-us"
+                    state={{ serviceNeeded: 'Get Instant Quote' }}
+                    onClick={toggleDrawer(false)}
+                    variant="contained"
+                    color="primary"
+                    fullWidth
+                    size="large"
+                    sx={{ py: 1.5, borderRadius: 2, fontWeight: 700 }}
+                >
+                    Get Instant Quote
+                </Button>
+            </Box>
         </Box>
     );
 
     return (
-        <AppBar position="sticky" color="inherit" elevation={0} sx={{ backdropFilter: 'blur(10px)', backgroundColor: 'rgba(255,255,255,0.95)' }}>
+        <AppBar position="sticky" color="inherit" elevation={0} sx={{ backdropFilter: 'blur(10px)', backgroundColor: 'rgba(255,255,255,0.95)', borderBottom: `1px solid ${theme.palette.divider}` }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters sx={{ height: 90 }}>
                     {/* Logo */}
@@ -129,7 +181,6 @@ const Navbar = () => {
                                     const isBuyMenu = link.title === 'Buy a Device';
                                     const menuItems = isBuyMenu ? buyServices : repairServices;
 
-                                    // Use NavDropdown ONLY for Repair Services
                                     if (link.title === 'Repair Services') {
                                         return (
                                             <NavDropdown
@@ -141,7 +192,6 @@ const Navbar = () => {
                                         );
                                     }
 
-                                    // Inline logic for other dropdowns (e.g., Buy a Device)
                                     return (
                                         <Box key={link.title}>
                                             <Button
@@ -161,14 +211,11 @@ const Navbar = () => {
                                                     boxShadow: 'none',
                                                     borderTop: '3px solid transparent',
                                                     borderBottom: '3px solid transparent',
-                                                    transition: 'color 0.2s',
+                                                    transition: 'all 0.2s',
                                                     '&:hover': {
                                                         color: theme.palette.primary.main,
                                                         backgroundColor: 'transparent',
-                                                        borderTopColor: '#78E335',
-                                                        borderBottomColor: '#78E335',
-                                                        boxShadow: 'none',
-                                                        transform: 'none',
+                                                        borderBottomColor: theme.palette.primary.main,
                                                     }
                                                 }}
                                             >
@@ -180,27 +227,16 @@ const Navbar = () => {
                                                 onClose={handleMenuLeave}
                                                 hideBackdrop
                                                 disableScrollLock
-                                                autoFocus={false}
-                                                disableRestoreFocus
                                                 sx={{ pointerEvents: 'none' }}
                                                 MenuListProps={{
                                                     onMouseEnter: handleMenuEnter,
                                                     onMouseLeave: handleMenuLeave,
                                                 }}
                                                 slotProps={{
-                                                    paper: {
-                                                        sx: {
-                                                            mt: 0.5,
-                                                            minWidth: 200,
-                                                            p: 1,
-                                                            borderRadius: 2,
-                                                            boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
-                                                            pointerEvents: 'auto'
-                                                        }
-                                                    }
+                                                    paper: { sx: { mt: 0, pointerEvents: 'auto', boxShadow: '0 8px 32px rgba(0,0,0,0.1)' } }
                                                 }}
                                             >
-                                                <Stack spacing={0.5}>
+                                                <Stack spacing={0}>
                                                     {menuItems.map((service) => (
                                                         <Box
                                                             key={service.id}
@@ -211,16 +247,15 @@ const Navbar = () => {
                                                                 textDecoration: 'none',
                                                                 color: '#2C3E50',
                                                                 py: 1.5,
-                                                                px: 2,
-                                                                borderRadius: 1,
+                                                                px: 3,
                                                                 transition: 'background-color 0.2s',
                                                                 '&:hover': {
-                                                                    backgroundColor: '#f5f5f5',
+                                                                    backgroundColor: alpha(theme.palette.primary.main, 0.08),
                                                                     color: theme.palette.primary.main
                                                                 }
                                                             }}
                                                         >
-                                                            <Typography variant="body1" sx={{ fontWeight: 500 }}>
+                                                            <Typography variant="body2" sx={{ fontWeight: 500 }}>
                                                                 {service.name}
                                                             </Typography>
                                                         </Box>
@@ -241,19 +276,14 @@ const Navbar = () => {
                                             fontSize: '0.95rem',
                                             mx: 0.5,
                                             px: 2,
-                                            minWidth: 'auto',
                                             height: 90,
                                             borderRadius: 0,
-                                            boxShadow: 'none',
                                             borderTop: '3px solid transparent',
                                             borderBottom: '3px solid transparent',
-                                            transition: 'color 0.2s',
                                             '&:hover': {
                                                 color: theme.palette.primary.main,
                                                 backgroundColor: 'transparent',
-                                                borderTopColor: '#78E335',
-                                                boxShadow: 'none',
-                                                transform: 'none',
+                                                borderBottomColor: theme.palette.primary.main,
                                             }
                                         }}
                                     >
@@ -267,7 +297,7 @@ const Navbar = () => {
                                 state={{ serviceNeeded: 'Get Instant Quote' }}
                                 variant="contained"
                                 color="primary"
-                                sx={{ ml: 2, px: 3 }}
+                                sx={{ ml: 2, px: 3, borderRadius: 2, fontWeight: 700 }}
                             >
                                 Get Instant Quote
                             </Button>
@@ -282,14 +312,22 @@ const Navbar = () => {
                             color="inherit"
                             aria-label="menu"
                             onClick={toggleDrawer(true)}
+                            sx={{ color: '#2C3E50' }}
                         >
-                            <MenuIcon />
+                            <MenuIcon fontSize="large" />
                         </IconButton>
                     )}
                 </Toolbar>
             </Container>
 
-            <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
+            <Drawer
+                anchor="right"
+                open={drawerOpen}
+                onClose={toggleDrawer(false)}
+                PaperProps={{
+                    sx: { width: '100%', maxWidth: 360 }
+                }}
+            >
                 {drawerContent}
             </Drawer>
         </AppBar>
