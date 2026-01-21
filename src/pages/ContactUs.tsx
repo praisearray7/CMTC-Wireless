@@ -14,6 +14,7 @@ const ContactUs = () => {
     const [deviceModel, setDeviceModel] = useState<string | null>(null);
     const [serviceNeeded, setServiceNeeded] = useState('');
     const [image, setImage] = useState<File | null>(null);
+    const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
     useEffect(() => {
         if (location.state?.deviceModel) {
@@ -23,6 +24,18 @@ const ContactUs = () => {
             setServiceNeeded(location.state.serviceNeeded);
         }
     }, [location.state]);
+
+    useEffect(() => {
+        if (!image) {
+            setPreviewUrl(null);
+            return;
+        }
+        const objectUrl = URL.createObjectURL(image);
+        setPreviewUrl(objectUrl);
+
+        // cleanup function to avoid memory leaks
+        return () => URL.revokeObjectURL(objectUrl);
+    }, [image]);
 
     // Flatten all models for autocomplete
     const allModels = repairServices.reduce((acc: string[], service) => {
@@ -155,7 +168,8 @@ const ContactUs = () => {
                                                 "Buy a Phone",
                                                 "Unlock any Phone",
                                                 "Check Availability",
-                                                "Get Instant Quote"
+                                                "Get Instant Quote",
+                                                "General Inquiry"
                                             ]}
                                             value={serviceNeeded}
                                             onChange={(_, newValue) => setServiceNeeded(newValue || '')}
@@ -174,24 +188,62 @@ const ContactUs = () => {
                                         <TextField label="How can we help?" multiline rows={4} fullWidth variant="outlined" InputProps={{ sx: { borderRadius: 2 } }} />
                                     </Grid>
                                     <Grid size={{ xs: 12 }}>
-                                        <Button
-                                            component="label"
-                                            variant="outlined"
-                                            fullWidth
-                                            sx={{ py: 1.5, borderRadius: 2, borderStyle: 'dashed' }}
-                                        >
-                                            {image ? `Selected: ${image.name}` : "Upload Your Device Image (Optional)"}
-                                            <input
-                                                type="file"
-                                                hidden
-                                                accept="image/*"
-                                                onChange={(e) => {
-                                                    if (e.target.files && e.target.files[0]) {
-                                                        setImage(e.target.files[0]);
-                                                    }
-                                                }}
-                                            />
-                                        </Button>
+                                        <Box>
+                                            <Button
+                                                component="label"
+                                                variant="outlined"
+                                                fullWidth
+                                                sx={{ py: 1.5, borderRadius: 2, borderStyle: 'dashed' }}
+                                            >
+                                                {image ? `Selected: ${image.name}` : "Upload Your Device Image (Optional)"}
+                                                <input
+                                                    type="file"
+                                                    hidden
+                                                    accept="image/*"
+                                                    onChange={(e) => {
+                                                        if (e.target.files && e.target.files[0]) {
+                                                            setImage(e.target.files[0]);
+                                                        }
+                                                    }}
+                                                />
+                                            </Button>
+
+                                            {image && previewUrl && (
+                                                <Box sx={{ mt: 2, position: 'relative', display: 'inline-block' }}>
+                                                    <Box
+                                                        component="img"
+                                                        src={previewUrl}
+                                                        alt="Device preview"
+                                                        sx={{
+                                                            width: 100,
+                                                            height: 100,
+                                                            objectFit: 'cover',
+                                                            borderRadius: 2,
+                                                            border: '1px solid #eee'
+                                                        }}
+                                                    />
+                                                    <Button
+                                                        size="small"
+                                                        onClick={() => setImage(null)}
+                                                        sx={{
+                                                            position: 'absolute',
+                                                            top: -10,
+                                                            right: -10,
+                                                            minWidth: 'auto',
+                                                            width: 24,
+                                                            height: 24,
+                                                            p: 0,
+                                                            bgcolor: '#ef5350',
+                                                            color: 'white',
+                                                            borderRadius: '50%',
+                                                            '&:hover': { bgcolor: '#d32f2f' }
+                                                        }}
+                                                    >
+                                                        ×
+                                                    </Button>
+                                                </Box>
+                                            )}
+                                        </Box>
                                     </Grid>
                                     <Grid size={{ xs: 12 }}>
                                         <Button variant="contained" color="primary" size="large" fullWidth endIcon={<SendIcon />} sx={{ py: 1.5, fontSize: '1.1rem' }}>

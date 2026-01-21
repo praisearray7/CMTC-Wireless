@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Box, Typography, Grid, Paper, Breadcrumbs, Divider, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import { Box, Typography, Grid, Paper, Breadcrumbs, Divider } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Battery, Zap, Monitor, Keyboard, HardDrive, Coffee, RefreshCw, Fan, MousePointer } from 'lucide-react';
 import { macbookData } from '../data/macbook';
 import RepairServiceLayout from '../components/RepairServiceLayout';
@@ -198,49 +197,6 @@ const MacbookRepair = () => {
                     </Box>
 
                     <Divider sx={{ my: 8 }} />
-
-                    {/* FAQ Section */}
-                    <Box sx={{ mb: 8, maxWidth: '900px', mx: 'auto' }}>
-                        <Typography variant="h4" sx={{ fontWeight: 700, color: '#333', mb: 4, textAlign: 'center' }}>
-                            Frequently Asked Questions
-                        </Typography>
-                        {[
-                            {
-                                q: "Is it worth repairing an older MacBook?",
-                                a: "MacBooks hold their value well. If the repair is under $300-$400 for a Pro model, it's usually much cheaper than buying new."
-                            },
-                            {
-                                q: "How long does a screen replacement take?",
-                                a: "We stock many screens and can often do same-day service. Special orders take 2-3 days."
-                            },
-                            {
-                                q: "Do you repair Logic Boards?",
-                                a: "Yes, we offer component-level microsoldering repairs for backlights, non-functional ports, and power issues."
-                            },
-                            {
-                                q: "My keyboard is typing double letters. can you fix it?",
-                                a: "Yes, this is a common issue with butterfly keyboards. We can often clean them or replace the keyboard mechanism."
-                            },
-                            {
-                                q: "Do you offer warranty?",
-                                a: "Yes, most MacBook hardware repairs come with a 1-year warranty on parts and labor."
-                            }
-                        ].map((faq, index) => (
-                            <Accordion key={index} elevation={0} sx={{
-                                mb: 2,
-                                border: '1px solid #E0E0E0',
-                                borderRadius: 2,
-                                '&:before': { display: 'none' }
-                            }}>
-                                <AccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: '#78E335' }} />}>
-                                    <Typography variant="h6" sx={{ fontWeight: 600, fontSize: '1.1rem' }}>{faq.q}</Typography>
-                                </AccordionSummary>
-                                <AccordionDetails>
-                                    <Typography color="text.secondary">{faq.a}</Typography>
-                                </AccordionDetails>
-                            </Accordion>
-                        ))}
-                    </Box>
                 </>
             }
         >

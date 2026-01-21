@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Box, Typography, Grid, Paper, Breadcrumbs, Divider, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import { Box, Typography, Grid, Paper, Breadcrumbs, Divider } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Tablet, Battery, Zap, Monitor, Volume2, Camera, Droplets, RefreshCw, CircleDot, Unlock, Maximize, Touchpad } from 'lucide-react';
 import { ipadData } from '../data/ipad';
 import RepairServiceLayout from '../components/RepairServiceLayout';
@@ -194,49 +193,6 @@ const IpadRepair = () => {
                     </Box>
 
                     <Divider sx={{ my: 8 }} />
-
-                    {/* FAQ Section */}
-                    <Box sx={{ mb: 8, maxWidth: '900px', mx: 'auto' }}>
-                        <Typography variant="h4" sx={{ fontWeight: 700, color: '#333', mb: 4, textAlign: 'center' }}>
-                            Frequently Asked Questions
-                        </Typography>
-                        {[
-                            {
-                                q: "Is it worth fixing an old iPad?",
-                                a: "Often yes, as new iPads are expensive. If the repair cost is less than 50% of a replacement, we recommend it."
-                            },
-                            {
-                                q: "How long does the repair take?",
-                                a: "iPad repairs are complex due to strong adhesives. They typically take 1-2 business days to ensure a perfect seal."
-                            },
-                            {
-                                q: "Do you fix bent iPads?",
-                                a: "Yes, we have specialized tools to straighten bent frames, which allows the new screen to sit flush and secure."
-                            },
-                            {
-                                q: "Do you lose my data?",
-                                a: "No, we strictly repair the hardware (screen/battery). Your apps, photos, and settings remain untouched."
-                            },
-                            {
-                                q: "Are your parts original?",
-                                a: "We use high-quality OEM-grade parts that match the original performance and color quality."
-                            }
-                        ].map((faq, index) => (
-                            <Accordion key={index} elevation={0} sx={{
-                                mb: 2,
-                                border: '1px solid #E0E0E0',
-                                borderRadius: 2,
-                                '&:before': { display: 'none' }
-                            }}>
-                                <AccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: '#78E335' }} />}>
-                                    <Typography variant="h6" sx={{ fontWeight: 600, fontSize: '1.1rem' }}>{faq.q}</Typography>
-                                </AccordionSummary>
-                                <AccordionDetails>
-                                    <Typography color="text.secondary">{faq.a}</Typography>
-                                </AccordionDetails>
-                            </Accordion>
-                        ))}
-                    </Box>
                 </>
             }
         >

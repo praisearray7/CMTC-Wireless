@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Box, Container, Typography, Accordion, AccordionSummary, AccordionDetails, Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -81,6 +82,9 @@ const FAQ: React.FC<FAQProps> = ({ category = 'default' }) => {
 
                 <Box sx={{ textAlign: 'center', mt: 6 }}>
                     <Button
+                        component={Link}
+                        to="/contact-us"
+                        state={{ serviceNeeded: 'General Inquiry' }}
                         variant="contained"
                         sx={{
                             bgcolor: '#fff',

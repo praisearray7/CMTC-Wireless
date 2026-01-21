@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Typography, Grid, Paper, Breadcrumbs, Box, Divider, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import { Typography, Grid, Paper, Breadcrumbs, Box, Divider } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Monitor, HardDrive, Zap, Activity, Database, ShieldAlert, Cpu, Layers, Power } from 'lucide-react';
 import { aioData } from '../data/aio';
 import RepairServiceLayout from '../components/RepairServiceLayout';
@@ -9,7 +8,7 @@ import RepairServiceLayout from '../components/RepairServiceLayout';
 const AllInOneRepair = () => {
     return (
         <RepairServiceLayout
-            faqCategory="desktop"
+            faqCategory="aio"
             breadcrumbs={
                 <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb" sx={{ mb: 2 }}>
                     <Link to="/" style={{ color: '#546E7A', textDecoration: 'none' }}>Home</Link>
@@ -177,49 +176,6 @@ const AllInOneRepair = () => {
                     </Box>
 
                     <Divider sx={{ my: 8 }} />
-
-                    {/* FAQ Section */}
-                    <Box sx={{ mb: 8, maxWidth: '900px', mx: 'auto' }}>
-                        <Typography variant="h4" sx={{ fontWeight: 700, color: '#333', mb: 4, textAlign: 'center' }}>
-                            Frequently Asked Questions
-                        </Typography>
-                        {[
-                            {
-                                q: "My All-In-One is very slow. Can it be fixed?",
-                                a: "Yes! The #1 reason for this is a slow spinning hard drive. Replacing it with an SSD usually makes the computer faster than when it was new."
-                            },
-                            {
-                                q: "Do you repair iMacs?",
-                                a: "Yes, we specialize in Apple iMac repairs, including screen adhesive replacement, SSD upgrades, and RAM upgrades."
-                            },
-                            {
-                                q: "Is it expensive to fix a cracked AIO screen?",
-                                a: "It can be, as the screens are large and often glued. However, it's usually much cheaper than buying a brand new computer."
-                            },
-                            {
-                                q: "Do you offer on-site / home repair?",
-                                a: "No, we recommend bringing it to our shop where we have a clean, static-free environment and all the necessary heavy equipment."
-                            },
-                            {
-                                q: "Can you upgrade the RAM in my AIO?",
-                                a: "Most likely. Some newer models have soldered RAM, but many can still be upgraded. We can check your specific model."
-                            }
-                        ].map((faq, index) => (
-                            <Accordion key={index} elevation={0} sx={{
-                                mb: 2,
-                                border: '1px solid #E0E0E0',
-                                borderRadius: 2,
-                                '&:before': { display: 'none' }
-                            }}>
-                                <AccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: '#78E335' }} />}>
-                                    <Typography variant="h6" sx={{ fontWeight: 600, fontSize: '1.1rem' }}>{faq.q}</Typography>
-                                </AccordionSummary>
-                                <AccordionDetails>
-                                    <Typography color="text.secondary">{faq.a}</Typography>
-                                </AccordionDetails>
-                            </Accordion>
-                        ))}
-                    </Box>
                 </>
             }
         >

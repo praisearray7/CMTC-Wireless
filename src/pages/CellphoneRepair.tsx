@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Box, Typography, Grid, Paper, Breadcrumbs, Divider, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import { Box, Typography, Grid, Paper, Breadcrumbs, Divider } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Smartphone, Battery, Zap, Monitor, Droplets, Camera, Volume2, Database, Unlock, RefreshCw, Wifi, Maximize } from 'lucide-react';
 import { cellphoneData } from '../data/cellphone';
 import RepairServiceLayout from '../components/RepairServiceLayout';
@@ -198,49 +197,6 @@ const CellphoneRepair = () => {
                     </Box>
 
                     <Divider sx={{ my: 8 }} />
-
-                    {/* FAQ Section */}
-                    <Box sx={{ mb: 8, maxWidth: '900px', mx: 'auto' }}>
-                        <Typography variant="h4" sx={{ fontWeight: 700, color: '#333', mb: 4, textAlign: 'center' }}>
-                            Frequently Asked Questions
-                        </Typography>
-                        {[
-                            {
-                                q: "Do you fix phones other than iPhone/Samsung?",
-                                a: "Yes! We repair Motorola, LG, Google Pixel, OnePlus, and many other brands. Call us for a quote."
-                            },
-                            {
-                                q: "Do you have parts in stock?",
-                                a: "We stock common Samsung and Pixel screens. For less common models, we can order parts for next-day delivery."
-                            },
-                            {
-                                q: "Is my water resistant phone still waterproof after repair?",
-                                a: "We use factory-grade adhesive to seal the phone, but we always advise treating any repaired device as non-waterproof."
-                            },
-                            {
-                                q: "My charging port is loose. Do I need a new battery?",
-                                a: "Likely not. A loose port usually means the port itself is worn out or dirty. We can clean or solder a new one."
-                            },
-                            {
-                                q: "How much is a screen for a [Brand] phone?",
-                                a: "Prices vary wildly by model (LCD vs OLED). Please contact us with your specific model number for an exact price."
-                            }
-                        ].map((faq, index) => (
-                            <Accordion key={index} elevation={0} sx={{
-                                mb: 2,
-                                border: '1px solid #E0E0E0',
-                                borderRadius: 2,
-                                '&:before': { display: 'none' }
-                            }}>
-                                <AccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: '#78E335' }} />}>
-                                    <Typography variant="h6" sx={{ fontWeight: 600, fontSize: '1.1rem' }}>{faq.q}</Typography>
-                                </AccordionSummary>
-                                <AccordionDetails>
-                                    <Typography color="text.secondary">{faq.a}</Typography>
-                                </AccordionDetails>
-                            </Accordion>
-                        ))}
-                    </Box>
                 </>
             }
         >

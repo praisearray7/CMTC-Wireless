@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Box, Typography, Grid, Paper, Breadcrumbs, Divider, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import { Box, Typography, Grid, Paper, Breadcrumbs, Divider } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Watch, Battery, Zap, Droplets, Activity, Heart, Maximize, RefreshCw } from 'lucide-react';
 import { smartwatchData } from '../data/smartwatch';
 import RepairServiceLayout from '../components/RepairServiceLayout';
@@ -177,45 +176,6 @@ const SmartwatchRepair = () => {
                     </Box>
 
                     <Divider sx={{ my: 8 }} />
-
-                    {/* FAQ Section */}
-                    <Box sx={{ mb: 8, maxWidth: '900px', mx: 'auto' }}>
-                        <Typography variant="h4" sx={{ fontWeight: 700, color: '#333', mb: 4, textAlign: 'center' }}>
-                            Frequently Asked Questions
-                        </Typography>
-                        {[
-                            {
-                                q: "Is it worth fixing an Apple Watch?",
-                                a: "For Series 4 and newer, absolutely. Screen replacements are significantly cheaper than buying a new device."
-                            },
-                            {
-                                q: "Is the watch waterproof after repair?",
-                                a: "We use original-grade pressure adhesives, but we cannot guarantee IP68 water resistance after the factory seal is broken."
-                            },
-                            {
-                                q: "How long does a battery replacement take?",
-                                a: "Usually 1-2 hours. We keep batteries in stock for most Apple Watch and Galaxy Watch models."
-                            },
-                            {
-                                q: "Can you fix the digital crown?",
-                                a: "Yes, if it's sticky or not scrolling, we can clean or replace the mechanism."
-                            }
-                        ].map((faq, index) => (
-                            <Accordion key={index} elevation={0} sx={{
-                                mb: 2,
-                                border: '1px solid #E0E0E0',
-                                borderRadius: 2,
-                                '&:before': { display: 'none' }
-                            }}>
-                                <AccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: '#78E335' }} />}>
-                                    <Typography variant="h6" sx={{ fontWeight: 600, fontSize: '1.1rem' }}>{faq.q}</Typography>
-                                </AccordionSummary>
-                                <AccordionDetails>
-                                    <Typography color="text.secondary">{faq.a}</Typography>
-                                </AccordionDetails>
-                            </Accordion>
-                        ))}
-                    </Box>
                 </>
             }
         >

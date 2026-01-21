@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Typography, Grid, Paper, Breadcrumbs, Box, Divider, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import { Typography, Grid, Paper, Breadcrumbs, Box, Divider } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Monitor, HardDrive, Cpu, AlertTriangle, ShieldAlert, Power, Activity, Database, Zap, Box as BoxIcon } from 'lucide-react';
 import { desktopData } from '../data/desktop';
 import RepairServiceLayout from '../components/RepairServiceLayout';
@@ -177,49 +176,6 @@ const DesktopRepair = () => {
                     </Box>
 
                     <Divider sx={{ my: 8 }} />
-
-                    {/* FAQ Section */}
-                    <Box sx={{ mb: 8, maxWidth: '900px', mx: 'auto' }}>
-                        <Typography variant="h4" sx={{ fontWeight: 700, color: '#333', mb: 4, textAlign: 'center' }}>
-                            Frequently Asked Questions
-                        </Typography>
-                        {[
-                            {
-                                q: "Do you build custom gaming PCs?",
-                                a: "Yes! You pick the parts (or we help you pick them), and we assemble, cable manage, and test the entire build."
-                            },
-                            {
-                                q: "How much is a diagnostic?",
-                                a: "Diagnostics are effectively free if you proceed with the repair. The upfront fee is credited toward the labor cost."
-                            },
-                            {
-                                q: "Can you upgrade my old desktop?",
-                                a: "Absolutely. We can install faster SSDs, more RAM, or a new graphics card to breathe new life into an older machine."
-                            },
-                            {
-                                q: "Do you fix water cooled PCs?",
-                                a: "Yes, we handle both AIO (All-In-One) liquid coolers and custom open-loop maintenance."
-                            },
-                            {
-                                q: "What if it's a motherboard issue?",
-                                a: "We can replace the motherboard and handle all the complex rewiring. We also check for CPU compatibility."
-                            }
-                        ].map((faq, index) => (
-                            <Accordion key={index} elevation={0} sx={{
-                                mb: 2,
-                                border: '1px solid #E0E0E0',
-                                borderRadius: 2,
-                                '&:before': { display: 'none' }
-                            }}>
-                                <AccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: '#78E335' }} />}>
-                                    <Typography variant="h6" sx={{ fontWeight: 600, fontSize: '1.1rem' }}>{faq.q}</Typography>
-                                </AccordionSummary>
-                                <AccordionDetails>
-                                    <Typography color="text.secondary">{faq.a}</Typography>
-                                </AccordionDetails>
-                            </Accordion>
-                        ))}
-                    </Box>
                 </>
             }
         >

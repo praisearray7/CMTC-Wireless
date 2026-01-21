@@ -1,7 +1,8 @@
 import { useParams, Link } from 'react-router-dom';
-import { Box, Container, Typography, Button, Grid, Paper, Breadcrumbs, Divider, Accordion, AccordionSummary, AccordionDetails, List, ListItem, ListItemText } from '@mui/material';
+import { Box, Container, Typography, Button, Grid, Paper, Breadcrumbs, List, ListItem, ListItemText } from '@mui/material';
+import FAQ from '../components/FAQ';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 import { repairServices } from '../data/repairData';
 import { seriesData as iphoneData } from '../data/iphone';
 import { cellphoneData } from '../data/cellphone';
@@ -16,28 +17,7 @@ import { macbookData } from '../data/macbook';
 
 const DEVICE_IMAGE_URL = "https://www.gophermods.com/wp-content/uploads/2025/06/iPhone-16-Repairs-Minneapolis.jpg";
 
-const faqs = [
-    {
-        q: "Are you sure you can fix it?",
-        a: "Yes. We’ve had tens of thousands of devices brought into our stores. We fix the vast majority of devices we see."
-    },
-    {
-        q: "How fast can you repair it?",
-        a: "On average, most repairs are finished within one to two hours of drop-off. No appointment is required, but we recommend calling ahead."
-    },
-    {
-        q: "Do you have any guarantees?",
-        a: "Yes! If our parts fail within one year, bring it back, and we’ll fix it again under warranty."
-    },
-    {
-        q: "Will you need my passcode?",
-        a: "We prefer it for testing purposes, but it is not required. Without it, we cannot fully test the device after repair."
-    },
-    {
-        q: "What if you can't fix it?",
-        a: "In the unlikely event we cannot fix your device, there may be a small diagnostic fee, but you generally won't pay for the full repair."
-    }
-];
+
 
 const sidebarItems = [
     {
@@ -119,10 +99,30 @@ const ModelDetail = () => {
         );
     }
 
+
+    // Map serviceId to FAQ category
+    const getFaqCategory = (id: string | undefined) => {
+        switch (id) {
+            case 'iphone-repair': return 'iphone';
+            case 'ipad-repair': return 'ipad';
+            case 'macbook-repair': return 'macbook';
+            case 'cell-phone-repair': return 'cell-phone';
+            case 'smart-watch-repair': return 'smartwatch';
+            case 'computer-repair': return 'computer';
+            case 'desktop-repair': return 'desktop';
+            case 'laptop-repair': return 'laptop';
+            case 'aio-repair': return 'aio';
+            case 'tablet-repair': return 'tablet';
+            default: return 'default';
+        }
+    };
+
     return (
-        <Box sx={{ pb: 10, pt: 4 }}>
+        <Box sx={{ pb: 0, pt: 4 }}>
+            {/* ... rest of the render code ... */}
             <Container maxWidth="xl">
-                {/* Breadcrumbs */}
+                {/* Breadcrumbs and Grid content */}
+                {/* ... (existing content preserved) ... */}
                 <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb" sx={{ mb: 4 }}>
                     <Link to="/" style={{ color: '#9E9E9E', textDecoration: 'none' }}>Home</Link>
                     {service && <Link to={`/${service.id}`} style={{ color: '#9E9E9E', textDecoration: 'none' }}>{service.name}</Link>}
@@ -268,26 +268,7 @@ const ModelDetail = () => {
                         </Box>
 
 
-                        <Divider sx={{ mb: 6 }} />
-
-                        {/* FAQ Section */}
-                        <Box>
-                            <Typography variant="h4" sx={{ mb: 4, fontWeight: 700, px: 2 }}>
-                                We’re ready for your questions.
-                            </Typography>
-                            {faqs.map((faq, index) => (
-                                <Accordion key={index} elevation={0} disableGutters sx={{ '&:before': { display: 'none' }, borderBottom: '1px solid #eee' }}>
-                                    <AccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: '#78E335' }} />} sx={{ px: 0 }}>
-                                        <Typography variant="h6" sx={{ fontWeight: 600, color: '#333' }}>{faq.q}</Typography>
-                                    </AccordionSummary>
-                                    <AccordionDetails sx={{ px: 0 }}>
-                                        <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.7 }}>
-                                            {faq.a}
-                                        </Typography>
-                                    </AccordionDetails>
-                                </Accordion>
-                            ))}
-                        </Box>
+                        {/* FAQ moved to bottom */}
                     </Grid>
 
                     {/* RIGHT COLUMN (Sidebar) */}
@@ -329,6 +310,8 @@ const ModelDetail = () => {
                     </Grid>
                 </Grid>
             </Container>
+
+            <FAQ category={getFaqCategory(serviceId)} />
         </Box>
     );
 };

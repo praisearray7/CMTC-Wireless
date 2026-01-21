@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Box, Typography, Grid, Paper, Breadcrumbs, Divider, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import { Box, Typography, Grid, Paper, Breadcrumbs, Divider } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Monitor, HardDrive, Cpu, AlertTriangle, ShieldAlert, Power, Activity, Database, Zap } from 'lucide-react';
 import { computerData } from '../data/computer';
 import RepairServiceLayout from '../components/RepairServiceLayout';
@@ -198,49 +197,6 @@ const ComputerRepair = () => {
                     </Box>
 
                     <Divider sx={{ my: 8 }} />
-
-                    {/* FAQ Section */}
-                    <Box sx={{ mb: 8, maxWidth: '900px', mx: 'auto' }}>
-                        <Typography variant="h4" sx={{ fontWeight: 700, color: '#333', mb: 4, textAlign: 'center' }}>
-                            Frequently Asked Questions
-                        </Typography>
-                        {[
-                            {
-                                q: "Do I need to book an appointment?",
-                                a: "No, walk-ins are welcome! You can visit us anytime, though calling ahead is always appreciated."
-                            },
-                            {
-                                q: "Do you charge for diagnostics?",
-                                a: "We have a $49 basic diagnostic fee. This is waived or credited towards the repair if you choose to proceed with our service."
-                            },
-                            {
-                                q: "Is it expensive?",
-                                a: "We strive for competitive, flat-rate labor pricing (often around $99 + parts). We provide transparent quotes before starting any work."
-                            },
-                            {
-                                q: "Do you repair screens and replace hard drives?",
-                                a: "Yes! These are our most common repairs. We can replace screens on thousands of models and upgrade old hard drives to fast SSDs."
-                            },
-                            {
-                                q: "How long does it take?",
-                                a: "Screen replacements or simple part swaps are often done within 24-48 hours if parts are in stock. Complex motherboard repairs may take longer."
-                            }
-                        ].map((faq, index) => (
-                            <Accordion key={index} elevation={0} sx={{
-                                mb: 2,
-                                border: '1px solid #E0E0E0',
-                                borderRadius: 2,
-                                '&:before': { display: 'none' }
-                            }}>
-                                <AccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: '#78E335' }} />}>
-                                    <Typography variant="h6" sx={{ fontWeight: 600, fontSize: '1.1rem' }}>{faq.q}</Typography>
-                                </AccordionSummary>
-                                <AccordionDetails>
-                                    <Typography color="text.secondary">{faq.a}</Typography>
-                                </AccordionDetails>
-                            </Accordion>
-                        ))}
-                    </Box>
                 </>
             }
         >

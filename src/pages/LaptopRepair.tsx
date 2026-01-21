@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Typography, Grid, Paper, Breadcrumbs, Box, Divider, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import { Typography, Grid, Paper, Breadcrumbs, Box, Divider } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Monitor, HardDrive, Battery, Keyboard, Zap, RefreshCw, MousePointer, Fan, Droplets, Thermometer, Wifi } from 'lucide-react';
 import { laptopData } from '../data/laptop';
 import RepairServiceLayout from '../components/RepairServiceLayout';
@@ -180,49 +179,6 @@ const LaptopRepair = () => {
                     </Box>
 
                     <Divider sx={{ my: 8 }} />
-
-                    {/* FAQ Section */}
-                    <Box sx={{ mb: 8, maxWidth: '900px', mx: 'auto' }}>
-                        <Typography variant="h4" sx={{ fontWeight: 700, color: '#333', mb: 4, textAlign: 'center' }}>
-                            Frequently Asked Questions
-                        </Typography>
-                        {[
-                            {
-                                q: "How long does a screen replacement take?",
-                                a: "If we have the screen in stock, it takes about 1-2 hours. If we need to order it, usually 2-3 business days."
-                            },
-                            {
-                                q: "Do you wipe my data during repair?",
-                                a: "No, we value your privacy. We do not touch your personal files unless data recovery is requested. Backups are still recommended."
-                            },
-                            {
-                                q: "Is it worth fixing my old laptop?",
-                                a: "Generally, if the repair cost is less than 50% of the laptop's value, it's worth it. An SSD upgrade can also make old laptops feel new."
-                            },
-                            {
-                                q: "Do you repair water damaged laptops?",
-                                a: "Yes, but time is of the essence. Bring it in immediately and do not try to turn it on. Success rates vary based on severity."
-                            },
-                            {
-                                q: "Can you fix broken hinges?",
-                                a: "Yes, hinge repair is one of our specialties. We don't just glue it; we structurally reinforce the mounting points."
-                            }
-                        ].map((faq, index) => (
-                            <Accordion key={index} elevation={0} sx={{
-                                mb: 2,
-                                border: '1px solid #E0E0E0',
-                                borderRadius: 2,
-                                '&:before': { display: 'none' }
-                            }}>
-                                <AccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: '#78E335' }} />}>
-                                    <Typography variant="h6" sx={{ fontWeight: 600, fontSize: '1.1rem' }}>{faq.q}</Typography>
-                                </AccordionSummary>
-                                <AccordionDetails>
-                                    <Typography color="text.secondary">{faq.a}</Typography>
-                                </AccordionDetails>
-                            </Accordion>
-                        ))}
-                    </Box>
                 </>
             }
         >

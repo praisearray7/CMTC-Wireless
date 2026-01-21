@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Typography, Grid, Paper, Breadcrumbs, Box, Divider, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import { Typography, Grid, Paper, Breadcrumbs, Box, Divider } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Tablet, Battery, Zap, Monitor, Volume2, Camera, Droplets, RefreshCw, PlayCircle, MousePointer, Music } from 'lucide-react';
 import { tabletData } from '../data/tablet';
 import RepairServiceLayout from '../components/RepairServiceLayout';
@@ -181,49 +180,6 @@ const TabletRepair = () => {
                     </Box>
 
                     <Divider sx={{ my: 8 }} />
-
-                    {/* FAQ Section */}
-                    <Box sx={{ mb: 8, maxWidth: '900px', mx: 'auto' }}>
-                        <Typography variant="h4" sx={{ fontWeight: 700, color: '#333', mb: 4, textAlign: 'center' }}>
-                            Frequently Asked Questions
-                        </Typography>
-                        {[
-                            {
-                                q: "What's the difference between Glass and LCD replacement?",
-                                a: "The glass (digitizer) picks up your touch. The LCD displays the image. If only the glass is cracked but the picture is perfect, it's cheaper to fix."
-                            },
-                            {
-                                q: "How long does an iPad repair take?",
-                                a: "Glass replacements typically take 2-24 hours depending on the model, as the adhesive needs time to cure properly."
-                            },
-                            {
-                                q: "Do you lose my data?",
-                                a: "No, screen and battery repairs strictly involve hardware. Your photos and apps stay safe."
-                            },
-                            {
-                                q: "Do you fix Microsoft Surface tablets?",
-                                a: "Yes, we repair Surface Pro screens and batteries, though they are more complex and take a bit longer than iPads."
-                            },
-                            {
-                                q: "Is the repair warranty included?",
-                                a: "Yes, we offer a warranty on all screen and battery replacements against defects (excluding new cracks)."
-                            }
-                        ].map((faq, index) => (
-                            <Accordion key={index} elevation={0} sx={{
-                                mb: 2,
-                                border: '1px solid #E0E0E0',
-                                borderRadius: 2,
-                                '&:before': { display: 'none' }
-                            }}>
-                                <AccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: '#78E335' }} />}>
-                                    <Typography variant="h6" sx={{ fontWeight: 600, fontSize: '1.1rem' }}>{faq.q}</Typography>
-                                </AccordionSummary>
-                                <AccordionDetails>
-                                    <Typography color="text.secondary">{faq.a}</Typography>
-                                </AccordionDetails>
-                            </Accordion>
-                        ))}
-                    </Box>
                 </>
             }
         >

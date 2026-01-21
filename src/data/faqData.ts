@@ -3,25 +3,7 @@ export interface FAQItem {
     answer: string;
 }
 
-// Shared questions for similar devices can be referenced or duplicated
-const computerQuestions = [
-    {
-        question: 'How long does a computer repair take?',
-        answer: 'Most software issues are resolved within 24 hours. Hardware repairs like screen or battery replacements typically take 1-3 days depending on parts.'
-    },
-    {
-        question: 'Can you recover data from my dead computer?',
-        answer: 'Yes, we specialize in data recovery from failing hard drives and SSDs, even if the computer itself does not turn on.'
-    },
-    {
-        question: 'Is it worth fixing an old laptop?',
-        answer: 'It depends on the specs. Usage of an SSD and RAM upgrade can often make an old laptop feel brand new for a fraction of the cost of a replacement.'
-    },
-    {
-        question: 'Do you remove viruses and malware?',
-        answer: 'Absolutely. We can remove viruses, spyware, and malware, and also install protection to prevent future infections.'
-    }
-];
+
 
 export const faqData: Record<string, FAQItem[]> = {
     'cell-phone': [
@@ -44,6 +26,70 @@ export const faqData: Record<string, FAQItem[]> = {
         {
             question: 'Can you fix water-damaged phones?',
             answer: 'Yes, we have specialized equipment and expertise to treat wate damage. Success depends on how severe the damage is and how quickly you bring it to us.'
+        },
+        {
+            question: "Do you fix phones other than iPhone/Samsung?",
+            answer: "Yes! We repair Motorola, LG, Google Pixel, OnePlus, and many other brands. Call us for a quote."
+        },
+        {
+            question: "Do you have parts in stock?",
+            answer: "We stock common Samsung and Pixel screens. For less common models, we can order parts for next-day delivery."
+        },
+        {
+            question: "Is my water resistant phone still waterproof after repair?",
+            answer: "We use factory-grade adhesive to seal the phone, but we always advise treating any repaired device as non-waterproof."
+        },
+        {
+            question: "My charging port is loose. Do I need a new battery?",
+            answer: "Likely not. A loose port usually means the port itself is worn out or dirty. We can clean or solder a new one."
+        },
+        {
+            question: "How much is a screen for a particular phone model?",
+            answer: "Prices vary wildly by model (LCD vs OLED). Please contact us with your specific model number for an exact price."
+        }
+    ],
+    'smartwatch': [
+        {
+            question: 'Can you replace the glass on my Apple Watch?',
+            answer: 'Yes, we offer screen replacements for Apple Watch and other smartwatches.'
+        },
+        {
+            question: 'Do you verify water resistance after repair?',
+            answer: 'We use original-grade adhesives, but we generally recommend avoiding swimming with a repaired device to be safe.'
+        },
+        {
+            question: "Is it worth fixing an Apple Watch?",
+            answer: "For Series 4 and newer, absolutely. Screen replacements are significantly cheaper than buying a new device."
+        },
+        {
+            question: "How long does a battery replacement take?",
+            answer: "Usually 1-2 hours. We keep batteries in stock for most Apple Watch and Galaxy Watch models."
+        },
+        {
+            question: "Can you fix the digital crown?",
+            answer: "Yes, if it's sticky or not scrolling, we can clean or replace the mechanism."
+        }
+    ],
+    'iphone': [
+        {
+            question: "How long does an iPhone screen repair take?",
+            answer: "Most screen replacements are completed in 30-45 minutes. We stock parts for all models from iPhone 6 to iPhone 15 Pro Max."
+        },
+        {
+            question: "Do you use original Apple parts?",
+            answer: "We offer both Premium OEM-grade screens and standard aftermarket options. We explain the difference so you can choose what fits your budget."
+        },
+        {
+            question: "Will I lose my Face ID?",
+            answer: "No. Our technicians are trained to carefully transfer the Face ID sensors to the new screen so it continues working perfectly."
+        },
+        {
+            question: "My iPhone fell in water. What should I do?",
+            answer: "Turn it off immediately and DO NOT charge it. Bring it to us ASAP. The sooner we clean it, the higher the chance of survival."
+        },
+        {
+            question: "Is there a warranty?",
+            answer: "Yes, all our screen and battery repairs come with a warranty covering any defects in the part or workmanship."
         }
     ],
     'macbook': [
@@ -66,12 +112,40 @@ export const faqData: Record<string, FAQItem[]> = {
         {
             question: 'Is it worth repairing an older MacBook?',
             answer: 'Often, yes! A battery replacement or SSD upgrade can significantly extend the life of an older Mac. We can give you an honest assessment.'
+        },
+        {
+            question: "Do you repair Logic Boards?",
+             answer: "Yes, we offer component-level microsoldering repairs for backlights, non-functional ports, and power issues."
+        },
+        {
+            question: "My keyboard is typing double letters. can you fix it?",
+            answer: "Yes, this is a common issue with butterfly keyboards. We can often clean them or replace the keyboard mechanism."
+        },
+        {
+            question: "Do you offer warranty?",
+            answer: "Yes, most MacBook hardware repairs come with a 1-year warranty on parts and labor."
         }
     ],
     'ipad': [
         {
-            question: 'How long does an iPad glass replacement take?',
-            answer: 'iPad screen repairs typically take 2-3 hours as the adhesive needs time to properly set.'
+            question: "Is it worth fixing an old iPad?",
+            answer: "Often yes, as new iPads are expensive. If the repair cost is less than 50% of a replacement, we recommend it."
+        },
+        {
+            question: "How long does the repair take?",
+            answer: "iPad repairs are complex due to strong adhesives. They typically take 1-2 business days to ensure a perfect seal."
+        },
+        {
+            question: "Do you fix bent iPads?",
+            answer: "Yes, we have specialized tools to straighten bent frames, which allows the new screen to sit flush and secure."
+        },
+        {
+            question: "Do you lose my data?",
+            answer: "No, we strictly repair the hardware (screen/battery). Your apps, photos, and settings remain untouched."
+        },
+        {
+            question: "Are your parts original?",
+            answer: "We use high-quality OEM-grade parts that match the original performance and color quality."
         },
         {
             question: 'My iPad battery drains fast. Can you replace it?',
@@ -82,8 +156,8 @@ export const faqData: Record<string, FAQItem[]> = {
             answer: 'Yes, if your iPad is not charging or connecting to the computer, we can replace the charging port.'
         }
     ],
-    'tablet': [ // Alias for tablet using iPad-like questions or generic
-         {
+    'tablet': [
+        {
             question: 'How long does a tablet screen repair take?',
             answer: 'Most tablet screen repairs take 2-3 hours to ensure the adhesive sets properly.'
         },
@@ -94,11 +168,108 @@ export const faqData: Record<string, FAQItem[]> = {
         {
             question: 'My tablet is not charging. Can you help?',
             answer: 'Charging port issues are common and we can typically replace the port to restore functionality.'
+        },
+        {
+            question: "What's the difference between Glass and LCD replacement?",
+            answer: "The glass (digitizer) picks up your touch. The LCD displays the image. If only the glass is cracked but the picture is perfect, it's cheaper to fix."
+        },
+        {
+            question: "Do you fix Microsoft Surface tablets?",
+            answer: "Yes, we repair Surface Pro screens and batteries, though they are more complex and take a bit longer than iPads."
+        },
+        {
+            question: "Is the repair warranty included?",
+            answer: "Yes, we offer a warranty on all screen and battery replacements against defects (excluding new cracks)."
         }
     ],
-    'computer': computerQuestions,
-    'laptop': computerQuestions,
-    'desktop': computerQuestions,
+    'computer': [
+        {
+            question: "Do I need to book an appointment?",
+            answer: "No, walk-ins are welcome! You can visit us anytime, though calling ahead is always appreciated."
+        },
+        {
+            question: "Do you charge for diagnostics?",
+            answer: "We have a $49 basic diagnostic fee. This is waived or credited towards the repair if you choose to proceed with our service."
+        },
+        {
+            question: "Is it expensive?",
+            answer: "We strive for competitive, flat-rate labor pricing (often around $99 + parts). We provide transparent quotes before starting any work."
+        },
+        {
+            question: "Do you repair screens and replace hard drives?",
+            answer: "Yes! These are our most common repairs. We can replace screens on thousands of models and upgrade old hard drives to fast SSDs."
+        },
+        {
+            question: "How long does it take?",
+            answer: "Screen replacements or simple part swaps are often done within 24-48 hours if parts are in stock. Complex motherboard repairs may take longer."
+        }
+    ],
+    'laptop': [
+         {
+            question: "How long does a screen replacement take?",
+            answer: "If we have the screen in stock, it takes about 1-2 hours. If we need to order it, usually 2-3 business days."
+        },
+        {
+            question: "Do you wipe my data during repair?",
+            answer: "No, we value your privacy. We do not touch your personal files unless data recovery is requested. Backups are still recommended."
+        },
+        {
+            question: "Is it worth fixing my old laptop?",
+            answer: "Generally, if the repair cost is less than 50% of the laptop's value, it's worth it. An SSD upgrade can also make old laptops feel new."
+        },
+        {
+            question: "Do you repair water damaged laptops?",
+            answer: "Yes, but time is of the essence. Bring it in immediately and do not try to turn it on. Success rates vary based on severity."
+        },
+        {
+            question: "Can you fix broken hinges?",
+            answer: "Yes, hinge repair is one of our specialties. We don't just glue it; we structurally reinforce the mounting points."
+        }
+    ],
+    'desktop': [
+        {
+            question: "Do you build custom gaming PCs?",
+            answer: "Yes! You pick the parts (or we help you pick them), and we assemble, cable manage, and test the entire build."
+        },
+        {
+            question: "How much is a diagnostic?",
+            answer: "Diagnostics are effectively free if you proceed with the repair. The upfront fee is credited toward the labor cost."
+        },
+        {
+            question: "Can you upgrade my old desktop?",
+            answer: "Absolutely. We can install faster SSDs, more RAM, or a new graphics card to breathe new life into an older machine."
+        },
+        {
+            question: "Do you fix water cooled PCs?",
+            answer: "Yes, we handle both AIO (All-In-One) liquid coolers and custom open-loop maintenance."
+        },
+        {
+            question: "What if it's a motherboard issue?",
+            answer: "We can replace the motherboard and handle all the complex rewiring. We also check for CPU compatibility."
+        }
+    ],
+    'aio': [
+        {
+            question: "My All-In-One is very slow. Can it be fixed?",
+            answer: "Yes! The #1 reason for this is a slow spinning hard drive. Replacing it with an SSD usually makes the computer faster than when it was new."
+        },
+        {
+            question: "Do you repair iMacs?",
+            answer: "Yes, we specialize in Apple iMac repairs, including screen adhesive replacement, SSD upgrades, and RAM upgrades."
+        },
+        {
+            question: "Is it expensive to fix a cracked AIO screen?",
+            answer: "It can be, as the screens are large and often glued. However, it's usually much cheaper than buying a brand new computer."
+        },
+        {
+            question: "Do you offer on-site / home repair?",
+            answer: "No, we recommend bringing it to our shop where we have a clean, static-free environment and all the necessary heavy equipment."
+        },
+        {
+            question: "Can you upgrade the RAM in my AIO?",
+            answer: "Most likely. Some newer models have soldered RAM, but many can still be upgraded. We can check your specific model."
+        }
+    ],
     'smartwatch': [
         {
             question: 'Can you replace the glass on my Apple Watch?',
