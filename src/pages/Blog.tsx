@@ -1,40 +1,32 @@
 import { useState } from 'react';
 import { Box, Container, Typography, Dialog, DialogContent, IconButton } from '@mui/material';
-import VideoMarquee, { type VideoItem } from '../components/VideoMarquee';
+import VideoMarquee from '../components/VideoMarquee';
 import CloseIcon from '@mui/icons-material/Close';
-import macbookThumb from '../assets/macbook_repair_thumb.jpg';
-
-import logicBoardThumb from '../assets/logic_board_thumb.jpg';
-
-// Helper to generate video items. 
-const generateVideos = (count: number, category: string, folderId: string, thumb: string, baseTitle: string): VideoItem[] => {
-    return Array.from({ length: count }, (_, i) => ({
-        title: `${baseTitle} ${i + 1}`,
-        category: category,
-        folderId: folderId,
-        thumbnail: thumb
-    }));
-};
-
-// 1. MacBook Repair Data
-const macbookVideos: VideoItem[] = generateVideos(10, 'Laptop Repair', '1v3R2eqYYU6GWtrHFBbsRXEdggma_wxwh', macbookThumb, 'MacBook Repair Guide');
-
-// 2. PC Assembly Data
-const pcVideos: VideoItem[] = generateVideos(10, 'Custom Builds', '1N8vswoII1zu2g_yfGZvL7zHwcCT5bmeu', 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80', 'PC Build Series');
-
-// 3. Cell Phone Repair Data
-const phoneVideos: VideoItem[] = generateVideos(10, 'Mobile Repair', '1T-vw8ipPax6YjME1UzUqJs6uo3M9n89J', 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80', 'Phone Fix');
-
-// 4. Logic Board Repair (100 Items)
-const logicBoardVideos: VideoItem[] = generateVideos(100, 'Micro Soldering', '1yLD3ib0-Di-4lQGtmsmvLwM2oeJ0wFJ9', logicBoardThumb, 'Logic Board Reel');
+import { blogSections } from '../data/blogVideos';
 
 const Blog = () => {
     const [open, setOpen] = useState(false);
     const [currentVideoSrc, setCurrentVideoSrc] = useState<string | null>(null);
 
-    const handlePlayVideo = (id: string) => {
-        // Use the folder embed view for all videos
-        const src = `https://drive.google.com/embeddedfolderview?id=${id}#grid`;
+    const handlePlayVideo = (link: string) => {
+        // Simple logic: if it looks like a full URL, use it (or convert to embed if needed).
+        // If it looks like just an ID, assume it's a folder ID.
+
+        let src = link;
+
+        // 1. If it's a standard Google Drive Folder Link, convert to Embed View
+        if (link.includes('drive.google.com/drive/folders/')) {
+            const folderId = link.split('folders/')[1]?.split(/[/?]/)[0];
+            src = `https://drive.google.com/embeddedfolderview?id=${folderId}#grid`;
+        }
+        // 2. If it's just an ID (old data format fallback)
+        else if (!link.includes('http') && !link.includes('drive.google.com')) {
+            src = `https://drive.google.com/embeddedfolderview?id=${link}#grid`;
+        }
+        // 3. If it's a direct file link (e.g. /file/d/ID/view), we might need to change /view to /preview for embedding
+        else if (link.includes('/view')) {
+            src = link.replace('/view', '/preview');
+        }
 
         setCurrentVideoSrc(src);
         setOpen(true);
@@ -45,23 +37,13 @@ const Blog = () => {
         setCurrentVideoSrc(null);
     };
 
-    const renderSection = (title: string, description: string, videos: VideoItem[]) => (
-        <Box sx={{ mb: 8 }}>
-            <Container maxWidth="lg" sx={{ mb: 4 }}>
-                <Typography variant="h4" sx={{ fontWeight: 700, mb: 1 }}>{title}</Typography>
-                <Typography variant="body1" color="textSecondary">{description}</Typography>
-            </Container>
-            <VideoMarquee videos={videos} onPlay={handlePlayVideo} />
-        </Box>
-    );
-
     return (
         <Box sx={{ minHeight: '80vh', bgcolor: '#fbfbfb' }}>
             {/* Header Section */}
             <Box sx={{
                 py: 8,
                 textAlign: 'center',
-                background: 'linear-gradient(135deg, #2C3E50 0%, #1a252f 100%)',
+                background: 'linear-gradient(135deg, #1a252f 0%, #2e7d32 100%)',
                 color: 'white',
                 mb: 6
             }}>
@@ -75,17 +57,40 @@ const Blog = () => {
                 </Container>
             </Box>
 
-            {/* 1. MacBook Section */}
-            {renderSection('MacBook Repairs', 'Expert screen, battery, and logic board repairs for all Mac models.', macbookVideos)}
-
-            {/* 2. PC Assembly Section */}
-            {renderSection('PC Custom Builds', 'Watch us build high-performance gaming and workstation PCs.', pcVideos)}
-
-            {/* 3. Cell Phone Section */}
-            {renderSection('Cell Phone Repairs', 'iPhone and Android screen replacements, battery swaps, and more.', phoneVideos)}
-
-            {/* 4. Logic Board Section */}
-            {renderSection('Logic Board Microsoldering', 'Advanced component-level repairs and soldering work.', logicBoardVideos)}
+            {/* Dynamic Sections from Data File */}
+            {blogSections.map((section) => (
+                <Box key={section.id} sx={{ mb: 8 }}>
+                    <Container maxWidth="lg" sx={{ mb: 4 }}>
+                        <Typography variant="h4" sx={{
+                            fontWeight: 800,
+                            mb: 1,
+                            background: 'linear-gradient(90deg, #1b5e20 0%, #2e7d32 100%)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            display: 'inline-block'
+                        }}>
+                            {section.title}
+                        </Typography>
+                        <Typography variant="body1" color="textSecondary">
+                            {section.description}
+                        </Typography>
+                    </Container>
+                    {/* 
+                        Mapping data to VideoMarquee. 
+                        Note: The component expects { title, category, folderId, thumbnail }.
+                        We map our new 'link' to 'folderId' property for compatibility.
+                    */}
+                    <VideoMarquee
+                        videos={section.videos.map(v => ({
+                            title: v.title,
+                            category: v.category,
+                            folderId: v.link, // Passing the full link as the ID
+                            thumbnail: v.thumbnail || ''
+                        }))}
+                        onPlay={handlePlayVideo}
+                    />
+                </Box>
+            ))}
 
             {/* Video Player Modal */}
             <Dialog

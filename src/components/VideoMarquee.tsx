@@ -57,6 +57,7 @@ const VideoMarquee = ({ videos, onPlay }: VideoMarqueeProps) => {
                 display: 'flex',
                 width: 'fit-content',
                 animation: `${scroll} ${duration}s linear infinite`,
+                willChange: 'transform', // Hardware acceleration hint
                 gap: 4,
                 px: 2,
                 '&:hover': {
@@ -93,7 +94,7 @@ const VideoMarquee = ({ videos, onPlay }: VideoMarqueeProps) => {
                                     <Box sx={{
                                         height: 180,
                                         width: '100%',
-                                        background: 'linear-gradient(135deg, #2C3E50 0%, #3498DB 100%)',
+                                        background: 'linear-gradient(135deg, #2e7d32 0%, #78E335 100%)',
                                         display: 'flex',
                                         alignItems: 'center',
                                         justifyContent: 'center'
