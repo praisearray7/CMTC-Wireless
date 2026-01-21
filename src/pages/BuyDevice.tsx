@@ -1,7 +1,6 @@
 
-import { Box, Container, Grid, Typography, Card, CardContent, Button, Chip, Stack } from '@mui/material';
+import { Box, Container, Grid, Typography, Card, CardContent, Button, Chip, Stack, CardMedia } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import SmartphoneIcon from '@mui/icons-material/Smartphone';
 import FactCheckOutlinedIcon from '@mui/icons-material/FactCheckOutlined';
 import SavingsOutlinedIcon from '@mui/icons-material/SavingsOutlined';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
@@ -13,10 +12,38 @@ const BuyDevice = () => {
     const navigate = useNavigate();
     // Mock inventory
     const inventory = [
-        { id: 1, name: 'iPhone 15 Pro Max', condition: 'Like New', price: 'Ask for Price', color: 'Natural Titanium' },
-        { id: 2, name: 'Samsung S24 Ultra', condition: 'Excellent', price: 'Ask for Price', color: 'Titanium Black' },
-        { id: 3, name: 'iPhone 14', condition: 'Good', price: 'Ask for Price', color: 'Midnight' },
-        { id: 4, name: 'iPad Air 5', condition: 'New Open Box', price: 'Ask for Price', color: 'Space Gray' },
+        {
+            id: 1,
+            name: 'iPhone 15 Pro Max',
+            condition: 'Like New',
+            price: 'Ask for Price',
+            color: 'Natural Titanium',
+            image: 'https://images.unsplash.com/photo-1696446701796-da61225697cc?q=80&w=1000&auto=format&fit=crop'
+        },
+        {
+            id: 2,
+            name: 'Samsung S24 Ultra',
+            condition: 'Excellent',
+            price: 'Ask for Price',
+            color: 'Titanium Black',
+            image: 'https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?q=80&w=1000&auto=format&fit=crop'
+        },
+        {
+            id: 3,
+            name: 'iPhone 14',
+            condition: 'Good',
+            price: 'Ask for Price',
+            color: 'Midnight',
+            image: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?q=80&w=1000&auto=format&fit=crop'
+        },
+        {
+            id: 4,
+            name: 'iPad Air 5',
+            condition: 'New Open Box',
+            price: 'Ask for Price',
+            color: 'Space Gray',
+            image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?q=80&w=1000&auto=format&fit=crop'
+        },
     ];
 
     return (
@@ -37,9 +64,13 @@ const BuyDevice = () => {
                             {inventory.map((item) => (
                                 <Grid size={{ xs: 12, sm: 6 }} key={item.id}>
                                     <Card sx={{ borderRadius: 3, transition: '0.3s', '&:hover': { transform: 'translateY(-5px)', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' } }}>
-                                        <Box sx={{ height: 200, bgcolor: '#eeeeee', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                            <SmartphoneIcon sx={{ fontSize: 80, color: '#bdbdbd' }} />
-                                        </Box>
+                                        <CardMedia
+                                            component="img"
+                                            height="220"
+                                            image={item.image}
+                                            alt={item.name}
+                                            sx={{ objectFit: 'cover' }}
+                                        />
                                         <CardContent>
                                             <Stack direction="row" justifyContent="space-between" alignItems="start" mb={1}>
                                                 <Typography variant="h6" sx={{ fontWeight: 700 }}>{item.name}</Typography>
@@ -70,7 +101,14 @@ const BuyDevice = () => {
                                 <Typography variant="body2" color="textSecondary" sx={{ mb: 3 }}>
                                     We have new inventory arriving daily. Let us know what you want and we'll find it for you.
                                 </Typography>
-                                <Button variant="contained" color="primary" fullWidth size="large" sx={{ mb: 2 }}>
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    fullWidth
+                                    size="large"
+                                    sx={{ mb: 2 }}
+                                    href="tel:6124460559"
+                                >
                                     Call (612) 446-0559
                                 </Button>
                                 <Button variant="outlined" color="secondary" fullWidth size="large">
