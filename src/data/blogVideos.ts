@@ -53,16 +53,16 @@ const pcThumbnails = [
 ];
 
 const phoneThumbnails = [
-    '/Iphone Thumbnail/anton-maksimov-5642-su-R2ljPFJju1s-unsplash.jpg',
-    '/Iphone Thumbnail/du-BZNZ_N5qU5Y-unsplash.jpg',
-    '/Iphone Thumbnail/insung-yoon-dRUqU4RpeOE-unsplash.jpg',
-    '/Iphone Thumbnail/joel-rohland-MCL2xxjZJvs-unsplash.jpg',
-    '/Iphone Thumbnail/kat-2lijqbLePBM-unsplash.jpg',
-    '/Iphone Thumbnail/kenny-leys-Imc_FwGf92U-unsplash.jpg',
-    '/Iphone Thumbnail/kilian-seiler-PZLgTUAhxMM-unsplash.jpg',
-    '/Iphone Thumbnail/max-bushuev-U46ib4fUniY-unsplash.jpg',
-    '/Iphone Thumbnail/vitalijus-y2QUqmEzjzA-unsplash.jpg',
-    '/Iphone Thumbnail/vlad-cAtU4XU8NHg-unsplash.jpg'
+    '/cellphone_thumbnails/anton-maksimov-5642-su-R2ljPFJju1s-unsplash.jpg',
+    '/cellphone_thumbnails/du-BZNZ_N5qU5Y-unsplash.jpg',
+    '/cellphone_thumbnails/insung-yoon-dRUqU4RpeOE-unsplash.jpg',
+    '/cellphone_thumbnails/joel-rohland-MCL2xxjZJvs-unsplash.jpg',
+    '/cellphone_thumbnails/kat-2lijqbLePBM-unsplash.jpg',
+    '/cellphone_thumbnails/kenny-leys-Imc_FwGf92U-unsplash.jpg',
+    '/cellphone_thumbnails/kilian-seiler-PZLgTUAhxMM-unsplash.jpg',
+    '/cellphone_thumbnails/max-bushuev-U46ib4fUniY-unsplash.jpg',
+    '/cellphone_thumbnails/vitalijus-y2QUqmEzjzA-unsplash.jpg',
+    '/cellphone_thumbnails/vlad-cAtU4XU8NHg-unsplash.jpg'
 ];
 
 const macbookThumbnails = [

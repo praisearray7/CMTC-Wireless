@@ -5,7 +5,7 @@ import { getImagePath } from '../data/imagePaths';
 const items = [
     { title: 'iPad Repair', image: 'https://www.gophermods.com/wp-content/uploads/2020/04/iPad-Repair-by-Gophermods-200x200-1.jpg', link: '/ipad-repair' },
     { title: 'MacBook Repair', image: 'https://www.gophermods.com/wp-content/uploads/2018/03/MacBook-Repair.jpg', link: '/macbook-repair' },
-    { title: 'Chromebook Repair', image: 'https://www.gophermods.com/wp-content/uploads/2019/02/Chromebook-Repair.jpg', link: '/laptop-repair' },
+    { title: 'Laptop Repair', image: 'https://www.gophermods.com/wp-content/uploads/2019/02/Chromebook-Repair.jpg', link: '/laptop-repair' },
     { title: 'iPhone Repair', image: 'https://www.gophermods.com/wp-content/uploads/2025/06/iPhone-16-Repairs-Minneapolis.jpg', link: '/iphone-repair' },
     { title: 'Computer Repair', image: 'https://www.gophermods.com/wp-content/uploads/2014/11/mac-200x200.jpg', link: '/computer-repair' },
     { title: 'Cell Phone Repair', image: 'https://www.gophermods.com/wp-content/uploads/2025/06/Google-Pixel-Repairs-Minneapolis.jpg', link: '/cell-phone-repair' },
