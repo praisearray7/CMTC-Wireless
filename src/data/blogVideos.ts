@@ -52,17 +52,19 @@ const pcThumbnails = [
     'https://images.pexels.com/photos/18966456/pexels-photo-18966456.jpeg?_gl=1*8sprmr*_ga*ODU3ODg3MjU0LjE3Njg5ODU3OTE.*_ga_8JE65Q40S6*czE3Njg5ODU3OTAkbzEkZzEkdDE3Njg5ODY2OTEkajU5JGwwJGgw'  // 10. Abstract Tech (New)
 ];
 
+const getPath = (path: string) => `${import.meta.env.BASE_URL}${path}`;
+
 const phoneThumbnails = [
-    '/cellphone_thumbnails/anton-maksimov-5642-su-R2ljPFJju1s-unsplash.jpg',
-    '/cellphone_thumbnails/du-BZNZ_N5qU5Y-unsplash.jpg',
-    '/cellphone_thumbnails/insung-yoon-dRUqU4RpeOE-unsplash.jpg',
-    '/cellphone_thumbnails/joel-rohland-MCL2xxjZJvs-unsplash.jpg',
-    '/cellphone_thumbnails/kat-2lijqbLePBM-unsplash.jpg',
-    '/cellphone_thumbnails/kenny-leys-Imc_FwGf92U-unsplash.jpg',
-    '/cellphone_thumbnails/kilian-seiler-PZLgTUAhxMM-unsplash.jpg',
-    '/cellphone_thumbnails/max-bushuev-U46ib4fUniY-unsplash.jpg',
-    '/cellphone_thumbnails/vitalijus-y2QUqmEzjzA-unsplash.jpg',
-    '/cellphone_thumbnails/vlad-cAtU4XU8NHg-unsplash.jpg'
+    getPath('cellphone_thumbnails/anton-maksimov-5642-su-R2ljPFJju1s-unsplash.jpg'),
+    getPath('cellphone_thumbnails/du-BZNZ_N5qU5Y-unsplash.jpg'),
+    getPath('cellphone_thumbnails/insung-yoon-dRUqU4RpeOE-unsplash.jpg'),
+    getPath('cellphone_thumbnails/joel-rohland-MCL2xxjZJvs-unsplash.jpg'),
+    getPath('cellphone_thumbnails/kat-2lijqbLePBM-unsplash.jpg'),
+    getPath('cellphone_thumbnails/kenny-leys-Imc_FwGf92U-unsplash.jpg'),
+    getPath('cellphone_thumbnails/kilian-seiler-PZLgTUAhxMM-unsplash.jpg'),
+    getPath('cellphone_thumbnails/max-bushuev-U46ib4fUniY-unsplash.jpg'),
+    getPath('cellphone_thumbnails/vitalijus-y2QUqmEzjzA-unsplash.jpg'),
+    getPath('cellphone_thumbnails/vlad-cAtU4XU8NHg-unsplash.jpg')
 ];
 
 const macbookThumbnails = [
