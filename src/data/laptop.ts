@@ -21,7 +21,7 @@ export const laptopData: SeriesData[] = [
         id: 'windows-laptop',
         title: 'Windows Laptop',
         subtitle: 'PC Laptop Repair',
-        image: 'https://www.gophermods.com/wp-content/uploads/2020/04/Windows-Laptop-Repair-200x200-1.jpg',
+        image: 'https://www.gophermods.com/wp-content/uploads/2019/02/toshiba-chromebook-repair.jpg',
         description: [
             "HP, Dell, Lenovo, Asus, Acer, and more.",
             "Hinge repair, charging port replacement, screen repair."
@@ -31,7 +31,7 @@ export const laptopData: SeriesData[] = [
         id: 'chromebook-repair',
         title: 'Chromebook',
         subtitle: 'Chromebook Repair',
-        image: 'https://www.gophermods.com/wp-content/uploads/2020/04/Chromebook-Repair-200x200-1.jpg',
+        image: 'https://www.gophermods.com/wp-content/uploads/2019/02/samsung-chromebook-repair.png',
         description: [
             "Affordable repairs for school and personal Chromebooks.",
             "Screen and battery replacements."

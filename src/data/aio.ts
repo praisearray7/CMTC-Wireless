@@ -11,7 +11,7 @@ export const aioData: SeriesData[] = [
         id: 'imac-repair',
         title: 'iMac',
         subtitle: 'Apple iMac Repair',
-        image: 'https://www.gophermods.com/wp-content/uploads/2020/04/iMac-Repair-200x200-1.jpg',
+        image: 'https://m.media-amazon.com/images/I/71IYzDh2N9L._SX679_.jpg',
         description: [
             "iMac stuck on apple logo? Slow performance? We can help.",
             "SSD upgrades and screen repairs."
@@ -21,7 +21,7 @@ export const aioData: SeriesData[] = [
         id: 'hp-aio',
         title: 'HP All-In-One',
         subtitle: 'HP AIO Repair',
-        image: 'https://www.gophermods.com/wp-content/uploads/2020/04/HP-AIO-Repair-200x200-1.jpg',
+        image: 'https://m.media-amazon.com/images/I/71X-bbWtCAL._SX522_.jpg',
         description: [
             "Touchscreen repair and hard drive replacement.",
             "HP Pavilion and Envy All-in-Ones."
@@ -31,7 +31,7 @@ export const aioData: SeriesData[] = [
         id: 'dell-aio',
         title: 'Dell All-In-One',
         subtitle: 'Dell AIO Repair',
-        image: 'https://www.gophermods.com/wp-content/uploads/2020/04/Dell-AIO-Repair-200x200-1.jpg',
+        image: 'https://www.designinfo.in/wp-content/uploads/2023/07/dell-inspiron-24-5415-all-in-one-desktop-1-485x485.webp',
         description: [
             "Inspiron and OptiPlex All-in-One repairs.",
             "Power supply and motherboard issues."

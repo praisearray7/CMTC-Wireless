@@ -25,7 +25,11 @@ const IpadRepair = () => {
                         <Grid container spacing={3} justifyContent="center">
                             {ipadData.map((item) => (
                                 <Grid size={{ xs: 6, sm: 6, md: 3 }} key={item.id}>
-                                    <Link to={`/${item.id}`} style={{ textDecoration: 'none' }}>
+                                    <Link
+                                        to="/contact-us"
+                                        state={{ deviceModel: item.title, serviceNeeded: "Repair Service" }}
+                                        style={{ textDecoration: 'none' }}
+                                    >
                                         <Paper
                                             elevation={0}
                                             sx={{

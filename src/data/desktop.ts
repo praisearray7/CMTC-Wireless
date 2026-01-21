@@ -11,7 +11,7 @@ export const desktopData: SeriesData[] = [
         id: 'gaming-desktop',
         title: 'Gaming Desktop',
         subtitle: 'Gaming PC Repair',
-        image: 'https://www.gophermods.com/wp-content/uploads/2020/04/Gaming-PC-Repair-200x200-1.jpg',
+        image: 'https://images.pexels.com/photos/30469969/pexels-photo-30469969.jpeg?_gl=1*7tyw9x*_ga*ODU3ODg3MjU0LjE3Njg5ODU3OTE.*_ga_8JE65Q40S6*czE3Njg5OTUxNDckbzMkZzEkdDE3Njg5OTU5MjAkajIwJGwwJGgw',
         description: [
             "High performance repairs for high performance machines.",
             "Water cooling maintenance, GPU upgrades, and overheating fixes."
@@ -21,7 +21,7 @@ export const desktopData: SeriesData[] = [
         id: 'workstation',
         title: 'Workstation',
         subtitle: 'Professional Workstation Repair',
-        image: 'https://www.gophermods.com/wp-content/uploads/2020/04/Workstation-Repair-200x200-1.jpg',
+        image: 'https://images.pexels.com/photos/13162091/pexels-photo-13162091.jpeg?_gl=1*1g0248v*_ga*ODU3ODg3MjU0LjE3Njg5ODU3OTE.*_ga_8JE65Q40S6*czE3Njg5OTUxNDckbzMkZzEkdDE3Njg5OTU1NzMkajMkbDAkaDA.',
         description: [
             "Reliable repairs for business critical workstations.",
             "Xeon processors, ECC RAM, and Quadro GPU support."
@@ -31,7 +31,7 @@ export const desktopData: SeriesData[] = [
         id: 'home-office',
         title: 'Home/Office PC',
         subtitle: 'Standard Desktop Repair',
-        image: 'https://www.gophermods.com/wp-content/uploads/2020/04/Home-Office-PC-Repair-200x200-1.jpg',
+        image: 'https://images.pexels.com/photos/14982340/pexels-photo-14982340.jpeg?_gl=1*unumz6*_ga*ODU3ODg3MjU0LjE3Njg5ODU3OTE.*_ga_8JE65Q40S6*czE3Njg5OTUxNDckbzMkZzEkdDE3Njg5OTU4MTEkajU5JGwwJGgw',
         description: [
             "Everyday computer repairs for browsing, email, and office work.",
             "Power supply replacement, hard drive checking, and cleanup."
