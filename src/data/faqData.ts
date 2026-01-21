@@ -270,16 +270,7 @@ export const faqData: Record<string, FAQItem[]> = {
             answer: "Most likely. Some newer models have soldered RAM, but many can still be upgraded. We can check your specific model."
         }
     ],
-    'smartwatch': [
-        {
-            question: 'Can you replace the glass on my Apple Watch?',
-            answer: 'Yes, we offer screen replacements for Apple Watch and other smartwatches.'
-        },
-        {
-            question: 'Do you verify water resistance after repair?',
-            answer: 'We use original-grade adhesives, but we generally recommend avoiding swimming with a repaired device to be safe.'
-        }
-    ],
+
     'buy': [
         {
             question: 'Are these devices new or used?',
