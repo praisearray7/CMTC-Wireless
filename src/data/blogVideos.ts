@@ -52,52 +52,50 @@ const pcThumbnails = [
     'https://images.pexels.com/photos/18966456/pexels-photo-18966456.jpeg?_gl=1*8sprmr*_ga*ODU3ODg3MjU0LjE3Njg5ODU3OTE.*_ga_8JE65Q40S6*czE3Njg5ODU3OTAkbzEkZzEkdDE3Njg5ODY2OTEkajU5JGwwJGgw'  // 10. Abstract Tech (New)
 ];
 
-// Base URL for correct asset loading in production (GitHub Pages)
-const BASE_URL = import.meta.env.BASE_URL;
-
 const phoneThumbnails = [
-    `${BASE_URL}Iphone Thumbnail/anton-maksimov-5642-su-R2ljPFJju1s-unsplash.jpg`,
-    `${BASE_URL}Iphone Thumbnail/du-BZNZ_N5qU5Y-unsplash.jpg`,
-    `${BASE_URL}Iphone Thumbnail/insung-yoon-dRUqU4RpeOE-unsplash.jpg`,
-    `${BASE_URL}Iphone Thumbnail/joel-rohland-MCL2xxjZJvs-unsplash.jpg`,
-    `${BASE_URL}Iphone Thumbnail/kat-2lijqbLePBM-unsplash.jpg`,
-    `${BASE_URL}Iphone Thumbnail/kenny-leys-Imc_FwGf92U-unsplash.jpg`,
-    `${BASE_URL}Iphone Thumbnail/kilian-seiler-PZLgTUAhxMM-unsplash.jpg`,
-    `${BASE_URL}Iphone Thumbnail/max-bushuev-U46ib4fUniY-unsplash.jpg`,
-    `${BASE_URL}Iphone Thumbnail/vitalijus-y2QUqmEzjzA-unsplash.jpg`,
-    `${BASE_URL}Iphone Thumbnail/vlad-cAtU4XU8NHg-unsplash.jpg`
+    '/Iphone Thumbnail/anton-maksimov-5642-su-R2ljPFJju1s-unsplash.jpg',
+    '/Iphone Thumbnail/du-BZNZ_N5qU5Y-unsplash.jpg',
+    '/Iphone Thumbnail/insung-yoon-dRUqU4RpeOE-unsplash.jpg',
+    '/Iphone Thumbnail/joel-rohland-MCL2xxjZJvs-unsplash.jpg',
+    '/Iphone Thumbnail/kat-2lijqbLePBM-unsplash.jpg',
+    '/Iphone Thumbnail/kenny-leys-Imc_FwGf92U-unsplash.jpg',
+    '/Iphone Thumbnail/kilian-seiler-PZLgTUAhxMM-unsplash.jpg',
+    '/Iphone Thumbnail/max-bushuev-U46ib4fUniY-unsplash.jpg',
+    '/Iphone Thumbnail/vitalijus-y2QUqmEzjzA-unsplash.jpg',
+    '/Iphone Thumbnail/vlad-cAtU4XU8NHg-unsplash.jpg'
 ];
 
 const macbookThumbnails = [
-    'https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80', // 1. Laptop Screen (Fresh)
-    'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80', // 2. MacBook Desk (Existing)
-    'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80', // 3. Keyboard/Mouse (New Replacement)
-    'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80', // 4. Repair vibe (Existing)
-    'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80', // 5. Laptop Code (Fresh)
-    'https://images.unsplash.com/photo-1516387938699-a93567ec168e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80', // 6. Typing (Existing)
-    'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80', // 7. Tech parts (Fresh)
-    'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80', // 8. Screen (Existing - wait duplicated? let's use another)
-    'https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80', // 9. Laptop Work (Fresh)
+    'https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80', // 1. Laptop Screen (Fresh)
+    'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80', // 2. MacBook Desk (Existing)
+    'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80', // 3. Keyboard/Mouse (New Replacement)
+    'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80', // 4. Repair vibe (Existing)
+    'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80', // 5. Laptop Code (Fresh)
+    'https://images.unsplash.com/photo-1516387938699-a93567ec168e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80', // 6. Typing (Existing)
+    'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80', // 7. Tech parts (Fresh)
+    'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80', // 8. Screen (Existing - wait duplicated? let's use another)
+    'https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80', // 9. Laptop Work (Fresh)
     macbookThumb // 10. Local Asset (Guaranteed to work)
 ];
 
 const logicBoardThumbnails = [
-    'https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80', // Circuit Board
-    'https://images.pexels.com/photos/343457/pexels-photo-343457.jpeg?auto=compress&cs=tinysrgb&w=500&h=300&dpr=1', // 3. Electronics (New)
-    'https://images.pexels.com/photos/6477209/pexels-photo-6477209.jpeg?_gl=1*dq6yk5*_ga*ODU3ODg3MjU0LjE3Njg5ODU3OTE.*_ga_8JE65Q40S6*czE3Njg5ODU3OTAkbzEkZzEkdDE3Njg5ODczNDkkajUzJGwwJGgw&w=500', // 4. Chipset (New)
-    'https://images.pexels.com/photos/6128826/pexels-photo-6128826.jpeg?_gl=1*r38ekh*_ga*ODU3ODg3MjU0LjE3Njg5ODU3OTE.*_ga_8JE65Q40S6*czE3Njg5ODU3OTAkbzEkZzEkdDE3Njg5ODc0MzQkajQwJGwwJGgw&w=500', // 5. PCB Macro (New)
-    'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80', // 6. Circuit Traces (Working - Keeping it)
-    'https://images.pexels.com/photos/6754838/pexels-photo-6754838.jpeg?_gl=1*da9ig8*_ga*ODU3ODg3MjU0LjE3Njg5ODU3OTE.*_ga_8JE65Q40S6*czE3Njg5ODU3OTAkbzEkZzEkdDE3Njg5ODc1MzckajE1JGwwJGgw&w=500', // 7. Hardware (New)
-    'https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=500&h=300&dpr=1', // 8. Repair (New)
-    'https://images.pexels.com/photos/163100/circuit-circuit-board-resistor-computer-163100.jpeg?auto=compress&cs=tinysrgb&w=500&h=300&dpr=1', // 9. Tech (New)
-    'https://images.unsplash.com/photo-1562408590-e32931084e23?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'  // 10. Components (New)
+    logicBoardThumb, // User's local image - Priority 1
+    'https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80', // Circuit Board
+    'https://images.pexels.com/photos/343457/pexels-photo-343457.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', // 3. Electronics (New)
+    'https://images.pexels.com/photos/6477209/pexels-photo-6477209.jpeg?_gl=1*dq6yk5*_ga*ODU3ODg3MjU0LjE3Njg5ODU3OTE.*_ga_8JE65Q40S6*czE3Njg5ODU3OTAkbzEkZzEkdDE3Njg5ODczNDkkajUzJGwwJGgw', // 4. Chipset (New)
+    'https://images.pexels.com/photos/6128826/pexels-photo-6128826.jpeg?_gl=1*r38ekh*_ga*ODU3ODg3MjU0LjE3Njg5ODU3OTE.*_ga_8JE65Q40S6*czE3Njg5ODU3OTAkbzEkZzEkdDE3Njg5ODc0MzQkajQwJGwwJGgw', // 5. PCB Macro (New)
+    'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80', // 6. Circuit Traces (Working - Keeping it)
+    'https://images.pexels.com/photos/6754838/pexels-photo-6754838.jpeg?_gl=1*da9ig8*_ga*ODU3ODg3MjU0LjE3Njg5ODU3OTE.*_ga_8JE65Q40S6*czE3Njg5ODU3OTAkbzEkZzEkdDE3Njg5ODc1MzckajE1JGwwJGgw', // 7. Hardware (New)
+    'https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', // 8. Repair (New)
+    'https://images.pexels.com/photos/163100/circuit-circuit-board-resistor-computer-163100.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', // 9. Tech (New)
+    'https://images.unsplash.com/photo-1562408590-e32931084e23?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'  // 10. Components (New)
 ];
 
 // ----------------------------------------------------------------------
 // SECTION 1: MACBOOK REPAIRS
 // ----------------------------------------------------------------------
 const macbookVideos: VideoData[] = generatePlaceholders(
-    20, 
+    100, 
     'Laptop Repair', 
     '1v3R2eqYYU6GWtrHFBbsRXEdggma_wxwh', 
     macbookThumbnails, 
@@ -107,7 +105,7 @@ const macbookVideos: VideoData[] = generatePlaceholders(
 // SECTION 2: PC CUSTOM BUILDS
 // ----------------------------------------------------------------------
 const pcVideos: VideoData[] = generatePlaceholders(
-    20, 
+    100, 
     'Custom Builds', 
     '1N8vswoII1zu2g_yfGZvL7zHwcCT5bmeu', 
     pcThumbnails, 
@@ -118,7 +116,7 @@ const pcVideos: VideoData[] = generatePlaceholders(
 // SECTION 3: CELL PHONE REPAIRS
 // ----------------------------------------------------------------------
 const phoneVideos: VideoData[] = generatePlaceholders(
-    20, 
+    100, 
     'Mobile Repair', 
     '1T-vw8ipPax6YjME1UzUqJs6uo3M9n89J', 
     phoneThumbnails, 
@@ -129,7 +127,7 @@ const phoneVideos: VideoData[] = generatePlaceholders(
 // SECTION 4: LOGIC BOARD MICROSOLDERING
 // ----------------------------------------------------------------------
 const logicBoardVideos: VideoData[] = generatePlaceholders(
-    20, 
+    100, 
     'Micro Soldering', 
     '1yLD3ib0-Di-4lQGtmsmvLwM2oeJ0wFJ9', 
     logicBoardThumbnails, 

@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
-import { Box, Typography, Grid, Paper, Breadcrumbs } from '@mui/material';
+import { Box, Typography, Grid, Paper, Breadcrumbs, Divider, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Tablet, Battery, Zap, Monitor, Volume2, Camera, Droplets, RefreshCw, CircleDot, Unlock, Maximize, Touchpad } from 'lucide-react';
 import { ipadData } from '../data/ipad';
 import RepairServiceLayout from '../components/RepairServiceLayout';
 
@@ -15,59 +17,227 @@ const IpadRepair = () => {
                 </Breadcrumbs>
             }
             bottomContent={
-                <Box sx={{ mb: 8, textAlign: 'center', maxWidth: '1200px', mx: 'auto' }}>
-                    <Typography variant="h5" sx={{ fontWeight: 700, color: '#333', mb: 4 }}>
-                        Select your iPad Model
-                    </Typography>
+                <>
+                    <Box sx={{ mb: 8, textAlign: 'center', maxWidth: '1200px', mx: 'auto' }}>
+                        <Typography variant="h5" sx={{ fontWeight: 700, color: '#333', mb: 4 }}>
+                            Select your iPad Model
+                        </Typography>
 
-                    <Grid container spacing={3} justifyContent="center">
-                        {ipadData.map((item) => (
-                            <Grid size={{ xs: 6, sm: 6, md: 3 }} key={item.id}>
-                                <Link to={`/${item.id}`} style={{ textDecoration: 'none' }}>
-                                    <Paper
-                                        elevation={0}
-                                        sx={{
-                                            pt: "20px",
-                                            pb: "20px",
-                                            px: "20px",
-                                            display: "flex",
-                                            flexDirection: "column",
-                                            alignItems: "center",
-                                            cursor: "pointer",
-                                            borderRadius: "18px",
-                                            background: "transparent",
-                                            position: "relative",
-                                            overflow: "visible",
-                                            zIndex: 1,
-                                            transition: "all 0.35s ease",
-                                            "&:hover": {
-                                                pb: "20px",
-                                                zIndex: 10,
-                                                background: "#fff",
-                                                boxShadow: "0px 20px 40px rgba(0,0,0,0.15)",
-                                            },
-                                        }}
-                                    >
-                                        <Box
-                                            component="img"
-                                            src={item.image}
-                                            alt={item.title}
+                        <Grid container spacing={3} justifyContent="center">
+                            {ipadData.map((item) => (
+                                <Grid size={{ xs: 6, sm: 6, md: 3 }} key={item.id}>
+                                    <Link to={`/${item.id}`} style={{ textDecoration: 'none' }}>
+                                        <Paper
+                                            elevation={0}
                                             sx={{
-                                                width: "100%",
-                                                maxWidth: 180,
-                                                height: "auto",
-                                                objectFit: "contain",
-                                                mb: 2,
-                                                transition: "none",
+                                                pt: "20px",
+                                                pb: "20px",
+                                                px: "20px",
+                                                display: "flex",
+                                                flexDirection: "column",
+                                                alignItems: "center",
+                                                cursor: "pointer",
+                                                borderRadius: "18px",
+                                                background: "transparent",
+                                                position: "relative",
+                                                overflow: "visible",
+                                                zIndex: 1,
+                                                transition: "all 0.35s ease",
+                                                "&:hover": {
+                                                    pb: "20px",
+                                                    zIndex: 10,
+                                                    background: "#fff",
+                                                    boxShadow: "0px 20px 40px rgba(0,0,0,0.15)",
+                                                },
                                             }}
-                                        />
-                                        <Typography variant="h6" sx={{ color: "#1a1a1a", fontWeight: 600, textAlign: 'center' }}>{item.title}</Typography>
+                                        >
+                                            <Box
+                                                component="img"
+                                                src={item.image}
+                                                alt={item.title}
+                                                sx={{
+                                                    width: "100%",
+                                                    maxWidth: 180,
+                                                    height: "auto",
+                                                    objectFit: "contain",
+                                                    mb: 2,
+                                                    transition: "none",
+                                                }}
+                                            />
+                                            <Typography variant="h6" sx={{ color: "#1a1a1a", fontWeight: 600, textAlign: 'center' }}>{item.title}</Typography>
+                                        </Paper>
+                                    </Link>
+                                </Grid>
+                            ))}
+                        </Grid>
+                    </Box>
+
+                    <Divider sx={{ my: 8, opacity: 0.1 }} />
+
+                    {/* Most Popular Repairs */}
+                    <Box sx={{ mb: 8 }}>
+                        <Typography variant="h4" sx={{ fontWeight: 700, color: '#333', mb: 4, textAlign: 'center' }}>
+                            Most Popular Repairs
+                        </Typography>
+                        <Grid container spacing={3}>
+                            {[
+                                { title: "Glass Replacement", price: "$79 - $189", desc: "Replace cracked digitizer glass (if separate from LCD).", icon: <Tablet size={32} color="#78E335" /> },
+                                { title: "LCD Screen Repair", price: "$129 - $349", desc: "Fix bleeding colors, dead pixels, or black screens.", icon: <Monitor size={32} color="#78E335" /> },
+                                { title: "Battery Replacement", price: "$99 - $149", desc: "New battery for all-day life and peak performance.", icon: <Battery size={32} color="#78E335" /> },
+                                { title: "Charging Port Repair", price: "$89 - $129", desc: "Fix loose or broken Lightning / USB-C ports.", icon: <Zap size={32} color="#78E335" /> },
+                                { title: "Home Button Repair", price: "$69+", desc: "Fix stuck or unresponsive home buttons.", icon: <CircleDot size={32} color="#78E335" /> },
+                                { title: "Unlock Services", price: "Varies", desc: "Carrier unlocks and software resets.", icon: <Unlock size={32} color="#78E335" /> },
+                                { title: "Water Damage Cleaning", price: "$99", desc: "Ultrasonic cleaning to remove corrosion.", icon: <Droplets size={32} color="#78E335" /> },
+                                { title: "Camera Repair", price: "$79+", desc: "Fix blurry photos or black camera screens.", icon: <Camera size={32} color="#78E335" /> },
+                                { title: "Frame Straightening", price: "$49+", desc: "Reshape bent iPad housings (common on Pros).", icon: <Maximize size={32} color="#78E335" /> }
+                            ].map((item, index) => (
+                                <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
+                                    <Paper elevation={0} sx={{
+                                        p: 3,
+                                        height: '100%',
+                                        bgcolor: '#fff',
+                                        border: '1px solid #eee',
+                                        borderRadius: 4,
+                                        boxShadow: '0 4px 20px rgba(0,0,0,0.03)',
+                                        transition: 'all 0.3s ease',
+                                        '&:hover': {
+                                            transform: 'translateY(-5px)',
+                                            boxShadow: '0 12px 30px rgba(120, 227, 53, 0.15)',
+                                            borderColor: '#78E335'
+                                        }
+                                    }}>
+                                        <Box sx={{ mb: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                            <Box sx={{ p: 1.5, borderRadius: 2, bgcolor: '#f0fdf4' }}>
+                                                {item.icon}
+                                            </Box>
+                                            <Typography variant="subtitle1" sx={{ color: '#78E335', fontWeight: 700 }}>
+                                                {item.price}
+                                            </Typography>
+                                        </Box>
+                                        <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: '#2C3E50' }}>{item.title}</Typography>
+                                        <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>{item.desc}</Typography>
                                     </Paper>
-                                </Link>
-                            </Grid>
+                                </Grid>
+                            ))}
+                        </Grid>
+                    </Box>
+
+                    <Divider sx={{ my: 8, opacity: 0.1 }} />
+
+                    {/* Common Issues Section */}
+                    <Box sx={{ mb: 8 }}>
+                        <Typography variant="h4" sx={{ fontWeight: 700, color: '#333', mb: 4, textAlign: 'center' }}>
+                            Common Issues & Solutions
+                        </Typography>
+                        <Grid container spacing={3}>
+                            {[
+                                {
+                                    issue: "Spiderweb Cracked Glass",
+                                    solution: "If the screen still lights up fine, we often replace just the top glass digitizer.",
+                                    icon: <Tablet size={24} />
+                                },
+                                {
+                                    issue: "Bent Chassis / Frame",
+                                    solution: "iPad Pros can bend easily. We gently reshape the frame to fit the new screen.",
+                                    icon: <Maximize size={24} />
+                                },
+                                {
+                                    issue: "Boot Loop / Apple Logo",
+                                    solution: "Failed updates can cause this. We restore firmware without data loss if possible.",
+                                    icon: <RefreshCw size={24} />
+                                },
+                                {
+                                    issue: "Slow Charging / Not Charging",
+                                    solution: "Usually a dirty or damaged charge port. We clean or microsolder a new one.",
+                                    icon: <Zap size={24} />
+                                },
+                                {
+                                    issue: "Ghost Touch",
+                                    solution: "iPad typing on its own? The digitizer layer is damaged. Replacement fixes it.",
+                                    icon: <Touchpad size={24} />
+                                },
+                                {
+                                    issue: "No Sound",
+                                    solution: "Blown speakers or stuck headphone mode. We diagnose audio ICs.",
+                                    icon: <Volume2 size={24} />
+                                }
+                            ].map((item, index) => (
+                                <Grid size={{ xs: 12, md: 6 }} key={index}>
+                                    <Paper elevation={0} sx={{
+                                        p: 3,
+                                        display: 'flex',
+                                        gap: 2,
+                                        border: '1px solid #f0f0f0',
+                                        borderRadius: 3,
+                                        '&:hover': { bgcolor: '#fafafa' }
+                                    }}>
+                                        <Box sx={{
+                                            minWidth: 48,
+                                            height: 48,
+                                            borderRadius: '50%',
+                                            bgcolor: '#78E335',
+                                            color: '#fff',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center'
+                                        }}>
+                                            {item.icon}
+                                        </Box>
+                                        <Box>
+                                            <Typography variant="h6" sx={{ fontWeight: 700, mb: 0.5, fontSize: '1.1rem' }}>{item.issue}</Typography>
+                                            <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>{item.solution}</Typography>
+                                        </Box>
+                                    </Paper>
+                                </Grid>
+                            ))}
+                        </Grid>
+                    </Box>
+
+                    <Divider sx={{ my: 8 }} />
+
+                    {/* FAQ Section */}
+                    <Box sx={{ mb: 8, maxWidth: '900px', mx: 'auto' }}>
+                        <Typography variant="h4" sx={{ fontWeight: 700, color: '#333', mb: 4, textAlign: 'center' }}>
+                            Frequently Asked Questions
+                        </Typography>
+                        {[
+                            {
+                                q: "Is it worth fixing an old iPad?",
+                                a: "Often yes, as new iPads are expensive. If the repair cost is less than 50% of a replacement, we recommend it."
+                            },
+                            {
+                                q: "How long does the repair take?",
+                                a: "iPad repairs are complex due to strong adhesives. They typically take 1-2 business days to ensure a perfect seal."
+                            },
+                            {
+                                q: "Do you fix bent iPads?",
+                                a: "Yes, we have specialized tools to straighten bent frames, which allows the new screen to sit flush and secure."
+                            },
+                            {
+                                q: "Do you lose my data?",
+                                a: "No, we strictly repair the hardware (screen/battery). Your apps, photos, and settings remain untouched."
+                            },
+                            {
+                                q: "Are your parts original?",
+                                a: "We use high-quality OEM-grade parts that match the original performance and color quality."
+                            }
+                        ].map((faq, index) => (
+                            <Accordion key={index} elevation={0} sx={{
+                                mb: 2,
+                                border: '1px solid #E0E0E0',
+                                borderRadius: 2,
+                                '&:before': { display: 'none' }
+                            }}>
+                                <AccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: '#78E335' }} />}>
+                                    <Typography variant="h6" sx={{ fontWeight: 600, fontSize: '1.1rem' }}>{faq.q}</Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                    <Typography color="text.secondary">{faq.a}</Typography>
+                                </AccordionDetails>
+                            </Accordion>
                         ))}
-                    </Grid>
-                </Box>
+                    </Box>
+                </>
             }
         >
             <Typography variant="h2" component="h1" sx={{ fontWeight: 400, color: '#333', mb: 2, fontFamily: 'serif' }}>

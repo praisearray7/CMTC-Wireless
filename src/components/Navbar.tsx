@@ -181,6 +181,7 @@ const Navbar = () => {
                                                 hideBackdrop
                                                 disableScrollLock
                                                 autoFocus={false}
+                                                disableRestoreFocus
                                                 sx={{ pointerEvents: 'none' }}
                                                 MenuListProps={{
                                                     onMouseEnter: handleMenuEnter,
