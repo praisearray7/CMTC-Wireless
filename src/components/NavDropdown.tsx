@@ -76,6 +76,8 @@ const NavDropdown = ({ title, items, getLink }: NavDropdownProps) => {
                 onClose={handleClose}
                 hideBackdrop
                 disableScrollLock
+                autoFocus={false}
+                disableRestoreFocus
                 sx={{ pointerEvents: 'none' }}
                 MenuListProps={{
                     onMouseEnter: handleMenuEnter,

@@ -8,6 +8,7 @@ import RepairServiceLayout from '../components/RepairServiceLayout';
 const CellphoneRepair = () => {
     return (
         <RepairServiceLayout
+            faqCategory="cell-phone"
             breadcrumbs={
                 <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb" sx={{ mb: 2 }}>
                     <Link to="/" style={{ color: '#546E7A', textDecoration: 'none' }}>Home</Link>
@@ -75,7 +76,7 @@ const CellphoneRepair = () => {
             </Typography>
 
             <Typography variant="body1" paragraph sx={{ color: '#546E7A', mb: 3, lineHeight: 1.6 }}>
-                Looking for a reliable cell phone repair shop? We repair Samsung, LG, Motorola, Google Pixel, and many other brands. Whether you have a broken screen, bad battery, or charging issues, we can help.
+                Looking for a reliable cell phone repair shop? We repair Samsung, Google Pixel, Motorola, OnePlus, Nothing, Xiaomi, Realme, Oppo, Vivo, and many other brands. Whether you have a broken screen, bad battery, or charging issues, we can help.
             </Typography>
 
             <Typography variant="h6" sx={{ color: '#333', mb: 2, fontWeight: 600 }}>

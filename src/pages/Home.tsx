@@ -11,6 +11,8 @@ import StarIcon from '@mui/icons-material/Star';
 
 import { imagePaths, getImagePath } from '../data/imagePaths';
 import ServiceGridBanner from '../components/ServiceGridBanner';
+import GoogleReviews from '../components/GoogleReviews';
+import FAQ from '../components/FAQ';
 
 const Home = () => {
     // CMTC Brand Colors
@@ -335,6 +337,12 @@ const Home = () => {
                     />
                 </Container>
             </Box>
+
+            {/* Google Reviews Section */}
+            <GoogleReviews />
+
+            {/* FAQ Section */}
+            <FAQ />
 
         </>
     );

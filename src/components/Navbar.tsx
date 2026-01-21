@@ -180,6 +180,7 @@ const Navbar = () => {
                                                 onClose={handleMenuLeave}
                                                 hideBackdrop
                                                 disableScrollLock
+                                                autoFocus={false}
                                                 sx={{ pointerEvents: 'none' }}
                                                 MenuListProps={{
                                                     onMouseEnter: handleMenuEnter,

@@ -1,23 +1,26 @@
-
 import React, { type ReactNode } from 'react';
 import { Box, Container, Grid } from '@mui/material';
 import WhyChoose from './WhyChoose';
+import GoogleReviews from './GoogleReviews';
+import FAQ from './FAQ';
 
 interface RepairServiceLayoutProps {
     breadcrumbs: ReactNode;
     children: ReactNode; // Left column content
     rightContent?: ReactNode; // Right column content (defaults to WhyChoose)
     bottomContent?: ReactNode; // Bottom section (e.g., model grid)
+    faqCategory?: string;
 }
 
 const RepairServiceLayout: React.FC<RepairServiceLayoutProps> = ({
     breadcrumbs,
     children,
     rightContent,
-    bottomContent
+    bottomContent,
+    faqCategory
 }) => {
     return (
-        <Box sx={{ pb: 10 }}>
+        <Box sx={{ pb: 0 }}>
             <Box sx={{ bgcolor: '#fff', py: 6, mb: 6 }}>
                 <Container maxWidth="xl">
                     <Grid container spacing={8}>
@@ -40,6 +43,9 @@ const RepairServiceLayout: React.FC<RepairServiceLayoutProps> = ({
                     {bottomContent}
                 </Container>
             )}
+
+            <GoogleReviews />
+            <FAQ category={faqCategory} />
         </Box>
     );
 };

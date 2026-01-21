@@ -7,6 +7,7 @@ import RepairServiceLayout from '../components/RepairServiceLayout';
 const IphoneRepair = () => {
     return (
         <RepairServiceLayout
+            faqCategory="cell-phone"
             breadcrumbs={
                 <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb" sx={{ mb: 2 }}>
                     <Link to="/" style={{ color: '#546E7A', textDecoration: 'none' }}>Home</Link>

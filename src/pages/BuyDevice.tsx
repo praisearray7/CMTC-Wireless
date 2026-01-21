@@ -6,6 +6,8 @@ import FactCheckOutlinedIcon from '@mui/icons-material/FactCheckOutlined';
 import SavingsOutlinedIcon from '@mui/icons-material/SavingsOutlined';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import { imagePaths, getImagePath } from '../data/imagePaths';
+import GoogleReviews from '../components/GoogleReviews';
+import FAQ from '../components/FAQ';
 
 const BuyDevice = () => {
     const navigate = useNavigate();
@@ -18,7 +20,7 @@ const BuyDevice = () => {
     ];
 
     return (
-        <Box sx={{ bgcolor: '#f5f5f5', minHeight: '100vh', py: 8 }}>
+        <Box sx={{ bgcolor: '#f5f5f5', minHeight: '100vh', pt: 8, pb: 0 }}>
             <Container maxWidth="xl">
                 <Box sx={{ textAlign: 'center', mb: 8 }}>
                     <Typography variant="h2" sx={{ fontWeight: 800, color: '#2C3E50', mb: 2 }}>Certified Pre-Owned Devices</Typography>
@@ -134,7 +136,7 @@ const BuyDevice = () => {
                 </Box>
 
                 {/* BBB Accreditation Section */}
-                <Box sx={{ mt: 10, textAlign: 'center' }}>
+                <Box sx={{ mt: 6, mb: 12, textAlign: 'center' }}>
                     <Typography variant="h4" sx={{ fontWeight: 800, mb: 4, color: '#2C3E50' }}>
                         BBB Accreditation
                     </Typography>
@@ -146,7 +148,11 @@ const BuyDevice = () => {
                     />
                 </Box>
             </Container>
-        </Box >
+
+            {/* Google Reviews and FAQ */}
+            <GoogleReviews />
+            <FAQ category="buy" />
+        </Box>
     );
 };
 
