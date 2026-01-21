@@ -52,17 +52,20 @@ const pcThumbnails = [
     'https://images.pexels.com/photos/18966456/pexels-photo-18966456.jpeg?_gl=1*8sprmr*_ga*ODU3ODg3MjU0LjE3Njg5ODU3OTE.*_ga_8JE65Q40S6*czE3Njg5ODU3OTAkbzEkZzEkdDE3Njg5ODY2OTEkajU5JGwwJGgw'  // 10. Abstract Tech (New)
 ];
 
+// Base URL for correct asset loading in production (GitHub Pages)
+const BASE_URL = import.meta.env.BASE_URL;
+
 const phoneThumbnails = [
-    '/Iphone Thumbnail/anton-maksimov-5642-su-R2ljPFJju1s-unsplash.jpg',
-    '/Iphone Thumbnail/du-BZNZ_N5qU5Y-unsplash.jpg',
-    '/Iphone Thumbnail/insung-yoon-dRUqU4RpeOE-unsplash.jpg',
-    '/Iphone Thumbnail/joel-rohland-MCL2xxjZJvs-unsplash.jpg',
-    '/Iphone Thumbnail/kat-2lijqbLePBM-unsplash.jpg',
-    '/Iphone Thumbnail/kenny-leys-Imc_FwGf92U-unsplash.jpg',
-    '/Iphone Thumbnail/kilian-seiler-PZLgTUAhxMM-unsplash.jpg',
-    '/Iphone Thumbnail/max-bushuev-U46ib4fUniY-unsplash.jpg',
-    '/Iphone Thumbnail/vitalijus-y2QUqmEzjzA-unsplash.jpg',
-    '/Iphone Thumbnail/vlad-cAtU4XU8NHg-unsplash.jpg'
+    `${BASE_URL}Iphone Thumbnail/anton-maksimov-5642-su-R2ljPFJju1s-unsplash.jpg`,
+    `${BASE_URL}Iphone Thumbnail/du-BZNZ_N5qU5Y-unsplash.jpg`,
+    `${BASE_URL}Iphone Thumbnail/insung-yoon-dRUqU4RpeOE-unsplash.jpg`,
+    `${BASE_URL}Iphone Thumbnail/joel-rohland-MCL2xxjZJvs-unsplash.jpg`,
+    `${BASE_URL}Iphone Thumbnail/kat-2lijqbLePBM-unsplash.jpg`,
+    `${BASE_URL}Iphone Thumbnail/kenny-leys-Imc_FwGf92U-unsplash.jpg`,
+    `${BASE_URL}Iphone Thumbnail/kilian-seiler-PZLgTUAhxMM-unsplash.jpg`,
+    `${BASE_URL}Iphone Thumbnail/max-bushuev-U46ib4fUniY-unsplash.jpg`,
+    `${BASE_URL}Iphone Thumbnail/vitalijus-y2QUqmEzjzA-unsplash.jpg`,
+    `${BASE_URL}Iphone Thumbnail/vlad-cAtU4XU8NHg-unsplash.jpg`
 ];
 
 const macbookThumbnails = [
