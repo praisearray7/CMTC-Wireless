@@ -88,6 +88,7 @@ const VideoMarquee = ({ videos, onPlay }: VideoMarqueeProps) => {
                                         height="180"
                                         image={video.thumbnail}
                                         alt={video.title}
+                                        loading="lazy"
                                         sx={{ objectFit: 'cover' }}
                                     />
                                 ) : (
