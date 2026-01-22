@@ -163,7 +163,7 @@ export default function TransitionSlider({
                         key={idx}
                         onClick={() => triggerTransition(idx)}
                         aria-label={`Go to slide ${idx + 1}`}
-                        className={`hero-dot ${idx === active || idx === nextActive ? "active" : ""}`}
+                        className={`hero-dot ${idx === (nextActive !== null ? nextActive : active) ? "active" : ""}`}
                         style={{ outline: "none" }}
                     />
                 ))}
@@ -297,25 +297,90 @@ export default function TransitionSlider({
           100% { opacity: 1; transform: scale(1); }
         }
 
-        /* Dots */
+        /* Dots Container */
+        .dots-container {
+             perspective: 600px;
+        }
+
+        /* 3D Cube Dot */
         .hero-dot {
-          width: 12px;
-          height: 12px;
-          border-radius: 50%;
-          background-color: rgba(255, 255, 255, 0.5);
+          width: 16px;
+          height: 16px;
+          position: relative;
+          background: transparent;
           border: none;
-          cursor: pointer;
-          transition: all 0.3s ease;
           padding: 0;
+          cursor: pointer;
+          transform-style: preserve-3d;
+          transform-origin: center center -8px; /* Approx half size for pivot */
+          transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
+        /* Faces */
+        .hero-dot::before, .hero-dot::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            backface-visibility: hidden; /* Or visible for glass effect */
+        }
+
+        /* Front Face (Inactive/Outline) */
+        .hero-dot::before {
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            background: rgba(0, 0, 0, 0.1);
+            transform: rotateX(0deg);
+        }
+
+        /* Top Face (Active/Filled) */
+        .hero-dot::after {
+            background: #7DBA2F;
+            border: 1px solid #7DBA2F;
+            transform: rotateX(90deg) translateZ(8px) translateY(-8px); 
+            /* 
+               Geometry trick: 
+               By default ::after is at 0. 
+               We want it to be the "Top" face.
+               Rotate X 90 puts it flat.
+               Translate Z and Y positions it relative to the cube center.
+               Actually easier to just pivot the whole cube.
+            */
+            transform: rotateX(90deg) translateZ(8px); 
+            /* Wait, standard cube mapping:
+               Front: translateZ(8px)
+               Top: rotateX(90deg) translateZ(8px)
+               Origin: center center 0
+            */
+        }
+        
+        /* Correction for Cube Geometry assuming TransformOrigin is at center (0,0,0) - wait, css default is 50% 50% 0 */
+        
+        /* Let's try simpler: Cuboid Flip */
+        .hero-dot::before {
+             /* Front */
+             transform: translateZ(8px);
+        }
+        .hero-dot::after {
+             /* Top */
+             transform: rotateX(90deg) translateZ(8px);
+        }
+
         .hero-dot:hover {
-          background-color: rgba(255, 255, 255, 0.9);
-          transform: scale(1.2);
+             /* Slight tilt hint */
+             transform: rotateX(15deg);
         }
+
         .hero-dot.active {
-          background-color: #7DBA2F;
-          transform: scale(1.3);
-          box-shadow: 0 0 10px rgba(125, 186, 47, 0.6);
+             /* Rotate to show Top */
+             transform: rotateX(-90deg);
+        }
+
+        /* Add bottom shadow for realism */
+        .hero-dot.active {
+             box-shadow: 0 10px 10px rgba(0,0,0,0.2);
         }
       `}</style>
         </div>
