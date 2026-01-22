@@ -1,6 +1,5 @@
 
 
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Grid, Typography, Card, CardContent, Box, Button, Stack } from '@mui/material';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
@@ -12,6 +11,7 @@ import StarIcon from '@mui/icons-material/Star';
 import { imagePaths, getImagePath } from '../data/imagePaths';
 import ServiceGridBanner from '../components/ServiceGridBanner';
 import GoogleReviews from '../components/GoogleReviews';
+import TransitionSlider from '../components/TransitionSlider';
 import FAQ from '../components/FAQ';
 
 const Home = () => {
@@ -19,14 +19,10 @@ const Home = () => {
     const primaryGreen = '#78E335';
     // const darkNavy = '#2C3E50';
 
+    const carouselImages = imagePaths.carousel.map(path => getImagePath(path));
+
     // Hero Carousel Logic
-    const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setCurrentHeroSlide((prev) => (prev + 1) % 5);
-        }, 4000); // Change every 4 seconds
-        return () => clearInterval(timer);
-    }, []);
+    // const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
 
     return (
         <>
@@ -86,42 +82,12 @@ const Home = () => {
                         {/* Right: Modern Visuals */}
                         <Grid size={{ xs: 12, md: 6 }}>
                             <Box sx={{ position: 'relative', width: '100%', aspectRatio: '1/1', borderRadius: 4, overflow: 'hidden', boxShadow: '0 20px 80px rgba(0,0,0,0.1)' }}>
-                                {imagePaths.carousel.map((imgName, index) => (
-                                    <Box
-                                        key={imgName}
-                                        component="img"
-                                        src={getImagePath(imgName)}
-                                        alt={`Slide ${index + 1}`}
-                                        sx={{
-                                            position: 'absolute',
-                                            top: 0,
-                                            left: 0,
-                                            width: '100%',
-                                            height: '100%',
-                                            objectFit: 'cover',
-                                            transition: 'opacity 1s ease-in-out',
-                                            opacity: currentHeroSlide === index ? 1 : 0,
-                                            zIndex: currentHeroSlide === index ? 1 : 0
-                                        }}
-                                    />
-                                ))}
-                                {/* Carousel Indicators */}
-                                <Stack direction="row" spacing={1} sx={{ position: 'absolute', bottom: 20, left: '50%', transform: 'translateX(-50%)', zIndex: 2 }}>
-                                    {[0, 1, 2, 3, 4].map((index) => (
-                                        <Box
-                                            key={index}
-                                            onClick={() => setCurrentHeroSlide(index)}
-                                            sx={{
-                                                width: 10,
-                                                height: 10,
-                                                borderRadius: '50%',
-                                                bgcolor: currentHeroSlide === index ? '#78E335' : 'rgba(255,255,255,0.5)',
-                                                cursor: 'pointer',
-                                                transition: 'all 0.3s'
-                                            }}
-                                        />
-                                    ))}
-                                </Stack>
+                                <TransitionSlider
+                                    images={carouselImages}
+                                    height="100%"
+                                    showBottomBar={false}
+                                    intervalMs={4000}
+                                />
                             </Box>
                         </Grid>
                     </Grid>

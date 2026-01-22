@@ -29,6 +29,13 @@ export const imagePaths = {
     'cmtc3.jpg',
     'cmtc4.jpg',
     'cmtc5.jpg'
+  ],
+  // WowSlider Images
+  wowSlider: [
+    'wowslider/slide-1.png',
+    'wowslider/slide1-1-1400x550.jpg',
+    'wowslider/slide3-1-1400x550.jpg',
+    'wowslider/slide2-1.jpg'
   ]
 };
 

@@ -1,13 +1,15 @@
-
-import { Box, Container, Typography } from '@mui/material';
+import { Box } from '@mui/material';
+import TransitionSlider from '../components/TransitionSlider';
+import { imagePaths, getImagePath } from '../data/imagePaths';
 
 const PrepaidServices = () => {
+    // Get full paths for the slider images
+    // @ts-ignore
+    const sliderImages = imagePaths.wowSlider.map(path => getImagePath(path));
+
     return (
-        <Box sx={{ py: 10, textAlign: 'center', minHeight: '60vh' }}>
-            <Container>
-                <Typography variant="h3" sx={{ fontWeight: 700, mb: 2 }}>Prepaid Services</Typography>
-                <Typography variant="h6" color="textSecondary">Coming Soon</Typography>
-            </Container>
+        <Box sx={{ width: "100%", overflowX: "hidden" }}>
+            <TransitionSlider images={sliderImages} />
         </Box>
     );
 };
