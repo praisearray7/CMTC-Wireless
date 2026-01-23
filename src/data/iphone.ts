@@ -11,7 +11,7 @@ export const seriesData: SeriesData[] = [
         id: 'iphone-17-series',
         title: 'iPhone 17 Series Repair',
         subtitle: 'iPhone 17 Series Repair Services by CMTC Wireless',
-        image: '/iphone 17.jpeg',
+        image: 'iphone 17.jpeg',
         description: [
             "Apple introduced the <b color='green'>iPhone 17</b> lineup in September 2024, featuring the <b color='green'>iPhone 17</b>, <b color='green'>17 Plus</b>, <b color='green'>17 Pro</b>, <b color='green'>17 Pro Max</b>, and the budget-friendly <b color='green'>iPhone 17e</b>. Notably, Apple discontinued the Mini model due to low sales, replacing it with the 6.1-inch iPhone 16e.",
             "The iPhone <b color='green'>17</b> and <b color='green'>17 Plus</b> come equipped with the <b color='green'>A18 chip</b>, offering improved performance and efficiency. These models feature a 48MP Fusion camera, the new Camera Control button for enhanced photography, and the customizable Action Button. Both models boast Super Retina XDR OLED displays and longer battery life, thanks to internal design improvements and iOS 18 optimizations.",

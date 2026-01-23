@@ -3,6 +3,7 @@ import { Box, Typography, Grid, Paper, Breadcrumbs, Divider } from '@mui/materia
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Smartphone, Battery, Zap, Camera, Maximize, Droplets, Volume2, Database, RefreshCw, Wifi, ScanFace } from 'lucide-react';
 import { seriesData } from '../data/iphone';
+import { getImagePath } from '../data/imagePaths';
 import RepairServiceLayout from '../components/RepairServiceLayout';
 
 const IphoneRepair = () => {
@@ -47,7 +48,7 @@ const IphoneRepair = () => {
                                     >
                                         <Box
                                             component="img"
-                                            src={item.image}
+                                            src={getImagePath(item.image)}
                                             alt={item.title}
                                             sx={{
                                                 width: "100%",

@@ -17,6 +17,8 @@ import { tabletData } from '../data/tablet';
 import { ipadData } from '../data/ipad';
 import { macbookData } from '../data/macbook';
 
+import { getImagePath } from '../data/imagePaths';
+
 const DEVICE_IMAGE_URL = "https://www.gophermods.com/wp-content/uploads/2025/06/iPhone-16-Repairs-Minneapolis.jpg";
 
 
@@ -188,7 +190,7 @@ const ModelDetail = () => {
                                                         >
                                                             <Box
                                                                 component="img"
-                                                                src={isSeries ? seriesInfo.image || DEVICE_IMAGE_URL : DEVICE_IMAGE_URL}
+                                                                src={isSeries ? getImagePath(seriesInfo.image) || DEVICE_IMAGE_URL : DEVICE_IMAGE_URL}
                                                                 alt={`${model.name} ${variant}`}
                                                                 sx={{
                                                                     width: "100%",
@@ -211,7 +213,7 @@ const ModelDetail = () => {
                                             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
                                                 <Box
                                                     component="img"
-                                                    src={isSeries ? seriesInfo.image || DEVICE_IMAGE_URL : DEVICE_IMAGE_URL}
+                                                    src={isSeries ? getImagePath(seriesInfo.image) || DEVICE_IMAGE_URL : DEVICE_IMAGE_URL}
                                                     alt={model.name}
                                                     sx={{
                                                         width: 200,
@@ -307,8 +309,15 @@ const ModelDetail = () => {
                     </Grid>
 
                     {/* RIGHT COLUMN (Sidebar) */}
-                    <Grid size={{ xs: 12, md: 3 }}>
-                        <Paper elevation={0} sx={{ bgcolor: '#F5F5F5', p: 4, borderRadius: 2 }}>
+                    <Grid size={{ xs: 12, md: 3 }} sx={{ pb: 15 }}>
+                        <Paper elevation={0} sx={{
+                            bgcolor: '#F5F5F5',
+                            p: 4,
+                            borderRadius: 2,
+                            position: 'sticky',
+                            top: 110, // Increased top offset slightly
+                            height: 'fit-content' // Ensure it doesn't stretch
+                        }}>
                             <Typography variant="h5" sx={{ color: '#78E335', fontWeight: 700, mb: 3 }}>
                                 What We Do
                             </Typography>
