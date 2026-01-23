@@ -8,7 +8,6 @@ import {
     ListItemText,
     Collapse,
     IconButton,
-    Button,
     Typography,
     Stack
 } from '@mui/material';
@@ -19,6 +18,8 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { navLinks, repairServices, buyServices } from '../data/repairData';
 import type { RepairCategory } from '../data/repairData';
+import GetInstantQuoteButton from './GetInstantQuoteButton';
+import ScheduleAppointmentButton from './ScheduleAppointmentButton';
 
 interface MobileMenuProps {
     open: boolean;
@@ -170,26 +171,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ open, onClose }) => {
 
             {/* Footer Actions */}
             <Box sx={{ p: 2, borderTop: '1px solid rgba(0,0,0,0.05)', backgroundColor: '#fff' }}>
-                <Button
-                    component={Link}
-                    to="/contact-us"
-                    state={{ serviceNeeded: 'Get Instant Quote' }}
-                    onClick={onClose}
-                    variant="contained"
-                    color="primary"
-                    fullWidth
-                    size="large"
-                    sx={{
-                        py: 1.5,
-                        textTransform: 'none',
-                        fontWeight: 700,
-                        fontSize: '1rem',
-                        boxShadow: '0 4px 14px 0 rgba(0,118,255,0.39)',
-                        borderRadius: 2
-                    }}
-                >
-                    Get Instant Quote
-                </Button>
+                <GetInstantQuoteButton fullWidth size="large" sx={{ py: 1.5, mb: 2 }} onClick={onClose} />
+                <ScheduleAppointmentButton fullWidth size="large" sx={{ py: 1.5 }} onClick={onClose} />
                 <Stack direction="row" spacing={2} justifyContent="center" sx={{ mt: 3, mb: 1 }}>
                     <Typography variant="caption" color="text.secondary">
                         © 2026 CMTC Wireless

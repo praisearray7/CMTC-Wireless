@@ -24,11 +24,10 @@ export const imagePaths = {
   
   // Home Page Carousel
   carousel: [
+    'cmtc5.jpg',
+    'why_book_ahead.png',
     'cmtc6.jpg',
-    'cmtc2.jpg',
-    'cmtc3.jpg',
-    'cmtc4.jpg',
-    'cmtc5.jpg'
+    'cmtc2.jpg'
   ],
   // WowSlider Images
   wowSlider: [

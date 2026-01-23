@@ -14,7 +14,7 @@ export const ipadData: SeriesData[] = [
         subtitle: 'Professional iPad Pro Repair Services',
         image: 'https://www.gophermods.com/wp-content/uploads/2020/04/iPad-Pro-Repair-by-Gophermods-200x200.jpg',
         description: [
-            "We offer comprehensive repair services for all iPad Pro models. From screen replacements to battery swaps and charging port repairs, our certified technicians ensure your device is restored to optimal performance.",
+            "We offer comprehensive repair services for all <b color='green'>iPad Pro models</b>. From screen replacements to battery swaps and charging port repairs, our certified technicians ensure your device is restored to optimal performance.",
             "Our depot repair service is perfect for schools and businesses, providing quick turnaround times and high-quality parts."
         ]
     },
@@ -24,7 +24,7 @@ export const ipadData: SeriesData[] = [
         subtitle: 'Expert iPad Air Repair Services',
         image: 'https://www.gophermods.com/wp-content/uploads/2020/04/iPad-Air-Repair-by-Gophermods-200x200.jpg',
         description: [
-            "Get your iPad Air fixed fast. We handle cracked screens, battery issues, and more for all iPad Air generations.",
+            "Get your <b color='green'>iPad Air</b> fixed fast. We handle cracked screens, battery issues, and more for all <b color='green'>iPad Air</b> generations.",
             "Trust our experienced team to bring your device back to life with premium quality repairs."
         ]
     },
@@ -34,7 +34,7 @@ export const ipadData: SeriesData[] = [
         subtitle: 'Reliable iPad Mini Repair Services',
         image: 'https://www.gophermods.com/wp-content/uploads/2020/04/iPad-Mini-Repair-by-Gophermods-200x200x.jpg',
         description: [
-            "Compact but powerful, the iPad Mini deserves the best care. We specialize in repairing all issues for the iPad Mini lineups.",
+            "Compact but powerful, the <b color='green'>iPad Mini</b> deserves the best care. We specialize in repairing all issues for the <b color='green'>iPad Mini</b> lineups.",
             "Whether it's a broken display or a faulty button, we have you covered."
         ]
     },
@@ -44,7 +44,7 @@ export const ipadData: SeriesData[] = [
         subtitle: 'Standard iPad Repair Services',
         image: 'https://www.gophermods.com/wp-content/uploads/2020/04/iPad-Repair-by-Gophermods-200x200-1.jpg',
         description: [
-            "Support for the standard iPad models. Reliable, affordable, and quick repairs for education and enterprise.",
+            "Support for the standard <b color='green'>iPad</b> models. Reliable, affordable, and quick repairs for education and enterprise.",
             "We keep your fleet running smoothly with our efficient depot repair process."
         ]
     }

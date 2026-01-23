@@ -52,7 +52,7 @@ const IphoneRepair = () => {
                                             sx={{
                                                 width: "100%",
                                                 maxWidth: 200,
-                                                height: "auto",
+                                                height: 200,
                                                 objectFit: "contain",
                                                 mb: 2,
                                             }}

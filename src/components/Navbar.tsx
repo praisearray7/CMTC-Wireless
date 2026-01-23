@@ -9,6 +9,8 @@ import type { RepairCategory } from '../data/repairData';
 import { imagePaths, getImagePath } from '../data/imagePaths';
 import NavDropdown from './NavDropdown';
 import MobileMenu from './MobileMenu';
+import GetInstantQuoteButton from './GetInstantQuoteButton';
+import ScheduleAppointmentButton from './ScheduleAppointmentButton';
 
 const Navbar = () => {
     const theme = useTheme();
@@ -220,16 +222,8 @@ const Navbar = () => {
                                     </Button>
                                 );
                             })}
-                            <Button
-                                component={Link}
-                                to="/contact-us"
-                                state={{ serviceNeeded: 'Get Instant Quote' }}
-                                variant="contained"
-                                color="primary"
-                                sx={{ ml: 2, px: 3 }}
-                            >
-                                Get Instant Quote
-                            </Button>
+                            <GetInstantQuoteButton sx={{ ml: 2, px: 2, fontSize: '0.9rem' }} />
+                            <ScheduleAppointmentButton sx={{ ml: 1, px: 2, fontSize: '0.9rem' }} />
                         </Stack>
                     )}
 

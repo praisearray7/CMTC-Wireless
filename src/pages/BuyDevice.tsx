@@ -95,7 +95,12 @@ const BuyDevice = () => {
 
                     {/* Inquiry Sidebar */}
                     <Grid size={{ xs: 12, md: 4 }}>
-                        <Card sx={{ position: 'sticky', top: 100, borderRadius: 3, p: 2 }}>
+                        <Card sx={{
+                            position: { xs: 'static', md: 'sticky' },
+                            top: { md: 120 },
+                            borderRadius: 3,
+                            p: 2
+                        }}>
                             <CardContent>
                                 <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, color: '#2C3E50' }}>Looking for something specific?</Typography>
                                 <Typography variant="body2" color="textSecondary" sx={{ mb: 3 }}>
@@ -109,7 +114,7 @@ const BuyDevice = () => {
                                     sx={{ mb: 2 }}
                                     href="tel:6124460559"
                                 >
-                                    Call (612) 446-0559
+                                    Call 612-300-9007
                                 </Button>
                                 <Button variant="outlined" color="secondary" fullWidth size="large">
                                     Request a Device

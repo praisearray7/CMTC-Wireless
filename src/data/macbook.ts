@@ -34,7 +34,7 @@ export const macbookData: SeriesData[] = [
         subtitle: 'Reliable MacBook Repair Services',
         image: 'https://www.gophermods.com/wp-content/uploads/2019/05/MacBook-Repair.jpg',
         description: [
-            "Support for the standard MacBook models (12-inch, etc.). Reliable, affordable, and quick repairs for education and enterprise.",
+            "Support for the standard <b color='green'>MacBook</b> models (12-inch, etc.). Reliable, affordable, and quick repairs for education and enterprise.",
             "We keep your fleet running smoothly with our efficient depot repair process."
         ]
     }

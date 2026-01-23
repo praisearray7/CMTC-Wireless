@@ -2,6 +2,8 @@ import { useParams, Link } from 'react-router-dom';
 import { Box, Container, Typography, Button, Grid, Paper, Breadcrumbs, List, ListItem, ListItemText } from '@mui/material';
 import FAQ from '../components/FAQ';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import GetInstantQuoteButton from '../components/GetInstantQuoteButton';
+import ScheduleAppointmentButton from '../components/ScheduleAppointmentButton';
 
 import { repairServices } from '../data/repairData';
 import { seriesData as iphoneData } from '../data/iphone';
@@ -137,13 +139,8 @@ const ModelDetail = () => {
                         </Typography>
 
                         {/* Intro Section with Image */}
-                        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, mb: 6, mt: 4 }}>
-                            <Box sx={{ flexShrink: 0, width: { xs: '100%', md: 200 } }}>
-                                <img
-                                    src={isSeries ? seriesInfo.image || DEVICE_IMAGE_URL : DEVICE_IMAGE_URL}
-                                    alt={model.name}
-                                    style={{ width: '100%', borderRadius: 8 }}
-                                />
+                        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mb: 6, mt: 4 }}>
+                            <Box sx={{ width: '100%', mb: 6 }}>
                                 {(() => {
                                     const getModelVariants = (name: string) => {
                                         if (name.includes('iPhone 17')) return ['Pro Max', 'Pro', 'Plus', '17e', '17'];
@@ -154,6 +151,8 @@ const ModelDetail = () => {
                                         if (name.includes('iPhone 12')) return ['Pro Max', 'Pro', '12'];
                                         if (name.includes('iPhone 11')) return ['Pro Max', 'Pro', '11'];
                                         if (name.includes('iPhone XS')) return ['Max', 'XS'];
+                                        if (name.includes('iPhone SE (3rd Gen)')) return ['SE (3rd Gen)'];
+                                        if (name.includes('iPhone SE (2nd Gen)')) return ['SE (2nd Gen)'];
                                         return [];
                                     };
 
@@ -161,77 +160,114 @@ const ModelDetail = () => {
 
                                     if (variants.length > 0) {
                                         return (
-                                            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mt: 2, justifyContent: 'center' }}>
+                                            <Grid container spacing={4} justifyContent="center" sx={{ mb: 4 }}>
                                                 {variants.map((variant) => (
-                                                    <Button
-                                                        key={variant}
-                                                        component={Link}
-                                                        to="/contact-us"
-                                                        state={{ deviceModel: `${model.name.replace(' Series', '')} ${variant}` }}
-                                                        variant="text"
-                                                        sx={{
-                                                            width: 'calc(50% - 4px)',
-                                                            minWidth: 'auto',
-                                                            borderRadius: 2,
-                                                            textTransform: 'none',
-                                                            fontWeight: 700,
-                                                            fontSize: '0.85rem',
-                                                            color: '#78E335',
-                                                            bgcolor: '#fff',
-                                                            boxShadow: '0 -4px 10px rgba(0,0,0,0.05), 0 4px 10px rgba(0,0,0,0.05)',
-                                                            border: '2px solid transparent',
-                                                            px: 1,
-                                                            py: 0.5,
-                                                            '&:hover': {
-                                                                bgcolor: '#fff',
-                                                                border: '2px solid #78E335',
-                                                                color: '#78E335',
-                                                                boxShadow: '0 -4px 10px rgba(0,0,0,0.05), 0 4px 10px rgba(0,0,0,0.05)'
-                                                            }
-                                                        }}
-                                                    >
-                                                        {variant}
-                                                    </Button>
+                                                    <Grid size={{ xs: 6, sm: 4, md: 2.4 }} key={variant}>
+                                                        <Paper
+                                                            component={Link}
+                                                            to="/contact-us"
+                                                            state={{ deviceModel: `${model.name.replace(' Series', '')} ${variant}` }}
+                                                            elevation={0}
+                                                            sx={{
+                                                                p: 2,
+                                                                display: "flex",
+                                                                flexDirection: "column",
+                                                                alignItems: "center",
+                                                                textDecoration: 'none',
+                                                                cursor: 'pointer',
+                                                                borderRadius: "16px",
+                                                                background: "#fff",
+                                                                border: "1px solid #f0f0f0",
+                                                                transition: "all 0.3s ease",
+                                                                "&:hover": {
+                                                                    borderColor: "#78E335",
+                                                                    boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+                                                                    transform: "translateY(-5px)"
+                                                                },
+                                                            }}
+                                                        >
+                                                            <Box
+                                                                component="img"
+                                                                src={isSeries ? seriesInfo.image || DEVICE_IMAGE_URL : DEVICE_IMAGE_URL}
+                                                                alt={`${model.name} ${variant}`}
+                                                                sx={{
+                                                                    width: "100%",
+                                                                    height: "auto",
+                                                                    objectFit: "contain",
+                                                                    mb: 2,
+                                                                    aspectRatio: '3/4'
+                                                                }}
+                                                            />
+                                                            <Typography variant="body1" sx={{ fontWeight: 700, color: '#78E335', textAlign: 'center' }}>
+                                                                {variant}
+                                                            </Typography>
+                                                        </Paper>
+                                                    </Grid>
                                                 ))}
-                                            </Box>
+                                            </Grid>
                                         );
                                     } else {
                                         return (
-                                            <Button
-                                                component={Link}
-                                                to="/contact-us"
-                                                state={{ deviceModel: model.name }}
-                                                variant="contained"
-                                                fullWidth
-                                                sx={{
-                                                    mt: 2,
-                                                    borderRadius: 2,
-                                                    textTransform: 'none',
-                                                    fontWeight: 700,
-                                                    bgcolor: '#78E335',
-                                                    '&:hover': {
-                                                        bgcolor: '#66C22E'
-                                                    }
-                                                }}
-                                            >
-                                                Get Instant Quote
-                                            </Button>
+                                            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
+                                                <Box
+                                                    component="img"
+                                                    src={isSeries ? seriesInfo.image || DEVICE_IMAGE_URL : DEVICE_IMAGE_URL}
+                                                    alt={model.name}
+                                                    sx={{
+                                                        width: 200,
+                                                        height: 200,
+                                                        objectFit: "contain",
+                                                        borderRadius: 2
+                                                    }}
+                                                />
+                                                <Box sx={{ width: '100%', maxWidth: 400, display: 'flex', flexDirection: 'column', gap: 2 }}>
+                                                    <GetInstantQuoteButton
+                                                        state={{ deviceModel: model.name }}
+                                                        fullWidth
+                                                        sx={{ borderRadius: 2 }}
+                                                    />
+                                                    <ScheduleAppointmentButton
+                                                        state={{ deviceModel: model.name, serviceNeeded: 'Schedule Appointment' }}
+                                                        fullWidth
+                                                        sx={{ borderRadius: 2 }}
+                                                    />
+                                                </Box>
+                                            </Box>
                                         );
                                     }
                                 })()}
                             </Box>
-                            <Box>
+
+                            <Box sx={{ width: '100%' }}>
                                 <Typography variant="h5" sx={{ mb: 2, color: '#555', fontWeight: 400 }}>
                                     {isSeries ? seriesInfo.subtitle : `${model.name} Repair Services by CMTC Wireless`}
                                 </Typography>
 
                                 {isSeries ? (
                                     <>
-                                        {seriesInfo.description.map((para: string, idx: number) => (
-                                            <Typography key={idx} variant="body1" sx={{ color: '#666', lineHeight: 1.8, mb: 2 }}>
-                                                {para}
-                                            </Typography>
-                                        ))}
+                                        {seriesInfo.description.map((para: string, idx: number) => {
+                                            const parseDescription = (text: string) => {
+                                                // Split by the specific tag pattern
+                                                const parts = text.split(/(<b color='green'>.*?<\/b>)/g);
+                                                return parts.map((part, i) => {
+                                                    if (part.startsWith("<b color='green'>") && part.endsWith("</b>")) {
+                                                        const content = part.replace("<b color='green'>", "").replace("</b>", "");
+                                                        return (
+                                                            <span key={i} style={{ fontWeight: 'bold', color: '#78E335' }}>
+                                                                {content}
+                                                            </span>
+                                                        );
+                                                    }
+                                                    return part;
+                                                });
+                                            };
+
+                                            return (
+                                                <Typography key={idx} variant="body1" sx={{ color: '#666', lineHeight: 1.8, mb: 2 }}>
+                                                    {parseDescription(para)}
+                                                </Typography>
+                                            );
+                                        })}
                                     </>
                                 ) : (
                                     <>

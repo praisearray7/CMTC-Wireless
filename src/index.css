@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   font-family: 'Open Sans', 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -12,7 +12,7 @@ html {
   margin: 0;
   padding: 0;
   width: 100%;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
   /* Account for 90px header + 10px buffer */

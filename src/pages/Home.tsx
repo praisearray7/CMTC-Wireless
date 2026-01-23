@@ -13,6 +13,8 @@ import ServiceGridBanner from '../components/ServiceGridBanner';
 import GoogleReviews from '../components/GoogleReviews';
 import TransitionSlider from '../components/TransitionSlider';
 import FAQ from '../components/FAQ';
+import GetInstantQuoteButton from '../components/GetInstantQuoteButton';
+import ScheduleAppointmentButton from '../components/ScheduleAppointmentButton';
 
 const Home = () => {
     // CMTC Brand Colors
@@ -27,43 +29,38 @@ const Home = () => {
     return (
         <>
             {/* Custom Hero Override for CMTC */}
-            <Box sx={{ bgcolor: '#ffffff', pt: { xs: 8, md: 12 }, pb: { xs: 8, md: 10 } }}>
+            <Box sx={{ bgcolor: '#ffffff', pt: { xs: 2, md: 4 }, pb: { xs: 8, md: 10 } }}>
                 <Container maxWidth="xl">
                     <Grid container spacing={8} alignItems="center">
                         {/* Left: Content */}
                         <Grid size={{ xs: 12, md: 6 }}>
-                            <Typography variant="h1" sx={{ fontWeight: 800, mb: 3, fontSize: { xs: '2.8rem', md: '4rem' }, color: '#2C3E50', lineHeight: 1.1 }}>
+                            <Typography variant="h2" sx={{ fontWeight: 800, mb: 3, fontSize: { xs: '2.8rem', md: '4rem' }, color: '#2C3E50', lineHeight: 1.1 }}>
                                 Fast, Reliable <br />
                                 <span style={{ color: primaryGreen }}>Phone Repairs</span> Near You.
                             </Typography>
-                            <Typography variant="h6" sx={{ color: '#546E7A', mb: 5, fontWeight: 400, lineHeight: 1.6, maxWidth: 600 }}>
+                            <Typography variant="h6" sx={{ color: '#546E7A', mb: 3, fontWeight: 400, lineHeight: 1.6, maxWidth: 600 }}>
                                 Get your phone fixed quickly and efficiently by our expert technicians. We offer same day repairs for most devices, ensuring you stay connected.
                             </Typography>
+                            <Typography variant="h6" sx={{ color: '#546E7A', mb: 3, fontWeight: 400, lineHeight: 1.6, maxWidth: 600 }}>
+                                📅 <Link to="/schedule"> <u style={{ color: 'blue' }}>Schedule an appointment</u></Link> today to get exclusive <b>discounts</b> and guaranteed <b>priority service</b>! 💬 Limited slots available — book now and save big before the offer ends!
+                            </Typography>
 
-                            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={3} sx={{ mb: 6 }}>
-                                <Button
-                                    component={Link}
-                                    to="/contact-us"
-                                    state={{ serviceNeeded: 'Get Instant Quote' }}
-                                    variant="contained"
-                                    color="primary"
-                                    size="large"
-                                    sx={{ px: 5, py: 2, fontSize: '1.2rem' }}
-                                >
-                                    Get Instant Quote
-                                </Button>
+                            <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr 1fr' }, gap: 3, mb: 6 }}>
+                                <GetInstantQuoteButton fullWidth size="large" sx={{ py: 1.5, fontSize: '1.1rem', whiteSpace: 'nowrap' }} />
+                                <ScheduleAppointmentButton fullWidth size="large" sx={{ py: 1.5, fontSize: '1.1rem', whiteSpace: 'nowrap' }} />
                                 <Button
                                     variant="outlined"
                                     color="secondary"
                                     size="large"
+                                    fullWidth
                                     onClick={() => window.scrollTo(0, 800)}
-                                    sx={{ px: 5, py: 2, fontSize: '1.2rem', borderWidth: 2, '&:hover': { borderWidth: 2 } }}
+                                    sx={{ py: 2, fontSize: '1.2rem', borderWidth: 2, '&:hover': { borderWidth: 2 }, whiteSpace: 'nowrap' }}
                                 >
                                     View Services
                                 </Button>
-                            </Stack>
+                            </Box>
 
-                            <Stack direction="row" spacing={4} alignItems="center">
+                            <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr 1fr', sm: '1fr 1fr 1fr 1fr' }, gap: 3, alignItems: 'start' }}>
                                 <Box>
                                     <Typography variant="h4" sx={{ fontWeight: 800, color: '#2C3E50' }}>15+</Typography>
                                     <Typography variant="body2" color="textSecondary">Years Experience</Typography>
@@ -73,10 +70,16 @@ const Home = () => {
                                     <Typography variant="body2" color="textSecondary">Devices Fixed</Typography>
                                 </Box>
                                 <Box>
+                                    <Typography variant="h4" sx={{ fontWeight: 800, color: '#2C3E50', display: 'flex', alignItems: 'center', gap: 1 }}>
+                                        24/7
+                                    </Typography>
+                                    <Typography variant="body2" color="textSecondary">Open Everyday</Typography>
+                                </Box>
+                                <Box>
                                     <Typography variant="h4" sx={{ fontWeight: 800, color: '#2C3E50' }}>4.9</Typography>
                                     <Stack direction="row" sx={{ color: '#FFD700' }}><StarIcon fontSize="small" /><StarIcon fontSize="small" /><StarIcon fontSize="small" /><StarIcon fontSize="small" /><StarIcon fontSize="small" /></Stack>
                                 </Box>
-                            </Stack>
+                            </Box>
                         </Grid>
 
                         {/* Right: Modern Visuals */}
@@ -86,7 +89,7 @@ const Home = () => {
                                     images={carouselImages}
                                     height="100%"
                                     showBottomBar={false}
-                                    intervalMs={4000}
+                                    intervalMs={2500}
                                 />
                             </Box>
                         </Grid>

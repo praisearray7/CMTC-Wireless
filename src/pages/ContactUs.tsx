@@ -106,11 +106,11 @@ const ContactUs = () => {
                                     <Stack spacing={3}>
                                         <Stack direction="row" spacing={2} alignItems="center">
                                             <PhoneIcon sx={{ color: '#78E335' }} />
-                                            <Typography variant="h6" sx={{ fontWeight: 600 }}> (612) 446-0559</Typography>
+                                            <Typography variant="h6" sx={{ fontWeight: 600 }}>612-300-9007</Typography>
                                         </Stack>
                                         <Stack direction="row" spacing={2} alignItems="center">
                                             <EmailIcon sx={{ color: '#78E335' }} />
-                                            <Typography variant="body1">support@cmtcwireless.com</Typography>
+                                            <Typography variant="body1">martin@conceptmediatech.com</Typography>
                                         </Stack>
                                         <Stack direction="row" spacing={2} alignItems="flex-start">
                                             <AccessTimeIcon sx={{ color: '#78E335' }} />
@@ -164,7 +164,19 @@ const ContactUs = () => {
                                             freeSolo
                                             forcePopupIcon
                                             options={[
-                                                "Repair Service",
+                                                "Screen Repair",
+                                                "Back Glass Repair",
+                                                "Battery Replacement Service",
+                                                "Front Camera Repair",
+                                                "Rear Camera Repair",
+                                                "Charging Port Repair",
+                                                "Volume Button Repair",
+                                                "Power Button Repair",
+                                                "Loud Speaker Repair",
+                                                "Ear Speaker Repair",
+                                                "Microphone Repair",
+                                                "Diagnostics Service",
+                                                "Home Button Repair Service",
                                                 "Buy a Phone",
                                                 "Unlock any Phone",
                                                 "Check Availability",
