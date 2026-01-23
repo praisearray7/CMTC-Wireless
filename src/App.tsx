@@ -23,7 +23,7 @@ import AllInOneRepair from './pages/AllInOneRepair';
 import TabletRepair from './pages/TabletRepair';
 import Warranty from './pages/Warranty';
 import Blog from './pages/Blog';
-import PrepaidServices from './pages/PrepaidServices';
+
 
 import ScrollToTop from './components/ScrollToTop';
 
@@ -44,7 +44,7 @@ function App() {
               <Route path="/unlock-device" element={<UnlockDevice />} />
               <Route path="/warranty" element={<Warranty />} />
               <Route path="/blog" element={<Blog />} />
-              <Route path="/prepaid-services" element={<PrepaidServices />} />
+
               <Route path="/reviews" element={<Reviews />} />
               <Route path="/reviews" element={<Reviews />} />
 

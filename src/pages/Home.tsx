@@ -36,7 +36,9 @@ const Home = () => {
                         <Grid size={{ xs: 12, md: 6 }}>
                             <Typography variant="h2" sx={{ fontWeight: 800, mb: 3, fontSize: { xs: '2.8rem', md: '4rem' }, color: '#2C3E50', lineHeight: 1.1 }}>
                                 Fast, Reliable <br />
-                                <span style={{ color: primaryGreen }}>Phone Repairs</span> Near You.
+                                <span style={{ color: primaryGreen }}>Phone Repairs</span> 
+                                <br />
+                                <span style={{ color: '#2196F3' }}>Near You.</span>
                             </Typography>
                             <Typography variant="h6" sx={{ color: '#546E7A', mb: 3, fontWeight: 400, lineHeight: 1.6, maxWidth: 600 }}>
                                 Get your phone fixed quickly and efficiently by our expert technicians. We offer same day repairs for most devices, ensuring you stay connected.

@@ -227,7 +227,6 @@ const ModelDetail = () => {
                                                         sx={{ borderRadius: 2 }}
                                                     />
                                                     <ScheduleAppointmentButton
-                                                        state={{ deviceModel: model.name, serviceNeeded: 'Schedule Appointment' }}
                                                         fullWidth
                                                         sx={{ borderRadius: 2 }}
                                                     />
