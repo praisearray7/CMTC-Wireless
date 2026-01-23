@@ -11,7 +11,7 @@ export const imagePaths = {
   homeCardRepair: 'https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/uDmomXFf05qK26VIqjaa/media/68a4c62b034eda4197a199f0.png', // Placeholder for truncated link
   homeCardBuy: 'https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/uDmomXFf05qK26VIqjaa/media/68a4c5c6cadb9644a567e2c1.png',
   homeCardUnlock: 'https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/uDmomXFf05qK26VIqjaa/media/68a4c5c6cadb9644a567e2c1.png',
-  aboutStore: 'cmtcwrieless_store.png',
+  aboutStore: 'store_image.png',
   
   // External placeholders
   placeholders: {
