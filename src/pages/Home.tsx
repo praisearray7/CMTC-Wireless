@@ -44,7 +44,7 @@ const Home = () => {
                                 Get your phone fixed quickly and efficiently by our expert technicians. We offer same day repairs for most devices, ensuring you stay connected.
                             </Typography>
                             <Typography variant="h6" sx={{ color: '#546E7A', mb: 3, fontWeight: 400, lineHeight: 1.6, maxWidth: 600 }}>
-                                📅 <Link to="/schedule"> <u style={{ color: 'blue' }}>Schedule an appointment</u></Link> today to get exclusive <b>discounts</b> and guaranteed <b>priority service</b>! 💬 Limited slots available — book now and save big before the offer ends!
+                                📅 <a href="https://calendly.com/martinakinseye/cmtcwireless"> <u style={{ color: 'blue' }}>Schedule an appointment</u></a> today to get exclusive <b>discounts</b> and guaranteed <b>priority service</b>! 💬 Limited slots available — book now and save big before the offer ends!
                             </Typography>
 
                             <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr 1fr' }, gap: 3, mb: 6 }}>
