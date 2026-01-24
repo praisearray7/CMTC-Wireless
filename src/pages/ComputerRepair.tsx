@@ -4,9 +4,12 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Monitor, HardDrive, Cpu, AlertTriangle, ShieldAlert, Power, Activity, Database, Zap } from 'lucide-react';
 import { computerData } from '../data/computer';
 import RepairServiceLayout from '../components/RepairServiceLayout';
+import { useRepairPricing } from '../hooks/useRepairPricing';
 
 
 const ComputerRepair = () => {
+    const { getPriceRange, loading } = useRepairPricing();
+
     return (
         <RepairServiceLayout
             faqCategory="computer"
@@ -84,15 +87,15 @@ const ComputerRepair = () => {
                         </Typography>
                         <Grid container spacing={3}>
                             {[
-                                { title: "OS Install / Reformat", price: "$49 - $99", desc: "Clean install of Windows or macOS to fix software issues.", icon: <Monitor size={32} color="#78E335" /> },
-                                { title: "Drive Replacement", price: "$149 - $299", desc: "Replace failing HDDs to restore your computer.", icon: <HardDrive size={32} color="#78E335" /> },
-                                { title: "SSD Upgrade", price: "$149 - $399", desc: "Boost speed by up to 10x with a new Solid State Drive.", icon: <Zap size={32} color="#78E335" /> },
-                                { title: "Data Recovery", price: "Varies", desc: "Recover lost photos & files from damaged drives.", icon: <Database size={32} color="#78E335" /> },
-                                { title: "Logic Board Repair", price: "$199+", desc: "Component-level soldering for dead motherboards.", icon: <Cpu size={32} color="#78E335" /> },
-                                { title: "Screen Repair", price: "Varies", desc: "Fix cracked screens on laptops and all-in-ones.", icon: <Monitor size={32} color="#78E335" /> },
-                                { title: "Power Issues", price: "Varies", desc: "Fix charging ports and power supply failures.", icon: <Power size={32} color="#78E335" /> },
-                                { title: "Virus Removal", price: "$99 Flat Rate", desc: "Remove malware, spyware, and annoying pop-ups.", icon: <ShieldAlert size={32} color="#78E335" /> },
-                                { title: "RAM Upgrade", price: "Varies", desc: "Increase memory for better multitasking performance.", icon: <Activity size={32} color="#78E335" /> }
+                                { title: "OS Install / Reformat", desc: "Clean install of Windows or macOS to fix software issues.", icon: <Monitor size={32} color="#78E335" /> },
+                                { title: "Drive Replacement", desc: "Replace failing HDDs to restore your computer.", icon: <HardDrive size={32} color="#78E335" /> },
+                                { title: "SSD Upgrade", desc: "Boost speed by up to 10x with a new Solid State Drive.", icon: <Zap size={32} color="#78E335" /> },
+                                { title: "Data Recovery", desc: "Recover lost photos & files from damaged drives.", icon: <Database size={32} color="#78E335" /> },
+                                { title: "Logic Board Repair", desc: "Component-level soldering for dead motherboards.", icon: <Cpu size={32} color="#78E335" /> },
+                                { title: "Screen Repair", desc: "Fix cracked screens on laptops and all-in-ones.", icon: <Monitor size={32} color="#78E335" /> },
+                                { title: "Power Issues", desc: "Fix charging ports and power supply failures.", icon: <Power size={32} color="#78E335" /> },
+                                { title: "Virus Removal", desc: "Remove malware, spyware, and annoying pop-ups.", icon: <ShieldAlert size={32} color="#78E335" /> },
+                                { title: "RAM Upgrade", desc: "Increase memory for better multitasking performance.", icon: <Activity size={32} color="#78E335" /> }
                             ].map((item, index) => (
                                 <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
                                     <Paper elevation={0} sx={{
@@ -114,7 +117,7 @@ const ComputerRepair = () => {
                                                 {item.icon}
                                             </Box>
                                             <Typography variant="subtitle1" sx={{ color: '#78E335', fontWeight: 700 }}>
-                                                {item.price}
+                                                {loading ? "Loading..." : getPriceRange('computer', item.title)}
                                             </Typography>
                                         </Box>
                                         <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: '#2C3E50' }}>{item.title}</Typography>

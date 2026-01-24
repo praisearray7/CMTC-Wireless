@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from '@mui/material';
 import type { ButtonProps } from '@mui/material';
 import { Link } from 'react-router-dom';
+import RequestQuoteIcon from "@mui/icons-material/RequestQuote"
 
 interface GetInstantQuoteButtonProps extends ButtonProps {
     to?: string;
@@ -35,7 +36,8 @@ const GetInstantQuoteButton: React.FC<GetInstantQuoteButtonProps> = ({
             }}
             {...props}
         >
-            {children || "Get Instant Quote"}
+            <RequestQuoteIcon sx={{ mr: 1 }} /> 
+            Quote Now
         </Button>
     );
 };

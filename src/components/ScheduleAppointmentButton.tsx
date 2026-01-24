@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '@mui/material';
 import type { ButtonProps } from '@mui/material';
+import HandymanIcon from '@mui/icons-material/Handyman';
 
 interface ScheduleAppointmentButtonProps extends ButtonProps {
     href?: string;
@@ -32,7 +33,8 @@ const ScheduleAppointmentButton: React.FC<ScheduleAppointmentButtonProps> = ({
             }}
             {...props}
         >
-            {children || "Schedule Appointment"}
+            <HandymanIcon sx={{ mr: 1 }} />
+            {children || "Fix Now"}
         </Button>
     );
 };

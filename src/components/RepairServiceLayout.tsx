@@ -21,7 +21,7 @@ const RepairServiceLayout: React.FC<RepairServiceLayoutProps> = ({
 }) => {
     return (
         <Box sx={{ pb: 0 }}>
-            <Box sx={{ bgcolor: '#fff', py: 6, mb: 6 }}>
+            <Box sx={{ py: 6, mb: 6 }}>
                 <Container maxWidth="xl">
                     <Grid container spacing={8}>
                         {/* Left Column: Title and Description */}

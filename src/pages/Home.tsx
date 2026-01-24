@@ -19,7 +19,6 @@ import ScheduleAppointmentButton from '../components/ScheduleAppointmentButton';
 const Home = () => {
     // CMTC Brand Colors
     const primaryGreen = '#78E335';
-    // const darkNavy = '#2C3E50';
 
     const carouselImages = imagePaths.carousel.map(path => getImagePath(path));
 
@@ -29,14 +28,14 @@ const Home = () => {
     return (
         <>
             {/* Custom Hero Override for CMTC */}
-            <Box sx={{ bgcolor: '#ffffff', pt: { xs: 2, md: 4 }, pb: { xs: 8, md: 10 } }}>
+            <Box sx={{ pt: { xs: 2, md: 4 }, pb: { xs: 8, md: 10 }, padding: { xs: 0.5, md: 1 } }}>
                 <Container maxWidth="xl">
                     <Grid container spacing={8} alignItems="center">
                         {/* Left: Content */}
                         <Grid size={{ xs: 12, md: 6 }}>
                             <Typography variant="h2" sx={{ fontWeight: 800, mb: 3, fontSize: { xs: '2.8rem', md: '4rem' }, color: '#2C3E50', lineHeight: 1.1 }}>
                                 Fast, Reliable <br />
-                                <span style={{ color: primaryGreen }}>Phone Repairs</span> 
+                                <span style={{ color: primaryGreen }}>Phone Repairs</span>
                                 <br />
                                 <span style={{ color: '#2196F3' }}>Near You.</span>
                             </Typography>
@@ -55,7 +54,7 @@ const Home = () => {
                                     color="secondary"
                                     size="large"
                                     fullWidth
-                                    onClick={() => window.scrollTo(0, 800)}
+                                    onClick={() => window.scrollTo(0, 870)}
                                     sx={{ py: 2, fontSize: '1.2rem', borderWidth: 2, '&:hover': { borderWidth: 2 }, whiteSpace: 'nowrap' }}
                                 >
                                     View Services
@@ -101,7 +100,7 @@ const Home = () => {
 
             {/* Hero Cards Section (Repair, Buy, Unlock) */}
             <Container id="services-overview" maxWidth="xl" sx={{ py: 8 }}>
-                <Grid container spacing={4} justifyContent="center">
+                <Grid container spacing={2} justifyContent="center">
                     {[
                         {
                             title: 'Repair a Device',

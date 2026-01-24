@@ -10,7 +10,7 @@ import { imagePaths, getImagePath } from '../data/imagePaths';
 
 const AboutUs = () => {
     return (
-        <Box sx={{ bgcolor: '#ffffff' }}>
+        <Box>
             {/* Hero Banner */}
             <Box sx={{ bgcolor: '#2C3E50', color: 'white', py: 10, textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
                 <Container maxWidth="md" sx={{ position: 'relative', zIndex: 2 }}>

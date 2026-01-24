@@ -4,9 +4,12 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Smartphone, Battery, Zap, Monitor, Droplets, Camera, Volume2, Database, Unlock, RefreshCw, Wifi, Maximize } from 'lucide-react';
 import { cellphoneData } from '../data/cellphone';
 import RepairServiceLayout from '../components/RepairServiceLayout';
+import { useRepairPricing } from '../hooks/useRepairPricing';
 
 
 const CellphoneRepair = () => {
+    const { getPriceRange, loading } = useRepairPricing();
+
     return (
         <RepairServiceLayout
             faqCategory="cell-phone"
@@ -84,15 +87,15 @@ const CellphoneRepair = () => {
                         </Typography>
                         <Grid container spacing={3}>
                             {[
-                                { title: "Screen Replacement", price: "$79 - $299", desc: "AMOLED & LCD replacements for Samsung, Pixel, Motorola, etc.", icon: <Smartphone size={32} color="#78E335" /> },
-                                { title: "Charging Port Repair", price: "$59 - $99", desc: "Microsoldering for loose USB-C and Micro-USB ports.", icon: <Zap size={32} color="#78E335" /> },
-                                { title: "Battery Replacement", price: "$49 - $89", desc: "New cells for extended battery life and staying power.", icon: <Battery size={32} color="#78E335" /> },
-                                { title: "Back Glass Repair", price: "$59+", desc: "Replace cracked back panels tailored to your model.", icon: <Monitor size={32} color="#78E335" /> },
-                                { title: "Water Damage Cleaning", price: "$89", desc: "Ultrasonic cleaning to remove oxidation and corrosion.", icon: <Droplets size={32} color="#78E335" /> },
-                                { title: "Camera Lens Repair", price: "$49+", desc: "Detailed replacement of cracked rear camera glass.", icon: <Camera size={32} color="#78E335" /> },
-                                { title: "Speaker / Mic Repair", price: "$59+", desc: "Fix low volume, crackling sound, or mute microphones.", icon: <Volume2 size={32} color="#78E335" /> },
-                                { title: "Data Recovery", price: "Varies", desc: "Software solutions to retrieve contacts and photos.", icon: <Database size={32} color="#78E335" /> },
-                                { title: "Unlock Services", price: "Varies", desc: "Carrier unlocks and Google FRP removal services.", icon: <Unlock size={32} color="#78E335" /> }
+                                { title: "Screen Replacement", desc: "AMOLED & LCD replacements for Samsung, Pixel, Motorola, etc.", icon: <Smartphone size={32} color="#78E335" /> },
+                                { title: "Charging Port Repair", desc: "Microsoldering for loose USB-C and Micro-USB ports.", icon: <Zap size={32} color="#78E335" /> },
+                                { title: "Battery Replacement", desc: "New cells for extended battery life and staying power.", icon: <Battery size={32} color="#78E335" /> },
+                                { title: "Back Glass Repair", desc: "Replace cracked back panels tailored to your model.", icon: <Monitor size={32} color="#78E335" /> },
+                                { title: "Water Damage Cleaning", desc: "Ultrasonic cleaning to remove oxidation and corrosion.", icon: <Droplets size={32} color="#78E335" /> },
+                                { title: "Camera Lens Repair", desc: "Detailed replacement of cracked rear camera glass.", icon: <Camera size={32} color="#78E335" /> },
+                                { title: "Speaker / Mic Repair", desc: "Fix low volume, crackling sound, or mute microphones.", icon: <Volume2 size={32} color="#78E335" /> },
+                                { title: "Data Recovery", desc: "Software solutions to retrieve contacts and photos.", icon: <Database size={32} color="#78E335" /> },
+                                { title: "Unlock Services", desc: "Carrier unlocks and Google FRP removal services.", icon: <Unlock size={32} color="#78E335" /> }
                             ].map((item, index) => (
                                 <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
                                     <Paper elevation={0} sx={{
@@ -114,7 +117,7 @@ const CellphoneRepair = () => {
                                                 {item.icon}
                                             </Box>
                                             <Typography variant="subtitle1" sx={{ color: '#78E335', fontWeight: 700 }}>
-                                                {item.price}
+                                                {loading ? "Loading..." : getPriceRange('android', item.title)}
                                             </Typography>
                                         </Box>
                                         <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: '#2C3E50' }}>{item.title}</Typography>

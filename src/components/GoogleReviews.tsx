@@ -131,7 +131,7 @@ const GoogleReviews = () => {
     const paginatedReviews = reviews.slice(startIndex, startIndex + visibleItems);
 
     return (
-        <Box sx={{ py: 10, bgcolor: '#ffffff' }}>
+        <Box sx={{ py: 10 }}>
             <Container maxWidth="lg">
                 <Box sx={{ textAlign: 'center', mb: 8 }}>
                     <Typography variant="h3" sx={{ fontWeight: 800, color: '#0a1929', mb: 2 }}>

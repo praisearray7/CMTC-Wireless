@@ -4,7 +4,7 @@ import LockOpenIcon from '@mui/icons-material/LockOpen';
 
 const UnlockDevice = () => {
     return (
-        <Box sx={{ bgcolor: '#ffffff', minHeight: '80vh', py: 10 }}>
+        <Box sx={{ minHeight: '80vh', py: 10 }}>
             <Container maxWidth="md">
                 <Box sx={{ textAlign: 'center', mb: 6 }}>
                     <LockOpenIcon sx={{ fontSize: 60, color: '#78E335', mb: 2 }} />

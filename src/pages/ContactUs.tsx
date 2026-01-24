@@ -7,6 +7,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import SendIcon from '@mui/icons-material/Send';
 import { fetchServicesData, type ServiceDetail } from '../data/services';
+import { contactInfo } from '../data/contactInfo';
 import GoogleReviews from '../components/GoogleReviews';
 
 const ContactUs = () => {
@@ -90,7 +91,7 @@ const ContactUs = () => {
     }, [image]);
 
     return (
-        <Box sx={{ bgcolor: '#ffffff', minHeight: '100vh' }}>
+        <Box sx={{ minHeight: '100vh' }}>
             <Container maxWidth="lg" sx={{ py: 10 }}>
                 <Box sx={{ textAlign: 'center', mb: 8 }}>
                     <Typography variant="h2" sx={{ fontWeight: 800, color: '#2C3E50', mb: 2 }}>Get in Touch</Typography>
@@ -107,24 +108,24 @@ const ContactUs = () => {
                                 <CardContent sx={{ p: 4 }}>
                                     <Stack
                                         component="a"
-                                        href="https://www.google.com/maps/place/CMTC+Wireless+-+24%2F7+Minneapolis+MN/@44.9486757,-93.2607411,674m/data=!3m2!1e3!4b1!4m6!3m5!1s0x87f6281268b5bf95:0x9b46b4b64d7202cd!8m2!3d44.9486757!4d-93.2607411"
+                                        href={contactInfo.address.minneapolis.mapLink}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         direction="row"
                                         spacing={2}
                                         alignItems="flex-start"
                                         sx={{ mb: 4, textDecoration: 'none', color: 'inherit', transition: '0.2s', '&:hover': { opacity: 0.7 } }}
-                                        
+
                                     >
                                         <Box sx={{ p: 1.5, bgcolor: '#E8F5E9', borderRadius: '50%', color: '#78E335' }}><LocationOnIcon /></Box>
                                         <Box>
-                                            <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>Minneapolis</Typography>
-                                            <Typography variant="body1" color="textSecondary">920 E Lake St<br />Minneapolis, MN 55407</Typography>
+                                            <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>{contactInfo.address.minneapolis.name}</Typography>
+                                            <Typography variant="body1" color="textSecondary">{contactInfo.address.minneapolis.street}<br />{contactInfo.address.minneapolis.cityStateZip}</Typography>
                                         </Box>
                                     </Stack>
                                     <Stack
                                         component="a"
-                                        href="https://www.google.com/maps/place/CMTC+Wireless+-+24%2F7+Saint+Paul/@44.9700122,-93.106482,674m/data=!3m2!1e3!4b1!4m6!3m5!1s0x52b32bb295c62feb:0xb4e923ed2e4799ef!8m2!3d44.9700122!4d-93.106482"
+                                        href={contactInfo.address.stPaul.mapLink}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         direction="row"
@@ -134,8 +135,8 @@ const ContactUs = () => {
                                     >
                                         <Box sx={{ p: 1.5, bgcolor: '#E8F5E9', borderRadius: '50%', color: '#78E335' }}><LocationOnIcon /></Box>
                                         <Box>
-                                            <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>St Paul</Typography>
-                                            <Typography variant="body1" color="textSecondary">957 Rice St<br />St Paul, MN 55117</Typography>
+                                            <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>{contactInfo.address.stPaul.name}</Typography>
+                                            <Typography variant="body1" color="textSecondary">{contactInfo.address.stPaul.street}<br />{contactInfo.address.stPaul.cityStateZip}</Typography>
                                         </Box>
                                     </Stack>
                                 </CardContent>
@@ -144,13 +145,27 @@ const ContactUs = () => {
                             <Card sx={{ borderRadius: 4, boxShadow: '0 4px 20px rgba(0,0,0,0.05)', bgcolor: '#2C3E50', color: 'white' }}>
                                 <CardContent sx={{ p: 4 }}>
                                     <Stack spacing={3}>
-                                        <Stack direction="row" spacing={2} alignItems="center">
+                                        <Stack
+                                            direction="row"
+                                            spacing={2}
+                                            alignItems="center"
+                                            component="a"
+                                            href={contactInfo.phone.link}
+                                            sx={{ textDecoration: 'none', color: 'inherit', '&:hover': { color: '#78E335' } }}
+                                        >
                                             <PhoneIcon sx={{ color: '#78E335' }} />
-                                            <Typography variant="h6" sx={{ fontWeight: 600 }}>612-300-9007</Typography>
+                                            <Typography variant="h6" sx={{ fontWeight: 600 }}>{contactInfo.phone.display}</Typography>
                                         </Stack>
-                                        <Stack direction="row" spacing={2} alignItems="center">
+                                        <Stack
+                                            direction="row"
+                                            spacing={2}
+                                            alignItems="center"
+                                            component="a"
+                                            href={contactInfo.email.link}
+                                            sx={{ textDecoration: 'none', color: 'inherit', '&:hover': { color: '#78E335' } }}
+                                        >
                                             <EmailIcon sx={{ color: '#78E335' }} />
-                                            <Typography variant="body1">martin@conceptmediatech.com</Typography>
+                                            <Typography variant="body1">{contactInfo.email.display}</Typography>
                                         </Stack>
                                         <Stack direction="row" spacing={2} alignItems="flex-start">
                                             <AccessTimeIcon sx={{ color: '#78E335' }} />

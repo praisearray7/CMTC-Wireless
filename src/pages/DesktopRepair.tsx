@@ -4,8 +4,11 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Monitor, HardDrive, Cpu, AlertTriangle, ShieldAlert, Power, Activity, Database, Zap, Box as BoxIcon } from 'lucide-react';
 import { desktopData } from '../data/desktop';
 import RepairServiceLayout from '../components/RepairServiceLayout';
+import { useRepairPricing } from '../hooks/useRepairPricing';
 
 const DesktopRepair = () => {
+    const { getPriceRange, loading } = useRepairPricing();
+
     return (
         <RepairServiceLayout
             faqCategory="desktop"
@@ -63,15 +66,15 @@ const DesktopRepair = () => {
                         </Typography>
                         <Grid container spacing={3}>
                             {[
-                                { title: "Custom PC Build", price: "$149+", desc: "Professional assembly of your gaming rig or workstation.", icon: <Cpu size={32} color="#78E335" /> },
-                                { title: "GPU Installation", price: "$49 - $99", desc: "Upgrade your graphics card for better gaming performance.", icon: <Monitor size={32} color="#78E335" /> },
-                                { title: "Power Supply Swap", price: "$99 - $149", desc: "Replace faulty or underpowered PSUs safely.", icon: <Zap size={32} color="#78E335" /> },
-                                { title: "Liquid Cooling Setup", price: "Varies", desc: "Install or maintain AIO and custom loop coolers.", icon: <Activity size={32} color="#78E335" /> },
-                                { title: "Motherboard Replacement", price: "$149+", desc: "Expert swap of the main board with cable management.", icon: <Cpu size={32} color="#78E335" /> },
-                                { title: "Case Transfer", price: "$149+", desc: "Move your components to a new, better-airflow case.", icon: <BoxIcon size={32} color="#78E335" /> },
-                                { title: "Storage Upgrade", price: "Varies", desc: "Add NVMe SSDs or massive HDDs for more space.", icon: <HardDrive size={32} color="#78E335" /> },
-                                { title: "Virus Removal", price: "$99 Flat Rate", desc: "Deep cleaning of malware and bloatware.", icon: <ShieldAlert size={32} color="#78E335" /> },
-                                { title: "Data Recovery", price: "Varies", desc: "Retrieve lost files from failing desktop drives.", icon: <Database size={32} color="#78E335" /> }
+                                { title: "Custom PC Build", desc: "Professional assembly of your gaming rig or workstation.", icon: <Cpu size={32} color="#78E335" /> },
+                                { title: "GPU Installation", desc: "Upgrade your graphics card for better gaming performance.", icon: <Monitor size={32} color="#78E335" /> },
+                                { title: "Power Supply Swap", desc: "Replace faulty or underpowered PSUs safely.", icon: <Zap size={32} color="#78E335" /> },
+                                { title: "Liquid Cooling Setup", desc: "Install or maintain AIO and custom loop coolers.", icon: <Activity size={32} color="#78E335" /> },
+                                { title: "Motherboard Replacement", desc: "Expert swap of the main board with cable management.", icon: <Cpu size={32} color="#78E335" /> },
+                                { title: "Case Transfer", desc: "Move your components to a new, better-airflow case.", icon: <BoxIcon size={32} color="#78E335" /> },
+                                { title: "Storage Upgrade", desc: "Add NVMe SSDs or massive HDDs for more space.", icon: <HardDrive size={32} color="#78E335" /> },
+                                { title: "Virus Removal", desc: "Deep cleaning of malware and bloatware.", icon: <ShieldAlert size={32} color="#78E335" /> },
+                                { title: "Data Recovery", desc: "Retrieve lost files from failing desktop drives.", icon: <Database size={32} color="#78E335" /> }
                             ].map((item, index) => (
                                 <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
                                     <Paper elevation={0} sx={{
@@ -93,10 +96,10 @@ const DesktopRepair = () => {
                                                 {item.icon}
                                             </Box>
                                             <Typography variant="subtitle1" sx={{ color: '#78E335', fontWeight: 700 }}>
-                                                {item.price}
+                                                {loading ? "Loading..." : getPriceRange('desktop', item.title)}
                                             </Typography>
                                         </Box>
-                                        <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: '#2C3E50' }}>{item.title}</Typography>
+                                        <Typography variant="h6" sx={{ fontWeight: 600, color: '#333' }}>{item.title}</Typography>
                                         <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>{item.desc}</Typography>
                                     </Paper>
                                 </Grid>

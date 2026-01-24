@@ -4,8 +4,11 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Monitor, HardDrive, Battery, Keyboard, Zap, RefreshCw, MousePointer, Fan, Droplets, Thermometer, Wifi } from 'lucide-react';
 import { laptopData } from '../data/laptop';
 import RepairServiceLayout from '../components/RepairServiceLayout';
+import { useRepairPricing } from '../hooks/useRepairPricing';
 
 const LaptopRepair = () => {
+    const { getPriceRange, loading } = useRepairPricing();
+
     return (
         <RepairServiceLayout
             faqCategory="laptop"
@@ -66,15 +69,15 @@ const LaptopRepair = () => {
                         </Typography>
                         <Grid container spacing={3}>
                             {[
-                                { title: "Screen Replacement", price: "$99 - $199", desc: "Fix cracked, bleeding, or flickering laptop screens.", icon: <Monitor size={32} color="#78E335" /> },
-                                { title: "Battery Replacement", price: "$89 - $129", desc: "Replace old batteries specifically for your model.", icon: <Battery size={32} color="#78E335" /> },
-                                { title: "Keyboard Replacement", price: "$79 - $149", desc: "Fix sticky, missing, or non-responsive keys.", icon: <Keyboard size={32} color="#78E335" /> },
-                                { title: "Charging Port Repair", price: "$99 - $149", desc: "Soldering repair for loose or broken power jacks.", icon: <Zap size={32} color="#78E335" /> },
-                                { title: "Hinge Repair", price: "$129+", desc: "Repair broken physical hinges and casing damage.", icon: <RefreshCw size={32} color="#78E335" /> },
-                                { title: "Trackpad Repair", price: "$79 - $129", desc: "Fix erratic mouse movement or clicking issues.", icon: <MousePointer size={32} color="#78E335" /> },
-                                { title: "Fan Replacement", price: "$79 - $99", desc: "Stop loud grinding noises and prevent overheating.", icon: <Fan size={32} color="#78E335" /> },
-                                { title: "Water Damage Clean", price: "$99+", desc: "Ultrasonic cleaning for liquid spills.", icon: <Droplets size={32} color="#78E335" /> },
-                                { title: "SSD Upgrade", price: "$149+", desc: "Speed up slow laptops with a fast NVMe SSD.", icon: <HardDrive size={32} color="#78E335" /> }
+                                { title: "Screen Replacement", desc: "Fix cracked, bleeding, or flickering laptop screens.", icon: <Monitor size={32} color="#78E335" /> },
+                                { title: "Battery Replacement", desc: "Replace old batteries specifically for your model.", icon: <Battery size={32} color="#78E335" /> },
+                                { title: "Keyboard Replacement", desc: "Fix sticky, missing, or non-responsive keys.", icon: <Keyboard size={32} color="#78E335" /> },
+                                { title: "Charging Port Repair", desc: "Soldering repair for loose or broken power jacks.", icon: <Zap size={32} color="#78E335" /> },
+                                { title: "Hinge Repair", desc: "Repair broken physical hinges and casing damage.", icon: <RefreshCw size={32} color="#78E335" /> },
+                                { title: "Trackpad Repair", desc: "Fix erratic mouse movement or clicking issues.", icon: <MousePointer size={32} color="#78E335" /> },
+                                { title: "Fan Replacement", desc: "Stop loud grinding noises and prevent overheating.", icon: <Fan size={32} color="#78E335" /> },
+                                { title: "Water Damage Clean", desc: "Ultrasonic cleaning for liquid spills.", icon: <Droplets size={32} color="#78E335" /> },
+                                { title: "SSD Upgrade", desc: "Speed up slow laptops with a fast NVMe SSD.", icon: <HardDrive size={32} color="#78E335" /> }
                             ].map((item, index) => (
                                 <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
                                     <Paper elevation={0} sx={{
@@ -96,10 +99,10 @@ const LaptopRepair = () => {
                                                 {item.icon}
                                             </Box>
                                             <Typography variant="subtitle1" sx={{ color: '#78E335', fontWeight: 700 }}>
-                                                {item.price}
+                                                {loading ? "Loading..." : getPriceRange('laptop', item.title)}
                                             </Typography>
                                         </Box>
-                                        <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: '#2C3E50' }}>{item.title}</Typography>
+                                        <Typography variant="h6" sx={{ fontWeight: 600, color: '#333' }}>{item.title}</Typography>
                                         <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>{item.desc}</Typography>
                                     </Paper>
                                 </Grid>

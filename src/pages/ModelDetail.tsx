@@ -315,7 +315,7 @@ const ModelDetail = () => {
                             p: 4,
                             borderRadius: 2,
                             position: 'sticky',
-                            top: 110, // Increased top offset slightly
+                            top: 160, // Increased top offset slightly
                             height: 'fit-content' // Ensure it doesn't stretch
                         }}>
                             <Typography variant="h5" sx={{ color: '#78E335', fontWeight: 700, mb: 3 }}>

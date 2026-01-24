@@ -4,8 +4,11 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Monitor, HardDrive, Zap, Activity, Database, ShieldAlert, Cpu, Layers, Power } from 'lucide-react';
 import { aioData } from '../data/aio';
 import RepairServiceLayout from '../components/RepairServiceLayout';
+import { useRepairPricing } from '../hooks/useRepairPricing';
 
 const AllInOneRepair = () => {
+    const { getPriceRange, loading } = useRepairPricing();
+
     return (
         <RepairServiceLayout
             faqCategory="aio"
@@ -63,15 +66,15 @@ const AllInOneRepair = () => {
                         </Typography>
                         <Grid container spacing={3}>
                             {[
-                                { title: "SSD Upgrade", price: "$149 - $249", desc: "The best upgrade for slow All-In-One PCs.", icon: <HardDrive size={32} color="#78E335" /> },
-                                { title: "Screen Replacement", price: "$199+", desc: "Fix cracked glass or LCDs on iMacs and HP AIOs.", icon: <Monitor size={32} color="#78E335" /> },
-                                { title: "Power Supply Repair", price: "$129+", desc: "Repair or replace internal power supply units.", icon: <Zap size={32} color="#78E335" /> },
-                                { title: "RAM Upgrade", price: "$89 - $149", desc: "Multitask better with more memory.", icon: <Layers size={32} color="#78E335" /> },
-                                { title: "Data Recovery", price: "Varies", desc: "Safe file extraction from failing drives.", icon: <Database size={32} color="#78E335" /> },
-                                { title: "Virus Removal", price: "$99 Flat Rate", desc: "Remove malware without losing your data.", icon: <ShieldAlert size={32} color="#78E335" /> },
-                                { title: "Fan Cleaning & Noise", price: "$99", desc: "Fix loud buzzing noises and overheating.", icon: <Activity size={32} color="#78E335" /> },
-                                { title: "Motherboard Repair", price: "$199+", desc: "Component level repair for dead units.", icon: <Cpu size={32} color="#78E335" /> },
-                                { title: "OS Reinstallation", price: "$99", desc: "Fresh install of Windows or macOS.", icon: <Monitor size={32} color="#78E335" /> }
+                                { title: "SSD Upgrade", desc: "The best upgrade for slow All-In-One PCs.", icon: <HardDrive size={32} color="#78E335" /> },
+                                { title: "Screen Replacement", desc: "Fix cracked glass or LCDs on iMacs and HP AIOs.", icon: <Monitor size={32} color="#78E335" /> },
+                                { title: "Power Supply Repair", desc: "Repair or replace internal power supply units.", icon: <Zap size={32} color="#78E335" /> },
+                                { title: "RAM Upgrade", desc: "Multitask better with more memory.", icon: <Layers size={32} color="#78E335" /> },
+                                { title: "Data Recovery", desc: "Safe file extraction from failing drives.", icon: <Database size={32} color="#78E335" /> },
+                                { title: "Virus Removal", desc: "Remove malware without losing your data.", icon: <ShieldAlert size={32} color="#78E335" /> },
+                                { title: "Fan Cleaning & Noise", desc: "Fix loud buzzing noises and overheating.", icon: <Activity size={32} color="#78E335" /> },
+                                { title: "Motherboard Repair", desc: "Component level repair for dead units.", icon: <Cpu size={32} color="#78E335" /> },
+                                { title: "OS Reinstallation", desc: "Fresh install of Windows or macOS.", icon: <Monitor size={32} color="#78E335" /> }
                             ].map((item, index) => (
                                 <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
                                     <Paper elevation={0} sx={{
@@ -93,7 +96,7 @@ const AllInOneRepair = () => {
                                                 {item.icon}
                                             </Box>
                                             <Typography variant="subtitle1" sx={{ color: '#78E335', fontWeight: 700 }}>
-                                                {item.price}
+                                                {loading ? "Loading..." : getPriceRange('all-in-one', item.title)}
                                             </Typography>
                                         </Box>
                                         <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: '#2C3E50' }}>{item.title}</Typography>

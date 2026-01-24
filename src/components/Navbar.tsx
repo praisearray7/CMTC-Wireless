@@ -1,16 +1,22 @@
+
 import { useState, useRef } from 'react';
 import type { MouseEvent, KeyboardEvent } from 'react';
 import { AppBar, Toolbar, Button, Container, Box, IconButton, useTheme, useMediaQuery, Stack, Menu, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import MessageIcon from '@mui/icons-material/Message';
 import { Link } from 'react-router-dom';
 import { navLinks, repairServices, buyServices } from '../data/repairData';
 import type { RepairCategory } from '../data/repairData';
 import { imagePaths, getImagePath } from '../data/imagePaths';
+import { contactInfo } from '../data/contactInfo';
 import NavDropdown from './NavDropdown';
 import MobileMenu from './MobileMenu';
 import GetInstantQuoteButton from './GetInstantQuoteButton';
 import ScheduleAppointmentButton from './ScheduleAppointmentButton';
+import { FacebookIcon, PhoneIcon } from 'lucide-react';
 
 const Navbar = () => {
     const theme = useTheme();
@@ -72,6 +78,31 @@ const Navbar = () => {
 
     return (
         <AppBar position="sticky" color="inherit" elevation={0} sx={{ backdropFilter: 'blur(10px)', backgroundColor: 'rgba(255,255,255,0.95)' }}>
+            {/* Top Contact Bar */}
+            <Box sx={{ bgcolor: '#2ca8efff', color: 'white', py: 1 }}>
+                <Container maxWidth="xl" sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', whiteSpace: 'nowrap' }}>
+                    <Box sx={{ display: 'flex', gap: { xs: 2, md: 4 }, alignItems: 'center' }}>
+                        <IconButton color="inherit" aria-label="facebook" href={contactInfo.socials.facebook} sx={{ bgcolor: 'rgba(255,255,255,0.05)' }}><FacebookIcon /></IconButton>
+                        <IconButton color="inherit" aria-label="whatsapp" href={contactInfo.whatsapp.link} sx={{ bgcolor: 'rgba(255,255,255,0.05)' }}><WhatsAppIcon /></IconButton>
+                        <IconButton color="inherit" aria-label="google-location" href={contactInfo.address.minneapolis.mapLink} sx={{ bgcolor: 'rgba(255,255,255,0.05)' }}><LocationOnIcon /></IconButton>
+                    </Box>
+
+                    <Box sx={{ display: 'flex', gap: { xs: 2, md: 4 }, alignItems: 'center' }}>
+                        <IconButton color="inherit" aria-label="phone" href={contactInfo.phone.link} sx={{ bgcolor: 'rgba(255,255,255,0.05)' }}><PhoneIcon /></IconButton>
+                        <Stack component="a" href={contactInfo.phone.link} direction="row" spacing={1} alignItems="center" sx={{ textDecoration: 'none', color: 'inherit', '&:hover': { opacity: 0.8 } }}>
+                            <Typography variant="body2" sx={{ fontWeight: 800, fontSize: { xs: '0.8rem', md: '0.9rem' } }}>
+                                Call: {contactInfo.phone.display}
+                            </Typography>
+                        </Stack>
+                        <IconButton color="inherit" aria-label="message" href={contactInfo.whatsapp.link} sx={{ bgcolor: 'rgba(255,255,255,0.05)' }}><MessageIcon /></IconButton>
+                        <Stack component="a" href={contactInfo.text.link} direction="row" spacing={1} alignItems="center" sx={{ textDecoration: 'none', color: 'inherit', '&:hover': { opacity: 0.8 } }}>
+                            <Typography variant="body2" sx={{ fontWeight: 800, fontSize: { xs: '0.8rem', md: '0.9rem' } }}>
+                                Text: {contactInfo.text.display}
+                            </Typography>
+                        </Stack>
+                    </Box>
+                </Container>
+            </Box>
             <Container maxWidth="xl">
                 <Toolbar disableGutters sx={{ height: 90 }}>
                     {/* Logo */}

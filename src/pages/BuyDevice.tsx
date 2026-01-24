@@ -5,6 +5,7 @@ import FactCheckOutlinedIcon from '@mui/icons-material/FactCheckOutlined';
 import SavingsOutlinedIcon from '@mui/icons-material/SavingsOutlined';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import { imagePaths, getImagePath } from '../data/imagePaths';
+import { contactInfo } from '../data/contactInfo';
 import GoogleReviews from '../components/GoogleReviews';
 import FAQ from '../components/FAQ';
 
@@ -47,7 +48,7 @@ const BuyDevice = () => {
     ];
 
     return (
-        <Box sx={{ bgcolor: '#f5f5f5', minHeight: '100vh', pt: 8, pb: 0 }}>
+        <Box sx={{ minHeight: '100vh', pt: 8, pb: 0 }}>
             <Container maxWidth="xl">
                 <Box sx={{ textAlign: 'center', mb: 8 }}>
                     <Typography variant="h2" sx={{ fontWeight: 800, color: '#2C3E50', mb: 2 }}>Certified Pre-Owned Devices</Typography>
@@ -97,7 +98,7 @@ const BuyDevice = () => {
                     <Grid size={{ xs: 12, md: 4 }}>
                         <Card sx={{
                             position: { xs: 'static', md: 'sticky' },
-                            top: { md: 120 },
+                            top: { md: 170 },
                             borderRadius: 3,
                             p: 2
                         }}>
@@ -112,9 +113,9 @@ const BuyDevice = () => {
                                     fullWidth
                                     size="large"
                                     sx={{ mb: 2 }}
-                                    href="tel:6124460559"
+                                    href={contactInfo.phone.link}
                                 >
-                                    Call 612-300-9007
+                                    Call {contactInfo.phone.display}
                                 </Button>
                                 <Button variant="outlined" color="secondary" fullWidth size="large">
                                     Request a Device

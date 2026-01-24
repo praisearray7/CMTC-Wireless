@@ -8,7 +8,7 @@ import GppGoodIcon from '@mui/icons-material/GppGood';
 
 const Warranty = () => {
     return (
-        <Box sx={{ minHeight: '100vh', bgcolor: '#f9fafb' }}>
+        <Box sx={{ minHeight: '100vh' }}>
             {/* Hero Section */}
             <Box sx={{ bgcolor: '#2C3E50', color: 'white', py: 10, textAlign: 'center' }}>
                 <Container maxWidth="lg">
@@ -120,7 +120,7 @@ const Warranty = () => {
 
                     {/* Sidebar */}
                     <Grid size={{ xs: 12, md: 4 }}>
-                        <Paper sx={{ p: 4, borderRadius: 4, bgcolor: 'white', boxShadow: '0 4px 20px rgba(0,0,0,0.05)', position: 'sticky', top: 100 }}>
+                        <Paper sx={{ p: 4, borderRadius: 4, bgcolor: 'white', boxShadow: '0 4px 20px rgba(0,0,0,0.05)', position: 'sticky', top: 150 }}>
                             <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>Need to file a claim?</Typography>
                             <Typography variant="body2" sx={{ color: '#666', mb: 3 }}>
                                 If you are experiencing issues with a repair or device, please visit us immediately. We will inspect it and make it right.

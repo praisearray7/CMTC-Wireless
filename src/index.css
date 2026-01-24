@@ -6,6 +6,20 @@ body {
   font-family: 'Open Sans', 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Diagonal Micro-Stripes Background (Option 3) */
+  background-color: #ffffff;
+  background-image: repeating-linear-gradient(45deg,
+      #f8fff8 25%,
+      transparent 25%,
+      transparent 50%,
+      #f8fff8 50%,
+      #f8fff8 75%,
+      transparent 75%,
+      transparent 100%);
+  background-size: 20px 20px;
+  background-attachment: fixed;
+  min-height: 100vh;
 }
 
 html {

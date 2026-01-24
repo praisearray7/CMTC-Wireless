@@ -38,7 +38,7 @@ const Blog = () => {
     };
 
     return (
-        <Box sx={{ minHeight: '80vh', bgcolor: '#fbfbfb' }}>
+        <Box sx={{ minHeight: '80vh' }}>
             {/* Header Section */}
             <Box sx={{
                 py: 8,

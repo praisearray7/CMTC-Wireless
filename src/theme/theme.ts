@@ -1,18 +1,22 @@
 import { createTheme } from '@mui/material/styles';
+import { colors } from './colors';
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#78E335', // CMTC Green
+      main: colors.primary, // CMTC Green
       contrastText: '#000000',
     },
     secondary: {
-        main: '#2C3E50', // CMTC Navy/Dark
+        main: colors.secondary, // CMTC Navy/Dark
         contrastText: '#ffffff',
     },
     text: {
-      primary: '#2C3E50', // Dark Navy for text
-      secondary: '#546E7A',
+      primary: colors.textPrimary, // Dark Navy for text
+      secondary: colors.textSecondary,
+    },
+    background: {
+      default: colors.background, // very light green
     },
   },
   typography: {
