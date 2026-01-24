@@ -1,11 +1,13 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Box, Container, Grid, Typography, Card, CardContent, TextField, Button, Stack, Autocomplete, Chip, Alert } from '@mui/material';
+import { Box, Container, Grid, Typography, Card, CardContent, TextField, Button, Stack, Autocomplete, Alert } from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import SendIcon from '@mui/icons-material/Send';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import SmsIcon from '@mui/icons-material/Sms';
 import { fetchServicesData, type ServiceDetail } from '../data/services';
 import { contactInfo } from '../data/contactInfo';
 import GoogleReviews from '../components/GoogleReviews';
@@ -60,14 +62,7 @@ const ContactUs = () => {
             .sort();
     }, [selectedCompany, selectedDevice, servicesData]);
 
-    const currentServiceDetail: ServiceDetail | undefined = useMemo(() => {
-        if (!selectedCompany || !selectedDevice || !selectedService) return undefined;
-        return servicesData.find(s =>
-            s.company === selectedCompany &&
-            s.device === selectedDevice &&
-            s.service === selectedService
-        );
-    }, [selectedCompany, selectedDevice, selectedService, servicesData]);
+
 
     // Handle incoming state from other pages
     useEffect(() => {
@@ -76,6 +71,17 @@ const ContactUs = () => {
             if (found) {
                 setSelectedCompany(found.company);
                 setSelectedDevice(found.device);
+
+                if (location.state.serviceType) {
+                    // Try to find exact match or close match for service
+                    const serviceFound = servicesData.find(s =>
+                        s.device === found.device &&
+                        (s.service === location.state.serviceType || s.service.toLowerCase() === location.state.serviceType.toLowerCase())
+                    );
+                    if (serviceFound) {
+                        setSelectedService(serviceFound.service);
+                    }
+                }
             }
         }
     }, [location.state, loading, servicesData]);
@@ -167,11 +173,36 @@ const ContactUs = () => {
                                             <EmailIcon sx={{ color: '#78E335' }} />
                                             <Typography variant="body1">{contactInfo.email.display}</Typography>
                                         </Stack>
+                                        <Stack
+                                            direction="row"
+                                            spacing={2}
+                                            alignItems="center"
+                                            component="a"
+                                            href={contactInfo.text.link}
+                                            sx={{ textDecoration: 'none', color: 'inherit', '&:hover': { color: '#78E335' } }}
+                                        >
+                                            <SmsIcon sx={{ color: '#78E335' }} />
+                                            <Typography variant="body1">Text: {contactInfo.text.display}</Typography>
+                                        </Stack>
+                                        <Stack
+                                            direction="row"
+                                            spacing={2}
+                                            alignItems="center"
+                                            component="a"
+                                            href={contactInfo.whatsapp.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            sx={{ textDecoration: 'none', color: 'inherit', '&:hover': { color: '#78E335' } }}
+                                        >
+                                            <WhatsAppIcon sx={{ color: '#78E335' }} />
+                                            <Typography variant="body1">WhatsApp</Typography>
+                                        </Stack>
                                         <Stack direction="row" spacing={2} alignItems="flex-start">
                                             <AccessTimeIcon sx={{ color: '#78E335' }} />
                                             <Box>
-                                                <Typography variant="body2" sx={{ fontWeight: 700, color: '#78E335', mb: 0.5 }}>OPEN 24 HOURS</Typography>
-                                                <Typography variant="body2" sx={{ opacity: 0.8 }}>Monday - Saturday</Typography>
+                                                <Typography variant="body2" sx={{ fontWeight: 700, color: '#78E335', mb: 0.5 }}>OPEN HOURS</Typography>
+                                                <Typography variant="body2" sx={{ opacity: 0.8 }}>{contactInfo.hours.weekday}</Typography>
+                                                <Typography variant="body2" sx={{ opacity: 0.8 }}>{contactInfo.hours.weekend}</Typography>
                                                 <Typography variant="body2" sx={{ opacity: 0.8 }}>Sunday: Closed</Typography>
                                             </Box>
                                         </Stack>
@@ -206,6 +237,7 @@ const ContactUs = () => {
                                     {/* Brand Selection */}
                                     <Grid size={{ xs: 12, sm: 6 }}>
                                         <Autocomplete
+                                            freeSolo
                                             options={companies}
                                             value={selectedCompany}
                                             loading={loading}
@@ -213,6 +245,9 @@ const ContactUs = () => {
                                                 setSelectedCompany(newValue);
                                                 setSelectedDevice(null);
                                                 setSelectedService(null);
+                                            }}
+                                            onInputChange={(_, newInputValue) => {
+                                                setSelectedCompany(newInputValue);
                                             }}
                                             renderInput={(params) => (
                                                 <TextField
@@ -228,13 +263,17 @@ const ContactUs = () => {
                                     {/* Device Selection */}
                                     <Grid size={{ xs: 12, sm: 6 }}>
                                         <Autocomplete
+                                            freeSolo
                                             options={devices}
                                             value={selectedDevice}
-                                            disabled={!selectedCompany}
+                                            disabled={!selectedCompany && !loading} // Keep disabled if no company, unless user typed one (handled by state check)
                                             loading={loading}
                                             onChange={(_, newValue) => {
                                                 setSelectedDevice(newValue);
                                                 setSelectedService(null);
+                                            }}
+                                            onInputChange={(_, newInputValue) => {
+                                                setSelectedDevice(newInputValue);
                                             }}
                                             renderInput={(params) => (
                                                 <TextField
@@ -250,11 +289,15 @@ const ContactUs = () => {
                                     {/* Service Selection */}
                                     <Grid size={{ xs: 12 }}>
                                         <Autocomplete
+                                            freeSolo
                                             options={services}
                                             value={selectedService}
-                                            disabled={!selectedDevice}
+                                            disabled={!selectedDevice && !loading}
                                             loading={loading}
                                             onChange={(_, newValue) => setSelectedService(newValue)}
+                                            onInputChange={(_, newInputValue) => {
+                                                setSelectedService(newInputValue);
+                                            }}
                                             renderInput={(params) => (
                                                 <TextField
                                                     {...params}
@@ -267,41 +310,6 @@ const ContactUs = () => {
                                     </Grid>
 
                                     {/* Service Details Summary */}
-                                    {currentServiceDetail && (
-                                        <Grid size={{ xs: 12 }}>
-                                            <Box sx={{
-                                                p: 3,
-                                                bgcolor: '#F0F9FF',
-                                                borderRadius: 2,
-                                                border: '1px solid #B3E5FC',
-                                                display: 'flex',
-                                                flexDirection: 'column',
-                                                gap: 2
-                                            }}>
-                                                <Stack direction="row" justifyContent="space-between" alignItems="center">
-                                                    <Typography variant="subtitle1" fontWeight={700} color="#0288D1">Estimated Cost:</Typography>
-                                                    <Typography variant="h5" fontWeight={800} color="#0288D1">${currentServiceDetail.cost}</Typography>
-                                                </Stack>
-                                                {currentServiceDetail.service !== 'Buy a Phone' && (
-                                                    <>
-                                                        <Stack direction="row" justifyContent="space-between" alignItems="center">
-                                                            <Typography variant="body2" color="text.secondary">Repair Duration:</Typography>
-                                                            <Typography variant="body2" fontWeight={600} color="text.primary">{currentServiceDetail.duration} Hours</Typography>
-                                                        </Stack>
-                                                        <Stack direction="row" justifyContent="space-between" alignItems="center">
-                                                            <Typography variant="body2" color="text.secondary">Warranty:</Typography>
-                                                            <Chip label={currentServiceDetail.warranty || "N/A"} size="small" color="primary" variant="outlined" />
-                                                        </Stack>
-                                                    </>
-                                                )}
-                                                {!currentServiceDetail.technicianAvailable && (
-                                                    <Alert severity="warning" sx={{ mt: 1 }}>
-                                                        Technician currently unavailable for this service. Please contact us to schedule.
-                                                    </Alert>
-                                                )}
-                                            </Box>
-                                        </Grid>
-                                    )}
 
                                     <Grid size={{ xs: 12 }}>
                                         <TextField label="How can we help?" multiline rows={4} fullWidth variant="outlined" InputProps={{ sx: { borderRadius: 2 } }} />
