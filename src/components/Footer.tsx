@@ -26,8 +26,10 @@ const Footer = () => {
                     {/* Column 1: Logo & Info */}
                     <Grid size={{ xs: 12, md: 3 }}>
                         <Stack spacing={3}>
-                            <Typography variant="h4" component="div" sx={{ fontWeight: 900, letterSpacing: '-0.5px' }}>
-                                CMTC<span style={{ color: '#78E335' }}>WIRELESS</span>
+                            <Typography variant="h4" component="div" sx={{ fontWeight: 900, mb:2 }}>
+                                <span style={{ color: '#2C3E50' }}>CMTC </span>
+                                <span style={{ color: '#78E335' }}>WIRE</span>
+                                <span style={{ color: '#2196f3' }}>LESS</span>
                             </Typography>
                             <Typography variant="body1" sx={{ color: '#9ca3af', lineHeight: 1.7, maxWidth: '90%' }}>
                                 Trusted by thousands for fast, reliable device repairs. We're here to keep you connected with expert service and quality parts.
@@ -137,74 +139,63 @@ const Footer = () => {
                             Locate Us
                         </Typography>
                         <Stack spacing={2.5}>
-                            {/* Minneapolis */}
                             <Box
-                                component="a"
-                                href="https://www.google.com/maps/place/CMTC+Wireless+-+24%2F7+Minneapolis+MN/@44.9486757,-93.2607411,674m/data=!3m2!1e3!4b1!4m6!3m5!1s0x87f6281268b5bf95:0x9b46b4b64d7202cd!8m2!3d44.9486757!4d-93.2607411"
-                                target="_blank"
-                                rel="noopener noreferrer"
                                 sx={{
-                                    textDecoration: 'none',
-                                    display: 'block',
-                                    group: 'hover'
+                                    overflow: 'hidden',
+                                    borderRadius: 3,
+                                    mb: 2.5,
+                                    border: '1px solid rgba(255,255,255,0.1)',
+                                    height: 180,
+                                    width: '100%',
+                                    position: 'relative'
                                 }}
                             >
-                                <Box sx={{ overflow: 'hidden', borderRadius: 3, mb: 1.5, border: '1px solid rgba(255,255,255,0.1)' }}>
-                                    <Box
-                                        component="img"
-                                        src="/map_minneapolis.png"
-                                        alt="Minneapolis Location"
-                                        sx={{
-                                            width: '100%',
-                                            height: 120,
-                                            objectFit: 'cover',
-                                            transition: 'transform 0.4s ease',
-                                            '&:hover': { transform: 'scale(1.05)' }
-                                        }}
-                                    />
-                                </Box>
-                                <Stack direction="row" spacing={1.5} alignItems="center">
-                                    <LocationOnIcon sx={{ color: '#78E335', fontSize: 20 }} />
-                                    <Box>
-                                        <Typography variant="subtitle2" sx={{ color: '#fff', fontWeight: 600 }}>Minneapolis</Typography>
-                                        <Typography variant="body2" sx={{ color: '#9ca3af' }}>920 E Lake St</Typography>
-                                    </Box>
-                                </Stack>
+                                <iframe
+                                    width="100%"
+                                    height="100%"
+                                    frameBorder="0"
+                                    title="CMTC Wireless Locations"
+                                    style={{ border: 0, width: '100%', height: '100%' }}
+                                    src="https://maps.google.com/maps?q=CMTC+Wireless+Minneapolis+Saint+Paul&z=11&output=embed"
+                                    allowFullScreen
+                                ></iframe>
                             </Box>
 
-                            {/* St Paul */}
-                            <Box
-                                component="a"
-                                href="https://www.google.com/maps/place/CMTC+Wireless+-+24%2F7+Saint+Paul/@44.9700122,-93.106482,674m/data=!3m2!1e3!4b1!4m6!3m5!1s0x52b32bb295c62feb:0xb4e923ed2e4799ef!8m2!3d44.9700122!4d-93.106482"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                sx={{
-                                    textDecoration: 'none',
-                                    display: 'block'
-                                }}
-                            >
-                                <Box sx={{ overflow: 'hidden', borderRadius: 3, mb: 1.5, border: '1px solid rgba(255,255,255,0.1)' }}>
-                                    <Box
-                                        component="img"
-                                        src="/map_stpaul.png"
-                                        alt="St Paul Location"
-                                        sx={{
-                                            width: '100%',
-                                            height: 120,
-                                            objectFit: 'cover',
-                                            transition: 'transform 0.4s ease',
-                                            '&:hover': { transform: 'scale(1.05)' }
-                                        }}
-                                    />
-                                </Box>
-                                <Stack direction="row" spacing={1.5} alignItems="center">
-                                    <LocationOnIcon sx={{ color: '#78E335', fontSize: 20 }} />
+                            <Stack direction="row" spacing={12}>
+                                {/* Minneapolis */}
+                                <Stack direction="row" spacing={1} alignItems="flex-start">
+                                    <LocationOnIcon sx={{ color: '#78E335', fontSize: 20, mt: 0.5 }} />
                                     <Box>
-                                        <Typography variant="subtitle2" sx={{ color: '#fff', fontWeight: 600 }}>St Paul</Typography>
-                                        <Typography variant="body2" sx={{ color: '#9ca3af' }}>957 Rice St</Typography>
+                                        <Typography variant="subtitle2" sx={{ color: '#fff', fontWeight: 600 }}>Minneapolis</Typography>
+                                        <Typography variant="body2" sx={{ color: '#9ca3af', mb: 0.5 }}>920 E Lake St</Typography>
+                                        <MuiLink
+                                            href="https://www.google.com/maps/place/CMTC+Wireless+-+24%2F7+Minneapolis+MN/@44.9486757,-93.2607411,17z"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            sx={{ color: '#78E335', fontSize: '0.75rem', textDecoration: 'none', '&:hover': { textDecoration: 'underline' }, whiteSpace: 'nowrap' }}
+                                        >
+                                            Get Directions
+                                        </MuiLink>
                                     </Box>
                                 </Stack>
-                            </Box>
+
+                                {/* St Paul */}
+                                <Stack direction="row" spacing={1} alignItems="flex-start">
+                                    <LocationOnIcon sx={{ color: '#78E335', fontSize: 20, mt: 0.5 }} />
+                                    <Box>
+                                        <Typography variant="subtitle2" sx={{ color: '#fff', fontWeight: 600 }}>St Paul</Typography>
+                                        <Typography variant="body2" sx={{ color: '#9ca3af', mb: 0.5 }}>957 Rice St</Typography>
+                                        <MuiLink
+                                            href="https://www.google.com/maps/place/CMTC+Wireless+-+24%2F7+Saint+Paul/@44.9700122,-93.106482,17z"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            sx={{ color: '#78E335', fontSize: '0.75rem', textDecoration: 'none', '&:hover': { textDecoration: 'underline' }, whiteSpace: 'nowrap' }}
+                                        >
+                                            Get Directions
+                                        </MuiLink>
+                                    </Box>
+                                </Stack>
+                            </Stack>
                         </Stack>
                     </Grid>
                 </Grid>

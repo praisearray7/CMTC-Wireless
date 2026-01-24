@@ -100,7 +100,11 @@ const ContactUs = () => {
         <Box sx={{ minHeight: '100vh' }}>
             <Container maxWidth="lg" sx={{ py: 10 }}>
                 <Box sx={{ textAlign: 'center', mb: 8 }}>
-                    <Typography variant="h2" sx={{ fontWeight: 800, color: '#2C3E50', mb: 2 }}>Get in Touch</Typography>
+                    <Typography variant="h2" sx={{ fontWeight: 800, mb: 2 }}>
+                        <span style={{ color: '#2C3E50' }}>Get</span>{' '}
+                        <span style={{ color: '#78E335' }}>in</span>{' '}
+                        <span style={{ color: '#2196f3' }}>Touch</span>
+                    </Typography>
                     <Typography variant="h6" sx={{ color: '#546E7A', fontWeight: 400 }}>
                         Have a question or need a quote? We're here to help 24/7.
                     </Typography>
@@ -216,7 +220,7 @@ const ContactUs = () => {
                     <Grid size={{ xs: 12, md: 7 }}>
                         <Card sx={{ borderRadius: 4, boxShadow: '0 10px 40px rgba(0,0,0,0.1)', height: '100%' }}>
                             <CardContent sx={{ p: { xs: 3, md: 5 } }}>
-                                <Typography variant="h5" sx={{ fontWeight: 700, mb: 4, color: '#2C3E50' }}>Get Instant Quote</Typography>
+                                <Typography variant="h5" sx={{ fontWeight: 700, mb: 4, color: '#78E335', textAlign: 'center' }}>Get Instant Quote</Typography>
 
                                 {loading && <Typography>Loading options...</Typography>}
                                 {!loading && servicesData.length === 0 && <Alert severity="warning">No service data loaded. Please refresh.</Alert>}

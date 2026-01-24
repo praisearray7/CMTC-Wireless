@@ -14,8 +14,10 @@ const AboutUs = () => {
             {/* Hero Banner */}
             <Box sx={{ bgcolor: '#2C3E50', color: 'white', py: 10, textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
                 <Container maxWidth="md" sx={{ position: 'relative', zIndex: 2 }}>
-                    <Typography variant="h2" sx={{ fontWeight: 800, mb: 2, fontSize: { xs: '2.5rem', md: '3.5rem' }, color: 'white' }}>
-                        Our Mission: <span style={{ color: '#78E335' }}>Restoring Connections</span>
+                    <Typography variant="h2" sx={{ fontWeight: 800, mb: 2, fontSize: { xs: '2.5rem', md: '3.5rem' }}}>
+                        <span style={{ color: 'white' }}>Our Mission:  </span>
+                        <span style={{ color: '#78E335' }}>Restoring </span>
+                        <span style={{ color: '#2196f3' }}>Connections</span>
                     </Typography>
                     <Typography variant="h6" sx={{ color: '#B0BEC5', fontWeight: 400, maxWidth: 800, mx: 'auto' }}>
                         Discover top-notch iPhone, MacBook, and Samsung repair services all under one roof. Our skilled technicians are dedicated to providing swift and reliable solutions to get your devices back in peak condition.

@@ -49,7 +49,9 @@ const Blog = () => {
             }}>
                 <Container maxWidth="md">
                     <Typography variant="h3" sx={{ fontWeight: 800, mb: 2 }}>
-                        Tech Lab Videos
+                        <span style={{ color: 'white' }}> Tech </span>
+                        <span style={{ color: '#78E335' }}>Lab </span>
+                        <span style={{ color: '#2196f3' }}>Videos</span>
                     </Typography>
                     <Typography variant="h6" sx={{ opacity: 0.9, fontWeight: 400 }}>
                         Watch our expert technicians in action.

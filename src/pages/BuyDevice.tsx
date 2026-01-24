@@ -51,7 +51,11 @@ const BuyDevice = () => {
         <Box sx={{ minHeight: '100vh', pt: 8, pb: 0 }}>
             <Container maxWidth="xl">
                 <Box sx={{ textAlign: 'center', mb: 8 }}>
-                    <Typography variant="h2" sx={{ fontWeight: 800, color: '#2C3E50', mb: 2 }}>Certified Pre-Owned Devices</Typography>
+                    <Typography variant="h2" sx={{ fontWeight: 800, mb: 2 }}>
+                        <span style={{ color: '#2C3E50' }}>Certified </span>
+                        <span style={{ color: '#78E335' }}>Pre-Owned </span>
+                        <span style={{ color: '#2196f3' }}>Devices</span>
+                    </Typography>
                     <Typography variant="h6" sx={{ color: '#546E7A', fontWeight: 400, maxWidth: 700, mx: 'auto' }}>
                         Discover our selection of certified pre-owned phones. All meticulously inspected and restored to like-new condition. Get a reliable phone at a great price!
                     </Typography>

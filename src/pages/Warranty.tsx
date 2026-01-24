@@ -5,6 +5,7 @@ import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import AssignmentReturnIcon from '@mui/icons-material/AssignmentReturn';
 import GppGoodIcon from '@mui/icons-material/GppGood';
+import WarrantyIcon from '../components/WarrantyIcon';
 
 const Warranty = () => {
     return (
@@ -12,9 +13,11 @@ const Warranty = () => {
             {/* Hero Section */}
             <Box sx={{ bgcolor: '#2C3E50', color: 'white', py: 10, textAlign: 'center' }}>
                 <Container maxWidth="lg">
-                    <VerifiedUserIcon sx={{ fontSize: 60, color: '#78E335', mb: 2 }} />
-                    <Typography variant="h2" sx={{ fontWeight: 800, mb: 2, color: '#78E335' }}>
-                        Our Warranty Promise
+                    <WarrantyIcon sx={{ fontSize: 80, mb: 2 }} />
+                    <Typography variant="h2" sx={{ fontWeight: 800, mb: 2 }}>
+                        <span style={{ color: 'white' }}>Our </span>
+                        <span style={{ color: '#78E335' }}>Warranty</span>
+                        <span style={{ color: '#2196f3' }}> Promise</span>
                     </Typography>
                     <Typography variant="h6" sx={{ color: '#B0BEC5', maxWidth: '800px', mx: 'auto' }}>
                         We stand behind our work. Every repair and certified pre-owned device is backed by our rock-solid One-Year Warranty.

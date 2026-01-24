@@ -209,7 +209,7 @@ const ModelDetail = () => {
                                                 {details.desc}{warranty ? `Includes ${warranty} Warranty.` : ''}
                                             </Typography>
 
-                                            <Box sx={{ mt: 'auto', display: 'flex', flexDirection: 'column', gap: 2 }}>
+                                            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                                                 {/* Without Warranty Section */}
                                                 <Box>
                                                     <Box sx={{ bgcolor: '#fafafa', borderRadius: 2, overflow: 'hidden' }}>
