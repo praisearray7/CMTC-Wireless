@@ -16,6 +16,7 @@ import NavDropdown from './NavDropdown';
 import MobileMenu from './MobileMenu';
 import GetInstantQuoteButton from './GetInstantQuoteButton';
 import ScheduleAppointmentButton from './ScheduleAppointmentButton';
+import { PhoneIcon } from 'lucide-react';
 
 const Navbar = () => {
     const theme = useTheme();
