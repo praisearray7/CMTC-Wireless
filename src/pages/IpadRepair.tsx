@@ -31,7 +31,7 @@ const IpadRepair = () => {
                 bottomContent={
                     <>
                         <Box sx={{ mb: 8, textAlign: 'center', maxWidth: '1200px', mx: 'auto' }}>
-                            <Typography variant="h5" sx={{ fontWeight: 700, color: '#333', mb: 4, textTransform: 'capitalize' }}>
+                            <Typography variant="h5" sx={{ fontWeight: 700, color: '#333', mb: 4 }}>
                                 Select your iPad Model
                             </Typography>
 

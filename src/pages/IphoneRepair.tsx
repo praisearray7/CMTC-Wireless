@@ -70,7 +70,7 @@ const IphoneRepair = () => {
                                                     mb: 2,
                                                 }}
                                             />
-                                            <Typography variant="h6" sx={{ fontWeight: 600, color: '#333', textAlign: 'center' }}>
+                                            <Typography variant="h6" sx={{ fontWeight: 600, color: '#333', textAlign: 'center', textTransform: 'capitalize' }}>
                                                 {item.title.replace(' Repair', '')}
                                             </Typography>
                                         </Paper>
