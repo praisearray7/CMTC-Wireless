@@ -54,7 +54,7 @@ const RepairCard = ({ title, description, image, icon: Icon, priceContent, child
                 )}
 
                 <Box sx={{ ml: 2.5, display: 'flex', flexDirection: 'column', justifyContent: 'center', flexGrow: 1 }}>
-                    <Typography variant="h5" sx={{ fontWeight: 800, color: '#1a1a1a', mb: 0.5, lineHeight: 1.2 }}>
+                    <Typography variant="h5" sx={{ fontWeight: 800, color: '#1a1a1a', mb: 0.5, lineHeight: 1.2, textTransform: 'capitalize' }}>
                         {title}
                     </Typography>
                     <Typography variant="body2" sx={{ color: '#666', lineHeight: 1.5 }}>
