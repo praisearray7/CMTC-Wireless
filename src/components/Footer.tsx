@@ -26,7 +26,7 @@ const Footer = () => {
                     {/* Column 1: Logo & Info */}
                     <Grid size={{ xs: 12, md: 3 }}>
                         <Stack spacing={3}>
-                            <Typography variant="h4" component="div" sx={{ fontWeight: 900, mb:2 }}>
+                            <Typography variant="h4" component="div" sx={{ fontWeight: 900, mb: 2 }}>
                                 <span style={{ color: '#2C3E50' }}>CMTC </span>
                                 <span style={{ color: '#78E335' }}>WIRE</span>
                                 <span style={{ color: '#2196f3' }}>LESS</span>
@@ -45,6 +45,8 @@ const Footer = () => {
                                         color="inherit"
                                         aria-label={social.label}
                                         href={social.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         sx={{
                                             bgcolor: 'rgba(255,255,255,0.03)',
                                             color: '#d1d5db',
@@ -214,6 +216,8 @@ const Footer = () => {
                         <IconButton
                             aria-label="whatsapp"
                             href="https://wa.me/16123009007"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             sx={{
                                 bgcolor: 'rgba(35, 200, 73, 0.1)',
                                 color: '#23c849',
