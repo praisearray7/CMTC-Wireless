@@ -29,6 +29,12 @@ export const contactInfo = {
             street: '957 Rice St',
             cityStateZip: 'St Paul, MN 55117',
             mapLink: 'https://www.google.com/maps/place/CMTC+Wireless+-+24%2F7+Saint+Paul/@44.9700122,-93.106482,674m/data=!3m2!1e3!4b1!4m6!3m5!1s0x52b32bb295c62feb:0xb4e923ed2e4799ef!8m2!3d44.9700122!4d-93.106482'
+        },
+        both: {
+            name: 'Minneapolis & St Paul',
+            street: '957 Rice St & 920 E Lake St',
+            cityStateZip: 'St Paul, MN 55117',
+            mapLink: 'https://www.google.com/maps/search/CMTC+Wireless+Minneapolis+Saint+Paul/@44.959344,-93.183612,45275m/data=!3m1!1e3?hl=en-GB&entry=ttu&g_ep=EgoyMDI2MDEyMS4wIKXMDSoKLDEwMDc5MjA2N0gBUAM%3D'
         }
     },
     hours: {
