@@ -3,6 +3,7 @@ import { Button, Menu, Box, Typography, Stack, useTheme } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Link } from 'react-router-dom';
 import type { RepairCategory } from '../data/repairData';
+import { colors } from '../theme/colors';
 
 interface NavDropdownProps {
     title: string;
@@ -61,8 +62,8 @@ const NavDropdown = ({ title, items, getLink }: NavDropdownProps) => {
                     '&:hover': {
                         color: theme.palette.primary.main,
                         backgroundColor: 'transparent',
-                        borderTopColor: '#78E335',
-                        borderBottomColor: '#78E335',
+                        borderTopColor: colors.primary,
+                        borderBottomColor: colors.primary,
                         boxShadow: 'none',
                         transform: 'none',
                     }

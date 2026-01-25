@@ -5,6 +5,7 @@ import { Tablet, Battery, Zap, Monitor, Volume2, Camera, Droplets, RefreshCw, Pl
 import { tabletData } from '../data/tablet';
 import RepairServiceLayout from '../components/RepairServiceLayout';
 import { useRepairPricing } from '../hooks/useRepairPricing';
+import { colors } from '../theme/colors';
 
 import SEO from '../components/SEO';
 
@@ -77,15 +78,15 @@ const TabletRepair = () => {
                             </Typography>
                             <Grid container spacing={3}>
                                 {[
-                                    { title: "Glass Replacement", desc: "Replace cracked outer glass (digitizer) while keeping original LCD.", icon: <Tablet size={32} color="#78E335" /> },
-                                    { title: "LCD Replacement", desc: "Fix display issues like bleeding colors or dead pixels.", icon: <Monitor size={32} color="#78E335" /> },
-                                    { title: "Battery Replacement", desc: "Revive old tablets tailored for iPad, Samsung, and Surface.", icon: <Battery size={32} color="#78E335" /> },
-                                    { title: "Charging Port Repair", desc: "Fix loose or broken USB-C / Lightning ports.", icon: <Zap size={32} color="#78E335" /> },
-                                    { title: "Camera Repair", desc: "Replace blurry or cracked front/rear cameras.", icon: <Camera size={32} color="#78E335" /> },
-                                    { title: "Button Repair", desc: "Fix stuck power, volume, or home buttons.", icon: <Volume2 size={32} color="#78E335" /> },
-                                    { title: "Liquid Damage Clean", desc: "Specialized cleaning for water damaged tablets.", icon: <Droplets size={32} color="#78E335" /> },
-                                    { title: "Headphone Jack", desc: "Repair broken audio jacks for clear sound.", icon: <Music size={32} color="#78E335" /> },
-                                    { title: "Software Restore", desc: "Fix boot loops, freezing, and update errors.", icon: <PlayCircle size={32} color="#78E335" /> }
+                                    { title: "Glass Replacement", desc: "Replace cracked outer glass (digitizer) while keeping original LCD.", icon: <Tablet size={32} color={colors.primary} /> },
+                                    { title: "LCD Replacement", desc: "Fix display issues like bleeding colors or dead pixels.", icon: <Monitor size={32} color={colors.primary} /> },
+                                    { title: "Battery Replacement", desc: "Revive old tablets tailored for iPad, Samsung, and Surface.", icon: <Battery size={32} color={colors.primary} /> },
+                                    { title: "Charging Port Repair", desc: "Fix loose or broken USB-C / Lightning ports.", icon: <Zap size={32} color={colors.primary} /> },
+                                    { title: "Camera Repair", desc: "Replace blurry or cracked front/rear cameras.", icon: <Camera size={32} color={colors.primary} /> },
+                                    { title: "Button Repair", desc: "Fix stuck power, volume, or home buttons.", icon: <Volume2 size={32} color={colors.primary} /> },
+                                    { title: "Liquid Damage Clean", desc: "Specialized cleaning for water damaged tablets.", icon: <Droplets size={32} color={colors.primary} /> },
+                                    { title: "Headphone Jack", desc: "Repair broken audio jacks for clear sound.", icon: <Music size={32} color={colors.primary} /> },
+                                    { title: "Software Restore", desc: "Fix boot loops, freezing, and update errors.", icon: <PlayCircle size={32} color={colors.primary} /> }
                                 ].map((item, index) => (
                                     <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
                                         <Paper elevation={0} sx={{
@@ -99,14 +100,14 @@ const TabletRepair = () => {
                                             '&:hover': {
                                                 transform: 'translateY(-5px)',
                                                 boxShadow: '0 12px 30px rgba(120, 227, 53, 0.15)',
-                                                borderColor: '#78E335'
+                                                borderColor: colors.primary
                                             }
                                         }}>
                                             <Box sx={{ mb: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                                                 <Box sx={{ p: 1.5, borderRadius: 2, bgcolor: '#f0fdf4' }}>
                                                     {item.icon}
                                                 </Box>
-                                                <Typography variant="subtitle1" sx={{ color: '#166534', fontWeight: 700 }}>
+                                                <Typography variant="subtitle1" sx={{ color: colors.primary, fontWeight: 700 }}>
                                                     {loading ? "Loading..." : getPriceRange('tablet', item.title)}
                                                 </Typography>
                                             </Box>
@@ -171,7 +172,7 @@ const TabletRepair = () => {
                                                 minWidth: 48,
                                                 height: 48,
                                                 borderRadius: '50%',
-                                                bgcolor: '#78E335',
+                                                bgcolor: colors.primary,
                                                 color: '#fff',
                                                 display: 'flex',
                                                 alignItems: 'center',

@@ -1,5 +1,8 @@
-import { SvgIcon,
-    type SvgIconProps } from '@mui/material';
+import {
+    SvgIcon,
+    type SvgIconProps
+} from '@mui/material';
+import { colors } from '../theme/colors';
 
 const WarrantyIcon = (props: SvgIconProps) => {
     return (
@@ -12,8 +15,8 @@ const WarrantyIcon = (props: SvgIconProps) => {
             {/* Checkmark - Blue with White outline for contrast */}
             <path
                 d="M10 17l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"
-                fill="#2196f3"
-                stroke="white"
+                fill={colors.primaryBlue}
+                stroke={colors.white}
                 strokeWidth="1"
             />
         </SvgIcon>

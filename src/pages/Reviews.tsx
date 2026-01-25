@@ -1,4 +1,5 @@
 import { Box, Container, Grid, Typography, Card, CardContent, Rating, Avatar, Stack } from '@mui/material';
+import { colors } from '../theme/colors';
 import SEO from '../components/SEO';
 
 const Reviews = () => {
@@ -35,7 +36,7 @@ const Reviews = () => {
                             <Card sx={{ height: '100%', borderRadius: 4, transform: 'translateZ(0)', transition: '0.3s', '&:hover': { transform: 'translateY(-5px)', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' } }}>
                                 <CardContent sx={{ p: 4 }}>
                                     <Stack direction="row" spacing={2} alignItems="center" mb={2}>
-                                        <Avatar sx={{ bgcolor: '#78E335', color: '#003300', fontWeight: 700 }}>{review.name[0]}</Avatar>
+                                        <Avatar sx={{ bgcolor: colors.primary, color: '#003300', fontWeight: 700 }}>{review.name[0]}</Avatar>
                                         <Box>
                                             <Typography variant="subtitle1" fontWeight={700}>{review.name}</Typography>
                                             <Typography variant="caption" color="textSecondary">{review.date}</Typography>

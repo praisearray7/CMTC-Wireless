@@ -4,6 +4,7 @@ import { Box, Container, Typography, Button, Grid, Paper, Breadcrumbs } from '@m
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { repairServices } from '../data/repairData';
 import WhyChoose from '../components/WhyChoose';
+import { colors } from '../theme/colors';
 
 
 const ServiceDetail = () => {
@@ -35,7 +36,7 @@ const ServiceDetail = () => {
                             transition: 'all 0.2s',
                             textDecoration: 'none',
                             '&:hover': {
-                                borderColor: '#78E335',
+                                borderColor: colors.primary,
                                 boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
                                 transform: 'translateY(-2px)'
                             },
@@ -98,7 +99,7 @@ const ServiceDetail = () => {
                             </Typography>
 
                             <Typography variant="body1" sx={{ color: '#546E7A', lineHeight: 1.6 }}>
-                                Ready to set up or expand your program? <Link to="/contact-us" style={{ color: '#166534', textDecoration: 'none' }}>Request a quote or open an account</Link>.
+                                Ready to set up or expand your program? <Link to="/contact-us" style={{ color: colors.primary, textDecoration: 'none' }}>Request a quote or open an account</Link>.
                             </Typography>
                         </Grid>
 

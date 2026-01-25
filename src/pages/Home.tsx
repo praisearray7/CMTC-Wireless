@@ -21,10 +21,11 @@ import GetInstantQuoteButton from '../components/GetInstantQuoteButton';
 import ScheduleAppointmentButton from '../components/ScheduleAppointmentButton';
 
 import SEO from '../components/SEO';
+import { colors } from '../theme/colors';
 
 const Home = () => {
     // CMTC Brand Colors
-    const primaryGreen = '#78E335';
+    const primaryGreen = colors.primary;
 
     const carouselImages = imagePaths.carousel.map(path => getImagePath(path));
 
@@ -192,7 +193,7 @@ const Home = () => {
                                         state={item.state} // Pass the state
                                         variant="contained"
                                         sx={{
-                                            bgcolor: '#78E335',
+                                            bgcolor: colors.primary,
                                             color: '#fff',
                                             fontWeight: 700,
                                             fontSize: '1.1rem',
@@ -202,7 +203,7 @@ const Home = () => {
                                             boxShadow: 'none',
                                             '&:hover': {
                                                 bgcolor: '#66C22E',
-                                                boxShadow: '0 4px 12px rgba(120, 227, 53, 0.4)'
+                                                boxShadow: '0 4px 12px rgba(22, 101, 52, 0.4)'
                                             }
                                         }}
                                     >

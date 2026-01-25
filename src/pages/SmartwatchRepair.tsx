@@ -5,6 +5,7 @@ import { Watch, Battery, Zap, Droplets, Activity, Heart, Maximize, RefreshCw } f
 import { smartwatchData } from '../data/smartwatch';
 import RepairServiceLayout from '../components/RepairServiceLayout';
 import { useRepairPricing } from '../hooks/useRepairPricing';
+import { colors } from '../theme/colors';
 
 
 import SEO from '../components/SEO';
@@ -87,12 +88,12 @@ const SmartwatchRepair = () => {
                             </Typography>
                             <Grid container spacing={3}>
                                 {[
-                                    { title: "Screen Replacement", desc: "Fix cracked glass or dead pixels on Apple Watch & Galaxy Watch.", icon: <Watch size={32} color="#78E335" /> },
-                                    { title: "Battery Replacement", desc: "Restore all-day battery life to your wearable.", icon: <Battery size={32} color="#78E335" /> },
-                                    { title: "Back Glass/Sensor Repair", desc: "Fix cracked back glass or heart rate sensors.", icon: <Activity size={32} color="#78E335" /> },
-                                    { title: "Crown & Button Repair", desc: "Fix stuck digital crowns or unresponsive side buttons.", icon: <Zap size={32} color="#78E335" /> },
-                                    { title: "Water Damage Cleaning", desc: "Ultrasonic cleaning for watches exposed to liquid.", icon: <Droplets size={32} color="#78E335" /> },
-                                    { title: "Software Restore", desc: "Fix boot loops, update failures, or pairing issues.", icon: <RefreshCw size={32} color="#78E335" /> }
+                                    { title: "Screen Replacement", desc: "Fix cracked glass or dead pixels on Apple Watch & Galaxy Watch.", icon: <Watch size={32} color={colors.primary} /> },
+                                    { title: "Battery Replacement", desc: "Restore all-day battery life to your wearable.", icon: <Battery size={32} color={colors.primary} /> },
+                                    { title: "Back Glass/Sensor Repair", desc: "Fix cracked back glass or heart rate sensors.", icon: <Activity size={32} color={colors.primary} /> },
+                                    { title: "Crown & Button Repair", desc: "Fix stuck digital crowns or unresponsive side buttons.", icon: <Zap size={32} color={colors.primary} /> },
+                                    { title: "Water Damage Cleaning", desc: "Ultrasonic cleaning for watches exposed to liquid.", icon: <Droplets size={32} color={colors.primary} /> },
+                                    { title: "Software Restore", desc: "Fix boot loops, update failures, or pairing issues.", icon: <RefreshCw size={32} color={colors.primary} /> }
                                 ].map((item, index) => (
                                     <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
                                         <Paper elevation={0} sx={{
@@ -106,14 +107,14 @@ const SmartwatchRepair = () => {
                                             '&:hover': {
                                                 transform: 'translateY(-5px)',
                                                 boxShadow: '0 12px 30px rgba(120, 227, 53, 0.15)',
-                                                borderColor: '#78E335'
+                                                borderColor: colors.primary
                                             }
                                         }}>
                                             <Box sx={{ mb: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                                                 <Box sx={{ p: 1.5, borderRadius: 2, bgcolor: '#f0fdf4' }}>
                                                     {item.icon}
                                                 </Box>
-                                                <Typography variant="subtitle1" sx={{ color: '#166534', fontWeight: 700 }}>
+                                                <Typography variant="subtitle1" sx={{ color: colors.primary, fontWeight: 700 }}>
                                                     {loading ? "Loading..." : getPriceRange('smartwatch', item.title)}
                                                 </Typography>
                                             </Box>
@@ -169,7 +170,7 @@ const SmartwatchRepair = () => {
                                                 minWidth: 48,
                                                 height: 48,
                                                 borderRadius: '50%',
-                                                bgcolor: '#78E335',
+                                                bgcolor: colors.primary,
                                                 color: '#fff',
                                                 display: 'flex',
                                                 alignItems: 'center',

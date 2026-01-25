@@ -8,6 +8,7 @@ import { contactInfo } from '../data/contactInfo';
 import GoogleReviews from '../components/GoogleReviews';
 import FAQ from '../components/FAQ';
 import SEO from '../components/SEO';
+import { colors } from '../theme/colors';
 
 const BuyDevice = () => {
     const navigate = useNavigate();
@@ -57,8 +58,8 @@ const BuyDevice = () => {
                 <Box sx={{ textAlign: 'center', mb: 8 }}>
                     <Typography variant="h2" sx={{ fontWeight: 800, mb: 2 }}>
                         <span style={{ color: '#2C3E50' }}>Certified </span>
-                        <span style={{ color: '#78E335' }}>Pre-Owned </span>
-                        <span style={{ color: '#2196f3' }}>Devices</span>
+                        <span style={{ color: colors.primary }}>Pre-Owned </span>
+                        <span style={{ color: colors.primaryBlue }}>Devices</span>
                     </Typography>
                     <Typography variant="h6" sx={{ color: '#546E7A', fontWeight: 400, maxWidth: 700, mx: 'auto' }}>
                         Discover our selection of certified pre-owned phones. All meticulously inspected and restored to like-new condition. Get a reliable phone at a great price!
@@ -72,7 +73,16 @@ const BuyDevice = () => {
                         <Grid container spacing={3}>
                             {inventory.map((item) => (
                                 <Grid size={{ xs: 12, sm: 6 }} key={item.id}>
-                                    <Card sx={{ borderRadius: 3, transition: '0.3s', '&:hover': { transform: 'translateY(-5px)', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' } }}>
+                                    <Card sx={{
+                                        borderRadius: 3,
+                                        bgcolor: colors.primary,
+                                        color: '#fff',
+                                        transition: '0.3s',
+                                        '&:hover': {
+                                            transform: 'translateY(-5px)',
+                                            boxShadow: '0 10px 30px rgba(22, 101, 52, 0.2)'
+                                        }
+                                    }}>
                                         <CardMedia
                                             component="img"
                                             height="220"
@@ -83,14 +93,29 @@ const BuyDevice = () => {
                                         <CardContent>
                                             <Stack direction="row" justifyContent="space-between" alignItems="start" mb={1}>
                                                 <Typography variant="h6" sx={{ fontWeight: 700 }}>{item.name}</Typography>
-                                                <Chip label={item.condition} size="small" color="primary" sx={{ fontWeight: 600 }} />
+                                                <Chip
+                                                    label={item.condition}
+                                                    size="small"
+                                                    sx={{
+                                                        bgcolor: colors.white,
+                                                        color: colors.primary,
+                                                        fontWeight: 700
+                                                    }}
+                                                />
                                             </Stack>
-                                            <Typography variant="body2" color="textSecondary" sx={{ mb: 2 }}>Color: {item.color}</Typography>
+                                            <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.8)', mb: 2 }}>Color: {item.color}</Typography>
                                             <Button
                                                 fullWidth
-                                                variant="outlined"
-                                                color="secondary"
-                                                sx={{ borderRadius: 2 }}
+                                                variant="contained"
+                                                sx={{
+                                                    borderRadius: 2,
+                                                    bgcolor: colors.white,
+                                                    color: colors.primary,
+                                                    fontWeight: 700,
+                                                    '&:hover': {
+                                                        bgcolor: '#f0f0f0'
+                                                    }
+                                                }}
                                                 onClick={() => navigate('/contact-us', { state: { serviceNeeded: 'Check Availability', deviceModel: item.name } })}
                                             >
                                                 Check Availability
@@ -117,10 +142,10 @@ const BuyDevice = () => {
                                 </Typography>
                                 <Button
                                     variant="contained"
-                                    color="primary"
+                                    color='primary'
                                     fullWidth
                                     size="large"
-                                    sx={{ mb: 2 }}
+                                    sx={{ mb: 2, color: 'white' }}
                                     href={contactInfo.phone.link}
                                 >
                                     Call {contactInfo.phone.display}
@@ -146,17 +171,17 @@ const BuyDevice = () => {
                     <Grid container spacing={4}>
                         {[
                             {
-                                icon: <FactCheckOutlinedIcon sx={{ fontSize: 40, color: '#78E335' }} />,
+                                icon: <FactCheckOutlinedIcon sx={{ fontSize: 40, color: colors.primary }} />,
                                 title: 'Fully Inspected & Refurbished',
                                 desc: 'Checked for hardware and software issues and refurbished to factory standard functionality for a device that feels new.'
                             },
                             {
-                                icon: <SavingsOutlinedIcon sx={{ fontSize: 40, color: '#78E335' }} />,
+                                icon: <SavingsOutlinedIcon sx={{ fontSize: 40, color: colors.primary }} />,
                                 title: 'Higher Savings',
                                 desc: 'Save up to 30% off retail price when you buy a new device. We have unbeatable prices and a wide selection.'
                             },
                             {
-                                icon: <ThumbUpOutlinedIcon sx={{ fontSize: 40, color: '#78E335' }} />,
+                                icon: <ThumbUpOutlinedIcon sx={{ fontSize: 40, color: colors.primary }} />,
                                 title: 'Top Customer Service',
                                 desc: 'Let us know which device you are looking for and we will have one of our device consultants reach out with some of our current deals!'
                             }

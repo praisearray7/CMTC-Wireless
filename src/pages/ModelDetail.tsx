@@ -1,5 +1,6 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import SEO from '../components/SEO';
+import { colors } from '../theme/colors';
 import { Box, Container, Typography, Button, Grid, Paper, Breadcrumbs } from '@mui/material';
 import FAQ from '../components/FAQ';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
@@ -197,7 +198,7 @@ const ModelDetail = () => {
                                                     p: 1.5,
                                                     borderRadius: 2,
                                                     bgcolor: '#F0FDF4',
-                                                    color: '#78E335',
+                                                    color: colors.primary,
                                                     display: 'flex',
                                                     alignItems: 'center',
                                                     justifyContent: 'center'
@@ -235,7 +236,7 @@ const ModelDetail = () => {
                                                                 <Typography variant="body2" sx={{ color: '#333', fontWeight: 500, fontSize: '0.9rem' }}>
                                                                     {r['Sub-Type Title'] || 'Standard'}
                                                                 </Typography>
-                                                                <Typography variant="body2" sx={{ fontWeight: 700, color: '#166534' }}>
+                                                                <Typography variant="body2" sx={{ fontWeight: 700, color: colors.primary }}>
                                                                     {formatPrice(r['Sub-Type Price (USD)'], 0)}
                                                                 </Typography>
                                                             </Box>
@@ -374,7 +375,7 @@ const ModelDetail = () => {
                                                                     border: "1px solid #f0f0f0",
                                                                     transition: "all 0.3s ease",
                                                                     "&:hover": targetId ? {
-                                                                        borderColor: "#78E335",
+                                                                        borderColor: colors.primary,
                                                                         boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
                                                                         transform: "translateY(-5px)"
                                                                     } : {}
@@ -392,7 +393,7 @@ const ModelDetail = () => {
                                                                         aspectRatio: '3/4'
                                                                     }}
                                                                 />
-                                                                <Typography variant="body1" sx={{ fontWeight: 700, color: '#78E335', textAlign: 'center' }}>
+                                                                <Typography variant="body1" sx={{ fontWeight: 700, color: colors.primary, textAlign: 'center' }}>
                                                                     {variant}
                                                                 </Typography>
                                                             </Paper>
@@ -439,12 +440,12 @@ const ModelDetail = () => {
 
                                 {seriesInfo?.description?.map((para: string, idx: number) => {
                                     return (
-                                        <Typography key={idx} variant="body1" sx={{ color: '#666', lineHeight: 1.8, mb: 2 }} dangerouslySetInnerHTML={{ __html: para.replace(/<b color='green'>/g, '<span style="font-weight:bold;color:#78E335">').replace(/<\/b>/g, '</span>') }} />
+                                        <Typography key={idx} variant="body1" sx={{ color: '#666', lineHeight: 1.8, mb: 2 }} dangerouslySetInnerHTML={{ __html: para.replace(/<b color='green'>/g, `<span style="font-weight:bold;color:${colors.primary}">`).replace(/<\/b>/g, '</span>') }} />
                                     );
                                 })}
 
-                                <Typography variant="body1" sx={{ color: '#78E335', mt: 3, fontWeight: 500 }}>
-                                    Ready to set up or expand your program? <Link to="/contact-us" style={{ color: '#78E335', textDecoration: 'none' }}>Request a quote or open an account.</Link>
+                                <Typography variant="body1" sx={{ color: colors.primary, mt: 3, fontWeight: 500 }}>
+                                    Ready to set up or expand your program? <Link to="/contact-us" style={{ color: colors.primary, textDecoration: 'none' }}>Request a quote or open an account.</Link>
                                 </Typography>
                             </Box>
                         </Box>
@@ -460,7 +461,7 @@ const ModelDetail = () => {
                             top: 160,
                             height: 'fit-content'
                         }}>
-                            <Typography variant="h5" sx={{ color: '#78E335', fontWeight: 700, mb: 3 }}>
+                            <Typography variant="h5" sx={{ color: colors.primary, fontWeight: 700, mb: 3 }}>
                                 What We Do
                             </Typography>
                             {sidebarItems.map((item) => (
@@ -473,7 +474,7 @@ const ModelDetail = () => {
                                     </Typography>
                                 </Box>
                             ))}
-                            <Button component={Link} to="/about-us" variant="contained" disableElevation sx={{ bgcolor: '#fff', color: '#78E335', fontWeight: 700, mt: 2, py: 1.5, px: 4, '&:hover': { bgcolor: '#ffebee' } }}>
+                            <Button component={Link} to="/about-us" variant="contained" disableElevation sx={{ bgcolor: '#fff', color: colors.primary, fontWeight: 700, mt: 2, py: 1.5, px: 4, '&:hover': { bgcolor: '#ffebee' } }}>
                                 LEARN MORE
                             </Button>
                         </Paper>

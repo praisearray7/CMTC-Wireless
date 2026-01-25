@@ -4,9 +4,10 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import BuildOutlinedIcon from '@mui/icons-material/BuildOutlined';
 import VerifiedUserOutlinedIcon from '@mui/icons-material/VerifiedUserOutlined';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
+import { colors } from '../theme/colors';
 
 const WhyChoose = () => {
-    const primaryGreen = '#78E335';
+    const primaryGreen = colors.primary;
 
     const items = [
         {
@@ -41,7 +42,7 @@ const WhyChoose = () => {
                 height: 'fit-content'
             }}
         >
-            <Typography variant="h5" sx={{ fontWeight: 800, color: '#78E335', mb: 3, textAlign: 'center' }}>
+            <Typography variant="h5" sx={{ fontWeight: 800, color: colors.primary, mb: 3, textAlign: 'center' }}>
                 Why Choose Us
             </Typography>
 
@@ -68,7 +69,7 @@ const WhyChoose = () => {
                 disableElevation
                 sx={{
                     bgcolor: '#fff',
-                    color: '#78E335',
+                    color: colors.primary,
                     fontWeight: 700,
                     mt: 2,
                     py: 1.5,

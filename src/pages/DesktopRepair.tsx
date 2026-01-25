@@ -5,6 +5,7 @@ import { Monitor, HardDrive, Cpu, AlertTriangle, ShieldAlert, Power, Activity, D
 import { desktopData } from '../data/desktop';
 import RepairServiceLayout from '../components/RepairServiceLayout';
 import { useRepairPricing } from '../hooks/useRepairPricing';
+import { colors } from '../theme/colors';
 
 import SEO from '../components/SEO';
 
@@ -73,15 +74,15 @@ const DesktopRepair = () => {
                             </Typography>
                             <Grid container spacing={3}>
                                 {[
-                                    { title: "Custom PC Build", desc: "Professional assembly of your gaming rig or workstation.", icon: <Cpu size={32} color="#78E335" /> },
-                                    { title: "GPU Installation", desc: "Upgrade your graphics card for better gaming performance.", icon: <Monitor size={32} color="#78E335" /> },
-                                    { title: "Power Supply Swap", desc: "Replace faulty or underpowered PSUs safely.", icon: <Zap size={32} color="#78E335" /> },
-                                    { title: "Liquid Cooling Setup", desc: "Install or maintain AIO and custom loop coolers.", icon: <Activity size={32} color="#78E335" /> },
-                                    { title: "Motherboard Replacement", desc: "Expert swap of the main board with cable management.", icon: <Cpu size={32} color="#78E335" /> },
-                                    { title: "Case Transfer", desc: "Move your components to a new, better-airflow case.", icon: <BoxIcon size={32} color="#78E335" /> },
-                                    { title: "Storage Upgrade", desc: "Add NVMe SSDs or massive HDDs for more space.", icon: <HardDrive size={32} color="#78E335" /> },
-                                    { title: "Virus Removal", desc: "Deep cleaning of malware and bloatware.", icon: <ShieldAlert size={32} color="#78E335" /> },
-                                    { title: "Data Recovery", desc: "Retrieve lost files from failing desktop drives.", icon: <Database size={32} color="#78E335" /> }
+                                    { title: "Custom PC Build", desc: "Professional assembly of your gaming rig or workstation.", icon: <Cpu size={32} color={colors.primary} /> },
+                                    { title: "GPU Installation", desc: "Upgrade your graphics card for better gaming performance.", icon: <Monitor size={32} color={colors.primary} /> },
+                                    { title: "Power Supply Swap", desc: "Replace faulty or underpowered PSUs safely.", icon: <Zap size={32} color={colors.primary} /> },
+                                    { title: "Liquid Cooling Setup", desc: "Install or maintain AIO and custom loop coolers.", icon: <Activity size={32} color={colors.primary} /> },
+                                    { title: "Motherboard Replacement", desc: "Expert swap of the main board with cable management.", icon: <Cpu size={32} color={colors.primary} /> },
+                                    { title: "Case Transfer", desc: "Move your components to a new, better-airflow case.", icon: <BoxIcon size={32} color={colors.primary} /> },
+                                    { title: "Storage Upgrade", desc: "Add NVMe SSDs or massive HDDs for more space.", icon: <HardDrive size={32} color={colors.primary} /> },
+                                    { title: "Virus Removal", desc: "Deep cleaning of malware and bloatware.", icon: <ShieldAlert size={32} color={colors.primary} /> },
+                                    { title: "Data Recovery", desc: "Retrieve lost files from failing desktop drives.", icon: <Database size={32} color={colors.primary} /> }
                                 ].map((item, index) => (
                                     <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
                                         <Paper elevation={0} sx={{
@@ -94,15 +95,15 @@ const DesktopRepair = () => {
                                             transition: 'all 0.3s ease',
                                             '&:hover': {
                                                 transform: 'translateY(-5px)',
-                                                boxShadow: '0 12px 30px rgba(120, 227, 53, 0.15)',
-                                                borderColor: '#78E335'
+                                                boxShadow: '0 12px 30px rgba(22, 101, 52, 0.15)',
+                                                borderColor: colors.primary
                                             }
                                         }}>
                                             <Box sx={{ mb: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                                                 <Box sx={{ p: 1.5, borderRadius: 2, bgcolor: '#f0fdf4' }}>
                                                     {item.icon}
                                                 </Box>
-                                                <Typography variant="subtitle1" sx={{ color: '#166534', fontWeight: 700 }}>
+                                                <Typography variant="subtitle1" sx={{ color: colors.primary, fontWeight: 700 }}>
                                                     {loading ? "Loading..." : getPriceRange('desktop', item.title)}
                                                 </Typography>
                                             </Box>
@@ -167,7 +168,7 @@ const DesktopRepair = () => {
                                                 minWidth: 48,
                                                 height: 48,
                                                 borderRadius: '50%',
-                                                bgcolor: '#78E335',
+                                                bgcolor: colors.primary,
                                                 color: '#fff',
                                                 display: 'flex',
                                                 alignItems: 'center',

@@ -3,6 +3,7 @@ import { Box, Container, Typography, Dialog, DialogContent, IconButton } from '@
 import VideoMarquee from '../components/VideoMarquee';
 import CloseIcon from '@mui/icons-material/Close';
 import { blogSections } from '../data/blogVideos';
+import { colors } from '../theme/colors';
 import SEO from '../components/SEO';
 
 const Blog = () => {
@@ -48,8 +49,8 @@ const Blog = () => {
                 <Container maxWidth="md">
                     <Typography variant="h3" sx={{ fontWeight: 800, mb: 2 }}>
                         <span style={{ color: 'white' }}> Tech </span>
-                        <span style={{ color: '#78E335' }}>Lab </span>
-                        <span style={{ color: '#2196f3' }}>Videos</span>
+                        <span style={{ color: colors.primary }}>Lab </span>
+                        <span style={{ color: colors.primaryBlue }}>Videos</span>
                     </Typography>
                     <Typography variant="h6" sx={{ opacity: 0.9, fontWeight: 400 }}>
                         Watch our expert technicians in action.

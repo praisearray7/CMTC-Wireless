@@ -11,6 +11,7 @@ import { contactInfo } from '../data/contactInfo';
 
 import { Link as RouterLink } from 'react-router-dom';
 import { PhoneIcon } from 'lucide-react';
+import { colors } from '../theme/colors';
 
 const Footer = () => {
     return (
@@ -28,8 +29,8 @@ const Footer = () => {
                         <Stack spacing={3}>
                             <Typography variant="h4" component="div" sx={{ fontWeight: 900, mb: 2 }}>
                                 <span style={{ color: '#2C3E50' }}>CMTC </span>
-                                <span style={{ color: '#78E335' }}>WIRE</span>
-                                <span style={{ color: '#2196f3' }}>LESS</span>
+                                <span style={{ color: colors.primary }}>WIRE</span>
+                                <span style={{ color: colors.primaryBlue }}>LESS</span>
                             </Typography>
                             <Typography variant="body1" sx={{ color: '#e5e7eb', lineHeight: 1.7, maxWidth: '90%' }}>
                                 Trusted by thousands for fast, reliable device repairs. We're here to keep you connected with expert service and quality parts.
@@ -52,7 +53,7 @@ const Footer = () => {
                                             color: '#f3f4f6',
                                             transition: 'all 0.3s ease',
                                             '&:hover': {
-                                                bgcolor: '#78E335',
+                                                bgcolor: colors.primary,
                                                 color: '#000',
                                                 transform: 'translateY(-3px)'
                                             }
@@ -67,7 +68,7 @@ const Footer = () => {
 
                     {/* Column 2: Quick Links */}
                     <Grid size={{ xs: 12, sm: 6, md: 3 }}>
-                        <Typography variant="h6" sx={{ fontWeight: 700, mb: 3, letterSpacing: '0.5px', color: '#fff' }}>
+                        <Typography variant="h6" sx={{ fontWeight: 700, mb: 3, letterSpacing: '0.5px', color: colors.white }}>
                             Quick Links
                         </Typography>
                         <Stack spacing={1.5}>
@@ -83,7 +84,7 @@ const Footer = () => {
                                         transition: 'all 0.2s',
                                         display: 'inline-block',
                                         '&:hover': {
-                                            color: '#78E335',
+                                            color: colors.primary,
                                             transform: 'translateX(4px)'
                                         }
                                     }}
@@ -96,33 +97,33 @@ const Footer = () => {
 
                     {/* Column 3: Contact */}
                     <Grid size={{ xs: 12, sm: 6, md: 3 }}>
-                        <Typography variant="h6" sx={{ fontWeight: 700, mb: 3, letterSpacing: '0.5px', color: '#fff' }}>
+                        <Typography variant="h6" sx={{ fontWeight: 700, mb: 3, letterSpacing: '0.5px', color: colors.white }}>
                             Contact Us
                         </Typography>
                         <Stack spacing={2.5}>
                             <Box>
-                                <Typography variant="caption" sx={{ color: '#78E335', fontWeight: 700, letterSpacing: '1px', mb: 0.5, display: 'block' }}>
+                                <Typography variant="caption" sx={{ color: colors.primary, fontWeight: 700, letterSpacing: '1px', mb: 0.5, display: 'block' }}>
                                     PHONE & TEXT
                                 </Typography>
-                                <MuiLink href={contactInfo.phone.link} underline="hover" sx={{ display: 'block', color: '#f3f4f6', '&:hover': { color: '#78E335' } }}>
+                                <MuiLink href={contactInfo.phone.link} underline="hover" sx={{ display: 'block', color: '#f3f4f6', '&:hover': { color: colors.primary } }}>
                                     Call: {contactInfo.phone.display}
                                 </MuiLink>
-                                <MuiLink href={contactInfo.text.link} underline="hover" sx={{ display: 'block', color: '#f3f4f6', '&:hover': { color: '#78E335' } }}>
+                                <MuiLink href={contactInfo.text.link} underline="hover" sx={{ display: 'block', color: '#f3f4f6', '&:hover': { color: colors.primary } }}>
                                     Text: {contactInfo.text.display}
                                 </MuiLink>
                             </Box>
 
                             <Box>
-                                <Typography variant="caption" sx={{ color: '#78E335', fontWeight: 700, letterSpacing: '1px', mb: 0.5, display: 'block' }}>
+                                <Typography variant="caption" sx={{ color: colors.primary, fontWeight: 700, letterSpacing: '1px', mb: 0.5, display: 'block' }}>
                                     EMAIL
                                 </Typography>
-                                <MuiLink href={contactInfo.email.link} underline="hover" sx={{ color: '#f3f4f6', '&:hover': { color: '#78E335' } }}>
+                                <MuiLink href={contactInfo.email.link} underline="hover" sx={{ color: '#f3f4f6', '&:hover': { color: colors.primary } }}>
                                     {contactInfo.email.display}
                                 </MuiLink>
                             </Box>
 
                             <Box>
-                                <Typography variant="caption" sx={{ color: '#78E335', fontWeight: 700, letterSpacing: '1px', mb: 0.5, display: 'block' }}>
+                                <Typography variant="caption" sx={{ color: colors.primary, fontWeight: 700, letterSpacing: '1px', mb: 0.5, display: 'block' }}>
                                     HOURS
                                 </Typography>
                                 <Typography variant="body1" sx={{ color: '#f3f4f6', whiteSpace: 'pre-line' }}>
@@ -137,7 +138,7 @@ const Footer = () => {
 
                     {/* Column 4: Locate Us */}
                     <Grid size={{ xs: 12, sm: 6, md: 3 }}>
-                        <Typography variant="h6" sx={{ fontWeight: 700, mb: 3, letterSpacing: '0.5px', color: '#fff' }}>
+                        <Typography variant="h6" sx={{ fontWeight: 700, mb: 3, letterSpacing: '0.5px', color: colors.white }}>
                             Locate Us
                         </Typography>
                         <Stack spacing={2.5}>
@@ -166,7 +167,7 @@ const Footer = () => {
                             <Stack direction="row" spacing={12}>
                                 {/* Minneapolis */}
                                 <Stack direction="row" spacing={1} alignItems="flex-start">
-                                    <LocationOnIcon sx={{ color: '#78E335', fontSize: 20, mt: 0.5 }} />
+                                    <LocationOnIcon sx={{ color: colors.primary, fontSize: 20, mt: 0.5 }} />
                                     <Box>
                                         <Typography variant="subtitle2" sx={{ color: '#fff', fontWeight: 600 }}>Minneapolis</Typography>
                                         <Typography variant="body2" sx={{ color: '#e5e7eb', mb: 0.5 }}>920 E Lake St</Typography>
@@ -174,7 +175,7 @@ const Footer = () => {
                                             href="https://www.google.com/maps/place/CMTC+Wireless+-+24%2F7+Minneapolis+MN/@44.9486757,-93.2607411,17z"
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            sx={{ color: '#78E335', fontSize: '0.75rem', textDecoration: 'none', '&:hover': { textDecoration: 'underline' }, whiteSpace: 'nowrap' }}
+                                            sx={{ color: colors.primary, fontSize: '0.75rem', textDecoration: 'none', '&:hover': { textDecoration: 'underline' }, whiteSpace: 'nowrap' }}
                                         >
                                             Get Directions
                                         </MuiLink>
@@ -183,7 +184,7 @@ const Footer = () => {
 
                                 {/* St Paul */}
                                 <Stack direction="row" spacing={1} alignItems="flex-start">
-                                    <LocationOnIcon sx={{ color: '#78E335', fontSize: 20, mt: 0.5 }} />
+                                    <LocationOnIcon sx={{ color: colors.primary, fontSize: 20, mt: 0.5 }} />
                                     <Box>
                                         <Typography variant="subtitle2" sx={{ color: '#fff', fontWeight: 600 }}>St Paul</Typography>
                                         <Typography variant="body2" sx={{ color: '#e5e7eb', mb: 0.5 }}>957 Rice St</Typography>
@@ -191,7 +192,7 @@ const Footer = () => {
                                             href="https://www.google.com/maps/place/CMTC+Wireless+-+24%2F7+Saint+Paul/@44.9700122,-93.106482,17z"
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            sx={{ color: '#78E335', fontSize: '0.75rem', textDecoration: 'none', '&:hover': { textDecoration: 'underline' }, whiteSpace: 'nowrap' }}
+                                            sx={{ color: colors.primary, fontSize: '0.75rem', textDecoration: 'none', '&:hover': { textDecoration: 'underline' }, whiteSpace: 'nowrap' }}
                                         >
                                             Get Directions
                                         </MuiLink>

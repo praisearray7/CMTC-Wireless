@@ -5,6 +5,7 @@ import { Monitor, HardDrive, Cpu, AlertTriangle, ShieldAlert, Power, Activity, D
 import { computerData } from '../data/computer';
 import RepairServiceLayout from '../components/RepairServiceLayout';
 import { useRepairPricing } from '../hooks/useRepairPricing';
+import { colors } from '../theme/colors';
 
 
 import SEO from '../components/SEO';
@@ -94,15 +95,15 @@ const ComputerRepair = () => {
                             </Typography>
                             <Grid container spacing={3}>
                                 {[
-                                    { title: "OS Install / Reformat", desc: "Clean install of Windows or macOS to fix software issues.", icon: <Monitor size={32} color="#78E335" /> },
-                                    { title: "Drive Replacement", desc: "Replace failing HDDs to restore your computer.", icon: <HardDrive size={32} color="#78E335" /> },
-                                    { title: "SSD Upgrade", desc: "Boost speed by up to 10x with a new Solid State Drive.", icon: <Zap size={32} color="#78E335" /> },
-                                    { title: "Data Recovery", desc: "Recover lost photos & files from damaged drives.", icon: <Database size={32} color="#78E335" /> },
-                                    { title: "Logic Board Repair", desc: "Component-level soldering for dead motherboards.", icon: <Cpu size={32} color="#78E335" /> },
-                                    { title: "Screen Repair", desc: "Fix cracked screens on laptops and all-in-ones.", icon: <Monitor size={32} color="#78E335" /> },
-                                    { title: "Power Issues", desc: "Fix charging ports and power supply failures.", icon: <Power size={32} color="#78E335" /> },
-                                    { title: "Virus Removal", desc: "Remove malware, spyware, and annoying pop-ups.", icon: <ShieldAlert size={32} color="#78E335" /> },
-                                    { title: "RAM Upgrade", desc: "Increase memory for better multitasking performance.", icon: <Activity size={32} color="#78E335" /> }
+                                    { title: "OS Install / Reformat", desc: "Clean install of Windows or macOS to fix software issues.", icon: <Monitor size={32} color={colors.primary} /> },
+                                    { title: "Drive Replacement", desc: "Replace failing HDDs to restore your computer.", icon: <HardDrive size={32} color={colors.primary} /> },
+                                    { title: "SSD Upgrade", desc: "Boost speed by up to 10x with a new Solid State Drive.", icon: <Zap size={32} color={colors.primary} /> },
+                                    { title: "Data Recovery", desc: "Recover lost photos & files from damaged drives.", icon: <Database size={32} color={colors.primary} /> },
+                                    { title: "Logic Board Repair", desc: "Component-level soldering for dead motherboards.", icon: <Cpu size={32} color={colors.primary} /> },
+                                    { title: "Screen Repair", desc: "Fix cracked screens on laptops and all-in-ones.", icon: <Monitor size={32} color={colors.primary} /> },
+                                    { title: "Power Issues", desc: "Fix charging ports and power supply failures.", icon: <Power size={32} color={colors.primary} /> },
+                                    { title: "Virus Removal", desc: "Remove malware, spyware, and annoying pop-ups.", icon: <ShieldAlert size={32} color={colors.primary} /> },
+                                    { title: "RAM Upgrade", desc: "Increase memory for better multitasking performance.", icon: <Activity size={32} color={colors.primary} /> }
                                 ].map((item, index) => (
                                     <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
                                         <Paper elevation={0} sx={{
@@ -115,15 +116,15 @@ const ComputerRepair = () => {
                                             transition: 'all 0.3s ease',
                                             '&:hover': {
                                                 transform: 'translateY(-5px)',
-                                                boxShadow: '0 12px 30px rgba(120, 227, 53, 0.15)',
-                                                borderColor: '#78E335'
+                                                boxShadow: '0 12px 30px rgba(22, 101, 52, 0.15)',
+                                                borderColor: colors.primary
                                             }
                                         }}>
                                             <Box sx={{ mb: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                                                 <Box sx={{ p: 1.5, borderRadius: 2, bgcolor: '#f0fdf4' }}>
                                                     {item.icon}
                                                 </Box>
-                                                <Typography variant="subtitle1" sx={{ color: '#78E335', fontWeight: 700 }}>
+                                                <Typography variant="subtitle1" sx={{ color: colors.primary, fontWeight: 700 }}>
                                                     {loading ? "Loading..." : getPriceRange('computer', item.title)}
                                                 </Typography>
                                             </Box>
@@ -188,7 +189,7 @@ const ComputerRepair = () => {
                                                 minWidth: 48,
                                                 height: 48,
                                                 borderRadius: '50%',
-                                                bgcolor: '#78E335',
+                                                bgcolor: colors.primary,
                                                 color: '#fff',
                                                 display: 'flex',
                                                 alignItems: 'center',

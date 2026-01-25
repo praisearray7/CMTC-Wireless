@@ -5,6 +5,7 @@ import { Monitor, HardDrive, Battery, Keyboard, Zap, RefreshCw, MousePointer, Fa
 import { laptopData } from '../data/laptop';
 import RepairServiceLayout from '../components/RepairServiceLayout';
 import { useRepairPricing } from '../hooks/useRepairPricing';
+import { colors } from '../theme/colors';
 
 import SEO from '../components/SEO';
 
@@ -76,15 +77,15 @@ const LaptopRepair = () => {
                             </Typography>
                             <Grid container spacing={3}>
                                 {[
-                                    { title: "Screen Replacement", desc: "Fix cracked, bleeding, or flickering laptop screens.", icon: <Monitor size={32} color="#78E335" /> },
-                                    { title: "Battery Replacement", desc: "Replace old batteries specifically for your model.", icon: <Battery size={32} color="#78E335" /> },
-                                    { title: "Keyboard Replacement", desc: "Fix sticky, missing, or non-responsive keys.", icon: <Keyboard size={32} color="#78E335" /> },
-                                    { title: "Charging Port Repair", desc: "Soldering repair for loose or broken power jacks.", icon: <Zap size={32} color="#78E335" /> },
-                                    { title: "Hinge Repair", desc: "Repair broken physical hinges and casing damage.", icon: <RefreshCw size={32} color="#78E335" /> },
-                                    { title: "Trackpad Repair", desc: "Fix erratic mouse movement or clicking issues.", icon: <MousePointer size={32} color="#78E335" /> },
-                                    { title: "Fan Replacement", desc: "Stop loud grinding noises and prevent overheating.", icon: <Fan size={32} color="#78E335" /> },
-                                    { title: "Water Damage Clean", desc: "Ultrasonic cleaning for liquid spills.", icon: <Droplets size={32} color="#78E335" /> },
-                                    { title: "SSD Upgrade", desc: "Speed up slow laptops with a fast NVMe SSD.", icon: <HardDrive size={32} color="#78E335" /> }
+                                    { title: "Screen Replacement", desc: "Fix cracked, bleeding, or flickering laptop screens.", icon: <Monitor size={32} color={colors.primary} /> },
+                                    { title: "Battery Replacement", desc: "Replace old batteries specifically for your model.", icon: <Battery size={32} color={colors.primary} /> },
+                                    { title: "Keyboard Replacement", desc: "Fix sticky, missing, or non-responsive keys.", icon: <Keyboard size={32} color={colors.primary} /> },
+                                    { title: "Charging Port Repair", desc: "Soldering repair for loose or broken power jacks.", icon: <Zap size={32} color={colors.primary} /> },
+                                    { title: "Hinge Repair", desc: "Repair broken physical hinges and casing damage.", icon: <RefreshCw size={32} color={colors.primary} /> },
+                                    { title: "Trackpad Repair", desc: "Fix erratic mouse movement or clicking issues.", icon: <MousePointer size={32} color={colors.primary} /> },
+                                    { title: "Fan Replacement", desc: "Stop loud grinding noises and prevent overheating.", icon: <Fan size={32} color={colors.primary} /> },
+                                    { title: "Water Damage Clean", desc: "Ultrasonic cleaning for liquid spills.", icon: <Droplets size={32} color={colors.primary} /> },
+                                    { title: "SSD Upgrade", desc: "Speed up slow laptops with a fast NVMe SSD.", icon: <HardDrive size={32} color={colors.primary} /> }
                                 ].map((item, index) => (
                                     <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
                                         <Paper elevation={0} sx={{
@@ -97,15 +98,15 @@ const LaptopRepair = () => {
                                             transition: 'all 0.3s ease',
                                             '&:hover': {
                                                 transform: 'translateY(-5px)',
-                                                boxShadow: '0 12px 30px rgba(120, 227, 53, 0.15)',
-                                                borderColor: '#78E335'
+                                                boxShadow: '0 12px 30px rgba(22, 101, 52, 0.15)',
+                                                borderColor: colors.primary
                                             }
                                         }}>
                                             <Box sx={{ mb: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                                                 <Box sx={{ p: 1.5, borderRadius: 2, bgcolor: '#f0fdf4' }}>
                                                     {item.icon}
                                                 </Box>
-                                                <Typography variant="subtitle1" sx={{ color: '#166534', fontWeight: 700 }}>
+                                                <Typography variant="subtitle1" sx={{ color: colors.primary, fontWeight: 700 }}>
                                                     {loading ? "Loading..." : getPriceRange('laptop', item.title)}
                                                 </Typography>
                                             </Box>
@@ -170,7 +171,7 @@ const LaptopRepair = () => {
                                                 minWidth: 48,
                                                 height: 48,
                                                 borderRadius: '50%',
-                                                bgcolor: '#78E335',
+                                                bgcolor: colors.primary,
                                                 color: '#fff',
                                                 display: 'flex',
                                                 alignItems: 'center',

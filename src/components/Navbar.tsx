@@ -17,6 +17,7 @@ import MobileMenu from './MobileMenu';
 import GetInstantQuoteButton from './GetInstantQuoteButton';
 import ScheduleAppointmentButton from './ScheduleAppointmentButton';
 import { PhoneIcon } from 'lucide-react';
+import { colors } from '../theme/colors';
 
 const Navbar = () => {
     const theme = useTheme();
@@ -156,8 +157,8 @@ const Navbar = () => {
                                                         '&:hover': {
                                                             color: theme.palette.primary.main,
                                                             backgroundColor: 'transparent',
-                                                            borderTopColor: '#166534',
-                                                            borderBottomColor: '#166534',
+                                                            borderTopColor: colors.primary,
+                                                            borderBottomColor: colors.primary,
                                                             boxShadow: 'none',
                                                             transform: 'none',
                                                         }
@@ -243,7 +244,7 @@ const Navbar = () => {
                                                 '&:hover': {
                                                     color: theme.palette.primary.main,
                                                     backgroundColor: 'transparent',
-                                                    borderTopColor: '#166534',
+                                                    borderTopColor: colors.primary,
                                                     boxShadow: 'none',
                                                     transform: 'none',
                                                 }

@@ -5,6 +5,7 @@ import { Tablet, Battery, Zap, Monitor, Volume2, Camera, Droplets, RefreshCw, Ci
 import { ipadData } from '../data/ipad';
 import RepairServiceLayout from '../components/RepairServiceLayout';
 import { useRepairPricing } from '../hooks/useRepairPricing';
+import { colors } from '../theme/colors';
 
 import SEO from '../components/SEO';
 
@@ -94,15 +95,15 @@ const IpadRepair = () => {
                             </Typography>
                             <Grid container spacing={3}>
                                 {[
-                                    { title: "Glass Replacement", desc: "Replace cracked digitizer glass (if separate from LCD).", icon: <Tablet size={32} color="#78E335" /> },
-                                    { title: "LCD Screen Repair", desc: "Fix bleeding colors, dead pixels, or black screens.", icon: <Monitor size={32} color="#78E335" /> },
-                                    { title: "Battery Replacement", desc: "New battery for all-day life and peak performance.", icon: <Battery size={32} color="#78E335" /> },
-                                    { title: "Charging Port Repair", desc: "Fix loose or broken Lightning / USB-C ports.", icon: <Zap size={32} color="#78E335" /> },
-                                    { title: "Home Button Repair", desc: "Fix stuck or unresponsive home buttons.", icon: <CircleDot size={32} color="#78E335" /> },
-                                    { title: "Unlock Services", desc: "Carrier unlocks and software resets.", icon: <Unlock size={32} color="#78E335" /> },
-                                    { title: "Water Damage Cleaning", desc: "Ultrasonic cleaning to remove corrosion.", icon: <Droplets size={32} color="#78E335" /> },
-                                    { title: "Camera Repair", desc: "Fix blurry photos or black camera screens.", icon: <Camera size={32} color="#78E335" /> },
-                                    { title: "Frame Straightening", desc: "Reshape bent iPad housings (common on Pros).", icon: <Maximize size={32} color="#78E335" /> }
+                                    { title: "Glass Replacement", desc: "Replace cracked digitizer glass (if separate from LCD).", icon: <Tablet size={32} color={colors.primary} /> },
+                                    { title: "LCD Screen Repair", desc: "Fix bleeding colors, dead pixels, or black screens.", icon: <Monitor size={32} color={colors.primary} /> },
+                                    { title: "Battery Replacement", desc: "New battery for all-day life and peak performance.", icon: <Battery size={32} color={colors.primary} /> },
+                                    { title: "Charging Port Repair", desc: "Fix loose or broken Lightning / USB-C ports.", icon: <Zap size={32} color={colors.primary} /> },
+                                    { title: "Home Button Repair", desc: "Fix stuck or unresponsive home buttons.", icon: <CircleDot size={32} color={colors.primary} /> },
+                                    { title: "Unlock Services", desc: "Carrier unlocks and software resets.", icon: <Unlock size={32} color={colors.primary} /> },
+                                    { title: "Water Damage Cleaning", desc: "Ultrasonic cleaning to remove corrosion.", icon: <Droplets size={32} color={colors.primary} /> },
+                                    { title: "Camera Repair", desc: "Fix blurry photos or black camera screens.", icon: <Camera size={32} color={colors.primary} /> },
+                                    { title: "Frame Straightening", desc: "Reshape bent iPad housings (common on Pros).", icon: <Maximize size={32} color={colors.primary} /> }
                                 ].map((item, index) => (
                                     <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
                                         <Paper elevation={0} sx={{
@@ -115,15 +116,15 @@ const IpadRepair = () => {
                                             transition: 'all 0.3s ease',
                                             '&:hover': {
                                                 transform: 'translateY(-5px)',
-                                                boxShadow: '0 12px 30px rgba(120, 227, 53, 0.15)',
-                                                borderColor: '#78E335'
+                                                boxShadow: '0 12px 30px rgba(22, 101, 52, 0.15)',
+                                                borderColor: colors.primary
                                             }
                                         }}>
                                             <Box sx={{ mb: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                                                 <Box sx={{ p: 1.5, borderRadius: 2, bgcolor: '#f0fdf4' }}>
                                                     {item.icon}
                                                 </Box>
-                                                <Typography variant="subtitle1" sx={{ color: '#166534', fontWeight: 700 }}>
+                                                <Typography variant="subtitle1" sx={{ color: colors.primary, fontWeight: 700 }}>
                                                     {loading ? "Loading..." : getPriceRange('ipad', item.title)}
                                                 </Typography>
                                             </Box>
@@ -188,7 +189,7 @@ const IpadRepair = () => {
                                                 minWidth: 48,
                                                 height: 48,
                                                 borderRadius: '50%',
-                                                bgcolor: '#78E335',
+                                                bgcolor: colors.primary,
                                                 color: '#fff',
                                                 display: 'flex',
                                                 alignItems: 'center',

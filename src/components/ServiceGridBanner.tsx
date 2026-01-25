@@ -1,6 +1,7 @@
 import { Box, Container, Grid, Typography, Paper } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { getImagePath } from '../data/imagePaths';
+import { colors } from '../theme/colors';
 
 const items = [
     { title: 'iPad Repair', image: 'https://www.gophermods.com/wp-content/uploads/2020/04/iPad-Repair-by-Gophermods-200x200-1.jpg', link: '/ipad-repair' },
@@ -19,7 +20,7 @@ const ServiceGridBanner = () => {
             {/* Red Banner Section */}
             <Box
                 sx={{
-                    bgcolor: '#78E335', // Bright red as requested
+                    bgcolor: colors.primary, // Bright red as requested
                     py: 8,
                     position: 'relative',
                     textAlign: 'center',
@@ -52,7 +53,7 @@ const ServiceGridBanner = () => {
                         height: 0,
                         borderLeft: '25px solid transparent',
                         borderRight: '25px solid transparent',
-                        borderTop: '25px solid #78E335',
+                        borderTop: `25px solid ${colors.primary}`,
                     }}
                 />
             </Box>

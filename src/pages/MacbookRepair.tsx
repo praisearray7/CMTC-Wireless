@@ -5,6 +5,7 @@ import { Battery, Zap, Monitor, Keyboard, HardDrive, Coffee, RefreshCw, Fan, Mou
 import { macbookData } from '../data/macbook';
 import RepairServiceLayout from '../components/RepairServiceLayout';
 import { useRepairPricing } from '../hooks/useRepairPricing';
+import { colors } from '../theme/colors';
 
 
 import SEO from '../components/SEO';
@@ -94,15 +95,15 @@ const MacbookRepair = () => {
                             </Typography>
                             <Grid container spacing={3}>
                                 {[
-                                    { title: "Screen Replacement", desc: "Retina display assembly replacement for broken LCDs.", icon: <Monitor size={32} color="#78E335" /> },
-                                    { title: "Battery Replacement", desc: "Fix 'Service Battery' warnings and short runtime.", icon: <Battery size={32} color="#78E335" /> },
-                                    { title: "Keyboard Replacement", desc: "Fix sticky, repeating, or unresponsive keys.", icon: <Keyboard size={32} color="#78E335" /> },
-                                    { title: "Trackpad Repair", desc: "Fix cracked or unresponsive force touch trackpads.", icon: <MousePointer size={32} color="#78E335" /> },
-                                    { title: "Liquid Damage Repair", desc: "Logic board cleaning and component level repair.", icon: <Coffee size={32} color="#78E335" /> },
-                                    { title: "Flexgate Repair", desc: "Fix 'stage light' effect on 2016+ MacBook Pros.", icon: <Monitor size={32} color="#78E335" /> },
-                                    { title: "SSD Upgrade", desc: "Upgrade storage on older MacBook Air/Pro models.", icon: <HardDrive size={32} color="#78E335" /> },
-                                    { title: "Fan Cleaning & Repair", desc: "Fix loud fan noise and overheating issues.", icon: <Fan size={32} color="#78E335" /> },
-                                    { title: "MacOS Restoration", desc: "Fresh install of macOS if system is corrupted.", icon: <RefreshCw size={32} color="#78E335" /> }
+                                    { title: "Screen Replacement", desc: "Retina display assembly replacement for broken LCDs.", icon: <Monitor size={32} color={colors.primary} /> },
+                                    { title: "Battery Replacement", desc: "Fix 'Service Battery' warnings and short runtime.", icon: <Battery size={32} color={colors.primary} /> },
+                                    { title: "Keyboard Replacement", desc: "Fix sticky, repeating, or unresponsive keys.", icon: <Keyboard size={32} color={colors.primary} /> },
+                                    { title: "Trackpad Repair", desc: "Fix cracked or unresponsive force touch trackpads.", icon: <MousePointer size={32} color={colors.primary} /> },
+                                    { title: "Liquid Damage Repair", desc: "Logic board cleaning and component level repair.", icon: <Coffee size={32} color={colors.primary} /> },
+                                    { title: "Flexgate Repair", desc: "Fix 'stage light' effect on 2016+ MacBook Pros.", icon: <Monitor size={32} color={colors.primary} /> },
+                                    { title: "SSD Upgrade", desc: "Upgrade storage on older MacBook Air/Pro models.", icon: <HardDrive size={32} color={colors.primary} /> },
+                                    { title: "Fan Cleaning & Repair", desc: "Fix loud fan noise and overheating issues.", icon: <Fan size={32} color={colors.primary} /> },
+                                    { title: "MacOS Restoration", desc: "Fresh install of macOS if system is corrupted.", icon: <RefreshCw size={32} color={colors.primary} /> }
                                 ].map((item, index) => (
                                     <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
                                         <Paper elevation={0} sx={{
@@ -116,14 +117,14 @@ const MacbookRepair = () => {
                                             '&:hover': {
                                                 transform: 'translateY(-5px)',
                                                 boxShadow: '0 12px 30px rgba(120, 227, 53, 0.15)',
-                                                borderColor: '#78E335'
+                                                borderColor: colors.primary
                                             }
                                         }}>
                                             <Box sx={{ mb: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                                                 <Box sx={{ p: 1.5, borderRadius: 2, bgcolor: '#f0fdf4' }}>
                                                     {item.icon}
                                                 </Box>
-                                                <Typography variant="subtitle1" sx={{ color: '#166534', fontWeight: 700 }}>
+                                                <Typography variant="subtitle1" sx={{ color: colors.primary, fontWeight: 700 }}>
                                                     {loading ? "Loading..." : getPriceRange('macbook', item.title)}
                                                 </Typography>
                                             </Box>
@@ -188,7 +189,7 @@ const MacbookRepair = () => {
                                                 minWidth: 48,
                                                 height: 48,
                                                 borderRadius: '50%',
-                                                bgcolor: '#78E335',
+                                                bgcolor: colors.primary,
                                                 color: '#fff',
                                                 display: 'flex',
                                                 alignItems: 'center',

@@ -5,6 +5,7 @@ import { Smartphone, Battery, Zap, Monitor, Droplets, Camera, Volume2, Database,
 import { cellphoneData } from '../data/cellphone';
 import RepairServiceLayout from '../components/RepairServiceLayout';
 import { useRepairPricing } from '../hooks/useRepairPricing';
+import { colors } from '../theme/colors';
 
 
 import SEO from '../components/SEO';
@@ -94,15 +95,15 @@ const CellphoneRepair = () => {
                             </Typography>
                             <Grid container spacing={3}>
                                 {[
-                                    { title: "Screen Replacement", desc: "AMOLED & LCD replacements for Samsung, Pixel, Motorola, etc.", icon: <Smartphone size={32} color="#78E335" /> },
-                                    { title: "Charging Port Repair", desc: "Microsoldering for loose USB-C and Micro-USB ports.", icon: <Zap size={32} color="#78E335" /> },
-                                    { title: "Battery Replacement", desc: "New cells for extended battery life and staying power.", icon: <Battery size={32} color="#78E335" /> },
-                                    { title: "Back Glass Repair", desc: "Replace cracked back panels tailored to your model.", icon: <Monitor size={32} color="#78E335" /> },
-                                    { title: "Water Damage Cleaning", desc: "Ultrasonic cleaning to remove oxidation and corrosion.", icon: <Droplets size={32} color="#78E335" /> },
-                                    { title: "Camera Lens Repair", desc: "Detailed replacement of cracked rear camera glass.", icon: <Camera size={32} color="#78E335" /> },
-                                    { title: "Speaker / Mic Repair", desc: "Fix low volume, crackling sound, or mute microphones.", icon: <Volume2 size={32} color="#78E335" /> },
-                                    { title: "Data Recovery", desc: "Software solutions to retrieve contacts and photos.", icon: <Database size={32} color="#78E335" /> },
-                                    { title: "Unlock Services", desc: "Carrier unlocks and Google FRP removal services.", icon: <Unlock size={32} color="#78E335" /> }
+                                    { title: "Screen Replacement", desc: "AMOLED & LCD replacements for Samsung, Pixel, Motorola, etc.", icon: <Smartphone size={32} color={colors.primary} /> },
+                                    { title: "Charging Port Repair", desc: "Microsoldering for loose USB-C and Micro-USB ports.", icon: <Zap size={32} color={colors.primary} /> },
+                                    { title: "Battery Replacement", desc: "New cells for extended battery life and staying power.", icon: <Battery size={32} color={colors.primary} /> },
+                                    { title: "Back Glass Repair", desc: "Replace cracked back panels tailored to your model.", icon: <Monitor size={32} color={colors.primary} /> },
+                                    { title: "Water Damage Cleaning", desc: "Ultrasonic cleaning to remove oxidation and corrosion.", icon: <Droplets size={32} color={colors.primary} /> },
+                                    { title: "Camera Lens Repair", desc: "Detailed replacement of cracked rear camera glass.", icon: <Camera size={32} color={colors.primary} /> },
+                                    { title: "Speaker / Mic Repair", desc: "Fix low volume, crackling sound, or mute microphones.", icon: <Volume2 size={32} color={colors.primary} /> },
+                                    { title: "Data Recovery", desc: "Software solutions to retrieve contacts and photos.", icon: <Database size={32} color={colors.primary} /> },
+                                    { title: "Unlock Services", desc: "Carrier unlocks and Google FRP removal services.", icon: <Unlock size={32} color={colors.primary} /> }
                                 ].map((item, index) => (
                                     <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
                                         <Paper elevation={0} sx={{
@@ -115,15 +116,15 @@ const CellphoneRepair = () => {
                                             transition: 'all 0.3s ease',
                                             '&:hover': {
                                                 transform: 'translateY(-5px)',
-                                                boxShadow: '0 12px 30px rgba(120, 227, 53, 0.15)',
-                                                borderColor: '#78E335'
+                                                boxShadow: '0 12px 30px rgba(22, 101, 52, 0.15)',
+                                                borderColor: colors.primary
                                             }
                                         }}>
                                             <Box sx={{ mb: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                                                 <Box sx={{ p: 1.5, borderRadius: 2, bgcolor: '#f0fdf4' }}>
                                                     {item.icon}
                                                 </Box>
-                                                <Typography variant="subtitle1" sx={{ color: '#78E335', fontWeight: 700 }}>
+                                                <Typography variant="subtitle1" sx={{ color: colors.primary, fontWeight: 700 }}>
                                                     {loading ? "Loading..." : getPriceRange('android', item.title)}
                                                 </Typography>
                                             </Box>
@@ -188,7 +189,7 @@ const CellphoneRepair = () => {
                                                 minWidth: 48,
                                                 height: 48,
                                                 borderRadius: '50%',
-                                                bgcolor: '#78E335',
+                                                bgcolor: colors.primary,
                                                 color: '#fff',
                                                 display: 'flex',
                                                 alignItems: 'center',

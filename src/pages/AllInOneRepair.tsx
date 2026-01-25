@@ -5,6 +5,7 @@ import { Monitor, HardDrive, Zap, Activity, Database, ShieldAlert, Cpu, Layers, 
 import { aioData } from '../data/aio';
 import RepairServiceLayout from '../components/RepairServiceLayout';
 import { useRepairPricing } from '../hooks/useRepairPricing';
+import { colors } from '../theme/colors';
 
 import SEO from '../components/SEO';
 
@@ -73,15 +74,15 @@ const AllInOneRepair = () => {
                             </Typography>
                             <Grid container spacing={3}>
                                 {[
-                                    { title: "SSD Upgrade", desc: "The best upgrade for slow All-In-One PCs.", icon: <HardDrive size={32} color="#78E335" /> },
-                                    { title: "Screen Replacement", desc: "Fix cracked glass or LCDs on iMacs and HP AIOs.", icon: <Monitor size={32} color="#78E335" /> },
-                                    { title: "Power Supply Repair", desc: "Repair or replace internal power supply units.", icon: <Zap size={32} color="#78E335" /> },
-                                    { title: "RAM Upgrade", desc: "Multitask better with more memory.", icon: <Layers size={32} color="#78E335" /> },
-                                    { title: "Data Recovery", desc: "Safe file extraction from failing drives.", icon: <Database size={32} color="#78E335" /> },
-                                    { title: "Virus Removal", desc: "Remove malware without losing your data.", icon: <ShieldAlert size={32} color="#78E335" /> },
-                                    { title: "Fan Cleaning & Noise", desc: "Fix loud buzzing noises and overheating.", icon: <Activity size={32} color="#78E335" /> },
-                                    { title: "Motherboard Repair", desc: "Component level repair for dead units.", icon: <Cpu size={32} color="#78E335" /> },
-                                    { title: "OS Reinstallation", desc: "Fresh install of Windows or macOS.", icon: <Monitor size={32} color="#78E335" /> }
+                                    { title: "SSD Upgrade", desc: "The best upgrade for slow All-In-One PCs.", icon: <HardDrive size={32} color={colors.primary} /> },
+                                    { title: "Screen Replacement", desc: "Fix cracked glass or LCDs on iMacs and HP AIOs.", icon: <Monitor size={32} color={colors.primary} /> },
+                                    { title: "Power Supply Repair", desc: "Repair or replace internal power supply units.", icon: <Zap size={32} color={colors.primary} /> },
+                                    { title: "RAM Upgrade", desc: "Multitask better with more memory.", icon: <Layers size={32} color={colors.primary} /> },
+                                    { title: "Data Recovery", desc: "Safe file extraction from failing drives.", icon: <Database size={32} color={colors.primary} /> },
+                                    { title: "Virus Removal", desc: "Remove malware without losing your data.", icon: <ShieldAlert size={32} color={colors.primary} /> },
+                                    { title: "Fan Cleaning & Noise", desc: "Fix loud buzzing noises and overheating.", icon: <Activity size={32} color={colors.primary} /> },
+                                    { title: "Motherboard Repair", desc: "Component level repair for dead units.", icon: <Cpu size={32} color={colors.primary} /> },
+                                    { title: "OS Reinstallation", desc: "Fresh install of Windows or macOS.", icon: <Monitor size={32} color={colors.primary} /> }
                                 ].map((item, index) => (
                                     <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
                                         <Paper elevation={0} sx={{
@@ -94,15 +95,15 @@ const AllInOneRepair = () => {
                                             transition: 'all 0.3s ease',
                                             '&:hover': {
                                                 transform: 'translateY(-5px)',
-                                                boxShadow: '0 12px 30px rgba(120, 227, 53, 0.15)',
-                                                borderColor: '#78E335'
+                                                boxShadow: '0 12px 30px rgba(22, 101, 52, 0.15)',
+                                                borderColor: colors.primary
                                             }
                                         }}>
                                             <Box sx={{ mb: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                                                 <Box sx={{ p: 1.5, borderRadius: 2, bgcolor: '#f0fdf4' }}>
                                                     {item.icon}
                                                 </Box>
-                                                <Typography variant="subtitle1" sx={{ color: '#78E335', fontWeight: 700 }}>
+                                                <Typography variant="subtitle1" sx={{ color: colors.primary, fontWeight: 700 }}>
                                                     {loading ? "Loading..." : getPriceRange('all-in-one', item.title)}
                                                 </Typography>
                                             </Box>
@@ -167,7 +168,7 @@ const AllInOneRepair = () => {
                                                 minWidth: 48,
                                                 height: 48,
                                                 borderRadius: '50%',
-                                                bgcolor: '#78E335',
+                                                bgcolor: colors.primary,
                                                 color: '#fff',
                                                 display: 'flex',
                                                 alignItems: 'center',

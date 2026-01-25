@@ -6,6 +6,7 @@ import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import AssignmentReturnIcon from '@mui/icons-material/AssignmentReturn';
 import GppGoodIcon from '@mui/icons-material/GppGood';
 import WarrantyIcon from '../components/WarrantyIcon';
+import { colors } from '../theme/colors';
 
 import SEO from '../components/SEO';
 
@@ -22,8 +23,8 @@ const Warranty = () => {
                     <WarrantyIcon sx={{ fontSize: 80, mb: 2 }} />
                     <Typography variant="h2" sx={{ fontWeight: 800, mb: 2 }}>
                         <span style={{ color: 'white' }}>Our </span>
-                        <span style={{ color: '#78E335' }}>Warranty</span>
-                        <span style={{ color: '#2196f3' }}> Promise</span>
+                        <span style={{ color: colors.primary }}>Warranty</span>
+                        <span style={{ color: colors.primaryBlue }}> Promise</span>
                     </Typography>
                     <Typography variant="h6" sx={{ color: '#B0BEC5', maxWidth: '800px', mx: 'auto' }}>
                         We stand behind our work. Every repair and certified pre-owned device is backed by our rock-solid One-Year Warranty.
@@ -42,9 +43,9 @@ const Warranty = () => {
                             <Typography variant="body1" sx={{ color: '#546E7A', mb: 3, lineHeight: 1.8 }}>
                                 At CMTC Wireless, we use only the highest quality parts for our repairs. We are so confident in our craftsmanship that we offer a comprehensive <strong>One-Year Warranty</strong> on all repairs and certified pre-owned devices.
                             </Typography>
-                            <Paper sx={{ p: 3, bgcolor: 'white', borderRadius: 2, borderLeft: '4px solid #78E335' }}>
+                            <Paper sx={{ p: 3, bgcolor: colors.white, borderRadius: 2, borderLeft: `4px solid ${colors.primary}` }}>
                                 <Typography variant="h6" sx={{ fontWeight: 600, mb: 2, display: 'flex', alignItems: 'center' }}>
-                                    <GppGoodIcon sx={{ color: '#78E335', mr: 1 }} /> What is covered?
+                                    <GppGoodIcon sx={{ color: colors.primary, mr: 1 }} /> What is covered?
                                 </Typography>
                                 <List>
                                     <ListItem>

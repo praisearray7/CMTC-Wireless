@@ -1,6 +1,7 @@
 
 import { Box, Container, Grid, Typography, Card, CardContent, TextField, Button, MenuItem, Stepper, Step, StepLabel } from '@mui/material';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
+import { colors } from '../theme/colors';
 
 import SEO from '../components/SEO';
 
@@ -13,7 +14,7 @@ const UnlockDevice = () => {
             />
             <Container maxWidth="md">
                 <Box sx={{ textAlign: 'center', mb: 6 }}>
-                    <LockOpenIcon sx={{ fontSize: 60, color: '#78E335', mb: 2 }} />
+                    <LockOpenIcon sx={{ fontSize: 60, color: colors.primary, mb: 2 }} />
                     <Typography variant="h2" sx={{ fontWeight: 800, color: '#2C3E50', mb: 2 }}>Unlock Your Device</Typography>
                     <Typography variant="h6" sx={{ color: '#546E7A', fontWeight: 400 }}>
                         Switch carriers freely. Fast, secure, and permanent unlocking for most major brands.

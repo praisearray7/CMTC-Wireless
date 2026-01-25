@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Box, Container, Typography, Accordion, AccordionSummary, AccordionDetails, Button } from '@mui/material';
+import { Box, Container, Typography, Accordion, AccordionSummary, AccordionDetails, Button, Stack } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { faqData } from '../data/faqData';
+import { colors } from '../theme/colors';
 
 interface FAQProps {
     category?: string;
@@ -21,7 +24,7 @@ const FAQ: React.FC<FAQProps> = ({ category = 'default' }) => {
     };
 
     return (
-        <Box sx={{ bgcolor: '#78E335', py: 10, color: '#fff' }}>
+        <Box sx={{ bgcolor: colors.primary, py: 10, color: '#fff' }}>
             <Container maxWidth="lg">
                 <Box sx={{ textAlign: 'center', mb: 6 }}>
                     <Typography variant="h3" sx={{ fontWeight: 700, mb: 2 }}>
@@ -42,11 +45,16 @@ const FAQ: React.FC<FAQProps> = ({ category = 'default' }) => {
                                 key={index}
                                 expanded={isExpanded}
                                 onChange={handleChange(panelId)}
+                                disableGutters
+                                elevation={0}
                                 sx={{
                                     bgcolor: 'transparent',
-                                    boxShadow: 'none',
-                                    '&:before': { display: 'none' }, // Remove default divider
-                                    mb: 2
+                                    color: '#fff',
+                                    mb: 2,
+                                    borderBottom: '1px solid rgba(255,255,255,0.1)',
+                                    borderRadius: 0,
+                                    '&:before': { display: 'none' },
+                                    '&:last-child': { borderBottom: 'none' }
                                 }}
                             >
                                 <AccordionSummary
@@ -54,26 +62,52 @@ const FAQ: React.FC<FAQProps> = ({ category = 'default' }) => {
                                         <Box
                                             component="span"
                                             onMouseEnter={() => !isExpanded && setExpanded(panelId)}
-                                            sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}
+                                            sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer', position: 'relative', width: 28, height: 28 }}
                                         >
-                                            {isExpanded ? <RemoveIcon sx={{ color: '#fff' }} /> : <AddIcon sx={{ color: '#fff' }} />}
+                                            <AddIcon sx={{
+                                                position: 'absolute',
+                                                top: 0,
+                                                left: 0,
+                                                color: '#fff',
+                                                fontSize: 28,
+                                                transition: 'all 0.3s ease-in-out',
+                                                transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
+                                                opacity: isExpanded ? 0 : 1
+                                            }} />
+                                            <RemoveIcon sx={{
+                                                position: 'absolute',
+                                                top: 0,
+                                                left: 0,
+                                                color: '#fff',
+                                                fontSize: 28,
+                                                transition: 'all 0.3s ease-in-out',
+                                                transform: isExpanded ? 'rotate(0deg)' : 'rotate(-180deg)',
+                                                opacity: isExpanded ? 1 : 0
+                                            }} />
                                         </Box>
                                     }
                                     aria-controls={`${panelId}bh-content`}
                                     id={`${panelId}bh-header`}
                                     sx={{
                                         px: 0,
-                                        '& .MuiAccordionSummary-content': { margin: '12px 0' }
+                                        '& .MuiAccordionSummary-content': { margin: '12px 0' },
+                                        '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': { transform: 'none' }
                                     }}
                                 >
-                                    <Typography variant="h6" sx={{ fontWeight: 500, fontSize: '1.1rem' }}>
-                                        {item.question}
-                                    </Typography>
+                                    <Stack direction="row" spacing={2} alignItems="center">
+                                        <HelpOutlineIcon sx={{ color: '#81c784', fontSize: '1.5rem' }} />
+                                        <Typography variant="h6" sx={{ fontWeight: 500, fontSize: '1.1rem', color: 'white' }}>
+                                            {item.question}
+                                        </Typography>
+                                    </Stack>
                                 </AccordionSummary>
-                                <AccordionDetails sx={{ px: 0, pt: 0, pb: 2 }}>
-                                    <Typography sx={{ opacity: 0.9, lineHeight: 1.6 }}>
-                                        {item.answer}
-                                    </Typography>
+                                <AccordionDetails sx={{ px: 3, pb: 4, pt: 0, ml: 5 }}>
+                                    <Stack direction="row" spacing={2} alignItems="flex-start">
+                                        <CheckCircleOutlineIcon sx={{ color: '#a5d6a7', fontSize: '1.2rem', mt: 0.5 }} />
+                                        <Typography sx={{ opacity: 0.9, lineHeight: 1.8, fontSize: '1.05rem', fontWeight: 400, color: 'white' }}>
+                                            {item.answer}
+                                        </Typography>
+                                    </Stack>
                                 </AccordionDetails>
                             </Accordion>
                         );
@@ -86,14 +120,21 @@ const FAQ: React.FC<FAQProps> = ({ category = 'default' }) => {
                         to="/contact-us"
                         state={{ serviceNeeded: 'General Inquiry' }}
                         variant="contained"
+                        size="large"
                         sx={{
                             bgcolor: '#fff',
-                            color: '#78E335',
-                            fontWeight: 'bold',
-                            px: 4,
-                            py: 1.5,
+                            color: colors.primary,
+                            fontWeight: 800,
+                            px: 5,
+                            py: 1.8,
+                            borderRadius: '8px',
+                            fontSize: '0.9rem',
+                            letterSpacing: '0.5px',
+                            boxShadow: '0 4px 14px 0 rgba(0,0,0,0.1)',
                             '&:hover': {
-                                bgcolor: '#f5f5f5'
+                                bgcolor: '#f0fdf4',
+                                transform: 'translateY(-2px)',
+                                boxShadow: '0 6px 20px rgba(0,0,0,0.15)'
                             }
                         }}
                     >

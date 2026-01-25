@@ -1,4 +1,5 @@
 import { Box, Card, CardActionArea, CardMedia, Typography, useTheme } from '@mui/material';
+import { colors } from '../theme/colors';
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import { keyframes } from '@emotion/react';
 
@@ -95,7 +96,7 @@ const VideoMarquee = ({ videos, onPlay }: VideoMarqueeProps) => {
                                     <Box sx={{
                                         height: 180,
                                         width: '100%',
-                                        background: 'linear-gradient(135deg, #2e7d32 0%, #78E335 100%)',
+                                        background: `linear-gradient(135deg, ${colors.primary} 0%, ${colors.primary} 100%)`,
                                         display: 'flex',
                                         alignItems: 'center',
                                         justifyContent: 'center'

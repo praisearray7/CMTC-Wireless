@@ -12,6 +12,7 @@ import { fetchServicesData, type ServiceDetail } from '../data/services';
 import { contactInfo } from '../data/contactInfo';
 import GoogleReviews from '../components/GoogleReviews';
 import SEO from '../components/SEO';
+import { colors } from '../theme/colors';
 
 const ContactUs = () => {
     const location = useLocation();
@@ -102,8 +103,8 @@ const ContactUs = () => {
                 <Box sx={{ textAlign: 'center', mb: 8 }}>
                     <Typography variant="h2" sx={{ fontWeight: 800, mb: 2 }}>
                         <span style={{ color: '#2C3E50' }}>Get</span>{' '}
-                        <span style={{ color: '#166534' }}>in</span>{' '}
-                        <span style={{ color: '#2196f3' }}>Touch</span>
+                        <span style={{ color: colors.primary }}>in</span>{' '}
+                        <span style={{ color: colors.primaryBlue }}>Touch</span>
                     </Typography>
                     <Typography variant="h6" sx={{ color: '#546E7A', fontWeight: 400 }}>
                         Have a question or need a quote? We're here to help 24/7.
@@ -114,7 +115,7 @@ const ContactUs = () => {
                     {/* Contact Info Side */}
                     <Grid size={{ xs: 12, md: 5 }} sx={{ mt: { md: 10 } }}>
                         <Stack spacing={4}>
-                            <Card sx={{ borderRadius: 4, boxShadow: '0 4px 20px rgba(0,0,0,0.05)', bgcolor: '#F9FAFB', '&:hover': { boxShadow: '0 4px 20px rgba(163, 219, 145, 1)', color: '#166534' } }}>
+                            <Card sx={{ borderRadius: 4, boxShadow: '0 4px 20px rgba(0,0,0,0.05)', bgcolor: '#F9FAFB', '&:hover': { boxShadow: '0 4px 20px rgba(163, 219, 145, 1)', color: colors.primary } }}>
                                 <CardContent sx={{ p: 4 }}>
                                     <Stack
                                         component="a"
@@ -127,7 +128,7 @@ const ContactUs = () => {
                                         sx={{ mb: 4, textDecoration: 'none', color: 'inherit', transition: '0.2s', '&:hover': { opacity: 0.7 } }}
 
                                     >
-                                        <Box sx={{ p: 1.5, bgcolor: '#E8F5E9', borderRadius: '50%', color: '#78E335' }}><LocationOnIcon /></Box>
+                                        <Box sx={{ p: 1.5, bgcolor: '#E8F5E9', borderRadius: '50%', color: colors.primary }}><LocationOnIcon /></Box>
                                         <Box>
                                             <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>{contactInfo.address.minneapolis.name}</Typography>
                                             <Typography variant="body1" color="textSecondary">{contactInfo.address.minneapolis.street}<br />{contactInfo.address.minneapolis.cityStateZip}</Typography>
@@ -143,7 +144,7 @@ const ContactUs = () => {
                                         alignItems="flex-start"
                                         sx={{ textDecoration: 'none', color: 'inherit', transition: '0.2s', '&:hover': { opacity: 0.7 } }}
                                     >
-                                        <Box sx={{ p: 1.5, bgcolor: '#E8F5E9', borderRadius: '50%', color: '#78E335' }}><LocationOnIcon /></Box>
+                                        <Box sx={{ p: 1.5, bgcolor: '#E8F5E9', borderRadius: '50%', color: colors.primary }}><LocationOnIcon /></Box>
                                         <Box>
                                             <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>{contactInfo.address.stPaul.name}</Typography>
                                             <Typography variant="body1" color="textSecondary">{contactInfo.address.stPaul.street}<br />{contactInfo.address.stPaul.cityStateZip}</Typography>
@@ -161,9 +162,9 @@ const ContactUs = () => {
                                             alignItems="center"
                                             component="a"
                                             href={contactInfo.phone.link}
-                                            sx={{ textDecoration: 'none', color: 'inherit', '&:hover': { color: '#78E335' } }}
+                                            sx={{ textDecoration: 'none', color: 'inherit', '&:hover': { color: colors.primary } }}
                                         >
-                                            <PhoneIcon sx={{ color: '#78E335' }} />
+                                            <PhoneIcon sx={{ color: colors.primary }} />
                                             <Typography variant="h6" sx={{ fontWeight: 600 }}>{contactInfo.phone.display}</Typography>
                                         </Stack>
                                         <Stack
@@ -172,9 +173,9 @@ const ContactUs = () => {
                                             alignItems="center"
                                             component="a"
                                             href={contactInfo.email.link}
-                                            sx={{ textDecoration: 'none', color: 'inherit', '&:hover': { color: '#78E335' } }}
+                                            sx={{ textDecoration: 'none', color: 'inherit', '&:hover': { color: colors.primary } }}
                                         >
-                                            <EmailIcon sx={{ color: '#78E335' }} />
+                                            <EmailIcon sx={{ color: colors.primary }} />
                                             <Typography variant="body1">{contactInfo.email.display}</Typography>
                                         </Stack>
                                         <Stack
@@ -183,9 +184,9 @@ const ContactUs = () => {
                                             alignItems="center"
                                             component="a"
                                             href={contactInfo.text.link}
-                                            sx={{ textDecoration: 'none', color: 'inherit', '&:hover': { color: '#78E335' } }}
+                                            sx={{ textDecoration: 'none', color: 'inherit', '&:hover': { color: colors.primary } }}
                                         >
-                                            <SmsIcon sx={{ color: '#78E335' }} />
+                                            <SmsIcon sx={{ color: colors.primary }} />
                                             <Typography variant="body1">Text: {contactInfo.text.display}</Typography>
                                         </Stack>
                                         <Stack
@@ -196,15 +197,15 @@ const ContactUs = () => {
                                             href={contactInfo.whatsapp.link}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            sx={{ textDecoration: 'none', color: 'inherit', '&:hover': { color: '#78E335' } }}
+                                            sx={{ textDecoration: 'none', color: 'inherit', '&:hover': { color: colors.primary } }}
                                         >
-                                            <WhatsAppIcon sx={{ color: '#78E335' }} />
+                                            <WhatsAppIcon sx={{ color: colors.primary }} />
                                             <Typography variant="body1">WhatsApp</Typography>
                                         </Stack>
                                         <Stack direction="row" spacing={2} alignItems="flex-start">
-                                            <AccessTimeIcon sx={{ color: '#78E335' }} />
+                                            <AccessTimeIcon sx={{ color: colors.primary }} />
                                             <Box>
-                                                <Typography variant="body2" sx={{ fontWeight: 700, color: '#166534', mb: 0.5 }}>OPEN HOURS</Typography>
+                                                <Typography variant="body2" sx={{ fontWeight: 700, color: colors.primary, mb: 0.5 }}>OPEN HOURS</Typography>
                                                 <Typography variant="body2" sx={{ opacity: 0.8 }}>{contactInfo.hours.weekday}</Typography>
                                                 <Typography variant="body2" sx={{ opacity: 0.8 }}>{contactInfo.hours.weekend}</Typography>
                                                 <Typography variant="body2" sx={{ opacity: 0.8 }}>Sunday: Closed</Typography>
@@ -220,7 +221,7 @@ const ContactUs = () => {
                     <Grid size={{ xs: 12, md: 7 }}>
                         <Card sx={{ borderRadius: 4, boxShadow: '0 10px 40px rgba(0,0,0,0.1)', height: '100%' }}>
                             <CardContent sx={{ p: { xs: 3, md: 5 } }}>
-                                <Typography variant="h5" sx={{ fontWeight: 700, mb: 4, color: '#166534', textAlign: 'center' }}>Get Instant Quote</Typography>
+                                <Typography variant="h5" sx={{ fontWeight: 700, mb: 4, color: colors.primary, textAlign: 'center' }}>Get Instant Quote</Typography>
 
                                 {loading && <Typography>Loading options...</Typography>}
                                 {!loading && servicesData.length === 0 && <Alert severity="warning">No service data loaded. Please refresh.</Alert>}

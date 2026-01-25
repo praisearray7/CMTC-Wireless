@@ -6,6 +6,7 @@ import { seriesData } from '../data/iphone';
 import { getImagePath } from '../data/imagePaths';
 import RepairServiceLayout from '../components/RepairServiceLayout';
 import { useRepairPricing } from '../hooks/useRepairPricing';
+import { colors } from '../theme/colors';
 
 import SEO from '../components/SEO';
 
@@ -86,15 +87,15 @@ const IphoneRepair = () => {
                             </Typography>
                             <Grid container spacing={3}>
                                 {[
-                                    { title: "Screen Replacement", desc: "Fix cracked screens, dead pixels, or ghost touch issues (OLED/LCD).", icon: <Smartphone size={32} color="#78E335" /> },
-                                    { title: "Battery Replacement", desc: "Restore peak performance and all-day battery life.", icon: <Battery size={32} color="#78E335" /> },
-                                    { title: "Back Glass Repair", desc: "Laser removal for shattered back glass panels.", icon: <Maximize size={32} color="#78E335" /> },
-                                    { title: "Charging Port Repair", desc: "Fix loose lightning/USB-C ports or charging issues.", icon: <Zap size={32} color="#78E335" /> },
-                                    { title: "Camera Repair", desc: "Replace shaky, blurry, or cracked camera lenses.", icon: <Camera size={32} color="#78E335" /> },
-                                    { title: "Face ID Repair", desc: "Restore Face ID functionality (on supported models).", icon: <ScanFace size={32} color="#78E335" /> },
-                                    { title: "Water Damage Cleaning", desc: "Professional ultrasonic cleaning for liquid damage.", icon: <Droplets size={32} color="#78E335" /> },
-                                    { title: "Speaker Repair", desc: "Fix muffled sound or broken ear speakers.", icon: <Volume2 size={32} color="#78E335" /> },
-                                    { title: "Data Recovery", desc: "Retrieve photos and data from dead iPhones.", icon: <Database size={32} color="#78E335" /> }
+                                    { title: "Screen Replacement", desc: "Fix cracked screens, dead pixels, or ghost touch issues (OLED/LCD).", icon: <Smartphone size={32} color={colors.primary} /> },
+                                    { title: "Battery Replacement", desc: "Restore peak performance and all-day battery life.", icon: <Battery size={32} color={colors.primary} /> },
+                                    { title: "Back Glass Repair", desc: "Laser removal for shattered back glass panels.", icon: <Maximize size={32} color={colors.primary} /> },
+                                    { title: "Charging Port Repair", desc: "Fix loose lightning/USB-C ports or charging issues.", icon: <Zap size={32} color={colors.primary} /> },
+                                    { title: "Camera Repair", desc: "Replace shaky, blurry, or cracked camera lenses.", icon: <Camera size={32} color={colors.primary} /> },
+                                    { title: "Face ID Repair", desc: "Restore Face ID functionality (on supported models).", icon: <ScanFace size={32} color={colors.primary} /> },
+                                    { title: "Water Damage Cleaning", desc: "Professional ultrasonic cleaning for liquid damage.", icon: <Droplets size={32} color={colors.primary} /> },
+                                    { title: "Speaker Repair", desc: "Fix muffled sound or broken ear speakers.", icon: <Volume2 size={32} color={colors.primary} /> },
+                                    { title: "Data Recovery", desc: "Retrieve photos and data from dead iPhones.", icon: <Database size={32} color={colors.primary} /> }
                                 ].map((item, index) => (
                                     <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
                                         <Paper elevation={0} sx={{
@@ -107,15 +108,15 @@ const IphoneRepair = () => {
                                             transition: 'all 0.3s ease',
                                             '&:hover': {
                                                 transform: 'translateY(-5px)',
-                                                boxShadow: '0 12px 30px rgba(120, 227, 53, 0.15)',
-                                                borderColor: '#78E335'
+                                                boxShadow: '0 12px 30px rgba(22, 101, 52, 0.15)',
+                                                borderColor: colors.primary
                                             }
                                         }}>
                                             <Box sx={{ mb: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                                                 <Box sx={{ p: 1.5, borderRadius: 2, bgcolor: '#f0fdf4' }}>
                                                     {item.icon}
                                                 </Box>
-                                                <Typography variant="subtitle1" sx={{ color: '#166534', fontWeight: 700 }}>
+                                                <Typography variant="subtitle1" sx={{ color: colors.primary, fontWeight: 700 }}>
                                                     {loading ? "Loading..." : getPriceRange('iphone', item.title)}
                                                 </Typography>
                                             </Box>
@@ -180,7 +181,7 @@ const IphoneRepair = () => {
                                                 minWidth: 48,
                                                 height: 48,
                                                 borderRadius: '50%',
-                                                bgcolor: '#78E335',
+                                                bgcolor: colors.primary,
                                                 color: '#fff',
                                                 display: 'flex',
                                                 alignItems: 'center',

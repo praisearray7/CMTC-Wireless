@@ -3,6 +3,7 @@ import { Button } from '@mui/material';
 import type { ButtonProps } from '@mui/material';
 import { Link } from 'react-router-dom';
 import RequestQuoteIcon from "@mui/icons-material/RequestQuote"
+import { colors } from '../theme/colors';
 
 interface GetInstantQuoteButtonProps extends ButtonProps {
     to?: string;
@@ -24,13 +25,13 @@ const GetInstantQuoteButton: React.FC<GetInstantQuoteButtonProps> = ({
             variant="contained"
             color="primary"
             sx={{
-                bgcolor: '#78E335',
-                color: '#000', // Black text for better contrast on bright green
+                bgcolor: colors.primary,
+                color: '#fff', // Black text for better contrast on bright green
                 fontWeight: 700,
                 boxShadow: 'none',
                 '&:hover': {
-                    bgcolor: '#66C22E',
-                    boxShadow: '0 4px 12px rgba(120, 227, 53, 0.4)'
+                    bgcolor: '#14532d',
+                    boxShadow: '0 4px 12px rgba(22, 101, 52, 0.4)'
                 },
                 ...sx
             }}
