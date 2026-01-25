@@ -31,6 +31,7 @@ const SmartwatchRepair = () => {
                                     <Paper
                                         elevation={0}
                                         sx={{
+                                            height: '100%',
                                             p: 3,
                                             display: "flex",
                                             flexDirection: "column",
@@ -56,7 +57,7 @@ const SmartwatchRepair = () => {
                                             sx={{
                                                 width: "100%",
                                                 maxWidth: 200,
-                                                height: "auto",
+                                                height: 200,
                                                 objectFit: "contain",
                                                 mb: 2,
                                             }}
@@ -150,6 +151,7 @@ const SmartwatchRepair = () => {
                                 <Grid size={{ xs: 12, md: 6 }} key={index}>
                                     <Paper elevation={0} sx={{
                                         p: 3,
+                                        height: '100%',
                                         display: 'flex',
                                         gap: 2,
                                         border: '1px solid #f0f0f0',
