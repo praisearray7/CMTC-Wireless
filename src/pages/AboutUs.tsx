@@ -7,6 +7,7 @@ import TrackChangesIcon from '@mui/icons-material/TrackChanges';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import GoogleReviews from '../components/GoogleReviews';
 import { imagePaths, getImagePath } from '../data/imagePaths';
+import CountUpAnimation from '../components/CountUpAnimation';
 
 const AboutUs = () => {
     return (
@@ -14,7 +15,7 @@ const AboutUs = () => {
             {/* Hero Banner */}
             <Box sx={{ bgcolor: '#2C3E50', color: 'white', py: 10, textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
                 <Container maxWidth="md" sx={{ position: 'relative', zIndex: 2 }}>
-                    <Typography variant="h2" sx={{ fontWeight: 800, mb: 2, fontSize: { xs: '2.5rem', md: '3.5rem' }}}>
+                    <Typography variant="h2" sx={{ fontWeight: 800, mb: 2, fontSize: { xs: '2.5rem', md: '3.5rem' } }}>
                         <span style={{ color: 'white' }}>Our Mission:  </span>
                         <span style={{ color: '#78E335' }}>Restoring </span>
                         <span style={{ color: '#2196f3' }}>Connections</span>
@@ -33,15 +34,17 @@ const AboutUs = () => {
             <Container maxWidth="lg" sx={{ mt: -6, position: 'relative', zIndex: 3, mb: 10 }}>
                 <Grid container spacing={3}>
                     {[
-                        { icon: <GroupsIcon sx={{ fontSize: 40, color: '#78E335' }} />, number: '15+', label: 'Years Experience' },
-                        { icon: <PrecisionManufacturingIcon sx={{ fontSize: 40, color: '#78E335' }} />, number: '50k+', label: 'Devices Fixed' },
-                        { icon: <VerifiedUserIcon sx={{ fontSize: 40, color: '#78E335' }} />, number: '12k+', label: 'Happy Customers' },
-                        { icon: <TimerIcon sx={{ fontSize: 40, color: '#78E335' }} />, number: '45m', label: 'Avg Repair Time' }
+                        { count: 15, suffix: '+', label: 'Years Experience', icon: <GroupsIcon sx={{ fontSize: 40, color: '#78E335', mb: 1 }} /> },
+                        { count: 50, suffix: 'k+', label: 'Devices Fixed', icon: <PrecisionManufacturingIcon sx={{ fontSize: 40, color: '#78E335', mb: 1 }} /> },
+                        { count: 12, suffix: 'k+', label: 'Happy Customers', icon: <VerifiedUserIcon sx={{ fontSize: 40, color: '#78E335', mb: 1 }} /> },
+                        { count: 45, suffix: 'm', label: 'Avg Repair Time', icon: <TimerIcon sx={{ fontSize: 40, color: '#78E335', mb: 1 }} /> }
                     ].map((stat, index) => (
                         <Grid size={{ xs: 12, sm: 6, md: 3 }} key={index}>
                             <Card sx={{ textAlign: 'center', py: 4, borderRadius: 4, boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
                                 <Box sx={{ mb: 1 }}>{stat.icon}</Box>
-                                <Typography variant="h3" sx={{ fontWeight: 800, color: '#2C3E50', mb: 0.5 }}>{stat.number}</Typography>
+                                <Typography variant="h3" sx={{ fontWeight: 800, color: '#2C3E50', mb: 0.5 }}>
+                                    <CountUpAnimation target={stat.count} suffix={stat.suffix} />
+                                </Typography>
                                 <Typography variant="body1" color="textSecondary" sx={{ fontWeight: 600, textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: 1 }}>{stat.label}</Typography>
                             </Card>
                         </Grid>

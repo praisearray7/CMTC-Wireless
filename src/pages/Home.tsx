@@ -1,14 +1,18 @@
 
 
 import { Link } from 'react-router-dom';
-import { Container, Grid, Typography, Card, CardContent, Box, Button, Stack } from '@mui/material';
+import { Container, Grid, Typography, Card, CardContent, Box, Button, Paper } from '@mui/material';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import BuildOutlinedIcon from '@mui/icons-material/BuildOutlined';
 import VerifiedUserOutlinedIcon from '@mui/icons-material/VerifiedUserOutlined';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
-import StarIcon from '@mui/icons-material/Star';
+import GroupsIcon from '@mui/icons-material/Groups';
+import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturing';
+import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
+import TimerIcon from '@mui/icons-material/Timer';
 
 import { imagePaths, getImagePath } from '../data/imagePaths';
+import CountUpAnimation from '../components/CountUpAnimation';
 import ServiceGridBanner from '../components/ServiceGridBanner';
 import GoogleReviews from '../components/GoogleReviews';
 import TransitionSlider from '../components/TransitionSlider';
@@ -61,25 +65,37 @@ const Home = () => {
                                 </Button>
                             </Box>
 
-                            <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr 1fr', sm: '1fr 1fr 1fr 1fr' }, gap: 3, alignItems: 'start' }}>
-                                <Box>
-                                    <Typography variant="h4" sx={{ fontWeight: 800, color: '#2C3E50' }}>15+</Typography>
-                                    <Typography variant="body2" color="textSecondary">Years Experience</Typography>
-                                </Box>
-                                <Box>
-                                    <Typography variant="h4" sx={{ fontWeight: 800, color: '#2C3E50' }}>50k+</Typography>
-                                    <Typography variant="body2" color="textSecondary">Devices Fixed</Typography>
-                                </Box>
-                                <Box>
-                                    <Typography variant="h4" sx={{ fontWeight: 800, color: '#2C3E50', display: 'flex', alignItems: 'center', gap: 1 }}>
-                                        24/7
-                                    </Typography>
-                                    <Typography variant="body2" color="textSecondary">Open Everyday</Typography>
-                                </Box>
-                                <Box>
-                                    <Typography variant="h4" sx={{ fontWeight: 800, color: '#2C3E50' }}>4.9</Typography>
-                                    <Stack direction="row" sx={{ color: '#FFD700' }}><StarIcon fontSize="small" /><StarIcon fontSize="small" /><StarIcon fontSize="small" /><StarIcon fontSize="small" /><StarIcon fontSize="small" /></Stack>
-                                </Box>
+                            <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr 1fr', sm: '1fr 1fr 1fr 1fr' }, gap: 2, alignItems: 'stretch' }}>
+                                {[
+                                    { count: 15, suffix: '+', label: 'Years Experience', icon: <GroupsIcon sx={{ fontSize: 40, color: primaryGreen, mb: 1 }} /> },
+                                    { count: 50, suffix: 'k+', label: 'Devices Fixed', icon: <PrecisionManufacturingIcon sx={{ fontSize: 40, color: primaryGreen, mb: 1 }} /> },
+                                    { count: 12, suffix: 'k+', label: 'Happy Customers', icon: <VerifiedUserIcon sx={{ fontSize: 40, color: primaryGreen, mb: 1 }} /> },
+                                    { count: 45, suffix: 'm', label: 'Avg Repair Time', icon: <TimerIcon sx={{ fontSize: 40, color: primaryGreen, mb: 1 }} /> }
+                                ].map((stat, index) => (
+                                    <Paper
+                                        key={index}
+                                        elevation={3}
+                                        sx={{
+                                            p: 2,
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            textAlign: 'center',
+                                            borderRadius: 3,
+                                            transition: 'transform 0.3s',
+                                            '&:hover': { transform: 'translateY(-5px)' }
+                                        }}
+                                    >
+                                        {stat.icon}
+                                        <Typography variant="h4" sx={{ fontWeight: 800, color: '#2C3E50', mb: 0.5 }}>
+                                            <CountUpAnimation target={stat.count} suffix={stat.suffix} />
+                                        </Typography>
+                                        <Typography variant="body2" color="textSecondary" sx={{ fontWeight: 600, fontSize: '0.8rem', lineHeight: 1.2 }}>
+                                            {stat.label.toUpperCase()}
+                                        </Typography>
+                                    </Paper>
+                                ))}
                             </Box>
                         </Grid>
 

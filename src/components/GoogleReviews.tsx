@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Box, Container, Grid, Typography, Rating, Avatar, Pagination } from '@mui/material';
 import ThumbUpAltOutlinedIcon from '@mui/icons-material/ThumbUpAltOutlined';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
+import CountUpAnimation from './CountUpAnimation';
 import googleLogo from '../assets/google-logo.svg';
 
 const GoogleReviews = () => {
@@ -135,7 +136,7 @@ const GoogleReviews = () => {
             <Container maxWidth="lg">
                 <Box sx={{ textAlign: 'center', mb: 8 }}>
                     <Typography variant="h3" sx={{ fontWeight: 800, color: '#0a1929', mb: 2 }}>
-                        Over 500 Positive Google Reviews
+                        Over <CountUpAnimation target={500} duration={2000} /> Positive Google Reviews
                     </Typography>
                 </Box>
 
