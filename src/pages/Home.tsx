@@ -32,12 +32,12 @@ const Home = () => {
     return (
         <>
             {/* Custom Hero Override for CMTC */}
-            <Box sx={{ pt: { xs: 2, md: 4 }, pb: { xs: 8, md: 10 }}}>
-                <Container maxWidth="xl">
+            <Box sx={{  pb: { xs: 8, md: 10 }}}>
+                <Container maxWidth="xl" >
                     <Grid container spacing={8} alignItems="center">
                         {/* Left: Content */}
-                        <Grid size={{ xs: 12, md: 6 }}>
-                            <Typography variant="h2" sx={{ fontWeight: 800, mb: 3, fontSize: { xs: '2.8rem', md: '4rem' }, color: '#2C3E50', lineHeight: 1.1 }}>
+                        <Grid size={{ xs: 12, md: 6 }} >
+                            <Typography variant="h2" sx={{ fontWeight: 800, mb: 3, fontSize: { xs: '2.5rem', md: '4rem' }, color: '#2C3E50', lineHeight: 1.1 }}>
                                 Fast, Reliable <br />
                                 <span style={{ color: primaryGreen }}>Phone Repairs</span>
                                 <br />
@@ -51,15 +51,15 @@ const Home = () => {
                             </Typography>
 
                             <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr 1fr' }, gap: 3, mb: 6 }}>
-                                <GetInstantQuoteButton fullWidth size="large" sx={{ py: 1.5, fontSize: '1.1rem', whiteSpace: 'nowrap' }} />
-                                <ScheduleAppointmentButton fullWidth size="large" sx={{ py: 1.5, fontSize: '1.1rem', whiteSpace: 'nowrap' }} />
+                                <GetInstantQuoteButton fullWidth size="large" sx={{ py: 1.5, fontSize: '1.5rem', whiteSpace: 'nowrap' }} />
+                                <ScheduleAppointmentButton fullWidth size="large" sx={{ py: 1.5, fontSize: '1.5rem', whiteSpace: 'nowrap' }} />
                                 <Button
                                     variant="outlined"
                                     color="secondary"
                                     size="large"
                                     fullWidth
                                     onClick={() => window.scrollTo(0, 870)}
-                                    sx={{ py: 2, fontSize: '1.2rem', borderWidth: 2, '&:hover': { borderWidth: 2 }, whiteSpace: 'nowrap' }}
+                                    sx={{ py: 2, fontSize: '1.5rem', borderWidth: 2, '&:hover': { borderWidth: 2 }, whiteSpace: 'nowrap' }}
                                 >
                                     View Services
                                 </Button>

@@ -105,7 +105,7 @@ const Navbar = () => {
                     </Container>
                 </Box>
                 <Container maxWidth="xl">
-                    <Toolbar disableGutters sx={{ height: 90 }}>
+                    <Toolbar disableGutters sx={{ height: 60 }}>
                         {/* Logo */}
                         <Box component={Link} to="/" sx={{ flexGrow: 0, mr: 4, textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
                             <img src={getImagePath(imagePaths.logo)} alt="CMTC Wireless" style={{ height: 70, objectFit: 'contain' }} onError={(e) => { e.currentTarget.style.display = 'none'; }} />
