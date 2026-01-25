@@ -32,7 +32,7 @@ const Home = () => {
     return (
         <>
             {/* Custom Hero Override for CMTC */}
-            <Box sx={{ pt: { xs: 2, md: 4 }, pb: { xs: 8, md: 10 }, padding: { xs: 2, md: 4 } }}>
+            <Box sx={{ pt: { xs: 2, md: 4 }, pb: { xs: 8, md: 10 }}}>
                 <Container maxWidth="xl">
                     <Grid container spacing={8} alignItems="center">
                         {/* Left: Content */}
@@ -100,7 +100,7 @@ const Home = () => {
                         </Grid>
 
                         {/* Right: Modern Visuals */}
-                        <Grid size={{ xs: 12, md: 6 }}>
+                        <Grid size={{ xs: 12, md: 6 }} sx={{ padding: 0 }}>
                             <Box sx={{ position: 'relative', width: '100%', aspectRatio: '1/1', borderRadius: 4, overflow: 'hidden', boxShadow: '0 20px 80px rgba(0,0,0,0.1)' }}>
                                 <TransitionSlider
                                     images={carouselImages}
