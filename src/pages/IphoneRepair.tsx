@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom';
 import { Box, Typography, Grid, Paper, Breadcrumbs, Divider } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import { Smartphone, Battery, Zap, Camera, Maximize, Droplets, Volume2, Database, RefreshCw, Wifi, ScanFace } from 'lucide-react';
+import { Smartphone, Battery, Zap, RefreshCw, Wifi, ScanFace } from 'lucide-react';
 import { seriesData } from '../data/iphone';
 import { getImagePath } from '../data/imagePaths';
 import RepairServiceLayout from '../components/RepairServiceLayout';
 import { useRepairPricing } from '../hooks/useRepairPricing';
 import { colors } from '../theme/colors';
-
+import { repairDetails } from '../data/repairDetails';
 import SEO from '../components/SEO';
+import RepairCard from '../components/RepairCard';
 
 const IphoneRepair = () => {
     const { getPriceRange, loading } = useRepairPricing();
@@ -86,43 +87,19 @@ const IphoneRepair = () => {
                                 Most Popular Repairs
                             </Typography>
                             <Grid container spacing={3}>
-                                {[
-                                    { title: "Screen Replacement", desc: "Fix cracked screens, dead pixels, or ghost touch issues (OLED/LCD).", icon: <Smartphone size={32} color={colors.primary} /> },
-                                    { title: "Battery Replacement", desc: "Restore peak performance and all-day battery life.", icon: <Battery size={32} color={colors.primary} /> },
-                                    { title: "Back Glass Repair", desc: "Laser removal for shattered back glass panels.", icon: <Maximize size={32} color={colors.primary} /> },
-                                    { title: "Charging Port Repair", desc: "Fix loose lightning/USB-C ports or charging issues.", icon: <Zap size={32} color={colors.primary} /> },
-                                    { title: "Camera Repair", desc: "Replace shaky, blurry, or cracked camera lenses.", icon: <Camera size={32} color={colors.primary} /> },
-                                    { title: "Face ID Repair", desc: "Restore Face ID functionality (on supported models).", icon: <ScanFace size={32} color={colors.primary} /> },
-                                    { title: "Water Damage Cleaning", desc: "Professional ultrasonic cleaning for liquid damage.", icon: <Droplets size={32} color={colors.primary} /> },
-                                    { title: "Speaker Repair", desc: "Fix muffled sound or broken ear speakers.", icon: <Volume2 size={32} color={colors.primary} /> },
-                                    { title: "Data Recovery", desc: "Retrieve photos and data from dead iPhones.", icon: <Database size={32} color={colors.primary} /> }
-                                ].map((item, index) => (
+                                {Object.values(repairDetails).map((item: any, index: number) => (
                                     <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
-                                        <Paper elevation={0} sx={{
-                                            p: 3,
-                                            height: '100%',
-                                            bgcolor: '#fff',
-                                            border: '1px solid #eee',
-                                            borderRadius: 4,
-                                            boxShadow: '0 4px 20px rgba(0,0,0,0.03)',
-                                            transition: 'all 0.3s ease',
-                                            '&:hover': {
-                                                transform: 'translateY(-5px)',
-                                                boxShadow: '0 12px 30px rgba(22, 101, 52, 0.15)',
-                                                borderColor: colors.primary
-                                            }
-                                        }}>
-                                            <Box sx={{ mb: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                                <Box sx={{ p: 1.5, borderRadius: 2, bgcolor: '#f0fdf4' }}>
-                                                    {item.icon}
-                                                </Box>
-                                                <Typography variant="subtitle1" sx={{ color: colors.primary, fontWeight: 700 }}>
+                                        <RepairCard
+                                            title={item.title}
+                                            description={item.desc}
+                                            image={item.image}
+                                            icon={item.icon}
+                                            priceContent={
+                                                <Typography variant="h6" sx={{ fontWeight: 700, whiteSpace: 'nowrap', color: colors.primary }}>
                                                     {loading ? "Loading..." : getPriceRange('iphone', item.title)}
                                                 </Typography>
-                                            </Box>
-                                            <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: '#2C3E50' }}>{item.title}</Typography>
-                                            <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>{item.desc}</Typography>
-                                        </Paper>
+                                            }
+                                        />
                                     </Grid>
                                 ))}
                             </Grid>

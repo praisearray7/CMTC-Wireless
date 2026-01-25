@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import { Box, Typography, Grid, Paper, Breadcrumbs, Divider } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import { Smartphone, Battery, Zap, Monitor, Droplets, Camera, Volume2, Database, Unlock, RefreshCw, Wifi, Maximize } from 'lucide-react';
+import { Smartphone, Zap, Volume2, RefreshCw, Wifi, Maximize } from 'lucide-react';
 import { cellphoneData } from '../data/cellphone';
+import RepairCard from '../components/RepairCard';
+import { repairDetails } from '../data/repairDetails';
 import RepairServiceLayout from '../components/RepairServiceLayout';
 import { useRepairPricing } from '../hooks/useRepairPricing';
 import { colors } from '../theme/colors';
@@ -95,44 +97,28 @@ const CellphoneRepair = () => {
                             </Typography>
                             <Grid container spacing={3}>
                                 {[
-                                    { title: "Screen Replacement", desc: "AMOLED & LCD replacements for Samsung, Pixel, Motorola, etc.", icon: <Smartphone size={32} color={colors.primary} /> },
-                                    { title: "Charging Port Repair", desc: "Microsoldering for loose USB-C and Micro-USB ports.", icon: <Zap size={32} color={colors.primary} /> },
-                                    { title: "Battery Replacement", desc: "New cells for extended battery life and staying power.", icon: <Battery size={32} color={colors.primary} /> },
-                                    { title: "Back Glass Repair", desc: "Replace cracked back panels tailored to your model.", icon: <Monitor size={32} color={colors.primary} /> },
-                                    { title: "Water Damage Cleaning", desc: "Ultrasonic cleaning to remove oxidation and corrosion.", icon: <Droplets size={32} color={colors.primary} /> },
-                                    { title: "Camera Lens Repair", desc: "Detailed replacement of cracked rear camera glass.", icon: <Camera size={32} color={colors.primary} /> },
-                                    { title: "Speaker / Mic Repair", desc: "Fix low volume, crackling sound, or mute microphones.", icon: <Volume2 size={32} color={colors.primary} /> },
-                                    { title: "Data Recovery", desc: "Software solutions to retrieve contacts and photos.", icon: <Database size={32} color={colors.primary} /> },
-                                    { title: "Unlock Services", desc: "Carrier unlocks and Google FRP removal services.", icon: <Unlock size={32} color={colors.primary} /> }
-                                ].map((item, index) => (
-                                    <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
-                                        <Paper elevation={0} sx={{
-                                            p: 3,
-                                            height: '100%',
-                                            bgcolor: '#fff',
-                                            border: '1px solid #eee',
-                                            borderRadius: 4,
-                                            boxShadow: '0 4px 20px rgba(0,0,0,0.03)',
-                                            transition: 'all 0.3s ease',
-                                            '&:hover': {
-                                                transform: 'translateY(-5px)',
-                                                boxShadow: '0 12px 30px rgba(22, 101, 52, 0.15)',
-                                                borderColor: colors.primary
-                                            }
-                                        }}>
-                                            <Box sx={{ mb: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                                <Box sx={{ p: 1.5, borderRadius: 2, bgcolor: '#f0fdf4' }}>
-                                                    {item.icon}
-                                                </Box>
-                                                <Typography variant="subtitle1" sx={{ color: colors.primary, fontWeight: 700 }}>
-                                                    {loading ? "Loading..." : getPriceRange('android', item.title)}
-                                                </Typography>
-                                            </Box>
-                                            <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: '#2C3E50' }}>{item.title}</Typography>
-                                            <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>{item.desc}</Typography>
-                                        </Paper>
-                                    </Grid>
-                                ))}
+                                    'screen-replacement', 'charging-port-repair', 'battery-replacement',
+                                    'back-glass-repair', 'water-damage-cleaning', 'camera-repair',
+                                    'speaker-repair', 'data-recovery', 'unlock-services'
+                                ].map((type, index) => {
+                                    const item = repairDetails[type];
+                                    if (!item) return null;
+                                    return (
+                                        <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
+                                            <RepairCard
+                                                title={item.title}
+                                                description={item.desc}
+                                                image={item.image}
+                                                icon={item.icon}
+                                                priceContent={
+                                                    <Typography variant="h6" sx={{ fontWeight: 700, whiteSpace: 'nowrap', color: colors.primary }}>
+                                                        {loading ? "Loading..." : getPriceRange('android', item.title)}
+                                                    </Typography>
+                                                }
+                                            />
+                                        </Grid>
+                                    );
+                                })}
                             </Grid>
                         </Box>
 

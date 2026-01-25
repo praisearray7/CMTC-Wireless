@@ -6,10 +6,10 @@ import FAQ from '../components/FAQ';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import GetInstantQuoteButton from '../components/GetInstantQuoteButton';
 import ScheduleAppointmentButton from '../components/ScheduleAppointmentButton';
-import { Smartphone, Battery, Zap, Camera, ScanFace, Droplets, Speaker, HardDrive, SmartphoneNfc } from 'lucide-react';
-
+import { Smartphone } from 'lucide-react';
 import { useRepairPricing } from '../hooks/useRepairPricing';
 import { repairServices } from '../data/repairData';
+import RepairCard from '../components/RepairCard';
 import { seriesData as iphoneData } from '../data/iphone';
 import { cellphoneData } from '../data/cellphone';
 import { smartwatchData } from '../data/smartwatch';
@@ -20,6 +20,7 @@ import { aioData } from '../data/aio';
 import { tabletData } from '../data/tablet';
 import { ipadData } from '../data/ipad';
 import { macbookData } from '../data/macbook';
+import { repairDetails } from '../data/repairDetails'; // Import shared data
 
 import { getImagePath } from '../data/imagePaths';
 
@@ -47,18 +48,6 @@ const sidebarItems = [
         text: "Clear policies, RMA tracking, responsive account support."
     }
 ];
-
-const repairDetails: Record<string, { icon: any, desc: string }> = {
-    'screen-replacement': { icon: Smartphone, desc: `Fix cracked screens, dead pixels, or ghost touch issues (OLED/LCD) ` },
-    'battery-replacement': { icon: Battery, desc: "Restore peak performance and all-day battery life." },
-    'back-glass-repair': { icon: SmartphoneNfc, desc: "Laser removal for shattered back glass panels." },
-    'charging-port-repair': { icon: Zap, desc: "Fix loose lightning/USB-C ports or charging issues." },
-    'camera-repair': { icon: Camera, desc: "Replace shaky, blurry, or cracked camera lenses." },
-    'face-id-repair': { icon: ScanFace, desc: "Restore Face ID functionality (on supported models)." },
-    'water-damage-cleaning': { icon: Droplets, desc: "Professional ultrasonic cleaning for liquid damage." },
-    'speaker-repair': { icon: Speaker, desc: "Fix muffled sound or broken ear speakers." },
-    'data-recovery': { icon: HardDrive, desc: "Retrieve photos and data from dead devices." },
-};
 
 const ModelDetail = () => {
     const { serviceId, modelId } = useParams();
@@ -150,7 +139,11 @@ const ModelDetail = () => {
                                 const Icon = details.icon;
                                 const warranty = rows.find(r => r.Warranty)?.Warranty;
 
-                                const RepairCard = () => {
+
+
+                                // ... inside ModelDetail ...
+
+                                const RepairCardItem = () => {
                                     const navigate = useNavigate();
 
                                     // Helper to format price
@@ -182,76 +175,63 @@ const ModelDetail = () => {
                                         });
                                     };
 
+                                    // Construct description with warranty
+                                    const descriptionContent = (
+                                        <>
+                                            {details.desc}
+                                            {warranty && (
+                                                <Typography component="span" sx={{ display: 'block', color: colors.primary, fontWeight: 500, mt: 0.5, fontSize: '0.85rem' }}>
+                                                    Includes {warranty} Warranty
+                                                </Typography>
+                                            )}
+                                        </>
+                                    );
+
                                     return (
-                                        <Paper elevation={0} sx={{
-                                            p: 3,
-                                            height: '100%',
-                                            border: '1px solid #eee',
-                                            borderRadius: 4,
-                                            transition: 'all 0.2s',
-                                            display: 'flex',
-                                            flexDirection: 'column',
-                                            '&:hover': { transform: 'translateY(-4px)', boxShadow: '0 10px 30px rgba(0,0,0,0.05)' }
-                                        }}>
-                                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
-                                                <Box sx={{
-                                                    p: 1.5,
-                                                    borderRadius: 2,
-                                                    bgcolor: '#F0FDF4',
-                                                    color: colors.primary,
-                                                    display: 'flex',
-                                                    alignItems: 'center',
-                                                    justifyContent: 'center'
-                                                }}>
-                                                    <Icon size={24} />
-                                                </Box>
-                                            </Box>
-
-                                            <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, textTransform: 'capitalize' }}>
-                                                {type.replace(/-/g, ' ')}
-                                            </Typography>
-
-                                            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-                                                {details.desc}{warranty ? `Includes ${warranty} Warranty.` : ''}
-                                            </Typography>
-
-                                            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                                                {/* Without Warranty Section */}
-                                                <Box>
-                                                    <Box sx={{ bgcolor: '#fafafa', borderRadius: 2, overflow: 'hidden' }}>
-                                                        {rows.map((r, i) => (
-                                                            <Box
-                                                                key={`no-war-${i}`}
-                                                                onClick={() => handleRowClick(r['Sub-Type Title'])}
-                                                                sx={{
-                                                                    display: 'flex',
-                                                                    justifyContent: 'space-between',
-                                                                    alignItems: 'center',
-                                                                    p: 1.5,
-                                                                    borderBottom: i < rows.length - 1 ? '1px solid #eee' : 'none',
-                                                                    cursor: 'pointer',
-                                                                    '&:hover': { bgcolor: '#f0f0f0' }
-                                                                }}
-                                                            >
-                                                                <Typography variant="body2" sx={{ color: '#333', fontWeight: 500, fontSize: '0.9rem' }}>
-                                                                    {r['Sub-Type Title'] || 'Standard'}
-                                                                </Typography>
-                                                                <Typography variant="body2" sx={{ fontWeight: 700, color: colors.primary }}>
-                                                                    {formatPrice(r['Sub-Type Price (USD)'], 0)}
-                                                                </Typography>
-                                                            </Box>
-                                                        ))}
+                                        <RepairCard
+                                            title={type.replace(/-/g, ' ')}
+                                            description={descriptionContent as any} // Temporary cast until interface update
+                                            image={details.image}
+                                            icon={Icon}
+                                        >
+                                            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+                                                {rows.map((r, i) => (
+                                                    <Box
+                                                        key={i}
+                                                        onClick={() => handleRowClick(r['Sub-Type Title'])}
+                                                        sx={{
+                                                            display: 'flex',
+                                                            alignItems: 'center',
+                                                            justifyContent: 'space-between',
+                                                            p: 1.5,
+                                                            borderRadius: 1.5,
+                                                            bgcolor: '#fafafa',
+                                                            cursor: 'pointer',
+                                                            border: '1px solid transparent',
+                                                            transition: 'all 0.2s',
+                                                            '&:hover': {
+                                                                bgcolor: '#f0fdf4',
+                                                                borderColor: colors.primary,
+                                                                '& .price-text': { color: colors.primary }
+                                                            }
+                                                        }}
+                                                    >
+                                                        <Typography variant="body2" sx={{ fontWeight: 600, color: '#2C3E50', fontSize: '0.9rem' }}>
+                                                            {r['Sub-Type Title'] === 'Standard' ? 'Service Price' : r['Sub-Type Title']}
+                                                        </Typography>
+                                                        <Typography className="price-text" variant="body2" sx={{ fontWeight: 700, color: '#2C3E50' }}>
+                                                            {formatPrice(r['Sub-Type Price (USD)'])}
+                                                        </Typography>
                                                     </Box>
-                                                </Box>
-
+                                                ))}
                                             </Box>
-                                        </Paper>
+                                        </RepairCard>
                                     );
                                 };
 
                                 return (
                                     <Grid size={{ xs: 12, sm: 6, md: 4 }} key={type}>
-                                        <RepairCard />
+                                        <RepairCardItem />
                                     </Grid>
                                 );
                             });
