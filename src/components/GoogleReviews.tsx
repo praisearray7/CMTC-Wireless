@@ -4,6 +4,7 @@ import ThumbUpAltOutlinedIcon from '@mui/icons-material/ThumbUpAltOutlined';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import CountUpAnimation from './CountUpAnimation';
 import googleLogo from '../assets/google-logo.svg';
+import { contactInfo } from '../data/contactInfo';
 
 const GoogleReviews = () => {
 
@@ -136,7 +137,7 @@ const GoogleReviews = () => {
             <Container maxWidth="lg">
                 <Box sx={{ textAlign: 'center', mb: 8 }}>
                     <Typography variant="h3" sx={{ fontWeight: 800, color: '#0a1929', mb: 2 }}>
-                        Over <CountUpAnimation target={500} duration={2000} /> Positive Google Reviews
+                        Over <CountUpAnimation target={500} duration={2000} />+ Positive Google Reviews
                     </Typography>
                 </Box>
 
@@ -199,7 +200,15 @@ const GoogleReviews = () => {
 
                                         <Box sx={{ flexGrow: 1 }} />
 
-                                        <Box component="img" src={googleLogo} alt="Google" sx={{ width: 24, height: 24 }} />
+                                        <Box
+                                            component="a"
+                                            href={contactInfo.address.both.mapLink}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            sx={{ display: 'flex', alignItems: 'center' }}
+                                        >
+                                            <Box component="img" src={googleLogo} alt="Google" sx={{ width: 24, height: 24 }} />
+                                        </Box>
                                     </Box>
                                 </Box>
                             </Grid>
