@@ -9,8 +9,8 @@ const items = [
     { title: 'iPhone Repair', image: 'https://www.gophermods.com/wp-content/uploads/2025/06/iPhone-16-Repairs-Minneapolis.jpg', link: '/iphone-repair' },
     { title: 'Computer Repair', image: 'https://www.gophermods.com/wp-content/uploads/2014/11/mac-200x200.jpg', link: '/computer-repair' },
     { title: 'Cell Phone Repair', image: 'https://www.gophermods.com/wp-content/uploads/2025/06/Google-Pixel-Repairs-Minneapolis.jpg', link: '/cell-phone-repair' },
-    { title: 'Samsung Repair', image: 'https://www.gophermods.com/wp-content/uploads/2021/01/Galaxy-Note-20.jpg', link: '/cell-phone-repair/samsung' },
-    { title: 'Microsoft Surface Repair', image: 'https://www.gophermods.com/wp-content/uploads/2016/05/Microsoft-Surface-Repair.jpg', link: '/tablet-repair/surface' },
+    { title: 'Samsung Repair', image: 'https://www.gophermods.com/wp-content/uploads/2021/01/Galaxy-Note-20.jpg', link: '/contact-us', state: { deviceModel: 'Samsung' } },
+    { title: 'Smart Watch Repair', image: 'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-card-40-hermes-ultra-202509_GEO_US?wid=680&hei=528&fmt=jpeg&qlt=90&.v=Ly93VWF6a1dGOWJLL3RMM0s0eGZ6bGptdm4xZHhxZWZzUlhoOU9Da0hNNVU4aHdGN0xlWGtoZjR6dnFUWE9VVTV0VzZXemQ1ZkRzK0p5ZFBxZERkQ3o2K3c3eDN1QlVKV09nQzhyNmV5TTNjeFVjd0E0NEk3ZEplNUNxd0pRazY', link: '/contact-us', state: { deviceModel: 'Smart Watch' } },
 ];
 
 const ServiceGridBanner = () => {
@@ -66,6 +66,8 @@ const ServiceGridBanner = () => {
                                 elevation={0}
                                 component={Link}
                                 to={item.link}
+                                // @ts-ignore
+                                state={item.state}
                                 sx={{
                                     display: 'flex',
                                     flexDirection: 'column',
