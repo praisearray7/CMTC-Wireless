@@ -16,7 +16,7 @@ const ContactUs = () => {
     const location = useLocation();
 
     // Form State
-    const [selectedCompany, setSelectedCompany] = useState<string | null>(null);
+    // const [selectedCompany, setSelectedCompany] = useState<string | null>(null); // Removed per request
     const [selectedDevice, setSelectedDevice] = useState<string | null>(null);
     const [selectedService, setSelectedService] = useState<string | null>(null);
     const [image, setImage] = useState<File | null>(null);
@@ -43,48 +43,43 @@ const ContactUs = () => {
     }, []);
 
     // Derived States
-    const companies = useMemo(() => Array.from(new Set(servicesData.map(s => s.company))).sort(), [servicesData]);
+    // const companies = useMemo(() => Array.from(new Set(servicesData.map(s => s.company))).sort(), [servicesData]);
 
     const devices = useMemo(() => {
-        if (!selectedCompany) return [];
         return Array.from(new Set(
             servicesData
-                .filter(s => s.company === selectedCompany)
                 .map(s => s.device)
         )).sort();
-    }, [selectedCompany, servicesData]);
+    }, [servicesData]);
 
     const services = useMemo(() => {
-        if (!selectedCompany || !selectedDevice) return [];
+        if (!selectedDevice) return [];
         return servicesData
-            .filter(s => s.company === selectedCompany && s.device === selectedDevice)
+            .filter(s => s.device === selectedDevice)
             .map(s => s.service)
             .sort();
-    }, [selectedCompany, selectedDevice, servicesData]);
+    }, [selectedDevice, servicesData]);
 
 
 
-    // Handle incoming state from other pages
+    // Handle incoming state from other pages - Immediate Population
     useEffect(() => {
-        if (!loading && servicesData.length > 0 && location.state?.deviceModel) {
-            const found = servicesData.find(s => s.device === location.state.deviceModel || s.device.includes(location.state.deviceModel));
-            if (found) {
-                setSelectedCompany(found.company);
-                setSelectedDevice(found.device);
-
-                if (location.state.serviceType) {
-                    // Try to find exact match or close match for service
-                    const serviceFound = servicesData.find(s =>
-                        s.device === found.device &&
-                        (s.service === location.state.serviceType || s.service.toLowerCase() === location.state.serviceType.toLowerCase())
-                    );
-                    if (serviceFound) {
-                        setSelectedService(serviceFound.service);
-                    }
-                }
-            }
+        if (location.state?.deviceModel) {
+            // Directly set the text, don't wait for validation
+            setSelectedDevice(location.state.deviceModel);
         }
-    }, [location.state, loading, servicesData]);
+        if (location.state?.serviceType) {
+            setSelectedService(location.state.serviceType);
+        }
+    }, [location.state]);
+
+    // Backfill Company information when data becomes available - REMOVED or Simplified logic if needed
+    // logic to auto-select company is removed as field is gone
+    /* 
+    useEffect(() => {
+       ... 
+    }, ...); 
+    */
 
     useEffect(() => {
         if (!image) {
@@ -238,39 +233,12 @@ const ContactUs = () => {
                                         <TextField label="Email Address" type="email" fullWidth variant="outlined" InputProps={{ sx: { borderRadius: 2 } }} />
                                     </Grid>
 
-                                    {/* Brand Selection */}
-                                    <Grid size={{ xs: 12, sm: 6 }}>
-                                        <Autocomplete
-                                            freeSolo
-                                            options={companies}
-                                            value={selectedCompany}
-                                            loading={loading}
-                                            onChange={(_, newValue) => {
-                                                setSelectedCompany(newValue);
-                                                setSelectedDevice(null);
-                                                setSelectedService(null);
-                                            }}
-                                            onInputChange={(_, newInputValue) => {
-                                                setSelectedCompany(newInputValue);
-                                            }}
-                                            renderInput={(params) => (
-                                                <TextField
-                                                    {...params}
-                                                    label="Company/Brand"
-                                                    variant="outlined"
-                                                    InputProps={{ ...params.InputProps, sx: { borderRadius: 2 } }}
-                                                />
-                                            )}
-                                        />
-                                    </Grid>
-
                                     {/* Device Selection */}
                                     <Grid size={{ xs: 12, sm: 6 }}>
                                         <Autocomplete
                                             freeSolo
                                             options={devices}
                                             value={selectedDevice}
-                                            disabled={!selectedCompany && !loading} // Keep disabled if no company, unless user typed one (handled by state check)
                                             loading={loading}
                                             onChange={(_, newValue) => {
                                                 setSelectedDevice(newValue);
@@ -291,12 +259,11 @@ const ContactUs = () => {
                                     </Grid>
 
                                     {/* Service Selection */}
-                                    <Grid size={{ xs: 12 }}>
+                                    <Grid size={{ xs: 12, sm: 6 }}>
                                         <Autocomplete
                                             freeSolo
                                             options={services}
                                             value={selectedService}
-                                            disabled={!selectedDevice && !loading}
                                             loading={loading}
                                             onChange={(_, newValue) => setSelectedService(newValue)}
                                             onInputChange={(_, newInputValue) => {
