@@ -80,7 +80,7 @@ const Navbar = () => {
         <>
             <AppBar position="fixed" color="inherit" elevation={0} sx={{ top: 0, backdropFilter: 'blur(10px)', backgroundColor: 'rgba(255,255,255,0.95)', zIndex: (theme) => theme.zIndex.appBar }}>
                 {/* Top Contact Bar */}
-                <Box sx={{ bgcolor: '#2ca8efff', color: 'white', py: 1 }}>
+                <Box sx={{ bgcolor: '#1565C0', color: 'white', py: 1 }}>
                     <Container maxWidth="xl" sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', whiteSpace: 'nowrap', px: { xs: 0, md: 4 } }}>
                         <Box sx={{ display: 'flex', gap: { xs: 0.7, md: 2 }, alignItems: 'center', px: '0 !important' }}>
                             <IconButton color="inherit" aria-label="whatsapp" href={contactInfo.whatsapp.link} target="_blank" rel="noopener noreferrer" sx={{ bgcolor: 'rgba(255,255,255,0.05)' }}><WhatsAppIcon /></IconButton>
@@ -156,8 +156,8 @@ const Navbar = () => {
                                                         '&:hover': {
                                                             color: theme.palette.primary.main,
                                                             backgroundColor: 'transparent',
-                                                            borderTopColor: '#78E335',
-                                                            borderBottomColor: '#78E335',
+                                                            borderTopColor: '#166534',
+                                                            borderBottomColor: '#166534',
                                                             boxShadow: 'none',
                                                             transform: 'none',
                                                         }
@@ -243,7 +243,7 @@ const Navbar = () => {
                                                 '&:hover': {
                                                     color: theme.palette.primary.main,
                                                     backgroundColor: 'transparent',
-                                                    borderTopColor: '#78E335',
+                                                    borderTopColor: '#166534',
                                                     boxShadow: 'none',
                                                     transform: 'none',
                                                 }
