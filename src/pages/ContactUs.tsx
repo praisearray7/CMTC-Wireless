@@ -11,6 +11,7 @@ import SmsIcon from '@mui/icons-material/Sms';
 import { fetchServicesData, type ServiceDetail } from '../data/services';
 import { contactInfo } from '../data/contactInfo';
 import GoogleReviews from '../components/GoogleReviews';
+import SEO from '../components/SEO';
 
 const ContactUs = () => {
     const location = useLocation();
@@ -93,6 +94,10 @@ const ContactUs = () => {
 
     return (
         <Box sx={{ minHeight: '100vh' }}>
+            <SEO
+                title="Contact Us"
+                description="Get a free quote for your device repair. Contact CMTC Wireless in Minneapolis or St. Paul today for fast and expert service."
+            />
             <Container maxWidth="lg" sx={{ py: 10 }}>
                 <Box sx={{ textAlign: 'center', mb: 8 }}>
                     <Typography variant="h2" sx={{ fontWeight: 800, mb: 2 }}>

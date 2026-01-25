@@ -20,6 +20,8 @@ import FAQ from '../components/FAQ';
 import GetInstantQuoteButton from '../components/GetInstantQuoteButton';
 import ScheduleAppointmentButton from '../components/ScheduleAppointmentButton';
 
+import SEO from '../components/SEO';
+
 const Home = () => {
     // CMTC Brand Colors
     const primaryGreen = '#78E335';
@@ -31,8 +33,12 @@ const Home = () => {
 
     return (
         <>
+            <SEO
+                title="Home"
+                description="Fast, reliable phone, laptop, and tablet repairs in Minneapolis & St. Paul. Certified technicians, same-day service, and quality parts guaranteed."
+            />
             {/* Custom Hero Override for CMTC */}
-            <Box sx={{ pt: { xs: 7, md: 5 }, pb: { xs: 8, md: 10 }}}>
+            <Box sx={{ pt: { xs: 7, md: 5 }, pb: { xs: 8, md: 10 } }}>
                 <Container maxWidth="xl" >
                     <Grid container spacing={8} alignItems="center">
                         {/* Left: Content */}

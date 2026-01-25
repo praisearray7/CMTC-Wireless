@@ -9,9 +9,15 @@ import GoogleReviews from '../components/GoogleReviews';
 import { imagePaths, getImagePath } from '../data/imagePaths';
 import CountUpAnimation from '../components/CountUpAnimation';
 
+import SEO from '../components/SEO';
+
 const AboutUs = () => {
     return (
         <Box>
+            <SEO
+                title="About CMTC Wireless"
+                description="Your trusted local electronics repair experts in Minneapolis and St. Paul. Over 15 years of experience in phone, computer, and tablet repair."
+            />
             {/* Hero Banner */}
             <Box sx={{ bgcolor: '#2C3E50', color: 'white', py: 10, textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
                 <Container maxWidth="md" sx={{ position: 'relative', zIndex: 2 }}>

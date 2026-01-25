@@ -173,6 +173,7 @@ const GoogleReviews = () => {
                                 }}>
                                     <Avatar
                                         src={`https://i.pravatar.cc/150?u=${review.name}`}
+                                        alt={review.name}
                                         sx={{ width: 64, height: 64, mx: 'auto', mb: 2 }}
                                     />
                                     <Typography variant="h6" sx={{ fontWeight: 700, color: '#0a1929', mb: 1 }}>

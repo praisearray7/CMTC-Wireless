@@ -2,9 +2,15 @@
 import { Box, Container, Grid, Typography, Card, CardContent, TextField, Button, MenuItem, Stepper, Step, StepLabel } from '@mui/material';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 
+import SEO from '../components/SEO';
+
 const UnlockDevice = () => {
     return (
         <Box sx={{ minHeight: '80vh', py: 10 }}>
+            <SEO
+                title="Unlock Your Device"
+                description="Unlock your phone for any carrier. Fast, secure, and permanent unlocking for iPhone, Samsung, and more."
+            />
             <Container maxWidth="md">
                 <Box sx={{ textAlign: 'center', mb: 6 }}>
                     <LockOpenIcon sx={{ fontSize: 60, color: '#78E335', mb: 2 }} />

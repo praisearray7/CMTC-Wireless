@@ -1,4 +1,5 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
+import SEO from '../components/SEO';
 import { Box, Container, Typography, Button, Grid, Paper, Breadcrumbs } from '@mui/material';
 import FAQ from '../components/FAQ';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
@@ -114,6 +115,10 @@ const ModelDetail = () => {
     if (!isSeries) {
         return (
             <Container maxWidth="lg" sx={{ py: 8 }}>
+                <SEO
+                    title={`${model.name} Repair`}
+                    description={`Expert repair for ${model.name}. Screen replacement, battery repair, and more. Fast service and warranty included.`}
+                />
                 <Typography variant="h3" align="center" sx={{ fontWeight: 700, mb: 6, color: '#333' }}>
                     Most Popular Repairs
                     <Typography variant="h6" component="span" display="block" color="text.secondary" sx={{ mt: 1, fontWeight: 400 }}>
@@ -281,6 +286,10 @@ const ModelDetail = () => {
 
     return (
         <Box sx={{ pb: 0, pt: 4 }}>
+            <SEO
+                title={`${model.name} Repair`}
+                description={`Professional repair services for ${model.name}. Select your specific model for pricing and repair options.`}
+            />
             <Container maxWidth="xl">
                 <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb" sx={{ mb: 4 }}>
                     <Link to="/" style={{ color: '#9E9E9E', textDecoration: 'none' }}>Home</Link>

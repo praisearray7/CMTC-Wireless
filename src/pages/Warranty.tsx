@@ -7,9 +7,15 @@ import AssignmentReturnIcon from '@mui/icons-material/AssignmentReturn';
 import GppGoodIcon from '@mui/icons-material/GppGood';
 import WarrantyIcon from '../components/WarrantyIcon';
 
+import SEO from '../components/SEO';
+
 const Warranty = () => {
     return (
         <Box sx={{ minHeight: '100vh' }}>
+            <SEO
+                title="Warranty Promise"
+                description="We stand behind our work with a one-year warranty on all repairs and certified pre-owned devices. Peace of mind guaranteed."
+            />
             {/* Hero Section */}
             <Box sx={{ bgcolor: '#2C3E50', color: 'white', py: 10, textAlign: 'center' }}>
                 <Container maxWidth="lg">

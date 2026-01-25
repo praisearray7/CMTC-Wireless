@@ -3,27 +3,21 @@ import { Box, Container, Typography, Dialog, DialogContent, IconButton } from '@
 import VideoMarquee from '../components/VideoMarquee';
 import CloseIcon from '@mui/icons-material/Close';
 import { blogSections } from '../data/blogVideos';
+import SEO from '../components/SEO';
 
 const Blog = () => {
     const [open, setOpen] = useState(false);
     const [currentVideoSrc, setCurrentVideoSrc] = useState<string | null>(null);
 
     const handlePlayVideo = (link: string) => {
-        // Simple logic: if it looks like a full URL, use it (or convert to embed if needed).
-        // If it looks like just an ID, assume it's a folder ID.
-
         let src = link;
-
-        // 1. If it's a standard Google Drive Folder Link, convert to Embed View
         if (link.includes('drive.google.com/drive/folders/')) {
             const folderId = link.split('folders/')[1]?.split(/[/?]/)[0];
             src = `https://drive.google.com/embeddedfolderview?id=${folderId}#grid`;
         }
-        // 2. If it's just an ID (old data format fallback)
         else if (!link.includes('http') && !link.includes('drive.google.com')) {
             src = `https://drive.google.com/embeddedfolderview?id=${link}#grid`;
         }
-        // 3. If it's a direct file link (e.g. /file/d/ID/view), we might need to change /view to /preview for embedding
         else if (link.includes('/view')) {
             src = link.replace('/view', '/preview');
         }
@@ -39,6 +33,10 @@ const Blog = () => {
 
     return (
         <Box sx={{ minHeight: '80vh' }}>
+            <SEO
+                title="Tech Lab Videos"
+                description="Watch our expert repair technicians in action. Learn about our repair process for iPhones, MacBooks, and more."
+            />
             {/* Header Section */}
             <Box sx={{
                 py: 8,
@@ -77,16 +75,11 @@ const Blog = () => {
                             {section.description}
                         </Typography>
                     </Container>
-                    {/* 
-                        Mapping data to VideoMarquee. 
-                        Note: The component expects { title, category, folderId, thumbnail }.
-                        We map our new 'link' to 'folderId' property for compatibility.
-                    */}
                     <VideoMarquee
                         videos={section.videos.map(v => ({
                             title: v.title,
                             category: v.category,
-                            folderId: v.link, // Passing the full link as the ID
+                            folderId: v.link,
                             thumbnail: v.thumbnail || ''
                         }))}
                         onPlay={handlePlayVideo}

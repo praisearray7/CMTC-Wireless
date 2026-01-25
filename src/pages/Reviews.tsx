@@ -1,5 +1,5 @@
-
 import { Box, Container, Grid, Typography, Card, CardContent, Rating, Avatar, Stack } from '@mui/material';
+import SEO from '../components/SEO';
 
 const Reviews = () => {
     const reviews = [
@@ -13,6 +13,10 @@ const Reviews = () => {
 
     return (
         <Box sx={{ bgcolor: '#fafafa', minHeight: '100vh', py: 10 }}>
+            <SEO
+                title="Customer Reviews"
+                description="Read what our happy customers have to say about our iPhone repair, computer repair, and tablet repair services."
+            />
             <Container maxWidth="lg">
                 <Box sx={{ textAlign: 'center', mb: 8 }}>
                     <Typography variant="h2" sx={{ fontWeight: 800, color: '#2C3E50', mb: 2 }}>Customer Stories</Typography>

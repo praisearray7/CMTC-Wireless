@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import { Box, Container, Typography, Button, Grid, Paper, Breadcrumbs } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { repairServices } from '../data/repairData';
@@ -57,7 +58,10 @@ const ServiceDetail = () => {
 
     return (
         <Box sx={{ pb: 10 }}>
-            {/* Left Heade */}
+            <SEO
+                title={service.name}
+                description={`Professional ${service.name.toLowerCase()} services. Fast turnaround, warranty included, and expert technicians.`}
+            />
             {/* Header and Sidebar Section */}
             <Box sx={{ bgcolor: '#fff', py: 6, mb: 6 }}>
                 <Container maxWidth="xl">

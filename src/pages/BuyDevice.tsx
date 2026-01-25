@@ -1,4 +1,3 @@
-
 import { Box, Container, Grid, Typography, Card, CardContent, Button, Chip, Stack, CardMedia } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import FactCheckOutlinedIcon from '@mui/icons-material/FactCheckOutlined';
@@ -8,10 +7,11 @@ import { imagePaths, getImagePath } from '../data/imagePaths';
 import { contactInfo } from '../data/contactInfo';
 import GoogleReviews from '../components/GoogleReviews';
 import FAQ from '../components/FAQ';
+import SEO from '../components/SEO';
 
 const BuyDevice = () => {
     const navigate = useNavigate();
-    // Mock inventory
+
     const inventory = [
         {
             id: 1,
@@ -49,6 +49,10 @@ const BuyDevice = () => {
 
     return (
         <Box sx={{ minHeight: '100vh', pt: 8, pb: 0 }}>
+            <SEO
+                title="Buy Certified Pre-Owned Devices"
+                description="Shop affordable, certified pre-owned iPhones, Samsungs, and tablets. All devices inspected and backed by warranty."
+            />
             <Container maxWidth="xl">
                 <Box sx={{ textAlign: 'center', mb: 8 }}>
                     <Typography variant="h2" sx={{ fontWeight: 800, mb: 2 }}>
