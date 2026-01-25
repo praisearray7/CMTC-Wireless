@@ -77,205 +77,209 @@ const Navbar = () => {
 
 
     return (
-        <AppBar position="sticky" color="inherit" elevation={0} sx={{ backdropFilter: 'blur(10px)', backgroundColor: 'rgba(255,255,255,0.95)' }}>
-            {/* Top Contact Bar */}
-            <Box sx={{ bgcolor: '#2ca8efff', color: 'white', py: 1 }}>
-                <Container maxWidth="xl" sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', whiteSpace: 'nowrap' }}>
-                    <Box sx={{ display: 'flex', gap: { xs: 2, md: 4 }, alignItems: 'center' }}>
-                        <IconButton color="inherit" aria-label="facebook" href={contactInfo.socials.facebook} sx={{ bgcolor: 'rgba(255,255,255,0.05)' }}><FacebookIcon /></IconButton>
-                        <IconButton color="inherit" aria-label="whatsapp" href={contactInfo.whatsapp.link} sx={{ bgcolor: 'rgba(255,255,255,0.05)' }}><WhatsAppIcon /></IconButton>
-                        <IconButton color="inherit" aria-label="google-location" href={contactInfo.address.minneapolis.mapLink} sx={{ bgcolor: 'rgba(255,255,255,0.05)' }}><LocationOnIcon /></IconButton>
-                    </Box>
+        <>
+            <AppBar position="fixed" color="inherit" elevation={0} sx={{ top: 0, backdropFilter: 'blur(10px)', backgroundColor: 'rgba(255,255,255,0.95)', zIndex: (theme) => theme.zIndex.appBar }}>
+                {/* Top Contact Bar */}
+                <Box sx={{ bgcolor: '#2ca8efff', color: 'white', py: 1 }}>
+                    <Container maxWidth="xl" sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', whiteSpace: 'nowrap' }}>
+                        <Box sx={{ display: 'flex', gap: { xs: 2, md: 4 }, alignItems: 'center' }}>
+                            <IconButton color="inherit" aria-label="facebook" href={contactInfo.socials.facebook} sx={{ bgcolor: 'rgba(255,255,255,0.05)' }}><FacebookIcon /></IconButton>
+                            <IconButton color="inherit" aria-label="whatsapp" href={contactInfo.whatsapp.link} sx={{ bgcolor: 'rgba(255,255,255,0.05)' }}><WhatsAppIcon /></IconButton>
+                            <IconButton color="inherit" aria-label="google-location" href={contactInfo.address.minneapolis.mapLink} sx={{ bgcolor: 'rgba(255,255,255,0.05)' }}><LocationOnIcon /></IconButton>
+                        </Box>
 
-                    <Box sx={{ display: 'flex', gap: { xs: 2, md: 4 }, alignItems: 'center' }}>
-                        <IconButton color="inherit" aria-label="phone" href={contactInfo.phone.link} sx={{ bgcolor: 'rgba(255,255,255,0.05)' }}><PhoneIcon /></IconButton>
-                        <Stack component="a" href={contactInfo.phone.link} direction="row" spacing={1} alignItems="center" sx={{ textDecoration: 'none', color: 'inherit', '&:hover': { opacity: 0.8 } }}>
-                            <Typography variant="body2" sx={{ fontWeight: 800, fontSize: { xs: '0.8rem', md: '0.9rem' } }}>
-                                Call: {contactInfo.phone.display}
-                            </Typography>
-                        </Stack>
-                        <IconButton color="inherit" aria-label="message" href={contactInfo.whatsapp.link} sx={{ bgcolor: 'rgba(255,255,255,0.05)' }}><MessageIcon /></IconButton>
-                        <Stack component="a" href={contactInfo.text.link} direction="row" spacing={1} alignItems="center" sx={{ textDecoration: 'none', color: 'inherit', '&:hover': { opacity: 0.8 } }}>
-                            <Typography variant="body2" sx={{ fontWeight: 800, fontSize: { xs: '0.8rem', md: '0.9rem' } }}>
-                                Text: {contactInfo.text.display}
-                            </Typography>
-                        </Stack>
-                    </Box>
-                </Container>
-            </Box>
-            <Container maxWidth="xl">
-                <Toolbar disableGutters sx={{ height: 90 }}>
-                    {/* Logo */}
-                    <Box component={Link} to="/" sx={{ flexGrow: 0, mr: 4, textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-                        <img src={getImagePath(imagePaths.logo)} alt="CMTC Wireless" style={{ height: 70, objectFit: 'contain' }} onError={(e) => { e.currentTarget.style.display = 'none'; }} />
-                    </Box>
+                        <Box sx={{ display: 'flex', gap: { xs: 2, md: 4 }, alignItems: 'center' }}>
+                            <IconButton color="inherit" aria-label="phone" href={contactInfo.phone.link} sx={{ bgcolor: 'rgba(255,255,255,0.05)' }}><PhoneIcon /></IconButton>
+                            <Stack component="a" href={contactInfo.phone.link} direction="row" spacing={1} alignItems="center" sx={{ textDecoration: 'none', color: 'inherit', '&:hover': { opacity: 0.8 } }}>
+                                <Typography variant="body2" sx={{ fontWeight: 800, fontSize: { xs: '0.8rem', md: '0.9rem' } }}>
+                                    Call: {contactInfo.phone.display}
+                                </Typography>
+                            </Stack>
+                            <IconButton color="inherit" aria-label="message" href={contactInfo.whatsapp.link} sx={{ bgcolor: 'rgba(255,255,255,0.05)' }}><MessageIcon /></IconButton>
+                            <Stack component="a" href={contactInfo.text.link} direction="row" spacing={1} alignItems="center" sx={{ textDecoration: 'none', color: 'inherit', '&:hover': { opacity: 0.8 } }}>
+                                <Typography variant="body2" sx={{ fontWeight: 800, fontSize: { xs: '0.8rem', md: '0.9rem' } }}>
+                                    Text: {contactInfo.text.display}
+                                </Typography>
+                            </Stack>
+                        </Box>
+                    </Container>
+                </Box>
+                <Container maxWidth="xl">
+                    <Toolbar disableGutters sx={{ height: 90 }}>
+                        {/* Logo */}
+                        <Box component={Link} to="/" sx={{ flexGrow: 0, mr: 4, textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+                            <img src={getImagePath(imagePaths.logo)} alt="CMTC Wireless" style={{ height: 70, objectFit: 'contain' }} onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+                        </Box>
 
-                    <Box sx={{ flexGrow: 1 }} />
+                        <Box sx={{ flexGrow: 1 }} />
 
-                    {/* Desktop Menu */}
-                    {!isMobile && (
-                        <Stack direction="row" spacing={1} alignItems="center">
-                            {navLinks.map((link) => {
-                                if (link.isDropdown) {
-                                    const isBuyMenu = link.title === 'Buy a Device';
-                                    const menuItems = isBuyMenu ? buyServices : repairServices;
+                        {/* Desktop Menu */}
+                        {!isMobile && (
+                            <Stack direction="row" spacing={1} alignItems="center">
+                                {navLinks.map((link) => {
+                                    if (link.isDropdown) {
+                                        const isBuyMenu = link.title === 'Buy a Device';
+                                        const menuItems = isBuyMenu ? buyServices : repairServices;
 
-                                    // Use NavDropdown ONLY for Repair Services
-                                    if (link.title === 'Repair Services') {
+                                        // Use NavDropdown ONLY for Repair Services
+                                        if (link.title === 'Repair Services') {
+                                            return (
+                                                <NavDropdown
+                                                    key={link.title}
+                                                    title={link.title}
+                                                    items={menuItems}
+                                                    getLink={(service) => getLink(service, false)}
+                                                />
+                                            );
+                                        }
+
+                                        // Inline logic for other dropdowns (e.g., Buy a Device)
                                         return (
-                                            <NavDropdown
-                                                key={link.title}
-                                                title={link.title}
-                                                items={menuItems}
-                                                getLink={(service) => getLink(service, false)}
-                                            />
+                                            <Box key={link.title}>
+                                                <Button
+                                                    onClick={(e) => handleMenuOpen(e, link.title)}
+                                                    onMouseEnter={(e) => handleMenuOpen(e, link.title)}
+                                                    onMouseLeave={handleMenuLeave}
+                                                    endIcon={<KeyboardArrowDownIcon />}
+                                                    sx={{
+                                                        color: '#2C3E50',
+                                                        fontWeight: 600,
+                                                        fontSize: '0.95rem',
+                                                        mx: 0.5,
+                                                        px: 2,
+                                                        minWidth: 'auto',
+                                                        height: 90,
+                                                        borderRadius: 0,
+                                                        boxShadow: 'none',
+                                                        borderTop: '3px solid transparent',
+                                                        borderBottom: '3px solid transparent',
+                                                        transition: 'color 0.2s',
+                                                        '&:hover': {
+                                                            color: theme.palette.primary.main,
+                                                            backgroundColor: 'transparent',
+                                                            borderTopColor: '#78E335',
+                                                            borderBottomColor: '#78E335',
+                                                            boxShadow: 'none',
+                                                            transform: 'none',
+                                                        }
+                                                    }}
+                                                >
+                                                    {link.title}
+                                                </Button>
+                                                <Menu
+                                                    anchorEl={anchorEl}
+                                                    open={Boolean(anchorEl) && activeMenu === link.title}
+                                                    onClose={handleMenuLeave}
+                                                    hideBackdrop
+                                                    disableScrollLock
+                                                    autoFocus={false}
+                                                    disableRestoreFocus
+                                                    sx={{ pointerEvents: 'none' }}
+                                                    MenuListProps={{
+                                                        onMouseEnter: handleMenuEnter,
+                                                        onMouseLeave: handleMenuLeave,
+                                                    }}
+                                                    slotProps={{
+                                                        paper: {
+                                                            sx: {
+                                                                mt: 0.5,
+                                                                minWidth: 200,
+                                                                p: 1,
+                                                                borderRadius: 2,
+                                                                boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+                                                                pointerEvents: 'auto'
+                                                            }
+                                                        }
+                                                    }}
+                                                >
+                                                    <Stack spacing={0.5}>
+                                                        {menuItems.map((service) => (
+                                                            <Box
+                                                                key={service.id}
+                                                                component={Link}
+                                                                to={getLink(service, isBuyMenu)}
+                                                                onClick={handleMenuLeave}
+                                                                sx={{
+                                                                    textDecoration: 'none',
+                                                                    color: '#2C3E50',
+                                                                    py: 1.5,
+                                                                    px: 2,
+                                                                    borderRadius: 1,
+                                                                    transition: 'background-color 0.2s',
+                                                                    '&:hover': {
+                                                                        backgroundColor: '#f5f5f5',
+                                                                        color: theme.palette.primary.main
+                                                                    }
+                                                                }}
+                                                            >
+                                                                <Typography variant="body1" sx={{ fontWeight: 500 }}>
+                                                                    {service.name}
+                                                                </Typography>
+                                                                {/* Optional: Add subtitle or category count if needed */}
+                                                            </Box>
+                                                        ))}
+                                                    </Stack>
+                                                </Menu>
+                                            </Box>
                                         );
                                     }
-
-                                    // Inline logic for other dropdowns (e.g., Buy a Device)
                                     return (
-                                        <Box key={link.title}>
-                                            <Button
-                                                onClick={(e) => handleMenuOpen(e, link.title)}
-                                                onMouseEnter={(e) => handleMenuOpen(e, link.title)}
-                                                onMouseLeave={handleMenuLeave}
-                                                endIcon={<KeyboardArrowDownIcon />}
-                                                sx={{
-                                                    color: '#2C3E50',
-                                                    fontWeight: 600,
-                                                    fontSize: '0.95rem',
-                                                    mx: 0.5,
-                                                    px: 2,
-                                                    minWidth: 'auto',
-                                                    height: 90,
-                                                    borderRadius: 0,
-                                                    boxShadow: 'none',
-                                                    borderTop: '3px solid transparent',
-                                                    borderBottom: '3px solid transparent',
-                                                    transition: 'color 0.2s',
-                                                    '&:hover': {
-                                                        color: theme.palette.primary.main,
-                                                        backgroundColor: 'transparent',
-                                                        borderTopColor: '#78E335',
-                                                        borderBottomColor: '#78E335',
-                                                        boxShadow: 'none',
-                                                        transform: 'none',
-                                                    }
-                                                }}
-                                            >
-                                                {link.title}
-                                            </Button>
-                                            <Menu
-                                                anchorEl={anchorEl}
-                                                open={Boolean(anchorEl) && activeMenu === link.title}
-                                                onClose={handleMenuLeave}
-                                                hideBackdrop
-                                                disableScrollLock
-                                                autoFocus={false}
-                                                disableRestoreFocus
-                                                sx={{ pointerEvents: 'none' }}
-                                                MenuListProps={{
-                                                    onMouseEnter: handleMenuEnter,
-                                                    onMouseLeave: handleMenuLeave,
-                                                }}
-                                                slotProps={{
-                                                    paper: {
-                                                        sx: {
-                                                            mt: 0.5,
-                                                            minWidth: 200,
-                                                            p: 1,
-                                                            borderRadius: 2,
-                                                            boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
-                                                            pointerEvents: 'auto'
-                                                        }
-                                                    }
-                                                }}
-                                            >
-                                                <Stack spacing={0.5}>
-                                                    {menuItems.map((service) => (
-                                                        <Box
-                                                            key={service.id}
-                                                            component={Link}
-                                                            to={getLink(service, isBuyMenu)}
-                                                            onClick={handleMenuLeave}
-                                                            sx={{
-                                                                textDecoration: 'none',
-                                                                color: '#2C3E50',
-                                                                py: 1.5,
-                                                                px: 2,
-                                                                borderRadius: 1,
-                                                                transition: 'background-color 0.2s',
-                                                                '&:hover': {
-                                                                    backgroundColor: '#f5f5f5',
-                                                                    color: theme.palette.primary.main
-                                                                }
-                                                            }}
-                                                        >
-                                                            <Typography variant="body1" sx={{ fontWeight: 500 }}>
-                                                                {service.name}
-                                                            </Typography>
-                                                            {/* Optional: Add subtitle or category count if needed */}
-                                                        </Box>
-                                                    ))}
-                                                </Stack>
-                                            </Menu>
-                                        </Box>
-                                    );
-                                }
-                                return (
-                                    <Button
-                                        key={link.title}
-                                        component={Link}
-                                        to={link.path}
-                                        sx={{
-                                            color: '#2C3E50',
-                                            fontWeight: 600,
-                                            fontSize: '0.95rem',
-                                            mx: 0.5,
-                                            px: 2,
-                                            minWidth: 'auto',
-                                            height: 90,
-                                            borderRadius: 0,
-                                            boxShadow: 'none',
-                                            borderTop: '3px solid transparent',
-                                            borderBottom: '3px solid transparent',
-                                            transition: 'color 0.2s',
-                                            '&:hover': {
-                                                color: theme.palette.primary.main,
-                                                backgroundColor: 'transparent',
-                                                borderTopColor: '#78E335',
+                                        <Button
+                                            key={link.title}
+                                            component={Link}
+                                            to={link.path}
+                                            sx={{
+                                                color: '#2C3E50',
+                                                fontWeight: 600,
+                                                fontSize: '0.95rem',
+                                                mx: 0.5,
+                                                px: 2,
+                                                minWidth: 'auto',
+                                                height: 90,
+                                                borderRadius: 0,
                                                 boxShadow: 'none',
-                                                transform: 'none',
-                                            }
-                                        }}
-                                    >
-                                        {link.title}
-                                    </Button>
-                                );
-                            })}
-                            <GetInstantQuoteButton sx={{ ml: 2, px: 2, fontSize: '0.9rem' }} />
-                            <ScheduleAppointmentButton sx={{ ml: 1, px: 2, fontSize: '0.9rem' }} />
-                        </Stack>
-                    )}
+                                                borderTop: '3px solid transparent',
+                                                borderBottom: '3px solid transparent',
+                                                transition: 'color 0.2s',
+                                                '&:hover': {
+                                                    color: theme.palette.primary.main,
+                                                    backgroundColor: 'transparent',
+                                                    borderTopColor: '#78E335',
+                                                    boxShadow: 'none',
+                                                    transform: 'none',
+                                                }
+                                            }}
+                                        >
+                                            {link.title}
+                                        </Button>
+                                    );
+                                })}
+                                <GetInstantQuoteButton sx={{ ml: 2, px: 2, fontSize: '0.9rem' }} />
+                                <ScheduleAppointmentButton sx={{ ml: 1, px: 2, fontSize: '0.9rem' }} />
+                            </Stack>
+                        )}
 
-                    {/* Mobile Menu Icon */}
-                    {isMobile && (
-                        <IconButton
-                            size="large"
-                            edge="start"
-                            color="inherit"
-                            aria-label="menu"
-                            onClick={toggleDrawer(true)}
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                    )}
-                </Toolbar>
-            </Container>
+                        {/* Mobile Menu Icon */}
+                        {isMobile && (
+                            <IconButton
+                                size="large"
+                                edge="start"
+                                color="inherit"
+                                aria-label="menu"
+                                onClick={toggleDrawer(true)}
+                            >
+                                <MenuIcon />
+                            </IconButton>
+                        )}
+                    </Toolbar>
+                </Container>
 
-            {/* Mobile Menu Component */}
-            <MobileMenu open={drawerOpen} onClose={() => setDrawerOpen(false)} />
-        </AppBar>
+                {/* Mobile Menu Component */}
+                <MobileMenu open={drawerOpen} onClose={() => setDrawerOpen(false)} />
+            </AppBar>
+            {/* Height Spacer to prevent content from hiding behind fixed navbar */}
+            <Box sx={{ height: 130 }} />
+        </>
     );
 };
 
