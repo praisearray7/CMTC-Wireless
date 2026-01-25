@@ -53,7 +53,7 @@ const WhyChoose = () => {
                             <Typography variant="h6" sx={{ fontWeight: 700, color: '#2C3E50', lineHeight: 1.2, mb: 0.5 }}>
                                 {item.title}
                             </Typography>
-                            <Typography variant="body1" color="textSecondary" sx={{ lineHeight: 1.5 }}>
+                            <Typography variant="body1" sx={{ lineHeight: 1.5, color: '#37474f' }}>
                                 {item.desc}
                             </Typography>
                         </Box>

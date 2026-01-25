@@ -25,7 +25,7 @@ const GetInstantQuoteButton: React.FC<GetInstantQuoteButtonProps> = ({
             color="primary"
             sx={{
                 bgcolor: '#78E335',
-                color: '#fff',
+                color: '#000', // Black text for better contrast on bright green
                 fontWeight: 700,
                 boxShadow: 'none',
                 '&:hover': {
@@ -36,7 +36,7 @@ const GetInstantQuoteButton: React.FC<GetInstantQuoteButtonProps> = ({
             }}
             {...props}
         >
-            <RequestQuoteIcon sx={{ mr: 1 }} /> 
+            <RequestQuoteIcon sx={{ mr: 1 }} />
             Quote Now
         </Button>
     );

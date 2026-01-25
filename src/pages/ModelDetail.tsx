@@ -232,7 +232,7 @@ const ModelDetail = () => {
                                                                     '&:hover': { bgcolor: '#f0f0f0' }
                                                                 }}
                                                             >
-                                                                <Typography variant="body2" sx={{ color: '#555', fontWeight: 500, fontSize: '0.9rem' }}>
+                                                                <Typography variant="body2" sx={{ color: '#333', fontWeight: 500, fontSize: '0.9rem' }}>
                                                                     {r['Sub-Type Title'] || 'Standard'}
                                                                 </Typography>
                                                                 <Typography variant="body2" sx={{ fontWeight: 700, color: '#166534' }}>

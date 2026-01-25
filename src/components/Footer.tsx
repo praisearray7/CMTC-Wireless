@@ -31,7 +31,7 @@ const Footer = () => {
                                 <span style={{ color: '#78E335' }}>WIRE</span>
                                 <span style={{ color: '#2196f3' }}>LESS</span>
                             </Typography>
-                            <Typography variant="body1" sx={{ color: '#9ca3af', lineHeight: 1.7, maxWidth: '90%' }}>
+                            <Typography variant="body1" sx={{ color: '#e5e7eb', lineHeight: 1.7, maxWidth: '90%' }}>
                                 Trusted by thousands for fast, reliable device repairs. We're here to keep you connected with expert service and quality parts.
                             </Typography>
                             <Stack direction="row" spacing={1.5}>
@@ -49,7 +49,7 @@ const Footer = () => {
                                         rel="noopener noreferrer"
                                         sx={{
                                             bgcolor: 'rgba(255,255,255,0.03)',
-                                            color: '#d1d5db',
+                                            color: '#f3f4f6',
                                             transition: 'all 0.3s ease',
                                             '&:hover': {
                                                 bgcolor: '#78E335',
@@ -79,7 +79,7 @@ const Footer = () => {
                                     underline="none"
                                     sx={{
                                         fontSize: '0.95rem',
-                                        color: '#9ca3af',
+                                        color: '#f3f4f6',
                                         transition: 'all 0.2s',
                                         display: 'inline-block',
                                         '&:hover': {
@@ -104,10 +104,10 @@ const Footer = () => {
                                 <Typography variant="caption" sx={{ color: '#78E335', fontWeight: 700, letterSpacing: '1px', mb: 0.5, display: 'block' }}>
                                     PHONE & TEXT
                                 </Typography>
-                                <MuiLink href={contactInfo.phone.link} underline="hover" sx={{ display: 'block', color: '#d1d5db', '&:hover': { color: '#78E335' } }}>
+                                <MuiLink href={contactInfo.phone.link} underline="hover" sx={{ display: 'block', color: '#f3f4f6', '&:hover': { color: '#78E335' } }}>
                                     Call: {contactInfo.phone.display}
                                 </MuiLink>
-                                <MuiLink href={contactInfo.text.link} underline="hover" sx={{ display: 'block', color: '#d1d5db', '&:hover': { color: '#78E335' } }}>
+                                <MuiLink href={contactInfo.text.link} underline="hover" sx={{ display: 'block', color: '#f3f4f6', '&:hover': { color: '#78E335' } }}>
                                     Text: {contactInfo.text.display}
                                 </MuiLink>
                             </Box>
@@ -116,7 +116,7 @@ const Footer = () => {
                                 <Typography variant="caption" sx={{ color: '#78E335', fontWeight: 700, letterSpacing: '1px', mb: 0.5, display: 'block' }}>
                                     EMAIL
                                 </Typography>
-                                <MuiLink href={contactInfo.email.link} underline="hover" sx={{ color: '#d1d5db', '&:hover': { color: '#78E335' } }}>
+                                <MuiLink href={contactInfo.email.link} underline="hover" sx={{ color: '#f3f4f6', '&:hover': { color: '#78E335' } }}>
                                     {contactInfo.email.display}
                                 </MuiLink>
                             </Box>
@@ -125,10 +125,10 @@ const Footer = () => {
                                 <Typography variant="caption" sx={{ color: '#78E335', fontWeight: 700, letterSpacing: '1px', mb: 0.5, display: 'block' }}>
                                     HOURS
                                 </Typography>
-                                <Typography variant="body1" sx={{ color: '#d1d5db', whiteSpace: 'pre-line' }}>
+                                <Typography variant="body1" sx={{ color: '#f3f4f6', whiteSpace: 'pre-line' }}>
                                     {contactInfo.hours.weekday}
                                 </Typography>
-                                <Typography variant="body1" sx={{ color: '#d1d5db', whiteSpace: 'pre-line' }}>
+                                <Typography variant="body1" sx={{ color: '#f3f4f6', whiteSpace: 'pre-line' }}>
                                     {contactInfo.hours.weekend}
                                 </Typography>
                             </Box>
@@ -169,7 +169,7 @@ const Footer = () => {
                                     <LocationOnIcon sx={{ color: '#78E335', fontSize: 20, mt: 0.5 }} />
                                     <Box>
                                         <Typography variant="subtitle2" sx={{ color: '#fff', fontWeight: 600 }}>Minneapolis</Typography>
-                                        <Typography variant="body2" sx={{ color: '#9ca3af', mb: 0.5 }}>920 E Lake St</Typography>
+                                        <Typography variant="body2" sx={{ color: '#e5e7eb', mb: 0.5 }}>920 E Lake St</Typography>
                                         <MuiLink
                                             href="https://www.google.com/maps/place/CMTC+Wireless+-+24%2F7+Minneapolis+MN/@44.9486757,-93.2607411,17z"
                                             target="_blank"
@@ -186,7 +186,7 @@ const Footer = () => {
                                     <LocationOnIcon sx={{ color: '#78E335', fontSize: 20, mt: 0.5 }} />
                                     <Box>
                                         <Typography variant="subtitle2" sx={{ color: '#fff', fontWeight: 600 }}>St Paul</Typography>
-                                        <Typography variant="body2" sx={{ color: '#9ca3af', mb: 0.5 }}>957 Rice St</Typography>
+                                        <Typography variant="body2" sx={{ color: '#e5e7eb', mb: 0.5 }}>957 Rice St</Typography>
                                         <MuiLink
                                             href="https://www.google.com/maps/place/CMTC+Wireless+-+24%2F7+Saint+Paul/@44.9700122,-93.106482,17z"
                                             target="_blank"

@@ -113,7 +113,7 @@ const SmartwatchRepair = () => {
                                                 <Box sx={{ p: 1.5, borderRadius: 2, bgcolor: '#f0fdf4' }}>
                                                     {item.icon}
                                                 </Box>
-                                                <Typography variant="subtitle1" sx={{ color: '#78E335', fontWeight: 700 }}>
+                                                <Typography variant="subtitle1" sx={{ color: '#166534', fontWeight: 700 }}>
                                                     {loading ? "Loading..." : getPriceRange('smartwatch', item.title)}
                                                 </Typography>
                                             </Box>
@@ -206,7 +206,7 @@ const SmartwatchRepair = () => {
                 <Typography variant="h6" sx={{ color: '#333', mb: 2, fontWeight: 600 }}>
                     Common Repairs
                 </Typography>
-                <Box component="ul" sx={{ pl: 2, mb: 3, color: '#546E7A' }}>
+                <Box component="ul" sx={{ pl: 2, mb: 3, color: '#37474f' }}>
                     <Box component="li"><Typography variant="body1">OLED Screen Replacement</Typography></Box>
                     <Box component="li"><Typography variant="body1">Glass Replacement</Typography></Box>
                     <Box component="li"><Typography variant="body1">Battery Replacement</Typography></Box>

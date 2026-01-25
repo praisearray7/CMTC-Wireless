@@ -102,7 +102,7 @@ const DesktopRepair = () => {
                                                 <Box sx={{ p: 1.5, borderRadius: 2, bgcolor: '#f0fdf4' }}>
                                                     {item.icon}
                                                 </Box>
-                                                <Typography variant="subtitle1" sx={{ color: '#78E335', fontWeight: 700 }}>
+                                                <Typography variant="subtitle1" sx={{ color: '#166534', fontWeight: 700 }}>
                                                     {loading ? "Loading..." : getPriceRange('desktop', item.title)}
                                                 </Typography>
                                             </Box>

@@ -98,7 +98,7 @@ const ServiceDetail = () => {
                             </Typography>
 
                             <Typography variant="body1" sx={{ color: '#546E7A', lineHeight: 1.6 }}>
-                                Ready to set up or expand your program? <Link to="/contact-us" style={{ color: '#78E335', textDecoration: 'none' }}>Request a quote or open an account</Link>.
+                                Ready to set up or expand your program? <Link to="/contact-us" style={{ color: '#166534', textDecoration: 'none' }}>Request a quote or open an account</Link>.
                             </Typography>
                         </Grid>
 

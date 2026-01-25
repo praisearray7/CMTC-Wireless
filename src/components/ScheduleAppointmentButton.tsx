@@ -21,13 +21,13 @@ const ScheduleAppointmentButton: React.FC<ScheduleAppointmentButtonProps> = ({
             rel="noopener noreferrer"
             variant="contained"
             sx={{
-                bgcolor: '#2196F3', // Blue color
+                bgcolor: '#1565C0', // Darker Blue for WCAG AA
                 color: '#fff',
                 fontWeight: 700,
                 boxShadow: 'none',
                 '&:hover': {
-                    bgcolor: '#1976D2',
-                    boxShadow: '0 4px 12px rgba(33, 150, 243, 0.4)'
+                    bgcolor: '#0D47A1',
+                    boxShadow: '0 4px 12px rgba(21, 101, 192, 0.4)'
                 },
                 ...sx
             }}
