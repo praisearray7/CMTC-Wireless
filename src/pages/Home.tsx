@@ -32,7 +32,7 @@ const Home = () => {
     return (
         <>
             {/* Custom Hero Override for CMTC */}
-            <Box sx={{ pt: { xs: 2, md: 4 }, pb: { xs: 8, md: 10 }, padding: { xs: 0.5, md: 1 } }}>
+            <Box sx={{ pt: { xs: 2, md: 4 }, pb: { xs: 8, md: 10 }, padding: { xs: 2, md: 4 } }}>
                 <Container maxWidth="xl">
                     <Grid container spacing={8} alignItems="center">
                         {/* Left: Content */}
