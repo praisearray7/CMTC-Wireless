@@ -148,7 +148,7 @@ const Navbar = () => {
                                                         mx: 0.5,
                                                         px: 2,
                                                         minWidth: 'auto',
-                                                        height: 90,
+                                                        height: 65,
                                                         borderRadius: 0,
                                                         boxShadow: 'none',
                                                         borderTop: '3px solid transparent',
@@ -235,7 +235,7 @@ const Navbar = () => {
                                                 mx: 0.5,
                                                 px: 2,
                                                 minWidth: 'auto',
-                                                height: 90,
+                                                height: 65,
                                                 borderRadius: 0,
                                                 boxShadow: 'none',
                                                 borderTop: '3px solid transparent',
@@ -278,7 +278,7 @@ const Navbar = () => {
                 <MobileMenu open={drawerOpen} onClose={() => setDrawerOpen(false)} />
             </AppBar>
             {/* Height Spacer to prevent content from hiding behind fixed navbar */}
-            <Box sx={{ height: 130 }} />
+            <Box sx={{ height: 80 }} />
         </>
     );
 };

@@ -52,7 +52,7 @@ const NavDropdown = ({ title, items, getLink }: NavDropdownProps) => {
                     mx: 0.5,
                     px: 2,
                     minWidth: 'auto',
-                    height: 90,
+                    height: 65,
                     borderRadius: 0,
                     boxShadow: 'none',
                     borderTop: '3px solid transparent',
