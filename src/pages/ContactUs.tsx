@@ -350,7 +350,19 @@ const ContactUs = () => {
                                         </Box>
                                     </Grid>
                                     <Grid size={{ xs: 12 }}>
-                                        <Button variant="contained" color="primary" size="large" fullWidth endIcon={<SendIcon />} sx={{ py: 1.5, fontSize: '1.1rem' }}>
+                                        <Button
+                                            variant="contained"
+                                            color="primary"
+                                            size="large"
+                                            fullWidth
+                                            endIcon={<SendIcon />}
+                                            sx={{
+                                                py: 1.5,
+                                                fontSize: '1.1rem',
+                                                color: '#fff',
+                                                fontWeight: 700
+                                            }}
+                                        >
                                             Send Message
                                         </Button>
                                     </Grid>
