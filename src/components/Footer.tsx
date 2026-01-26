@@ -53,7 +53,7 @@ const Footer = () => {
                                             color: '#f3f4f6',
                                             transition: 'all 0.3s ease',
                                             '&:hover': {
-                                                bgcolor: colors.primary,
+                                                bgcolor: colors.primaryLight,
                                                 color: '#000',
                                                 transform: 'translateY(-3px)'
                                             }
@@ -84,7 +84,7 @@ const Footer = () => {
                                         transition: 'all 0.2s',
                                         display: 'inline-block',
                                         '&:hover': {
-                                            color: colors.primary,
+                                            color: colors.primaryLight,
                                             transform: 'translateX(4px)'
                                         }
                                     }}
@@ -102,28 +102,28 @@ const Footer = () => {
                         </Typography>
                         <Stack spacing={2.5}>
                             <Box>
-                                <Typography variant="caption" sx={{ color: colors.primary, fontWeight: 700, letterSpacing: '1px', mb: 0.5, display: 'block' }}>
+                                <Typography variant="caption" sx={{ color: colors.primaryLight, fontWeight: 700, letterSpacing: '1px', mb: 0.5, display: 'block' }}>
                                     PHONE & TEXT
                                 </Typography>
-                                <MuiLink href={contactInfo.phone.link} underline="hover" sx={{ display: 'block', color: '#f3f4f6', '&:hover': { color: colors.primary } }}>
+                                <MuiLink href={contactInfo.phone.link} underline="hover" sx={{ display: 'block', color: '#f3f4f6', '&:hover': { color: colors.primaryLight } }}>
                                     Call: {contactInfo.phone.display}
                                 </MuiLink>
-                                <MuiLink href={contactInfo.text.link} underline="hover" sx={{ display: 'block', color: '#f3f4f6', '&:hover': { color: colors.primary } }}>
+                                <MuiLink href={contactInfo.text.link} underline="hover" sx={{ display: 'block', color: '#f3f4f6', '&:hover': { color: colors.primaryLight } }}>
                                     Text: {contactInfo.text.display}
                                 </MuiLink>
                             </Box>
 
                             <Box>
-                                <Typography variant="caption" sx={{ color: colors.primary, fontWeight: 700, letterSpacing: '1px', mb: 0.5, display: 'block' }}>
+                                <Typography variant="caption" sx={{ color: colors.primaryLight, fontWeight: 700, letterSpacing: '1px', mb: 0.5, display: 'block' }}>
                                     EMAIL
                                 </Typography>
-                                <MuiLink href={contactInfo.email.link} underline="hover" sx={{ color: '#f3f4f6', '&:hover': { color: colors.primary } }}>
+                                <MuiLink href={contactInfo.email.link} underline="hover" sx={{ color: '#f3f4f6', '&:hover': { color: colors.primaryLight } }}>
                                     {contactInfo.email.display}
                                 </MuiLink>
                             </Box>
 
                             <Box>
-                                <Typography variant="caption" sx={{ color: colors.primary, fontWeight: 700, letterSpacing: '1px', mb: 0.5, display: 'block' }}>
+                                <Typography variant="caption" sx={{ color: colors.primaryLight, fontWeight: 700, letterSpacing: '1px', mb: 0.5, display: 'block' }}>
                                     HOURS
                                 </Typography>
                                 <Typography variant="body1" sx={{ color: '#f3f4f6', whiteSpace: 'pre-line' }}>
@@ -167,7 +167,7 @@ const Footer = () => {
                             <Stack direction="row" spacing={12}>
                                 {/* Minneapolis */}
                                 <Stack direction="row" spacing={1} alignItems="flex-start">
-                                    <LocationOnIcon sx={{ color: colors.primary, fontSize: 20, mt: 0.5 }} />
+                                    <LocationOnIcon sx={{ color: colors.primaryLight, fontSize: 20, mt: 0.5 }} />
                                     <Box>
                                         <Typography variant="subtitle2" sx={{ color: '#fff', fontWeight: 600 }}>Minneapolis</Typography>
                                         <Typography variant="body2" sx={{ color: '#e5e7eb', mb: 0.5 }}>920 E Lake St</Typography>
@@ -175,7 +175,7 @@ const Footer = () => {
                                             href="https://www.google.com/maps/place/CMTC+Wireless+-+24%2F7+Minneapolis+MN/@44.9486757,-93.2607411,17z"
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            sx={{ color: colors.primary, fontSize: '0.75rem', textDecoration: 'none', '&:hover': { textDecoration: 'underline' }, whiteSpace: 'nowrap' }}
+                                            sx={{ color: colors.primaryLight, fontSize: '0.75rem', textDecoration: 'none', '&:hover': { textDecoration: 'underline' }, whiteSpace: 'nowrap' }}
                                         >
                                             Get Directions
                                         </MuiLink>
@@ -184,7 +184,7 @@ const Footer = () => {
 
                                 {/* St Paul */}
                                 <Stack direction="row" spacing={1} alignItems="flex-start">
-                                    <LocationOnIcon sx={{ color: colors.primary, fontSize: 20, mt: 0.5 }} />
+                                    <LocationOnIcon sx={{ color: colors.primaryLight, fontSize: 20, mt: 0.5 }} />
                                     <Box>
                                         <Typography variant="subtitle2" sx={{ color: '#fff', fontWeight: 600 }}>St Paul</Typography>
                                         <Typography variant="body2" sx={{ color: '#e5e7eb', mb: 0.5 }}>957 Rice St</Typography>
@@ -192,7 +192,7 @@ const Footer = () => {
                                             href="https://www.google.com/maps/place/CMTC+Wireless+-+24%2F7+Saint+Paul/@44.9700122,-93.106482,17z"
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            sx={{ color: colors.primary, fontSize: '0.75rem', textDecoration: 'none', '&:hover': { textDecoration: 'underline' }, whiteSpace: 'nowrap' }}
+                                            sx={{ color: colors.primaryLight, fontSize: '0.75rem', textDecoration: 'none', '&:hover': { textDecoration: 'underline' }, whiteSpace: 'nowrap' }}
                                         >
                                             Get Directions
                                         </MuiLink>

@@ -26,7 +26,7 @@ const GetInstantQuoteButton: React.FC<GetInstantQuoteButtonProps> = ({
             color="primary"
             sx={{
                 bgcolor: colors.primary,
-                color: '#fff', // Black text for better contrast on bright green
+                color: '#fff',
                 fontWeight: 700,
                 boxShadow: 'none',
                 '&:hover': {
