@@ -17,6 +17,27 @@ export const useRepairPricing = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        const CACHE_KEY = 'repair_pricing_data';
+        const CACHE_TIMESTAMP_KEY = 'repair_pricing_timestamp';
+        const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+
+        const cachedData = localStorage.getItem(CACHE_KEY);
+        const cachedTimestamp = localStorage.getItem(CACHE_TIMESTAMP_KEY);
+
+        if (cachedData && cachedTimestamp) {
+            const age = Date.now() - parseInt(cachedTimestamp, 10);
+            if (age < CACHE_DURATION) {
+                try {
+                    const parsed = JSON.parse(cachedData);
+                    setData(parsed);
+                    setLoading(false);
+                    return;
+                } catch (e) {
+                    console.error("Failed to parse cached data", e);
+                }
+            }
+        }
+
         Papa.parse(CSV_URL, {
             download: true,
             header: false, // Parse as arrays to handle leading empty rows/columns
@@ -66,6 +87,14 @@ export const useRepairPricing = () => {
 
                 setData(parsedData);
                 setLoading(false);
+                
+                // Save to cache
+                try {
+                    localStorage.setItem(CACHE_KEY, JSON.stringify(parsedData));
+                    localStorage.setItem(CACHE_TIMESTAMP_KEY, Date.now().toString());
+                } catch (e) {
+                    console.error("Failed to save to cache", e);
+                }
             },
             error: (error) => {
                 console.error('Error parsing CSV:', error);
