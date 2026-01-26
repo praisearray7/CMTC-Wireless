@@ -250,6 +250,14 @@ const ModelDetail = () => {
                                                     // Avoid duplicating variant if it's already part of the base name (e.g. SE models, or "iPhone 13" vs "13")
                                                     if (baseName.toLowerCase().includes(variant.toLowerCase().trim())) {
                                                         targetName = baseName;
+                                                    } else {
+                                                        // Handle "iPhone 16" + "16e" -> "iPhone 16e"
+                                                        // Check if variant starts with the number the base name ends with
+                                                        const baseSuffix = baseName.split(' ').pop() || '';
+                                                        if (baseSuffix && variant.toLowerCase().startsWith(baseSuffix.toLowerCase())) {
+                                                            // Remove the suffix from base and append the variant
+                                                            targetName = baseName.substring(0, baseName.lastIndexOf(' ')) + ' ' + variant;
+                                                        }
                                                     }
 
                                                     let targetId = '';
