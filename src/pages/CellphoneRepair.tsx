@@ -11,6 +11,7 @@ import { colors } from '../theme/colors';
 
 
 import SEO from '../components/SEO';
+import StaggerContainer from '../components/animations/StaggerContainer';
 
 const CellphoneRepair = () => {
     const { getPriceRange, loading } = useRepairPricing();
@@ -35,57 +36,59 @@ const CellphoneRepair = () => {
                             <Typography variant="h5" sx={{ fontWeight: 700, color: '#333', mb: 4 }}>
                                 Select your Cell Phone Brand
                             </Typography>
-                            <Grid container spacing={3} justifyContent="center">
-                                {cellphoneData.map((item) => (
-                                    <Grid size={{ xs: 12, sm: 6, md: 4 }} key={item.id}>
-                                        <Link
-                                            to="/contact-us"
-                                            state={{ deviceModel: item.title, serviceNeeded: 'Repair Service' }}
-                                            style={{ textDecoration: 'none' }}
-                                        >
-                                            <Paper
-                                                elevation={0}
-                                                sx={{
-                                                    pt: "20px",
-                                                    pb: "20px",
-                                                    px: "20px",
-                                                    display: "flex",
-                                                    flexDirection: "column",
-                                                    alignItems: "center",
-                                                    cursor: "pointer",
-                                                    borderRadius: "18px",
-                                                    background: "transparent",
-                                                    position: "relative",
-                                                    overflow: "visible",
-                                                    zIndex: 1,
-                                                    transition: "all 0.35s ease",
-                                                    "&:hover": {
-                                                        pb: "20px",
-                                                        zIndex: 10,
-                                                        background: "#fff",
-                                                        boxShadow: "0px 20px 40px rgba(0,0,0,0.15)",
-                                                    },
-                                                }}
+                            <StaggerContainer childSelector=".cellphone-brand-item">
+                                <Grid container spacing={3} justifyContent="center">
+                                    {cellphoneData.map((item) => (
+                                        <Grid size={{ xs: 12, sm: 6, md: 4 }} key={item.id} className="cellphone-brand-item">
+                                            <Link
+                                                to="/contact-us"
+                                                state={{ deviceModel: item.title, serviceNeeded: 'Repair Service' }}
+                                                style={{ textDecoration: 'none' }}
                                             >
-                                                <Box
-                                                    component="img"
-                                                    src={item.image}
-                                                    alt={item.title}
+                                                <Paper
+                                                    elevation={0}
                                                     sx={{
-                                                        width: "100%",
-                                                        maxWidth: 200,
-                                                        height: "auto",
-                                                        objectFit: "contain",
-                                                        mb: 2,
-                                                        transition: "none",
+                                                        pt: "20px",
+                                                        pb: "20px",
+                                                        px: "20px",
+                                                        display: "flex",
+                                                        flexDirection: "column",
+                                                        alignItems: "center",
+                                                        cursor: "pointer",
+                                                        borderRadius: "18px",
+                                                        background: "transparent",
+                                                        position: "relative",
+                                                        overflow: "visible",
+                                                        zIndex: 1,
+                                                        transition: "all 0.35s ease",
+                                                        "&:hover": {
+                                                            pb: "20px",
+                                                            zIndex: 10,
+                                                            background: "#fff",
+                                                            boxShadow: "0px 20px 40px rgba(0,0,0,0.15)",
+                                                        },
                                                     }}
-                                                />
-                                                <Typography variant="h6" sx={{ color: "#1a1a1a", fontWeight: 600, textAlign: 'center' }}>{item.title}</Typography>
-                                            </Paper>
-                                        </Link>
-                                    </Grid>
-                                ))}
-                            </Grid>
+                                                >
+                                                    <Box
+                                                        component="img"
+                                                        src={item.image}
+                                                        alt={item.title}
+                                                        sx={{
+                                                            width: "100%",
+                                                            maxWidth: 200,
+                                                            height: "auto",
+                                                            objectFit: "contain",
+                                                            mb: 2,
+                                                            transition: "none",
+                                                        }}
+                                                    />
+                                                    <Typography variant="h6" sx={{ color: "#1a1a1a", fontWeight: 600, textAlign: 'center' }}>{item.title}</Typography>
+                                                </Paper>
+                                            </Link>
+                                        </Grid>
+                                    ))}
+                                </Grid>
+                            </StaggerContainer>
                         </Box>
 
                         <Divider sx={{ my: 8, opacity: 0.1 }} />
@@ -95,31 +98,33 @@ const CellphoneRepair = () => {
                             <Typography variant="h4" sx={{ fontWeight: 700, color: '#333', mb: 4, textAlign: 'center' }}>
                                 Most Popular Repairs
                             </Typography>
-                            <Grid container spacing={3}>
-                                {[
-                                    'screen-replacement', 'charging-port-repair', 'battery-replacement',
-                                    'back-glass-repair', 'water-damage-cleaning', 'camera-repair',
-                                    'speaker-repair', 'data-recovery', 'unlock-services'
-                                ].map((type, index) => {
-                                    const item = repairDetails[type];
-                                    if (!item) return null;
-                                    return (
-                                        <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
-                                            <RepairCard
-                                                title={item.title}
-                                                description={item.desc}
-                                                image={item.image}
-                                                icon={item.icon}
-                                                priceContent={
-                                                    <Typography variant="h6" sx={{ fontWeight: 700, whiteSpace: 'nowrap', color: colors.primary }}>
-                                                        {loading ? "Loading..." : getPriceRange('android', item.title)}
-                                                    </Typography>
-                                                }
-                                            />
-                                        </Grid>
-                                    );
-                                })}
-                            </Grid>
+                            <StaggerContainer childSelector=".most-popular-repair-item">
+                                <Grid container spacing={3}>
+                                    {[
+                                        'screen-replacement', 'charging-port-repair', 'battery-replacement',
+                                        'back-glass-repair', 'water-damage-cleaning', 'camera-repair',
+                                        'speaker-repair', 'data-recovery', 'unlock-services'
+                                    ].map((type, index) => {
+                                        const item = repairDetails[type];
+                                        if (!item) return null;
+                                        return (
+                                            <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index} className="most-popular-repair-item">
+                                                <RepairCard
+                                                    title={item.title}
+                                                    description={item.desc}
+                                                    image={item.image}
+                                                    icon={item.icon}
+                                                    priceContent={
+                                                        <Typography variant="h6" sx={{ fontWeight: 700, whiteSpace: 'nowrap', color: colors.primary }}>
+                                                            {loading ? "Loading..." : getPriceRange('android', item.title)}
+                                                        </Typography>
+                                                    }
+                                                />
+                                            </Grid>
+                                        );
+                                    })}
+                                </Grid>
+                            </StaggerContainer>
                         </Box>
 
                         <Divider sx={{ my: 8, opacity: 0.1 }} />
@@ -129,68 +134,70 @@ const CellphoneRepair = () => {
                             <Typography variant="h4" sx={{ fontWeight: 700, color: '#333', mb: 4, textAlign: 'center' }}>
                                 Common Issues & Solutions
                             </Typography>
-                            <Grid container spacing={3}>
-                                {[
-                                    {
-                                        issue: "Won't Charge",
-                                        solution: "Common on Samsungs and Motos. We solder new USB-C ports on the motherboard.",
-                                        icon: <Zap size={24} />
-                                    },
-                                    {
-                                        issue: "Broken Screen / No Display",
-                                        solution: "OLED screens are delicate. We replace the full assembly for a factory-fresh look.",
-                                        icon: <Smartphone size={24} />
-                                    },
-                                    {
-                                        issue: "Boot Loop / Stuck on Logo",
-                                        solution: "Software corruption. We can re-flash firware or replace the battery if voltage is low.",
-                                        icon: <RefreshCw size={24} />
-                                    },
-                                    {
-                                        issue: "Can't Hear Calls",
-                                        solution: "Earpiece speaker mesh gets clogged. We clean or replace the receiver speaker.",
-                                        icon: <Volume2 size={24} />
-                                    },
-                                    {
-                                        issue: "Network Issues",
-                                        solution: "Weak signal? It could be a loose antenna cable or damaged SIM reader.",
-                                        icon: <Wifi size={24} />
-                                    },
-                                    {
-                                        issue: "Back Glass Smashed",
-                                        solution: "We carefully remove broken glass to keep the wireless charging coil safe.",
-                                        icon: <Maximize size={24} />
-                                    }
-                                ].map((item, index) => (
-                                    <Grid size={{ xs: 12, md: 6 }} key={index}>
-                                        <Paper elevation={0} sx={{
-                                            p: 3,
-                                            display: 'flex',
-                                            gap: 2,
-                                            border: '1px solid #f0f0f0',
-                                            borderRadius: 3,
-                                            '&:hover': { bgcolor: '#fafafa' }
-                                        }}>
-                                            <Box sx={{
-                                                minWidth: 48,
-                                                height: 48,
-                                                borderRadius: '50%',
-                                                bgcolor: colors.primary,
-                                                color: '#fff',
+                            <StaggerContainer childSelector=".common-issue-item">
+                                <Grid container spacing={3}>
+                                    {[
+                                        {
+                                            issue: "Won't Charge",
+                                            solution: "Common on Samsungs and Motos. We solder new USB-C ports on the motherboard.",
+                                            icon: <Zap size={24} />
+                                        },
+                                        {
+                                            issue: "Broken Screen / No Display",
+                                            solution: "OLED screens are delicate. We replace the full assembly for a factory-fresh look.",
+                                            icon: <Smartphone size={24} />
+                                        },
+                                        {
+                                            issue: "Boot Loop / Stuck on Logo",
+                                            solution: "Software corruption. We can re-flash firware or replace the battery if voltage is low.",
+                                            icon: <RefreshCw size={24} />
+                                        },
+                                        {
+                                            issue: "Can't Hear Calls",
+                                            solution: "Earpiece speaker mesh gets clogged. We clean or replace the receiver speaker.",
+                                            icon: <Volume2 size={24} />
+                                        },
+                                        {
+                                            issue: "Network Issues",
+                                            solution: "Weak signal? It could be a loose antenna cable or damaged SIM reader.",
+                                            icon: <Wifi size={24} />
+                                        },
+                                        {
+                                            issue: "Back Glass Smashed",
+                                            solution: "We carefully remove broken glass to keep the wireless charging coil safe.",
+                                            icon: <Maximize size={24} />
+                                        }
+                                    ].map((item, index) => (
+                                        <Grid size={{ xs: 12, md: 6 }} key={index} className="common-issue-item">
+                                            <Paper elevation={0} sx={{
+                                                p: 3,
                                                 display: 'flex',
-                                                alignItems: 'center',
-                                                justifyContent: 'center'
+                                                gap: 2,
+                                                border: '1px solid #f0f0f0',
+                                                borderRadius: 3,
+                                                '&:hover': { bgcolor: '#fafafa' }
                                             }}>
-                                                {item.icon}
-                                            </Box>
-                                            <Box>
-                                                <Typography variant="h6" sx={{ fontWeight: 700, mb: 0.5, fontSize: '1.1rem' }}>{item.issue}</Typography>
-                                                <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>{item.solution}</Typography>
-                                            </Box>
-                                        </Paper>
-                                    </Grid>
-                                ))}
-                            </Grid>
+                                                <Box sx={{
+                                                    minWidth: 48,
+                                                    height: 48,
+                                                    borderRadius: '50%',
+                                                    bgcolor: colors.primary,
+                                                    color: '#fff',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center'
+                                                }}>
+                                                    {item.icon}
+                                                </Box>
+                                                <Box>
+                                                    <Typography variant="h6" sx={{ fontWeight: 700, mb: 0.5, fontSize: '1.1rem' }}>{item.issue}</Typography>
+                                                    <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>{item.solution}</Typography>
+                                                </Box>
+                                            </Paper>
+                                        </Grid>
+                                    ))}
+                                </Grid>
+                            </StaggerContainer>
                         </Box>
 
                         <Divider sx={{ my: 8 }} />

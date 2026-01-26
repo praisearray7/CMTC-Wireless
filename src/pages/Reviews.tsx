@@ -1,6 +1,7 @@
 import { Box, Container, Grid, Typography, Card, CardContent, Rating, Avatar, Stack } from '@mui/material';
 import { colors } from '../theme/colors';
 import SEO from '../components/SEO';
+import StaggerContainer from '../components/animations/StaggerContainer';
 
 const Reviews = () => {
     const reviews = [
@@ -30,27 +31,29 @@ const Reviews = () => {
                     </Stack>
                 </Box>
 
-                <Grid container spacing={4}>
-                    {reviews.map((review) => (
-                        <Grid size={{ xs: 12, sm: 6, md: 4 }} key={review.id}>
-                            <Card sx={{ height: '100%', borderRadius: 4, transform: 'translateZ(0)', transition: '0.3s', '&:hover': { transform: 'translateY(-5px)', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' } }}>
-                                <CardContent sx={{ p: 4 }}>
-                                    <Stack direction="row" spacing={2} alignItems="center" mb={2}>
-                                        <Avatar sx={{ bgcolor: colors.primary, color: '#003300', fontWeight: 700 }}>{review.name[0]}</Avatar>
-                                        <Box>
-                                            <Typography variant="subtitle1" fontWeight={700}>{review.name}</Typography>
-                                            <Typography variant="caption" color="textSecondary">{review.date}</Typography>
-                                        </Box>
-                                    </Stack>
-                                    <Rating value={review.rating} readOnly size="small" sx={{ mb: 2 }} />
-                                    <Typography variant="body1" color="textSecondary" sx={{ lineHeight: 1.6 }}>
-                                        "{review.text}"
-                                    </Typography>
-                                </CardContent>
-                            </Card>
-                        </Grid>
-                    ))}
-                </Grid>
+                <StaggerContainer childSelector=".review-item">
+                    <Grid container spacing={4}>
+                        {reviews.map((review) => (
+                            <Grid size={{ xs: 12, sm: 6, md: 4 }} key={review.id} className="review-item">
+                                <Card sx={{ height: '100%', borderRadius: 4, transform: 'translateZ(0)', transition: '0.3s', '&:hover': { transform: 'translateY(-5px)', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' } }}>
+                                    <CardContent sx={{ p: 4 }}>
+                                        <Stack direction="row" spacing={2} alignItems="center" mb={2}>
+                                            <Avatar sx={{ bgcolor: colors.primary, color: '#003300', fontWeight: 700 }}>{review.name[0]}</Avatar>
+                                            <Box>
+                                                <Typography variant="subtitle1" fontWeight={700}>{review.name}</Typography>
+                                                <Typography variant="caption" color="textSecondary">{review.date}</Typography>
+                                            </Box>
+                                        </Stack>
+                                        <Rating value={review.rating} readOnly size="small" sx={{ mb: 2 }} />
+                                        <Typography variant="body1" color="textSecondary" sx={{ lineHeight: 1.6 }}>
+                                            "{review.text}"
+                                        </Typography>
+                                    </CardContent>
+                                </Card>
+                            </Grid>
+                        ))}
+                    </Grid>
+                </StaggerContainer>
             </Container>
         </Box>
     );

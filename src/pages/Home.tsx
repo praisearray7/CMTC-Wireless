@@ -19,6 +19,8 @@ import TransitionSlider from '../components/TransitionSlider';
 import FAQ from '../components/FAQ';
 import GetInstantQuoteButton from '../components/GetInstantQuoteButton';
 import ScheduleAppointmentButton from '../components/ScheduleAppointmentButton';
+import FadeIn from '../components/animations/FadeIn';
+import StaggerContainer from '../components/animations/StaggerContainer';
 
 import SEO from '../components/SEO';
 import { colors } from '../theme/colors';
@@ -44,35 +46,43 @@ const Home = () => {
                     <Grid container spacing={8} alignItems="center">
                         {/* Left: Content */}
                         <Grid size={{ xs: 12, md: 6 }} >
-                            <Typography variant="h2" sx={{ fontWeight: 800, mb: 3, fontSize: { xs: '2.5rem', md: '4rem' }, color: '#000000', lineHeight: 1.1 }}>
-                                Fast, Reliable <br />
-                                <span style={{ color: primaryGreen }}>Phone Repairs</span>
-                                <br />
-                                <span style={{ color: primaryBlue }}>Near You.</span>
-                            </Typography>
-                            <Typography variant="h6" sx={{ color: '#000000', mb: 3, fontWeight: 400, lineHeight: 1.6, maxWidth: 600 }}>
-                                Get your phone fixed quickly and efficiently by our expert technicians. We offer same day repairs for most devices, ensuring you stay connected.
-                            </Typography>
-                            <Typography variant="h6" sx={{ color: '#000000', mb: 3, fontWeight: 400, lineHeight: 1.6, maxWidth: 600 }}>
-                                📅 <a href="https://calendly.com/martinakinseye/cmtcwireless"> <u style={{ color: 'blue' }}>Get in touch</u></a> today to get exclusive <b>discounts</b> and guaranteed <b>priority service</b>! 💬 Limited slots available — book now and save big before the offer ends!
-                            </Typography>
+                            <FadeIn delay={0.1}>
+                                <Typography variant="h2" sx={{ fontWeight: 800, mb: 3, fontSize: { xs: '2.5rem', md: '4rem' }, color: '#000000', lineHeight: 1.1 }}>
+                                    Fast, Reliable <br />
+                                    <span style={{ color: primaryGreen }}>Phone Repairs</span>
+                                    <br />
+                                    <span style={{ color: primaryBlue }}>Near You.</span>
+                                </Typography>
+                            </FadeIn>
+                            <FadeIn delay={0.3}>
+                                <Typography variant="h6" sx={{ color: '#000000', mb: 3, fontWeight: 400, lineHeight: 1.6, maxWidth: 600 }}>
+                                    Get your phone fixed quickly and efficiently by our expert technicians. We offer same day repairs for most devices, ensuring you stay connected.
+                                </Typography>
+                            </FadeIn>
+                            <FadeIn delay={0.5}>
+                                <Typography variant="h6" sx={{ color: '#000000', mb: 3, fontWeight: 400, lineHeight: 1.6, maxWidth: 600 }}>
+                                    📅 <a href="https://calendly.com/martinakinseye/cmtcwireless"> <u style={{ color: 'blue' }}>Get in touch</u></a> today to get exclusive <b>discounts</b> and guaranteed <b>priority service</b>! 💬 Limited slots available — book now and save big before the offer ends!
+                                </Typography>
+                            </FadeIn>
 
-                            <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr 1fr' }, gap: 3, mb: 6 }}>
-                                <GetInstantQuoteButton fullWidth size="large" sx={{ py: 1.5, fontSize: '1.5rem', whiteSpace: 'nowrap' }} />
-                                <ScheduleAppointmentButton fullWidth size="large" sx={{ py: 1.5, fontSize: '1.5rem', whiteSpace: 'nowrap' }} />
-                                <Button
-                                    variant="outlined"
-                                    color="secondary"
-                                    size="large"
-                                    fullWidth
-                                    onClick={() => window.scrollTo(0, 870)}
-                                    sx={{ py: 2, fontSize: '1.5rem', borderWidth: 2, '&:hover': { borderWidth: 2 }, whiteSpace: 'nowrap' }}
-                                >
-                                    View Services
-                                </Button>
-                            </Box>
+                            <FadeIn delay={0.7}>
+                                <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr 1fr' }, gap: 3, mb: 6 }}>
+                                    <GetInstantQuoteButton fullWidth size="large" sx={{ py: 1.5, fontSize: '1.5rem', whiteSpace: 'nowrap' }} />
+                                    <ScheduleAppointmentButton fullWidth size="large" sx={{ py: 1.5, fontSize: '1.5rem', whiteSpace: 'nowrap' }} />
+                                    <Button
+                                        variant="outlined"
+                                        color="secondary"
+                                        size="large"
+                                        fullWidth
+                                        onClick={() => window.scrollTo(0, 870)}
+                                        sx={{ py: 2, fontSize: '1.5rem', borderWidth: 2, '&:hover': { borderWidth: 2 }, whiteSpace: 'nowrap' }}
+                                    >
+                                        View Services
+                                    </Button>
+                                </Box>
+                            </FadeIn>
 
-                            <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr 1fr', sm: '1fr 1fr 1fr 1fr' }, gap: 2, alignItems: 'stretch' }}>
+                            <StaggerContainer delay={0.2} childSelector=".stat-item" sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr 1fr', sm: '1fr 1fr 1fr 1fr' }, gap: 2, alignItems: 'stretch' }}>
                                 {[
                                     { count: 15, suffix: '+', label: 'Years Experience', icon: <GroupsIcon sx={{ fontSize: 40, color: primaryGreen, mb: 1 }} /> },
                                     { count: 50, suffix: 'k+', label: 'Devices Fixed', icon: <PrecisionManufacturingIcon sx={{ fontSize: 40, color: primaryGreen, mb: 1 }} /> },
@@ -81,6 +91,7 @@ const Home = () => {
                                 ].map((stat, index) => (
                                     <Paper
                                         key={index}
+                                        className="stat-item"
                                         elevation={3}
                                         sx={{
                                             p: 2,
@@ -103,19 +114,21 @@ const Home = () => {
                                         </Typography>
                                     </Paper>
                                 ))}
-                            </Box>
+                            </StaggerContainer>
                         </Grid>
 
                         {/* Right: Modern Visuals */}
                         <Grid size={{ xs: 12, md: 6 }} sx={{ padding: 0 }}>
-                            <Box sx={{ position: 'relative', width: '100%', aspectRatio: '1/1', borderRadius: 4, overflow: 'hidden', boxShadow: '0 20px 80px rgba(0,0,0,0.1)' }}>
-                                <TransitionSlider
-                                    images={carouselImages}
-                                    height="100%"
-                                    showBottomBar={false}
-                                    intervalMs={2500}
-                                />
-                            </Box>
+                            <FadeIn direction="left" delay={0.4}>
+                                <Box sx={{ position: 'relative', width: '100%', aspectRatio: '1/1', borderRadius: 4, overflow: 'hidden', boxShadow: '0 20px 80px rgba(0,0,0,0.1)' }}>
+                                    <TransitionSlider
+                                        images={carouselImages}
+                                        height="100%"
+                                        showBottomBar={false}
+                                        intervalMs={2500}
+                                    />
+                                </Box>
+                            </FadeIn>
                         </Grid>
                     </Grid>
                 </Container>
@@ -123,97 +136,99 @@ const Home = () => {
 
             {/* Hero Cards Section (Repair, Buy, Unlock) */}
             <Container id="services-overview" maxWidth="xl" sx={{ py: 8 }}>
-                <Grid container spacing={2} justifyContent="center">
-                    {[
-                        {
-                            title: 'Repair a Device',
-                            desc: 'Broken phone? We fix screens, batteries, charging ports, and more — fast.',
-                            img: getImagePath(imagePaths.homeCardRepair),
-                            btnText: 'Get a Free Quote',
-                            link: '/contact-us',
-                            state: { serviceNeeded: 'Repair Service' } // Added state
-                        },
-                        {
-                            title: 'Buy a Device',
-                            desc: 'Certified pre-owned phones at unbeatable prices, fully tested and ready to go.',
-                            img: getImagePath(imagePaths.homeCardBuy),
-                            btnText: 'Shop Now',
-                            link: '/buy-device'
-                        },
-                        {
-                            title: 'Unlock Any Device',
-                            desc: 'Unlock your device today — no hassle, no waiting.',
-                            btnText: 'Get a Free Quote',
-                            img: getImagePath(imagePaths.homeCardUnlock),
-                            link: '/unlock-device'
-                        }
-                    ].map((item, index) => (
-                        <Grid size={{ xs: 12, md: 4 }} key={index} sx={{ display: 'flex' }}>
-                            <Card
-                                elevation={0}
-                                sx={{
-                                    width: '100%',
-                                    height: '100%',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    justifyContent: 'space-between',
-                                    // bgcolor: '#dcedc8',
-                                    borderRadius: 6,
-                                    overflow: 'hidden',
-                                    textAlign: 'center',
-                                    p: 4,
-                                    transition: 'transform 0.3s',
-                                    '&:hover': { transform: 'translateY(-8px)' }
-                                }}
-                            >
-                                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexGrow: 1 }}>
-                                    <Box
-                                        component="img"
-                                        src={item.img}
-                                        alt={item.title}
-                                        sx={{
-                                            width: '180px',
-                                            height: 'auto',
-                                            mb: 3,
-                                            mixBlendMode: 'multiply',
-                                            filter: 'drop-shadow(0 10px 15px rgba(0,0,0,0.1))'
-                                        }}
-                                    />
-                                    <Typography variant="h4" sx={{ fontWeight: 600, mb: 2, color: '#000000' }}>
-                                        {item.title}
-                                    </Typography>
-                                    <Typography variant="body1" sx={{ mb: 4, color: '#000000', lineHeight: 1.5 }}>
-                                        {item.desc}
-                                    </Typography>
-                                </Box>
-                                <Box>
-                                    <Button
-                                        component={Link}
-                                        to={item.link}
-                                        state={item.state} // Pass the state
-                                        variant="contained"
-                                        sx={{
-                                            bgcolor: colors.primary,
-                                            color: '#fff',
-                                            fontWeight: 700,
-                                            fontSize: '1.1rem',
-                                            px: 4,
-                                            py: 1,
-                                            borderRadius: 2,
-                                            boxShadow: 'none',
-                                            '&:hover': {
-                                                bgcolor: '#66C22E',
-                                                boxShadow: '0 4px 12px rgba(22, 101, 52, 0.4)'
-                                            }
-                                        }}
-                                    >
-                                        {item.btnText}
-                                    </Button>
-                                </Box>
-                            </Card>
-                        </Grid>
-                    ))}
-                </Grid>
+                <StaggerContainer childSelector=".hero-card-item">
+                    <Grid container spacing={2} justifyContent="center">
+                        {[
+                            {
+                                title: 'Repair a Device',
+                                desc: 'Broken phone? We fix screens, batteries, charging ports, and more — fast.',
+                                img: getImagePath(imagePaths.homeCardRepair),
+                                btnText: 'Get a Free Quote',
+                                link: '/contact-us',
+                                state: { serviceNeeded: 'Repair Service' } // Added state
+                            },
+                            {
+                                title: 'Buy a Device',
+                                desc: 'Certified pre-owned phones at unbeatable prices, fully tested and ready to go.',
+                                img: getImagePath(imagePaths.homeCardBuy),
+                                btnText: 'Shop Now',
+                                link: '/buy-device'
+                            },
+                            {
+                                title: 'Unlock Any Device',
+                                desc: 'Unlock your device today — no hassle, no waiting.',
+                                btnText: 'Get a Free Quote',
+                                img: getImagePath(imagePaths.homeCardUnlock),
+                                link: '/unlock-device'
+                            }
+                        ].map((item, index) => (
+                            <Grid size={{ xs: 12, md: 4 }} key={index} className="hero-card-item" sx={{ display: 'flex' }}>
+                                <Card
+                                    elevation={0}
+                                    sx={{
+                                        width: '100%',
+                                        height: '100%',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        justifyContent: 'space-between',
+                                        // bgcolor: '#dcedc8',
+                                        borderRadius: 6,
+                                        overflow: 'hidden',
+                                        textAlign: 'center',
+                                        p: 4,
+                                        transition: 'transform 0.3s',
+                                        '&:hover': { transform: 'translateY(-8px)' }
+                                    }}
+                                >
+                                    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexGrow: 1 }}>
+                                        <Box
+                                            component="img"
+                                            src={item.img}
+                                            alt={item.title}
+                                            sx={{
+                                                width: '180px',
+                                                height: 'auto',
+                                                mb: 3,
+                                                mixBlendMode: 'multiply',
+                                                filter: 'drop-shadow(0 10px 15px rgba(0,0,0,0.1))'
+                                            }}
+                                        />
+                                        <Typography variant="h4" sx={{ fontWeight: 600, mb: 2, color: '#000000' }}>
+                                            {item.title}
+                                        </Typography>
+                                        <Typography variant="body1" sx={{ mb: 4, color: '#000000', lineHeight: 1.5 }}>
+                                            {item.desc}
+                                        </Typography>
+                                    </Box>
+                                    <Box>
+                                        <Button
+                                            component={Link}
+                                            to={item.link}
+                                            state={item.state} // Pass the state
+                                            variant="contained"
+                                            sx={{
+                                                bgcolor: colors.primary,
+                                                color: '#fff',
+                                                fontWeight: 700,
+                                                fontSize: '1.1rem',
+                                                px: 4,
+                                                py: 1,
+                                                borderRadius: 2,
+                                                boxShadow: 'none',
+                                                '&:hover': {
+                                                    bgcolor: '#66C22E',
+                                                    boxShadow: '0 4px 12px rgba(22, 101, 52, 0.4)'
+                                                }
+                                            }}
+                                        >
+                                            {item.btnText}
+                                        </Button>
+                                    </Box>
+                                </Card>
+                            </Grid>
+                        ))}
+                    </Grid>
+                </StaggerContainer>
             </Container>
 
             {/* Service Grid Banner */}
@@ -296,24 +311,26 @@ const Home = () => {
                 <Typography variant="h3" sx={{ textAlign: 'center', mb: 6, fontWeight: 800, color: '#000000' }}>
                     Why Choose Us
                 </Typography>
-                <Grid container spacing={4}>
-                    {[
-                        { icon: <BuildOutlinedIcon sx={{ fontSize: 40, color: primaryGreen }} />, title: 'Same-Day Repairs', desc: 'Most repairs completed within hours.' },
-                        { icon: <ThumbUpOutlinedIcon sx={{ fontSize: 40, color: primaryGreen }} />, title: 'Certified Technicians', desc: 'Our team is highly trained and certified.' },
-                        { icon: <VerifiedUserOutlinedIcon sx={{ fontSize: 40, color: primaryGreen }} />, title: 'Customer Satisfaction', desc: 'We prioritize your satisfaction.' },
-                        { icon: <CheckCircleOutlineIcon sx={{ fontSize: 40, color: primaryGreen }} />, title: 'Quality Parts', desc: 'We use only high-quality replacement parts.' },
-                    ].map((item, index) => (
-                        <Grid size={{ xs: 12, sm: 6, md: 3 }} key={index}>
-                            <Card elevation={0} sx={{ height: '100%', bgcolor: '#F9FAFB', borderRadius: 4, transition: '0.3s', '&:hover': { transform: 'translateY(-5px)' } }}>
-                                <CardContent sx={{ p: 4 }}>
-                                    <Box sx={{ mb: 2 }}>{item.icon}</Box>
-                                    <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: '#000000' }}>{item.title}</Typography>
-                                    <Typography variant="body2" color="textSecondary" sx={{ lineHeight: 1.6 }}>{item.desc}</Typography>
-                                </CardContent>
-                            </Card>
-                        </Grid>
-                    ))}
-                </Grid>
+                <StaggerContainer childSelector=".why-choose-item">
+                    <Grid container spacing={4}>
+                        {[
+                            { icon: <BuildOutlinedIcon sx={{ fontSize: 40, color: primaryGreen }} />, title: 'Same-Day Repairs', desc: 'Most repairs completed within hours.' },
+                            { icon: <ThumbUpOutlinedIcon sx={{ fontSize: 40, color: primaryGreen }} />, title: 'Certified Technicians', desc: 'Our team is highly trained and certified.' },
+                            { icon: <VerifiedUserOutlinedIcon sx={{ fontSize: 40, color: primaryGreen }} />, title: 'Customer Satisfaction', desc: 'We prioritize your satisfaction.' },
+                            { icon: <CheckCircleOutlineIcon sx={{ fontSize: 40, color: primaryGreen }} />, title: 'Quality Parts', desc: 'We use only high-quality replacement parts.' },
+                        ].map((item, index) => (
+                            <Grid size={{ xs: 12, sm: 6, md: 3 }} key={index} className="why-choose-item">
+                                <Card elevation={0} sx={{ height: '100%', bgcolor: '#F9FAFB', borderRadius: 4, transition: '0.3s', '&:hover': { transform: 'translateY(-5px)' } }}>
+                                    <CardContent sx={{ p: 4 }}>
+                                        <Box sx={{ mb: 2 }}>{item.icon}</Box>
+                                        <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: '#000000' }}>{item.title}</Typography>
+                                        <Typography variant="body2" color="textSecondary" sx={{ lineHeight: 1.6 }}>{item.desc}</Typography>
+                                    </CardContent>
+                                </Card>
+                            </Grid>
+                        ))}
+                    </Grid>
+                </StaggerContainer>
             </Container>
 
             {/* BBB Accreditation Section */}

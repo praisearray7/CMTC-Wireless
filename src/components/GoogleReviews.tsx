@@ -1,10 +1,21 @@
-import { useState } from 'react';
-import { Box, Container, Grid, Typography, Rating, Avatar, Pagination } from '@mui/material';
+import { Box, Container, Typography, Rating, Avatar } from '@mui/material';
 import ThumbUpAltOutlinedIcon from '@mui/icons-material/ThumbUpAltOutlined';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import CountUpAnimation from './CountUpAnimation';
 import googleLogo from '../assets/google-logo.svg';
 import { contactInfo } from '../data/contactInfo';
+import { keyframes } from '@emotion/react';
+
+// Keyframes for infinite scrolling
+const scrollLeft = keyframes`
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+`;
+
+const scrollRight = keyframes`
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+`;
 
 const GoogleReviews = () => {
 
@@ -119,114 +130,136 @@ const GoogleReviews = () => {
         }
     ];
 
-    const [page, setPage] = useState(1);
-    const visibleItems = 6;
-    const step = 6; // Set step equal to visibleItems for unique pages
+    // Split reviews into two rows
+    const firstRow = reviews.slice(0, Math.ceil(reviews.length / 2));
+    const secondRow = reviews.slice(Math.ceil(reviews.length / 2));
 
-    const totalPages = Math.ceil(reviews.length / visibleItems);
+    // Duplicate arrays for seamless looping
+    const row1Display = [...firstRow, ...firstRow, ...firstRow];
+    const row2Display = [...secondRow, ...secondRow, ...secondRow];
 
-    const handlePageChange = (_event: React.ChangeEvent<unknown>, value: number) => {
-        setPage(value);
-    };
+    const ReviewCard = ({ review }: { review: typeof reviews[0] }) => (
+        <Box sx={{
+            minWidth: 350,
+            maxWidth: 350,
+            mx: 2,
+            my: 2,
+            p: 3,
+            borderRadius: 4,
+            bgcolor: '#fff',
+            boxShadow: '0 8px 30px rgba(0,0,0,0.06)',
+            border: '1px solid #f0f0f0',
+            transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+            whiteSpace: 'normal', // Allow text wrapping
+            '&:hover': {
+                transform: 'translateY(-5px) scale(1.02)',
+                boxShadow: '0 15px 40px rgba(0,0,0,0.12)',
+                zIndex: 10
+            }
+        }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                <Avatar
+                    src={`https://i.pravatar.cc/150?u=${review.name}`}
+                    alt={review.name}
+                    sx={{ width: 48, height: 48, mr: 2 }}
+                />
+                <Box>
+                    <Typography variant="h6" sx={{ fontWeight: 700, fontSize: '1rem', color: '#0a1929' }}>
+                        {review.name}
+                    </Typography>
+                    <Rating value={5} readOnly size="small" sx={{ color: '#FAAF00' }} />
+                </Box>
+                <Box sx={{ ml: 'auto' }}>
+                    <Box
+                        component="a"
+                        href={contactInfo.address.both.mapLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            transition: 'opacity 0.2s',
+                            '&:hover': { opacity: 0.7 }
+                        }}
+                        onClick={(e) => e.stopPropagation()} // Prevent card hover effects if necessary, or just good practice
+                    >
+                        <Box component="img" src={googleLogo} alt="Google" sx={{ width: 24, height: 24 }} />
+                    </Box>
+                </Box>
+            </Box>
 
-    const startIndex = (page - 1) * step;
-    const paginatedReviews = reviews.slice(startIndex, startIndex + visibleItems);
+            <Typography variant="body2" sx={{ color: '#37474F', mb: 2, lineHeight: 1.6, fontStyle: 'italic', height: '4.8em', overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical' }}>
+                {review.text}
+            </Typography>
+
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: 'auto' }}>
+                <Typography variant="caption" sx={{ color: '#999', fontWeight: 600 }}>
+                    {review.title}
+                </Typography>
+                <Box sx={{ ml: 'auto', display: 'flex', gap: 1 }}>
+                    <ThumbUpAltOutlinedIcon sx={{ fontSize: 16, color: '#ccc' }} />
+                    <ChatBubbleOutlineIcon sx={{ fontSize: 16, color: '#ccc' }} />
+                </Box>
+            </Box>
+        </Box>
+    );
 
     return (
-        <Box sx={{ py: 10 }}>
-            <Container maxWidth="lg">
-                <Box sx={{ textAlign: 'center', mb: 8 }}>
-                    <Typography variant="h3" sx={{ fontWeight: 800, color: '#0a1929', mb: 2 }}>
-                        Over <CountUpAnimation target={500} duration={2000} />+ Positive Google Reviews
-                    </Typography>
-                </Box>
-
-                <Box sx={{ minHeight: 400, position: 'relative', overflow: 'hidden' }}>
-                    <Grid
-                        container
-                        spacing={4}
-                        justifyContent="center"
-                        sx={{
-                            mb: 6,
-                            // Simple fade-in animation on page change
-                            animation: 'fadeIn 0.5s ease-in-out',
-                            '@keyframes fadeIn': {
-                                '0%': { opacity: 0, transform: 'translateX(20px)' },
-                                '100%': { opacity: 1, transform: 'translateX(0)' }
-                            }
-                        }}
-                        key={page} // Key forces re-render to trigger animation
-                    >
-                        {paginatedReviews.map((review) => (
-                            <Grid size={{ xs: 12, md: 4 }} key={review.id}>
-                                <Box sx={{
-                                    textAlign: 'center',
-                                    px: 3,
-                                    py: 4,
-                                    borderRadius: 4,
-                                    bgcolor: '#fff',
-                                    boxShadow: '0 10px 40px -10px rgba(0,0,0,0.08)',
-                                    transition: 'transform 0.2s',
-                                    '&:hover': {
-                                        transform: 'translateY(-5px)'
-                                    }
-                                }}>
-                                    <Avatar
-                                        src={`https://i.pravatar.cc/150?u=${review.name}`}
-                                        alt={review.name}
-                                        sx={{ width: 64, height: 64, mx: 'auto', mb: 2 }}
-                                    />
-                                    <Typography variant="h6" sx={{ fontWeight: 700, color: '#0a1929', mb: 1 }}>
-                                        {review.name}
-                                    </Typography>
-
-                                    <Rating value={5} readOnly size="small" sx={{ mb: 2, color: '#FAAF00' }} />
-
-                                    <Typography variant="body1" sx={{ color: '#37474F', mb: 3, minHeight: 60, lineHeight: 1.6, fontSize: '0.95rem' }}>
-                                        {review.text}
-                                        <Typography component="span" sx={{ color: '#1976d2', cursor: 'pointer', ml: 0.5, fontSize: 'inherit' }}>
-                                            See More
-                                        </Typography>
-                                    </Typography>
-
-                                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 0.5, mt: 'auto' }}>
-                                        <Box sx={{ display: 'flex', alignItems: 'center', mr: 2 }}>
-                                            <ThumbUpAltOutlinedIcon sx={{ fontSize: 20, color: '#78909c', mr: 0.5 }} />
-                                            <Typography variant="caption" sx={{ color: '#78909c', fontWeight: 500 }}>0</Typography>
-                                        </Box>
-                                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                            <ChatBubbleOutlineIcon sx={{ fontSize: 20, color: '#78909c', mr: 0.5 }} />
-                                            <Typography variant="caption" sx={{ color: '#78909c', fontWeight: 500 }}>0</Typography>
-                                        </Box>
-
-                                        <Box sx={{ flexGrow: 1 }} />
-
-                                        <Box
-                                            component="a"
-                                            href={contactInfo.address.both.mapLink}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            sx={{ display: 'flex', alignItems: 'center' }}
-                                        >
-                                            <Box component="img" src={googleLogo} alt="Google" sx={{ width: 24, height: 24 }} />
-                                        </Box>
-                                    </Box>
-                                </Box>
-                            </Grid>
-                        ))}
-                    </Grid>
-                </Box>
-
-                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                    <Pagination
-                        count={totalPages}
-                        page={page}
-                        onChange={handlePageChange}
-                        color="primary"
-                        size="large"
-                    />
-                </Box>
+        <Box sx={{ py: 10, overflow: 'hidden' }}>
+            <Container maxWidth="lg" sx={{ mb: 6, textAlign: 'center' }}>
+                <Typography variant="h3" sx={{ fontWeight: 800, color: '#0a1929', mb: 2 }}>
+                    Over <CountUpAnimation target={500} duration={2000} />+ Positive Google Reviews
+                </Typography>
+                <Typography variant="h6" sx={{ color: '#555', fontWeight: 400 }}>
+                    Don't just take our word for it. Here is what our customers are saying.
+                </Typography>
             </Container>
+
+            <Box sx={{
+                position: 'relative',
+                '&::before, &::after': {
+                    content: '""',
+                    position: 'absolute',
+                    top: 0,
+                    width: '150px',
+                    height: '100%',
+                    zIndex: 2,
+                    pointerEvents: 'none',
+                },
+                '&::before': {
+                    left: 0,
+                    background: 'linear-gradient(to right, #fff, transparent)',
+                },
+                '&::after': {
+                    right: 0,
+                    background: 'linear-gradient(to left, #fff, transparent)',
+                }
+            }}>
+                {/* Row 1: Left Scroll */}
+                <Box sx={{
+                    display: 'flex',
+                    width: 'fit-content',
+                    animation: `${scrollLeft} 120s linear infinite`,
+                    '&:hover': { animationPlayState: 'paused' },
+                    mb: 1
+                }}>
+                    {row1Display.map((review, index) => (
+                        <ReviewCard key={`row1-${index}`} review={review} />
+                    ))}
+                </Box>
+
+                {/* Row 2: Right Scroll */}
+                <Box sx={{
+                    display: 'flex',
+                    width: 'fit-content',
+                    animation: `${scrollRight} 120s linear infinite`,
+                    '&:hover': { animationPlayState: 'paused' }
+                }}>
+                    {row2Display.map((review, index) => (
+                        <ReviewCard key={`row2-${index}`} review={review} />
+                    ))}
+                </Box>
+            </Box>
         </Box>
     );
 };

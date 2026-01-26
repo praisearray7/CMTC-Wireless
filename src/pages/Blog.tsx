@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Box, Container, Typography, Dialog, DialogContent, IconButton } from '@mui/material';
 import VideoMarquee from '../components/VideoMarquee';
+import FadeIn from '../components/animations/FadeIn';
+import StaggerContainer from '../components/animations/StaggerContainer';
 import CloseIcon from '@mui/icons-material/Close';
 import { blogSections } from '../data/blogVideos';
 import { colors } from '../theme/colors';
@@ -47,46 +49,55 @@ const Blogs = () => {
                 mb: 6
             }}>
                 <Container maxWidth="md">
-                    <Typography variant="h3" sx={{ fontWeight: 800, mb: 2 }}>
-                        <span style={{ color: 'white' }}> Tech </span>
-                        <span style={{ color: colors.primary }}>Lab </span>
-                        <span style={{ color: colors.primaryBlue }}>Videos</span>
-                    </Typography>
-                    <Typography variant="h6" sx={{ opacity: 0.9, fontWeight: 400 }}>
-                        Watch our expert technicians in action.
-                    </Typography>
+                    <FadeIn delay={0.1}>
+                        <Typography variant="h3" sx={{ fontWeight: 800, mb: 2 }}>
+                            <span style={{ color: 'white' }}> Tech </span>
+                            <span style={{ color: colors.primary }}>Lab </span>
+                            <span style={{ color: colors.primaryBlue }}>Videos</span>
+                        </Typography>
+                    </FadeIn>
+                    <FadeIn delay={0.3}>
+                        <Typography variant="h6" sx={{ opacity: 0.9, fontWeight: 400 }}>
+                            Watch our expert technicians in action.
+                        </Typography>
+                    </FadeIn>
                 </Container>
             </Box>
 
             {/* Dynamic Sections from Data File */}
-            {blogSections.map((section) => (
-                <Box key={section.id} sx={{ mb: 8 }}>
-                    <Container maxWidth="lg" sx={{ mb: 4 }}>
-                        <Typography variant="h4" sx={{
-                            fontWeight: 800,
-                            mb: 1,
-                            background: 'linear-gradient(90deg, #1b5e20 0%, #2e7d32 100%)',
-                            WebkitBackgroundClip: 'text',
-                            WebkitTextFillColor: 'transparent',
-                            display: 'inline-block'
-                        }}>
-                            {section.title}
-                        </Typography>
-                        <Typography variant="body1" color="textSecondary">
-                            {section.description}
-                        </Typography>
-                    </Container>
-                    <VideoMarquee
-                        videos={section.videos.map(v => ({
-                            title: v.title,
-                            category: v.category,
-                            folderId: v.link,
-                            thumbnail: v.thumbnail || ''
-                        }))}
-                        onPlay={handlePlayVideo}
-                    />
+            <StaggerContainer childSelector=".blog-section" stagger={0.3}>
+                <Box>
+                    {blogSections.map((section, index) => (
+                        <Box key={section.id} sx={{ mb: 8 }} className="blog-section">
+                            <Container maxWidth="lg" sx={{ mb: 4 }}>
+                                <Typography variant="h4" sx={{
+                                    fontWeight: 800,
+                                    mb: 1,
+                                    background: 'linear-gradient(90deg, #1b5e20 0%, #2e7d32 100%)',
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                    display: 'inline-block'
+                                }}>
+                                    {section.title}
+                                </Typography>
+                                <Typography variant="body1" color="textSecondary">
+                                    {section.description}
+                                </Typography>
+                            </Container>
+                            <VideoMarquee
+                                videos={section.videos.map(v => ({
+                                    title: v.title,
+                                    category: v.category,
+                                    folderId: v.link,
+                                    thumbnail: v.thumbnail || ''
+                                }))}
+                                onPlay={handlePlayVideo}
+                                direction={index % 2 === 0 ? 'left' : 'right'}
+                            />
+                        </Box>
+                    ))}
                 </Box>
-            ))}
+            </StaggerContainer>
 
             {/* Video Player Modal */}
             <Dialog

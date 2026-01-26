@@ -1,4 +1,5 @@
 import { Box, Paper, Typography, Stack, Button } from '@mui/material';
+import StaggerContainer from './animations/StaggerContainer';
 import { Link } from 'react-router-dom';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import BuildOutlinedIcon from '@mui/icons-material/BuildOutlined';
@@ -46,21 +47,23 @@ const WhyChoose = () => {
                 Why Choose Us
             </Typography>
 
-            <Stack spacing={3}>
-                {items.map((item, index) => (
-                    <Box key={index} sx={{ display: 'flex', gap: 2, alignItems: 'flex-start' }}>
-                        <Box sx={{ mt: 0.5 }}>{item.icon}</Box>
-                        <Box>
-                            <Typography variant="h6" sx={{ fontWeight: 700, color: '#000000', lineHeight: 1.2, mb: 0.5 }}>
-                                {item.title}
-                            </Typography>
-                            <Typography variant="body1" sx={{ lineHeight: 1.5, color: '#37474f' }}>
-                                {item.desc}
-                            </Typography>
+            <StaggerContainer childSelector=".why-choose-item" delay={0.2}>
+                <Stack spacing={3}>
+                    {items.map((item, index) => (
+                        <Box key={index} sx={{ display: 'flex', gap: 2, alignItems: 'flex-start' }} className="why-choose-item">
+                            <Box sx={{ mt: 0.5 }}>{item.icon}</Box>
+                            <Box>
+                                <Typography variant="h6" sx={{ fontWeight: 700, color: '#000000', lineHeight: 1.2, mb: 0.5 }}>
+                                    {item.title}
+                                </Typography>
+                                <Typography variant="body1" sx={{ lineHeight: 1.5, color: '#37474f' }}>
+                                    {item.desc}
+                                </Typography>
+                            </Box>
                         </Box>
-                    </Box>
-                ))}
-            </Stack>
+                    ))}
+                </Stack>
+            </StaggerContainer>
 
             <Button
                 component={Link}

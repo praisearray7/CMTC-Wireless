@@ -9,6 +9,7 @@ import { colors } from '../theme/colors';
 
 
 import SEO from '../components/SEO';
+import StaggerContainer from '../components/animations/StaggerContainer';
 
 const SmartwatchRepair = () => {
     const { getPriceRange, loading } = useRepairPricing();
@@ -33,50 +34,52 @@ const SmartwatchRepair = () => {
                             <Typography variant="h5" sx={{ fontWeight: 700, color: '#000000', mb: 4 }}>
                                 Select your Watch
                             </Typography>
-                            <Grid container spacing={3} justifyContent="center">
-                                {smartwatchData.map((item) => (
-                                    <Grid size={{ xs: 12, sm: 6, md: 4 }} key={item.id}>
-                                        <Paper
-                                            elevation={0}
-                                            sx={{
-                                                height: '100%',
-                                                p: 3,
-                                                display: "flex",
-                                                flexDirection: "column",
-                                                alignItems: "center",
-                                                cursor: "pointer",
-                                                borderRadius: "18px",
-                                                background: "transparent",
-                                                transition: "all 0.35s ease",
-                                                "&:hover": {
-                                                    background: "#fff",
-                                                    boxShadow: "0px 20px 40px rgba(0,0,0,0.15)",
-                                                    transform: "translateY(-5px)"
-                                                },
-                                            }}
-                                            component={Link}
-                                            to={`/smart-watch-repair/${item.id}`}
-                                            style={{ textDecoration: 'none' }}
-                                        >
-                                            <Box
-                                                component="img"
-                                                src={item.image}
-                                                alt={item.title}
+                            <StaggerContainer childSelector=".smartwatch-model-card">
+                                <Grid container spacing={3} justifyContent="center">
+                                    {smartwatchData.map((item) => (
+                                        <Grid size={{ xs: 12, sm: 6, md: 4 }} key={item.id} className="smartwatch-model-card">
+                                            <Paper
+                                                elevation={0}
                                                 sx={{
-                                                    width: "100%",
-                                                    maxWidth: 200,
-                                                    height: 200,
-                                                    objectFit: "contain",
-                                                    mb: 2,
+                                                    height: '100%',
+                                                    p: 3,
+                                                    display: "flex",
+                                                    flexDirection: "column",
+                                                    alignItems: "center",
+                                                    cursor: "pointer",
+                                                    borderRadius: "18px",
+                                                    background: "transparent",
+                                                    transition: "all 0.35s ease",
+                                                    "&:hover": {
+                                                        background: "#fff",
+                                                        boxShadow: "0px 20px 40px rgba(0,0,0,0.15)",
+                                                        transform: "translateY(-5px)"
+                                                    },
                                                 }}
-                                            />
-                                            <Typography variant="h6" sx={{ fontWeight: 600, color: '#000000', textAlign: 'center' }}>
-                                                {item.title}
-                                            </Typography>
-                                        </Paper>
-                                    </Grid>
-                                ))}
-                            </Grid>
+                                                component={Link}
+                                                to={`/smart-watch-repair/${item.id}`}
+                                                style={{ textDecoration: 'none' }}
+                                            >
+                                                <Box
+                                                    component="img"
+                                                    src={item.image}
+                                                    alt={item.title}
+                                                    sx={{
+                                                        width: "100%",
+                                                        maxWidth: 200,
+                                                        height: 200,
+                                                        objectFit: "contain",
+                                                        mb: 2,
+                                                    }}
+                                                />
+                                                <Typography variant="h6" sx={{ fontWeight: 600, color: '#000000', textAlign: 'center' }}>
+                                                    {item.title}
+                                                </Typography>
+                                            </Paper>
+                                        </Grid>
+                                    ))}
+                                </Grid>
+                            </StaggerContainer>
                         </Box>
 
                         <Divider sx={{ my: 8, opacity: 0.1 }} />
@@ -86,44 +89,46 @@ const SmartwatchRepair = () => {
                             <Typography variant="h4" sx={{ fontWeight: 700, color: '#000000', mb: 4, textAlign: 'center' }}>
                                 Most Popular Repairs
                             </Typography>
-                            <Grid container spacing={3}>
-                                {[
-                                    { title: "Screen Replacement", desc: "Fix cracked glass or dead pixels on Apple Watch & Galaxy Watch.", icon: <Watch size={32} color={colors.primary} /> },
-                                    { title: "Battery Replacement", desc: "Restore all-day battery life to your wearable.", icon: <Battery size={32} color={colors.primary} /> },
-                                    { title: "Back Glass/Sensor Repair", desc: "Fix cracked back glass or heart rate sensors.", icon: <Activity size={32} color={colors.primary} /> },
-                                    { title: "Crown & Button Repair", desc: "Fix stuck digital crowns or unresponsive side buttons.", icon: <Zap size={32} color={colors.primary} /> },
-                                    { title: "Water Damage Cleaning", desc: "Ultrasonic cleaning for watches exposed to liquid.", icon: <Droplets size={32} color={colors.primary} /> },
-                                    { title: "Software Restore", desc: "Fix boot loops, update failures, or pairing issues.", icon: <RefreshCw size={32} color={colors.primary} /> }
-                                ].map((item, index) => (
-                                    <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
-                                        <Paper elevation={0} sx={{
-                                            p: 3,
-                                            height: '100%',
-                                            bgcolor: '#fff',
-                                            border: '1px solid #eee',
-                                            borderRadius: 4,
-                                            boxShadow: '0 4px 20px rgba(0,0,0,0.03)',
-                                            transition: 'all 0.3s ease',
-                                            '&:hover': {
-                                                transform: 'translateY(-5px)',
-                                                boxShadow: '0 12px 30px rgba(120, 227, 53, 0.15)',
-                                                borderColor: colors.primary
-                                            }
-                                        }}>
-                                            <Box sx={{ mb: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                                <Box sx={{ p: 1.5, borderRadius: 2, bgcolor: '#f0fdf4' }}>
-                                                    {item.icon}
+                            <StaggerContainer childSelector=".popular-repair-item">
+                                <Grid container spacing={3}>
+                                    {[
+                                        { title: "Screen Replacement", desc: "Fix cracked glass or dead pixels on Apple Watch & Galaxy Watch.", icon: <Watch size={32} color={colors.primary} /> },
+                                        { title: "Battery Replacement", desc: "Restore all-day battery life to your wearable.", icon: <Battery size={32} color={colors.primary} /> },
+                                        { title: "Back Glass/Sensor Repair", desc: "Fix cracked back glass or heart rate sensors.", icon: <Activity size={32} color={colors.primary} /> },
+                                        { title: "Crown & Button Repair", desc: "Fix stuck digital crowns or unresponsive side buttons.", icon: <Zap size={32} color={colors.primary} /> },
+                                        { title: "Water Damage Cleaning", desc: "Ultrasonic cleaning for watches exposed to liquid.", icon: <Droplets size={32} color={colors.primary} /> },
+                                        { title: "Software Restore", desc: "Fix boot loops, update failures, or pairing issues.", icon: <RefreshCw size={32} color={colors.primary} /> }
+                                    ].map((item, index) => (
+                                        <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index} className="popular-repair-item">
+                                            <Paper elevation={0} sx={{
+                                                p: 3,
+                                                height: '100%',
+                                                bgcolor: '#fff',
+                                                border: '1px solid #eee',
+                                                borderRadius: 4,
+                                                boxShadow: '0 4px 20px rgba(0,0,0,0.03)',
+                                                transition: 'all 0.3s ease',
+                                                '&:hover': {
+                                                    transform: 'translateY(-5px)',
+                                                    boxShadow: '0 12px 30px rgba(120, 227, 53, 0.15)',
+                                                    borderColor: colors.primary
+                                                }
+                                            }}>
+                                                <Box sx={{ mb: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                                    <Box sx={{ p: 1.5, borderRadius: 2, bgcolor: '#f0fdf4' }}>
+                                                        {item.icon}
+                                                    </Box>
+                                                    <Typography variant="subtitle1" sx={{ color: colors.primary, fontWeight: 700 }}>
+                                                        {loading ? "Loading..." : getPriceRange('smartwatch', item.title)}
+                                                    </Typography>
                                                 </Box>
-                                                <Typography variant="subtitle1" sx={{ color: colors.primary, fontWeight: 700 }}>
-                                                    {loading ? "Loading..." : getPriceRange('smartwatch', item.title)}
-                                                </Typography>
-                                            </Box>
-                                            <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: '#000000' }}>{item.title}</Typography>
-                                            <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>{item.desc}</Typography>
-                                        </Paper>
-                                    </Grid>
-                                ))}
-                            </Grid>
+                                                <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: '#000000' }}>{item.title}</Typography>
+                                                <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>{item.desc}</Typography>
+                                            </Paper>
+                                        </Grid>
+                                    ))}
+                                </Grid>
+                            </StaggerContainer>
                         </Box>
 
                         <Divider sx={{ my: 8, opacity: 0.1 }} />
@@ -133,59 +138,61 @@ const SmartwatchRepair = () => {
                             <Typography variant="h4" sx={{ fontWeight: 700, color: '#000000', mb: 4, textAlign: 'center' }}>
                                 Common Issues & Solutions
                             </Typography>
-                            <Grid container spacing={3}>
-                                {[
-                                    {
-                                        issue: "Screen Pops Off",
-                                        solution: "Common on older Apple Watches due to swollen batteries. We replace the battery and reseal the screen.",
-                                        icon: <Maximize size={24} />
-                                    },
-                                    {
-                                        issue: "Won't Charge",
-                                        solution: "Could be a dirty contact or internal charging coil failure. We diagnose and fix it.",
-                                        icon: <Zap size={24} />
-                                    },
-                                    {
-                                        issue: "Stuck on Logo",
-                                        solution: "Software crash or update failure. We can often restore firmware without data loss.",
-                                        icon: <RefreshCw size={24} />
-                                    },
-                                    {
-                                        issue: "Heart Rate Sensor Fail",
-                                        solution: "Cracked back glass can damage sensors. We replace the back housing assembly.",
-                                        icon: <Heart size={24} />
-                                    }
-                                ].map((item, index) => (
-                                    <Grid size={{ xs: 12, md: 6 }} key={index}>
-                                        <Paper elevation={0} sx={{
-                                            p: 3,
-                                            height: '100%',
-                                            display: 'flex',
-                                            gap: 2,
-                                            border: '1px solid #f0f0f0',
-                                            borderRadius: 3,
-                                            '&:hover': { bgcolor: '#fafafa' }
-                                        }}>
-                                            <Box sx={{
-                                                minWidth: 48,
-                                                height: 48,
-                                                borderRadius: '50%',
-                                                bgcolor: colors.primary,
-                                                color: '#fff',
+                            <StaggerContainer childSelector=".common-issue-item">
+                                <Grid container spacing={3}>
+                                    {[
+                                        {
+                                            issue: "Screen Pops Off",
+                                            solution: "Common on older Apple Watches due to swollen batteries. We replace the battery and reseal the screen.",
+                                            icon: <Maximize size={24} />
+                                        },
+                                        {
+                                            issue: "Won't Charge",
+                                            solution: "Could be a dirty contact or internal charging coil failure. We diagnose and fix it.",
+                                            icon: <Zap size={24} />
+                                        },
+                                        {
+                                            issue: "Stuck on Logo",
+                                            solution: "Software crash or update failure. We can often restore firmware without data loss.",
+                                            icon: <RefreshCw size={24} />
+                                        },
+                                        {
+                                            issue: "Heart Rate Sensor Fail",
+                                            solution: "Cracked back glass can damage sensors. We replace the back housing assembly.",
+                                            icon: <Heart size={24} />
+                                        }
+                                    ].map((item, index) => (
+                                        <Grid size={{ xs: 12, md: 6 }} key={index} className="common-issue-item">
+                                            <Paper elevation={0} sx={{
+                                                p: 3,
+                                                height: '100%',
                                                 display: 'flex',
-                                                alignItems: 'center',
-                                                justifyContent: 'center'
+                                                gap: 2,
+                                                border: '1px solid #f0f0f0',
+                                                borderRadius: 3,
+                                                '&:hover': { bgcolor: '#fafafa' }
                                             }}>
-                                                {item.icon}
-                                            </Box>
-                                            <Box>
-                                                <Typography variant="h6" sx={{ fontWeight: 700, mb: 0.5, fontSize: '1.1rem' }}>{item.issue}</Typography>
-                                                <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>{item.solution}</Typography>
-                                            </Box>
-                                        </Paper>
-                                    </Grid>
-                                ))}
-                            </Grid>
+                                                <Box sx={{
+                                                    minWidth: 48,
+                                                    height: 48,
+                                                    borderRadius: '50%',
+                                                    bgcolor: colors.primary,
+                                                    color: '#fff',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center'
+                                                }}>
+                                                    {item.icon}
+                                                </Box>
+                                                <Box>
+                                                    <Typography variant="h6" sx={{ fontWeight: 700, mb: 0.5, fontSize: '1.1rem' }}>{item.issue}</Typography>
+                                                    <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>{item.solution}</Typography>
+                                                </Box>
+                                            </Paper>
+                                        </Grid>
+                                    ))}
+                                </Grid>
+                            </StaggerContainer>
                         </Box>
 
                         <Divider sx={{ my: 8 }} />

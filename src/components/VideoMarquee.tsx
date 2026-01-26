@@ -3,9 +3,14 @@ import { colors } from '../theme/colors';
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import { keyframes } from '@emotion/react';
 
-const scroll = keyframes`
+const scrollLeft = keyframes`
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
+`;
+
+const scrollRight = keyframes`
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
 `;
 
 export interface VideoItem {
@@ -18,9 +23,10 @@ export interface VideoItem {
 interface VideoMarqueeProps {
     videos: VideoItem[];
     onPlay: (folderId: string) => void;
+    direction?: 'left' | 'right';
 }
 
-const VideoMarquee = ({ videos, onPlay }: VideoMarqueeProps) => {
+const VideoMarquee = ({ videos, onPlay, direction = 'left' }: VideoMarqueeProps) => {
     const theme = useTheme();
     // Duplicate the array to ensure seamless looping
     const displayVideos = [...videos, ...videos, ...videos, ...videos];
@@ -29,6 +35,8 @@ const VideoMarquee = ({ videos, onPlay }: VideoMarqueeProps) => {
     // 10s per item allows for a slow, readable scroll. 
     // Logic Board (100 items) will take 1000s, others (10 items) will take 100s.
     const duration = Math.max(videos.length * 10, 40);
+
+    const animationName = direction === 'left' ? scrollLeft : scrollRight;
 
     return (
         <Box sx={{
@@ -57,7 +65,7 @@ const VideoMarquee = ({ videos, onPlay }: VideoMarqueeProps) => {
             <Box sx={{
                 display: 'flex',
                 width: 'fit-content',
-                animation: `${scroll} ${duration}s linear infinite`,
+                animation: `${animationName} ${duration}s linear infinite`,
                 willChange: 'transform', // Hardware acceleration hint
                 gap: 4,
                 px: 2,

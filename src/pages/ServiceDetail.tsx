@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
+import StaggerContainer from '../components/animations/StaggerContainer';
 import SEO from '../components/SEO';
 import { Box, Container, Typography, Button, Grid, Paper, Breadcrumbs } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
@@ -21,40 +22,42 @@ const ServiceDetail = () => {
     }
 
     const renderModelList = (models: any[]) => (
-        <Grid container spacing={2}>
-            {models.map((model) => (
-                <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={model.id}>
-                    <Paper
-                        component={Link}
-                        to={`/service/${service?.id}/${model.id}`}
-                        // state={{ deviceModel: model.name }} // State no longer needed for navigation, but keeping it won't hurt. Removing for cleanliness.
-                        elevation={0}
-                        sx={{
-                            p: 2,
-                            border: '1px solid #eee',
-                            borderRadius: 2,
-                            transition: 'all 0.2s',
-                            textDecoration: 'none',
-                            '&:hover': {
-                                borderColor: colors.primary,
-                                boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
-                                transform: 'translateY(-2px)'
-                            },
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            alignItems: 'center'
-                        }}
-                    >
-                        <Typography variant="body1" fontWeight={600} color="textPrimary">
-                            {model.name}
-                        </Typography>
-                        <Typography variant="caption" color="primary" fontWeight={700}>
-                            Repair &rarr;
-                        </Typography>
-                    </Paper>
-                </Grid>
-            ))}
-        </Grid>
+        <StaggerContainer childSelector=".model-item">
+            <Grid container spacing={2}>
+                {models.map((model) => (
+                    <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={model.id} className="model-item">
+                        <Paper
+                            component={Link}
+                            to={`/service/${service?.id}/${model.id}`}
+                            // state={{ deviceModel: model.name }} // State no longer needed for navigation, but keeping it won't hurt. Removing for cleanliness.
+                            elevation={0}
+                            sx={{
+                                p: 2,
+                                border: '1px solid #eee',
+                                borderRadius: 2,
+                                transition: 'all 0.2s',
+                                textDecoration: 'none',
+                                '&:hover': {
+                                    borderColor: colors.primary,
+                                    boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
+                                    transform: 'translateY(-2px)'
+                                },
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                alignItems: 'center'
+                            }}
+                        >
+                            <Typography variant="body1" fontWeight={600} color="textPrimary">
+                                {model.name}
+                            </Typography>
+                            <Typography variant="caption" color="primary" fontWeight={700}>
+                                Repair &rarr;
+                            </Typography>
+                        </Paper>
+                    </Grid>
+                ))}
+            </Grid>
+        </StaggerContainer>
     );
 
     return (
@@ -117,75 +120,77 @@ const ServiceDetail = () => {
                     <Typography variant="h5" sx={{ fontWeight: 700, color: '#000000', mb: 4 }}>
                         Select your iPhone Series
                     </Typography>
-                    <Grid container spacing={3} justifyContent="center">
-                        {[
-                            "iPhone 16", "iPhone 15", "iPhone 14", "iPhone 13",
-                            "iPhone 12", "iPhone 11", "iPhone SE (2022)", "iPhone SE (2020)"
-                        ].map((model) => {
-                            let seriesId = model.toLowerCase().replace(/ /g, '-').replace(/[()]/g, '');
-                            const fullSeriesId = `${seriesId}-series`;
-                            return (
-                                <Grid size={{ xs: 6, sm: 4, md: 3 }} key={model}>
-                                    <Paper
-                                        component={Link}
-                                        to={`/service/${service.id}/${fullSeriesId}`}
-                                        elevation={0}
-                                        sx={{
-                                            pt: "20px",
-                                            pb: "20px",
-                                            px: "20px",
-                                            display: "flex",
-                                            flexDirection: "column",
-                                            alignItems: "center",
-                                            cursor: "pointer",
-
-                                            borderRadius: "18px",
-                                            background: "transparent",
-
-                                            position: "relative",
-                                            overflow: "visible",
-                                            zIndex: 1,
-
-                                            transition: "all 0.35s ease",
-
-                                            "&:hover": {
-                                                pb: "20px", // 👈 box expands only from top
-                                                zIndex: 10,
-                                                background: "#fff",
-                                                boxShadow: "0px 20px 40px rgba(0,0,0,0.15)",
-                                            },
-                                        }}
-                                    >
-                                        <Box
-                                            component="img"
-                                            src="https://www.gophermods.com/wp-content/uploads/2025/06/iPhone-16-Repairs-Minneapolis.jpg"
-                                            alt={model}
+                    <StaggerContainer childSelector=".series-item">
+                        <Grid container spacing={3} justifyContent="center">
+                            {[
+                                "iPhone 16", "iPhone 15", "iPhone 14", "iPhone 13",
+                                "iPhone 12", "iPhone 11", "iPhone SE (2022)", "iPhone SE (2020)"
+                            ].map((model) => {
+                                let seriesId = model.toLowerCase().replace(/ /g, '-').replace(/[()]/g, '');
+                                const fullSeriesId = `${seriesId}-series`;
+                                return (
+                                    <Grid size={{ xs: 6, sm: 4, md: 3 }} key={model} className="series-item">
+                                        <Paper
+                                            component={Link}
+                                            to={`/service/${service.id}/${fullSeriesId}`}
+                                            elevation={0}
                                             sx={{
-                                                width: "100%",
-                                                maxWidth: 180,
-                                                height: "auto",
-                                                objectFit: "contain",
-                                                mb: 2,
-                                                transition: "none", // 👈 image stays still
-                                            }}
-                                        />
+                                                pt: "20px",
+                                                pb: "20px",
+                                                px: "20px",
+                                                display: "flex",
+                                                flexDirection: "column",
+                                                alignItems: "center",
+                                                cursor: "pointer",
 
-                                        <Typography
-                                            variant="h6"
-                                            sx={{
-                                                color: "#000000",
-                                                fontWeight: 600,
-                                                fontSize: "1.05rem",
-                                                pb: 2,
+                                                borderRadius: "18px",
+                                                background: "transparent",
+
+                                                position: "relative",
+                                                overflow: "visible",
+                                                zIndex: 1,
+
+                                                transition: "all 0.35s ease",
+
+                                                "&:hover": {
+                                                    pb: "20px", // 👈 box expands only from top
+                                                    zIndex: 10,
+                                                    background: "#fff",
+                                                    boxShadow: "0px 20px 40px rgba(0,0,0,0.15)",
+                                                },
                                             }}
                                         >
-                                            {model}
-                                        </Typography>
-                                    </Paper>
-                                </Grid>
-                            );
-                        })}
-                    </Grid>
+                                            <Box
+                                                component="img"
+                                                src="https://www.gophermods.com/wp-content/uploads/2025/06/iPhone-16-Repairs-Minneapolis.jpg"
+                                                alt={model}
+                                                sx={{
+                                                    width: "100%",
+                                                    maxWidth: 180,
+                                                    height: "auto",
+                                                    objectFit: "contain",
+                                                    mb: 2,
+                                                    transition: "none", // 👈 image stays still
+                                                }}
+                                            />
+
+                                            <Typography
+                                                variant="h6"
+                                                sx={{
+                                                    color: "#000000",
+                                                    fontWeight: 600,
+                                                    fontSize: "1.05rem",
+                                                    pb: 2,
+                                                }}
+                                            >
+                                                {model}
+                                            </Typography>
+                                        </Paper>
+                                    </Grid>
+                                );
+                            })}
+                        </Grid>
+                    </StaggerContainer>
                 </Box>
 
                 {/* Detailed Service Information */}

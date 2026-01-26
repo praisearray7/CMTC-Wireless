@@ -1,5 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import StaggerContainer from '../components/animations/StaggerContainer';
 import { colors } from '../theme/colors';
 import { Box, Container, Typography, Button, Grid, Paper, Breadcrumbs } from '@mui/material';
 import FAQ from '../components/FAQ';
@@ -118,61 +119,63 @@ const ModelDetail = () => {
                 </Typography>
 
                 {loading ? <Typography align="center">Loading repair prices...</Typography> : (
-                    <Grid container spacing={3}>
-                        {(() => {
-                            // Filter & Group Data
-                            const modelRepairs = rawData.filter(row => row['Device Model']?.toLowerCase().replace(/\s+/g, '') === model.name.toLowerCase().replace(/\s+/g, ''));
+                    <StaggerContainer childSelector=".repair-card-item">
+                        <Grid container spacing={3}>
+                            {(() => {
+                                // Filter & Group Data
+                                const modelRepairs = rawData.filter(row => row['Device Model']?.toLowerCase().replace(/\s+/g, '') === model.name.toLowerCase().replace(/\s+/g, ''));
 
-                            const groupedRepairs: Record<string, typeof rawData> = {};
-                            modelRepairs.forEach(row => {
-                                const rawType = row['Repair Type'];
-                                // Normalize type to kebab-case for consistent grouping and lookup
-                                const normalizedType = rawType.toLowerCase().trim().replace(/ /g, '-').replace(/\//g, '-');
+                                const groupedRepairs: Record<string, typeof rawData> = {};
+                                modelRepairs.forEach(row => {
+                                    const rawType = row['Repair Type'];
+                                    // Normalize type to kebab-case for consistent grouping and lookup
+                                    const normalizedType = rawType.toLowerCase().trim().replace(/ /g, '-').replace(/\//g, '-');
 
-                                // Map to known keys if possible (e.g. handle variations)
-                                const key = normalizedType;
+                                    // Map to known keys if possible (e.g. handle variations)
+                                    const key = normalizedType;
 
-                                if (!groupedRepairs[key]) groupedRepairs[key] = [];
-                                groupedRepairs[key].push(row);
-                            });
+                                    if (!groupedRepairs[key]) groupedRepairs[key] = [];
+                                    groupedRepairs[key].push(row);
+                                });
 
-                            const repairTypes = Object.keys(groupedRepairs);
+                                const repairTypes = Object.keys(groupedRepairs);
 
-                            if (repairTypes.length === 0) return <Grid size={{ xs: 12 }}><Typography align="center">Contact us for availability on this model.</Typography></Grid>;
+                                if (repairTypes.length === 0) return <Grid size={{ xs: 12 }}><Typography align="center">Contact us for availability on this model.</Typography></Grid>;
 
-                            return repairTypes.map((type) => {
-                                const rows = groupedRepairs[type];
-                                const details = repairDetails[type] || { icon: Smartphone, desc: "Professional repair service with warranty.", image: undefined };
-                                const Icon = details.icon;
+                                return repairTypes.map((type) => {
+                                    const rows = groupedRepairs[type];
+                                    const details = repairDetails[type] || { icon: Smartphone, desc: "Professional repair service with warranty.", image: undefined };
+                                    const Icon = details.icon;
 
-                                // Ensure image is a string or undefined, not null
-                                const displayImage = details.image || '';
+                                    // Ensure image is a string or undefined, not null
+                                    const displayImage = details.image || '';
 
-                                return (
-                                    <Grid size={{ xs: 12, sm: 6, md: 4 }} key={type}>
-                                        <RepairServiceCard
-                                            title={type.replace(/-/g, ' ')}
-                                            description={
-                                                <>
-                                                    {details.desc}
-                                                    {rows.find(r => r.Warranty)?.Warranty && (
-                                                        <Typography component="span" sx={{ display: 'block', color: colors.primary, fontWeight: 500, mt: 0.5, fontSize: '0.85rem' }}>
-                                                            Includes {rows.find(r => r.Warranty)?.Warranty} Warranty
-                                                        </Typography>
-                                                    )}
-                                                </>
-                                            }
-                                            image={displayImage}
-                                            icon={Icon}
-                                            rows={rows}
-                                            serviceId={serviceId || 'iphone-repair'}
-                                            modelId={model.id}
-                                        />
-                                    </Grid>
-                                );
-                            });
-                        })()}
-                    </Grid>
+                                    return (
+                                        <Grid size={{ xs: 12, sm: 6, md: 4 }} key={type} className="repair-card-item">
+                                            <RepairServiceCard
+                                                title={type.replace(/-/g, ' ')}
+                                                description={
+                                                    <>
+                                                        {details.desc}
+                                                        {rows.find(r => r.Warranty)?.Warranty && (
+                                                            <Typography component="span" sx={{ display: 'block', color: colors.primary, fontWeight: 500, mt: 0.5, fontSize: '0.85rem' }}>
+                                                                Includes {rows.find(r => r.Warranty)?.Warranty} Warranty
+                                                            </Typography>
+                                                        )}
+                                                    </>
+                                                }
+                                                image={displayImage}
+                                                icon={Icon}
+                                                rows={rows}
+                                                serviceId={serviceId || 'iphone-repair'}
+                                                modelId={model.id}
+                                            />
+                                        </Grid>
+                                    );
+                                });
+                            })()}
+                        </Grid>
+                    </StaggerContainer>
                 )}
 
                 <Box sx={{ mt: 8, textAlign: 'center' }}>
@@ -243,99 +246,101 @@ const ModelDetail = () => {
 
                                     if (variants.length > 0) {
                                         return (
-                                            <Grid container spacing={4} justifyContent="center" sx={{ mb: 4 }}>
-                                                {variants.map((variant) => {
-                                                    const baseName = model.name.replace(' Series', '');
-                                                    let targetName = `${baseName} ${variant}`;
-                                                    // Avoid duplicating variant if it's already part of the base name (e.g. SE models, or "iPhone 13" vs "13")
-                                                    if (baseName.toLowerCase().includes(variant.toLowerCase().trim())) {
-                                                        targetName = baseName;
-                                                    } else {
-                                                        // Handle "iPhone 16" + "16e" -> "iPhone 16e"
-                                                        // Check if variant starts with the number the base name ends with
-                                                        const baseSuffix = baseName.split(' ').pop() || '';
-                                                        if (baseSuffix && variant.toLowerCase().startsWith(baseSuffix.toLowerCase())) {
-                                                            // Remove the suffix from base and append the variant
-                                                            targetName = baseName.substring(0, baseName.lastIndexOf(' ')) + ' ' + variant;
-                                                        }
-                                                    }
-
-                                                    let targetId = '';
-                                                    // Helper for case-insensitive lookup
-                                                    const findModelId = (models: { name: string, id: string }[]) => {
-                                                        return models.find(m => m.name.toLowerCase() === targetName.toLowerCase())?.id;
-                                                    };
-
-                                                    if (service && service.models) {
-                                                        targetId = findModelId(service.models) || '';
-                                                    }
-
-                                                    if (!targetId) {
-                                                        for (const cat of repairServices) {
-                                                            if (cat.models) {
-                                                                targetId = findModelId(cat.models) || '';
-                                                                if (targetId) break;
+                                            <StaggerContainer childSelector=".variant-item">
+                                                <Grid container spacing={4} justifyContent="center" sx={{ mb: 4 }}>
+                                                    {variants.map((variant) => {
+                                                        const baseName = model.name.replace(' Series', '');
+                                                        let targetName = `${baseName} ${variant}`;
+                                                        // Avoid duplicating variant if it's already part of the base name (e.g. SE models, or "iPhone 13" vs "13")
+                                                        if (baseName.toLowerCase().includes(variant.toLowerCase().trim())) {
+                                                            targetName = baseName;
+                                                        } else {
+                                                            // Handle "iPhone 16" + "16e" -> "iPhone 16e"
+                                                            // Check if variant starts with the number the base name ends with
+                                                            const baseSuffix = baseName.split(' ').pop() || '';
+                                                            if (baseSuffix && variant.toLowerCase().startsWith(baseSuffix.toLowerCase())) {
+                                                                // Remove the suffix from base and append the variant
+                                                                targetName = baseName.substring(0, baseName.lastIndexOf(' ')) + ' ' + variant;
                                                             }
-                                                            if (cat.subCategories) {
-                                                                for (const sub of cat.subCategories) {
-                                                                    targetId = findModelId(sub.models) || '';
+                                                        }
+
+                                                        let targetId = '';
+                                                        // Helper for case-insensitive lookup
+                                                        const findModelId = (models: { name: string, id: string }[]) => {
+                                                            return models.find(m => m.name.toLowerCase() === targetName.toLowerCase())?.id;
+                                                        };
+
+                                                        if (service && service.models) {
+                                                            targetId = findModelId(service.models) || '';
+                                                        }
+
+                                                        if (!targetId) {
+                                                            for (const cat of repairServices) {
+                                                                if (cat.models) {
+                                                                    targetId = findModelId(cat.models) || '';
                                                                     if (targetId) break;
                                                                 }
+                                                                if (cat.subCategories) {
+                                                                    for (const sub of cat.subCategories) {
+                                                                        targetId = findModelId(sub.models) || '';
+                                                                        if (targetId) break;
+                                                                    }
+                                                                }
+                                                                if (targetId) break;
                                                             }
-                                                            if (targetId) break;
                                                         }
-                                                    }
 
-                                                    // Check for specific model image in imagePaths.modelImages
-                                                    let specificImage = null;
-                                                    if ((imagePaths as any).modelImages && targetId && (imagePaths as any).modelImages[targetId]) {
-                                                        specificImage = (imagePaths as any).modelImages[targetId];
-                                                    }
+                                                        // Check for specific model image in imagePaths.modelImages
+                                                        let specificImage = null;
+                                                        if ((imagePaths as any).modelImages && targetId && (imagePaths as any).modelImages[targetId]) {
+                                                            specificImage = (imagePaths as any).modelImages[targetId];
+                                                        }
 
-                                                    return (
-                                                        <Grid size={{ xs: 6, sm: 4, md: 2.4 }} key={variant}>
-                                                            <Paper
-                                                                component={targetId ? Link : 'div'}
-                                                                to={targetId ? `/${serviceId || 'iphone-repair'}/${targetId}` : '#'}
-                                                                elevation={0}
-                                                                sx={{
-                                                                    p: 2,
-                                                                    display: "flex",
-                                                                    flexDirection: "column",
-                                                                    alignItems: "center",
-                                                                    textDecoration: 'none',
-                                                                    cursor: targetId ? 'pointer' : 'default',
-                                                                    borderRadius: "16px",
-                                                                    background: "#fff",
-                                                                    border: "1px solid #f0f0f0",
-                                                                    transition: "all 0.3s ease",
-                                                                    "&:hover": targetId ? {
-                                                                        borderColor: colors.primary,
-                                                                        boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
-                                                                        transform: "translateY(-5px)"
-                                                                    } : {}
-                                                                }}
-                                                            >
-                                                                <Box
-                                                                    component="img"
-                                                                    src={specificImage ? getImagePath(specificImage) : (isSeries && seriesInfo ? (getImagePath(seriesInfo.image) || DEVICE_IMAGE_URL) : DEVICE_IMAGE_URL)}
-                                                                    alt={targetName}
+                                                        return (
+                                                            <Grid size={{ xs: 6, sm: 4, md: 2.4 }} key={variant} className="variant-item">
+                                                                <Paper
+                                                                    component={targetId ? Link : 'div'}
+                                                                    to={targetId ? `/${serviceId || 'iphone-repair'}/${targetId}` : '#'}
+                                                                    elevation={0}
                                                                     sx={{
-                                                                        width: "100%",
-                                                                        height: "auto",
-                                                                        objectFit: "contain",
-                                                                        mb: 2,
-                                                                        aspectRatio: '3/4'
+                                                                        p: 2,
+                                                                        display: "flex",
+                                                                        flexDirection: "column",
+                                                                        alignItems: "center",
+                                                                        textDecoration: 'none',
+                                                                        cursor: targetId ? 'pointer' : 'default',
+                                                                        borderRadius: "16px",
+                                                                        background: "#fff",
+                                                                        border: "1px solid #f0f0f0",
+                                                                        transition: "all 0.3s ease",
+                                                                        "&:hover": targetId ? {
+                                                                            borderColor: colors.primary,
+                                                                            boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+                                                                            transform: "translateY(-5px)"
+                                                                        } : {}
                                                                     }}
-                                                                />
-                                                                <Typography variant="body1" sx={{ fontWeight: 700, color: colors.primary, textAlign: 'center' }}>
-                                                                    {variant}
-                                                                </Typography>
-                                                            </Paper>
-                                                        </Grid>
-                                                    );
-                                                })}
-                                            </Grid>
+                                                                >
+                                                                    <Box
+                                                                        component="img"
+                                                                        src={specificImage ? getImagePath(specificImage) : (isSeries && seriesInfo ? (getImagePath(seriesInfo.image) || DEVICE_IMAGE_URL) : DEVICE_IMAGE_URL)}
+                                                                        alt={targetName}
+                                                                        sx={{
+                                                                            width: "100%",
+                                                                            height: "auto",
+                                                                            objectFit: "contain",
+                                                                            mb: 2,
+                                                                            aspectRatio: '3/4'
+                                                                        }}
+                                                                    />
+                                                                    <Typography variant="body1" sx={{ fontWeight: 700, color: colors.primary, textAlign: 'center' }}>
+                                                                        {variant}
+                                                                    </Typography>
+                                                                </Paper>
+                                                            </Grid>
+                                                        );
+                                                    })}
+                                                </Grid>
+                                            </StaggerContainer>
                                         );
                                     } else {
                                         return (

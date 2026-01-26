@@ -15,11 +15,13 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
+    "@gsap/react": "^2.1.2",
     "@mui/icons-material": "^7.3.7",
     "@mui/material": "^7.3.7",
     "@types/jquery": "^3.5.33",
     "@types/papaparse": "^5.5.2",
     "axios": "^1.13.2",
+    "gsap": "^3.14.2",
     "jquery": "^4.0.0",
     "lucide-react": "^0.562.0",
     "papaparse": "^5.5.3",

@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
+import StaggerContainer from '../components/animations/StaggerContainer';
 import { Box, Container, Typography, Breadcrumbs, Button, Grid, Paper, Divider } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import RepairServiceLayout from '../components/RepairServiceLayout';
@@ -267,16 +268,18 @@ const RepairDetail = () => {
                         {specificDetails?.features && (
                             <Box sx={{ mb: 4 }}>
                                 <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>Key Features</Typography>
-                                <Grid container spacing={2}>
-                                    {specificDetails.features.map((feature: string, idx: number) => (
-                                        <Grid size={{ xs: 12, sm: 6 }} key={idx}>
-                                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                                                <CheckCircleIcon color="primary" />
-                                                <Typography variant="body1">{feature}</Typography>
-                                            </Box>
-                                        </Grid>
-                                    ))}
-                                </Grid>
+                                <StaggerContainer childSelector=".feature-item">
+                                    <Grid container spacing={2}>
+                                        {specificDetails.features.map((feature: string, idx: number) => (
+                                            <Grid size={{ xs: 12, sm: 6 }} key={idx} className="feature-item">
+                                                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                                                    <CheckCircleIcon color="primary" />
+                                                    <Typography variant="body1">{feature}</Typography>
+                                                </Box>
+                                            </Grid>
+                                        ))}
+                                    </Grid>
+                                </StaggerContainer>
                             </Box>
                         )}
 
@@ -303,22 +306,24 @@ const RepairDetail = () => {
 
                 <Box sx={{ mb: 6 }}>
                     <Typography variant="h5" sx={{ fontWeight: 700, mb: 3 }}>Why Choose Us?</Typography>
-                    <Grid container spacing={2}>
-                        {[
-                            "90-Day Warranty on Parts & Labor",
-                            "Expert Certified Technicians",
-                            "High Quality Parts",
-                            "Fast Turnaround Time",
-                            "No Data Loss Guarantee"
-                        ].map((feature, index) => (
-                            <Grid size={{ xs: 12, sm: 6 }} key={index}>
-                                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                                    <CheckCircleIcon color="primary" />
-                                    <Typography variant="body1">{feature}</Typography>
-                                </Box>
-                            </Grid>
-                        ))}
-                    </Grid>
+                    <StaggerContainer childSelector=".why-choose-item">
+                        <Grid container spacing={2}>
+                            {[
+                                "90-Day Warranty on Parts & Labor",
+                                "Expert Certified Technicians",
+                                "High Quality Parts",
+                                "Fast Turnaround Time",
+                                "No Data Loss Guarantee"
+                            ].map((feature, index) => (
+                                <Grid size={{ xs: 12, sm: 6 }} key={index} className="why-choose-item">
+                                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                                        <CheckCircleIcon color="primary" />
+                                        <Typography variant="body1">{feature}</Typography>
+                                    </Box>
+                                </Grid>
+                            ))}
+                        </Grid>
+                    </StaggerContainer>
                 </Box>
             </RepairServiceLayout>
         </>

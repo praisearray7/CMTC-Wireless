@@ -3,6 +3,7 @@ import { Box, Container, Grid } from '@mui/material';
 import WhyChoose from './WhyChoose';
 import GoogleReviews from './GoogleReviews';
 import FAQ from './FAQ';
+import FadeIn from './animations/FadeIn';
 
 interface RepairServiceLayoutProps {
     breadcrumbs: ReactNode;
@@ -26,13 +27,17 @@ const RepairServiceLayout: React.FC<RepairServiceLayoutProps> = ({
                     <Grid container spacing={8}>
                         {/* Left Column: Title and Description */}
                         <Grid size={{ xs: 12, md: 7 }} sx={{ pl: { md: 10 } }}>
-                            {breadcrumbs}
-                            {children}
+                            <FadeIn delay={0.2}>
+                                {breadcrumbs}
+                                {children}
+                            </FadeIn>
                         </Grid>
 
                         {/* Right Column: Sidebar Card */}
                         <Grid size={{ xs: 12, md: 5 }} sx={{ pr: { md: 10 }, mt: { md: 2 } }}>
-                            {rightContent || <WhyChoose />}
+                            <FadeIn delay={0.4} direction="left">
+                                {rightContent || <WhyChoose />}
+                            </FadeIn>
                         </Grid>
                     </Grid>
                 </Container>
@@ -40,7 +45,9 @@ const RepairServiceLayout: React.FC<RepairServiceLayoutProps> = ({
 
             {bottomContent && (
                 <Container maxWidth="xl">
-                    {bottomContent}
+                    <FadeIn delay={0.6}>
+                        {bottomContent}
+                    </FadeIn>
                 </Container>
             )}
 

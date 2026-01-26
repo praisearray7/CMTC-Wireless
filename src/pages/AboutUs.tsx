@@ -11,6 +11,8 @@ import CountUpAnimation from '../components/CountUpAnimation';
 import { colors } from '../theme/colors';
 
 import SEO from '../components/SEO';
+import FadeIn from '../components/animations/FadeIn';
+import StaggerContainer from '../components/animations/StaggerContainer';
 
 const AboutUs = () => {
     return (
@@ -22,15 +24,19 @@ const AboutUs = () => {
             {/* Hero Banner */}
             <Box sx={{ bgcolor: '#2C3E50', color: 'white', py: 10, textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
                 <Container maxWidth="md" sx={{ position: 'relative', zIndex: 2 }}>
-                    <Typography variant="h2" sx={{ fontWeight: 800, mb: 2, fontSize: { xs: '2.5rem', md: '3.5rem' } }}>
-                        <span style={{ color: 'white' }}>Our Mission:  </span>
-                        <span style={{ color: colors.primary }}>Restoring </span>
-                        <span style={{ color: colors.primaryBlue }}>Connections</span>
-                    </Typography>
-                    <Typography variant="h6" sx={{ color: '#B0BEC5', fontWeight: 400, maxWidth: 800, mx: 'auto' }}>
-                        Discover top-notch iPhone, MacBook, and Samsung repair services all under one roof. Our skilled technicians are dedicated to providing swift and reliable solutions to get your devices back in peak condition.
-                        Our mission is to provide reliable and efficient repair services for all your electronic devices, ensuring you stay connected. We pride ourselves on our commitment to quality, customer satisfaction, and our deep roots in the community.
-                    </Typography>
+                    <FadeIn delay={0.1}>
+                        <Typography variant="h2" sx={{ fontWeight: 800, mb: 2, fontSize: { xs: '2.5rem', md: '3.5rem' } }}>
+                            <span style={{ color: 'white' }}>Our Mission:  </span>
+                            <span style={{ color: colors.primary }}>Restoring </span>
+                            <span style={{ color: colors.primaryBlue }}>Connections</span>
+                        </Typography>
+                    </FadeIn>
+                    <FadeIn delay={0.3}>
+                        <Typography variant="h6" sx={{ color: '#B0BEC5', fontWeight: 400, maxWidth: 800, mx: 'auto' }}>
+                            Discover top-notch iPhone, MacBook, and Samsung repair services all under one roof. Our skilled technicians are dedicated to providing swift and reliable solutions to get your devices back in peak condition.
+                            Our mission is to provide reliable and efficient repair services for all your electronic devices, ensuring you stay connected. We pride ourselves on our commitment to quality, customer satisfaction, and our deep roots in the community.
+                        </Typography>
+                    </FadeIn>
                 </Container>
                 {/* Decorative background element */}
                 <Box sx={{ position: 'absolute', top: -50, right: -50, width: 300, height: 300, borderRadius: '50%', bgcolor: alpha(colors.primary, 0.1), zIndex: 1 }} />
@@ -39,52 +45,56 @@ const AboutUs = () => {
 
             {/* Stats Section */}
             <Container maxWidth="lg" sx={{ mt: -6, position: 'relative', zIndex: 3, mb: 10 }}>
-                <Grid container spacing={3}>
-                    {[
-                        { count: 15, suffix: '+', label: 'Years Experience', icon: <GroupsIcon sx={{ fontSize: 40, color: colors.primary, mb: 1 }} /> },
-                        { count: 50, suffix: 'k+', label: 'Devices Fixed', icon: <PrecisionManufacturingIcon sx={{ fontSize: 40, color: colors.primary, mb: 1 }} /> },
-                        { count: 12, suffix: 'k+', label: 'Happy Customers', icon: <VerifiedUserIcon sx={{ fontSize: 40, color: colors.primary, mb: 1 }} /> },
-                        { count: 45, suffix: 'm', label: 'Avg Repair Time', icon: <TimerIcon sx={{ fontSize: 40, color: colors.primary, mb: 1 }} /> }
-                    ].map((stat, index) => (
-                        <Grid size={{ xs: 12, sm: 6, md: 3 }} key={index}>
-                            <Card sx={{ textAlign: 'center', py: 4, borderRadius: 4, boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
-                                <Box sx={{ mb: 1 }}>{stat.icon}</Box>
-                                <Typography variant="h3" sx={{ fontWeight: 800, color: '#000000', mb: 0.5 }}>
-                                    <CountUpAnimation target={stat.count} suffix={stat.suffix} />
-                                </Typography>
-                                <Typography variant="body1" color="textSecondary" sx={{ fontWeight: 600, textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: 1 }}>{stat.label}</Typography>
-                            </Card>
-                        </Grid>
-                    ))}
-                </Grid>
+                <StaggerContainer childSelector=".stat-card" delay={0.2}>
+                    <Grid container spacing={3}>
+                        {[
+                            { count: 15, suffix: '+', label: 'Years Experience', icon: <GroupsIcon sx={{ fontSize: 40, color: colors.primary, mb: 1 }} /> },
+                            { count: 50, suffix: 'k+', label: 'Devices Fixed', icon: <PrecisionManufacturingIcon sx={{ fontSize: 40, color: colors.primary, mb: 1 }} /> },
+                            { count: 12, suffix: 'k+', label: 'Happy Customers', icon: <VerifiedUserIcon sx={{ fontSize: 40, color: colors.primary, mb: 1 }} /> },
+                            { count: 45, suffix: 'm', label: 'Avg Repair Time', icon: <TimerIcon sx={{ fontSize: 40, color: colors.primary, mb: 1 }} /> }
+                        ].map((stat, index) => (
+                            <Grid size={{ xs: 12, sm: 6, md: 3 }} key={index} className="stat-card">
+                                <Card sx={{ textAlign: 'center', py: 4, borderRadius: 4, boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
+                                    <Box sx={{ mb: 1 }}>{stat.icon}</Box>
+                                    <Typography variant="h3" sx={{ fontWeight: 800, color: '#000000', mb: 0.5 }}>
+                                        <CountUpAnimation target={stat.count} suffix={stat.suffix} />
+                                    </Typography>
+                                    <Typography variant="body1" color="textSecondary" sx={{ fontWeight: 600, textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: 1 }}>{stat.label}</Typography>
+                                </Card>
+                            </Grid>
+                        ))}
+                    </Grid>
+                </StaggerContainer>
             </Container>
 
             {/* Mission & Warranty Cards */}
             <Container maxWidth="lg" sx={{ mb: 10 }}>
-                <Grid container spacing={4}>
-                    {[
-                        {
-                            icon: <TrackChangesIcon sx={{ fontSize: 40, color: colors.primary }} />,
-                            title: 'Our Mission',
-                            text: 'We strive to get your device back to its original condition in the shortest amount of time possible, without sacrificing quality.'
-                        },
-                        {
-                            icon: <WorkspacePremiumIcon sx={{ fontSize: 40, color: colors.primary }} />,
-                            title: 'Our Warranty',
-                            text: 'Rest assured if something is out of the ordinary after your repair, we will take care of it for you free of charge.'
-                        }
-                    ].map((item, index) => (
-                        <Grid size={{ xs: 12, md: 6 }} key={index}>
-                            <Card variant="outlined" sx={{ p: 4, height: '100%', borderRadius: 4, borderColor: '#eee', '&:hover': { borderColor: colors.primary, boxShadow: '0 4px 20px rgba(0,0,0,0.05)' } }}>
-                                <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-                                    <Box sx={{ mb: 2 }}>{item.icon}</Box>
-                                    <Typography variant="h5" sx={{ fontWeight: 700, color: '#000000', mb: 2 }}>{item.title}</Typography>
-                                    <Typography variant="body1" sx={{ color: '#000000', lineHeight: 1.6 }}>{item.text}</Typography>
-                                </Box>
-                            </Card>
-                        </Grid>
-                    ))}
-                </Grid>
+                <StaggerContainer childSelector=".mission-card">
+                    <Grid container spacing={4}>
+                        {[
+                            {
+                                icon: <TrackChangesIcon sx={{ fontSize: 40, color: colors.primary }} />,
+                                title: 'Our Mission',
+                                text: 'We strive to get your device back to its original condition in the shortest amount of time possible, without sacrificing quality.'
+                            },
+                            {
+                                icon: <WorkspacePremiumIcon sx={{ fontSize: 40, color: colors.primary }} />,
+                                title: 'Our Warranty',
+                                text: 'Rest assured if something is out of the ordinary after your repair, we will take care of it for you free of charge.'
+                            }
+                        ].map((item, index) => (
+                            <Grid size={{ xs: 12, md: 6 }} key={index} className="mission-card">
+                                <Card variant="outlined" sx={{ p: 4, height: '100%', borderRadius: 4, borderColor: '#eee', '&:hover': { borderColor: colors.primary, boxShadow: '0 4px 20px rgba(0,0,0,0.05)' } }}>
+                                    <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+                                        <Box sx={{ mb: 2 }}>{item.icon}</Box>
+                                        <Typography variant="h5" sx={{ fontWeight: 700, color: '#000000', mb: 2 }}>{item.title}</Typography>
+                                        <Typography variant="body1" sx={{ color: '#000000', lineHeight: 1.6 }}>{item.text}</Typography>
+                                    </Box>
+                                </Card>
+                            </Grid>
+                        ))}
+                    </Grid>
+                </StaggerContainer>
             </Container>
 
             {/* Story & Values */}

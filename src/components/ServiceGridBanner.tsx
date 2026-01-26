@@ -2,6 +2,7 @@ import { Box, Container, Grid, Typography, Paper } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { getImagePath } from '../data/imagePaths';
 import { colors } from '../theme/colors';
+import StaggerContainer from './animations/StaggerContainer';
 
 const items = [
     { title: 'iPad Repair', image: 'https://www.gophermods.com/wp-content/uploads/2020/04/iPad-Repair-by-Gophermods-200x200-1.jpg', link: '/ipad-repair' },
@@ -60,56 +61,58 @@ const ServiceGridBanner = () => {
 
             {/* Grid Section */}
             <Container maxWidth="xl">
-                <Grid container spacing={4} justifyContent="center">
-                    {items.map((item) => (
-                        <Grid size={{ xs: 6, sm: 4, md: 3 }} key={item.title}>
-                            <Paper
-                                elevation={0}
-                                component={Link}
-                                to={item.link}
-                                // @ts-ignore
-                                state={item.state}
-                                sx={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center',
-                                    textDecoration: 'none',
-                                    cursor: 'pointer',
-                                    bgcolor: 'transparent',
-                                    transition: 'transform 0.3s ease',
-                                    '&:hover': {
-                                        transform: 'translateY(-5px)'
-                                    }
-                                }}
-                            >
-                                <Box
-                                    component="img"
-                                    src={getImagePath(item.image)}
-                                    alt={item.title}
+                <StaggerContainer childSelector=".service-grid-item">
+                    <Grid container spacing={4} justifyContent="center">
+                        {items.map((item) => (
+                            <Grid size={{ xs: 6, sm: 4, md: 3 }} key={item.title} className="service-grid-item">
+                                <Paper
+                                    elevation={0}
+                                    component={Link}
+                                    to={item.link}
+                                    // @ts-ignore
+                                    state={item.state}
                                     sx={{
-                                        width: '100%',
-                                        maxWidth: 180,
-                                        height: 'auto',
-                                        aspectRatio: '1/1',
-                                        objectFit: 'contain',
-                                        mb: 2
-                                    }}
-                                />
-                                <Typography
-                                    variant="h6"
-                                    sx={{
-                                        color: '#000000',
-                                        fontWeight: 400,
-                                        fontSize: '1rem',
-                                        textAlign: 'center'
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'center',
+                                        textDecoration: 'none',
+                                        cursor: 'pointer',
+                                        bgcolor: 'transparent',
+                                        transition: 'transform 0.3s ease',
+                                        '&:hover': {
+                                            transform: 'translateY(-5px)'
+                                        }
                                     }}
                                 >
-                                    {item.title}
-                                </Typography>
-                            </Paper>
-                        </Grid>
-                    ))}
-                </Grid>
+                                    <Box
+                                        component="img"
+                                        src={getImagePath(item.image)}
+                                        alt={item.title}
+                                        sx={{
+                                            width: '100%',
+                                            maxWidth: 180,
+                                            height: 'auto',
+                                            aspectRatio: '1/1',
+                                            objectFit: 'contain',
+                                            mb: 2
+                                        }}
+                                    />
+                                    <Typography
+                                        variant="h6"
+                                        sx={{
+                                            color: '#000000',
+                                            fontWeight: 400,
+                                            fontSize: '1rem',
+                                            textAlign: 'center'
+                                        }}
+                                    >
+                                        {item.title}
+                                    </Typography>
+                                </Paper>
+                            </Grid>
+                        ))}
+                    </Grid>
+                </StaggerContainer>
             </Container>
         </Box>
     );
