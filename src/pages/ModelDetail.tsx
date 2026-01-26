@@ -247,26 +247,31 @@ const ModelDetail = () => {
                                                 {variants.map((variant) => {
                                                     const baseName = model.name.replace(' Series', '');
                                                     let targetName = `${baseName} ${variant}`;
-                                                    if (variant === baseName.split(' ').pop()) {
+                                                    // Avoid duplicating variant if it's already part of the base name (e.g. SE models, or "iPhone 13" vs "13")
+                                                    if (baseName.toLowerCase().includes(variant.toLowerCase().trim())) {
                                                         targetName = baseName;
                                                     }
 
                                                     let targetId = '';
+                                                    // Helper for case-insensitive lookup
+                                                    const findModelId = (models: { name: string, id: string }[]) => {
+                                                        return models.find(m => m.name.toLowerCase() === targetName.toLowerCase())?.id;
+                                                    };
+
                                                     if (service && service.models) {
-                                                        const found = service.models.find(m => m.name === targetName);
-                                                        if (found) targetId = found.id;
+                                                        targetId = findModelId(service.models) || '';
                                                     }
 
                                                     if (!targetId) {
                                                         for (const cat of repairServices) {
                                                             if (cat.models) {
-                                                                const found = cat.models.find(m => m.name === targetName);
-                                                                if (found) { targetId = found.id; break; }
+                                                                targetId = findModelId(cat.models) || '';
+                                                                if (targetId) break;
                                                             }
                                                             if (cat.subCategories) {
                                                                 for (const sub of cat.subCategories) {
-                                                                    const found = sub.models.find(m => m.name === targetName);
-                                                                    if (found) { targetId = found.id; break; }
+                                                                    targetId = findModelId(sub.models) || '';
+                                                                    if (targetId) break;
                                                                 }
                                                             }
                                                             if (targetId) break;
@@ -275,7 +280,7 @@ const ModelDetail = () => {
 
                                                     // Check for specific model image in imagePaths.modelImages
                                                     let specificImage = null;
-                                                    if ((imagePaths as any).modelImages && (imagePaths as any).modelImages[targetId]) {
+                                                    if ((imagePaths as any).modelImages && targetId && (imagePaths as any).modelImages[targetId]) {
                                                         specificImage = (imagePaths as any).modelImages[targetId];
                                                     }
 
