@@ -127,7 +127,7 @@ export const useRepairPricing = () => {
 
         // Filter by Model Name if provided
         if (modelName) {
-            repairRows = repairRows.filter(row => row['Device Model']?.toLowerCase().trim() === modelName.toLowerCase().trim());
+            repairRows = repairRows.filter(row => row['Device Model']?.toLowerCase().replace(/\s+/g, '') === modelName.toLowerCase().replace(/\s+/g, ''));
         }
 
         if (repairRows.length === 0) return "Contact for Price";

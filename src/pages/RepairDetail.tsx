@@ -53,7 +53,7 @@ const RepairDetail = () => {
     // Filter pricing rows
     const pricingRows = rawData.filter(row =>
         model &&
-        row['Device Model']?.toLowerCase().trim() === model.name.toLowerCase().trim() &&
+        row['Device Model']?.toLowerCase().replace(/\s+/g, '') === model.name.toLowerCase().replace(/\s+/g, '') &&
         (row['Repair Type']?.toLowerCase() === repairType?.toLowerCase() ||
             row['Repair Type'] === genericRepairInfo.title)
     );

@@ -103,7 +103,7 @@ export const repairServices: RepairCategory[] = [
     id: 'iphone-repair',
     name: 'iPhone Repair',
     models: [
-      { name: 'iPhone 17 Pro Max', id: 'iphone-17-pro-max' }, { name: 'iPhone 17 Pro', id: 'iphone-17-pro' }, { name: 'iPhone 17 Air', id: 'iphone-17-air' }, { name: 'iPhone 17E', id: 'iphone-17e' }, { name: 'iPhone 17', id: 'iphone-17' },
+      { name: 'iPhone 17 Pro Max', id: 'iphone-17-pro-max' }, { name: 'iPhone 17 Pro', id: 'iphone-17-pro' }, { name: 'iPhone 17 Plus', id: 'iphone-17-plus' }, { name: 'iPhone 17 Air', id: 'iphone-17-air' }, { name: 'iPhone 17E', id: 'iphone-17e' }, { name: 'iPhone 17', id: 'iphone-17' },
       { name: 'iPhone 16 Pro Max', id: 'iphone-16-pro-max' }, { name: 'iPhone 16 Pro', id: 'iphone-16-pro' }, { name: 'iPhone 16 Plus', id: 'iphone-16-plus' }, { name: 'iPhone 16E', id: 'iphone-16e' }, { name: 'iPhone 16', id: 'iphone-16' },
       { name: 'iPhone 15 Pro Max', id: 'iphone-15-pro-max' }, { name: 'iPhone 15 Pro', id: 'iphone-15-pro' }, { name: 'iPhone 15 Plus', id: 'iphone-15-plus' }, { name: 'iPhone 15', id: 'iphone-15' },
       { name: 'iPhone 14 Pro Max', id: 'iphone-14-pro-max' }, { name: 'iPhone 14 Pro', id: 'iphone-14-pro' }, { name: 'iPhone 14 Plus', id: 'iphone-14-plus' }, { name: 'iPhone 14', id: 'iphone-14' },
