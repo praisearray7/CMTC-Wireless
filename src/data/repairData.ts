@@ -17,7 +17,7 @@ export const navLinks = [
   { title: 'Repair Services', path: '/#repair-services', isDropdown: true },
   { title: 'Buy a Device', path: '/buy-device', isDropdown: true },
   { title: 'Warranty', path: '/warranty' },
-  { title: 'Blog', path: '/blog' },
+  { title: 'Blogs', path: '/blogs' },
 
   { title: 'About Us', path: '/about-us' },
   { title: 'Contact Us', path: '/contact-us' },

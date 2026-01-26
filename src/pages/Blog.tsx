@@ -6,7 +6,7 @@ import { blogSections } from '../data/blogVideos';
 import { colors } from '../theme/colors';
 import SEO from '../components/SEO';
 
-const Blog = () => {
+const Blogs = () => {
     const [open, setOpen] = useState(false);
     const [currentVideoSrc, setCurrentVideoSrc] = useState<string | null>(null);
 
@@ -135,4 +135,4 @@ const Blog = () => {
     );
 };
 
-export default Blog;
+export default Blogs;

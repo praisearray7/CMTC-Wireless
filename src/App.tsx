@@ -16,7 +16,7 @@ const BuyDevice = lazy(() => import('./pages/BuyDevice'));
 const UnlockDevice = lazy(() => import('./pages/UnlockDevice'));
 const Reviews = lazy(() => import('./pages/Reviews'));
 const Warranty = lazy(() => import('./pages/Warranty'));
-const Blog = lazy(() => import('./pages/Blog'));
+const Blogs = lazy(() => import('./pages/Blog'));
 
 // Repair Pages
 const IpadRepair = lazy(() => import('./pages/IpadRepair'));
@@ -51,7 +51,7 @@ function App() {
                 <Route path="/buy-device" element={<BuyDevice />} />
                 <Route path="/unlock-device" element={<UnlockDevice />} />
                 <Route path="/warranty" element={<Warranty />} />
-                <Route path="/blog" element={<Blog />} />
+                <Route path="/blogs" element={<Blogs />} />
 
                 <Route path="/reviews" element={<Reviews />} />
                 <Route path="/reviews" element={<Reviews />} />
