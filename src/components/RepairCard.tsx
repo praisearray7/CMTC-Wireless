@@ -9,11 +9,12 @@ interface RepairCardProps {
     priceContent?: React.ReactNode;
     children?: React.ReactNode;
     loading?: boolean;
+    onClick?: () => void;
 }
 
-const RepairCard = ({ title, description, image, icon: Icon, priceContent, children }: RepairCardProps) => {
+const RepairCard = ({ title, description, image, icon: Icon, priceContent, children, onClick }: RepairCardProps) => {
     return (
-        <Paper elevation={0} sx={{
+        <Paper elevation={0} onClick={onClick} sx={{
             p: 3,
             height: '100%',
             bgcolor: '#fff',
@@ -21,6 +22,7 @@ const RepairCard = ({ title, description, image, icon: Icon, priceContent, child
             borderRadius: 4,
             boxShadow: '0 4px 20px rgba(0,0,0,0.03)',
             transition: 'all 0.3s ease',
+            cursor: onClick ? 'pointer' : 'default',
             '&:hover': {
                 transform: 'translateY(-2px)',
                 boxShadow: '0 12px 30px rgba(22, 101, 52, 0.1)',

@@ -1,4 +1,4 @@
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { colors } from '../theme/colors';
 import { Box, Container, Typography, Button, Grid, Paper, Breadcrumbs } from '@mui/material';
@@ -9,7 +9,7 @@ import ScheduleAppointmentButton from '../components/ScheduleAppointmentButton';
 import { Smartphone } from 'lucide-react';
 import { useRepairPricing } from '../hooks/useRepairPricing';
 import { repairServices } from '../data/repairData';
-import RepairCard from '../components/RepairCard';
+// RepairCard removed as it is now encapsulated in RepairServiceCard
 import { seriesData as iphoneData } from '../data/iphone';
 import { cellphoneData } from '../data/cellphone';
 import { smartwatchData } from '../data/smartwatch';
@@ -20,9 +20,10 @@ import { aioData } from '../data/aio';
 import { tabletData } from '../data/tablet';
 import { ipadData } from '../data/ipad';
 import { macbookData } from '../data/macbook';
-import { repairDetails } from '../data/repairDetails'; // Import shared data
+import { repairDetails } from '../data/modelSpecificDetails'; // Import shared data
+import RepairServiceCard from '../components/RepairServiceCard';
 
-import { getImagePath } from '../data/imagePaths';
+import { getImagePath, imagePaths } from '../data/imagePaths';
 
 const DEVICE_IMAGE_URL = "https://www.gophermods.com/wp-content/uploads/2025/06/iPhone-16-Repairs-Minneapolis.jpg";
 
@@ -124,9 +125,15 @@ const ModelDetail = () => {
 
                             const groupedRepairs: Record<string, typeof rawData> = {};
                             modelRepairs.forEach(row => {
-                                const type = row['Repair Type'];
-                                if (!groupedRepairs[type]) groupedRepairs[type] = [];
-                                groupedRepairs[type].push(row);
+                                const rawType = row['Repair Type'];
+                                // Normalize type to kebab-case for consistent grouping and lookup
+                                const normalizedType = rawType.toLowerCase().trim().replace(/ /g, '-').replace(/\//g, '-');
+
+                                // Map to known keys if possible (e.g. handle variations)
+                                const key = normalizedType;
+
+                                if (!groupedRepairs[key]) groupedRepairs[key] = [];
+                                groupedRepairs[key].push(row);
                             });
 
                             const repairTypes = Object.keys(groupedRepairs);
@@ -135,103 +142,32 @@ const ModelDetail = () => {
 
                             return repairTypes.map((type) => {
                                 const rows = groupedRepairs[type];
-                                const details = repairDetails[type] || { icon: Smartphone, desc: "Professional repair service with warranty." };
+                                const details = repairDetails[type] || { icon: Smartphone, desc: "Professional repair service with warranty.", image: undefined };
                                 const Icon = details.icon;
-                                const warranty = rows.find(r => r.Warranty)?.Warranty;
 
-
-
-                                // ... inside ModelDetail ...
-
-                                const RepairCardItem = () => {
-                                    const navigate = useNavigate();
-
-                                    // Helper to format price
-                                    const getPriceValue = (p: string) => {
-                                        const val = parseFloat(p.replace(/[^0-9.]/g, ''));
-                                        return isNaN(val) ? 0 : val;
-                                    };
-
-                                    const formatPrice = (p: string, extra: number = 0) => {
-                                        const val = getPriceValue(p);
-                                        if (val === 0) return "Contact";
-                                        return `$${(val + extra).toFixed(2)}`;
-                                    };
-
-                                    const handleRowClick = (subType: string) => {
-                                        // Format service name to match ContactUs expected format (e.g. "Screen Replacement - Original Replacement")
-                                        const formattedService = type.split(/[-/]/).map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-
-                                        let finalService = formattedService;
-                                        if (subType && subType !== 'Standard') {
-                                            finalService += ` - ${subType}`;
-                                        }
-
-                                        navigate('/contact-us', {
-                                            state: {
-                                                deviceModel: model.name,
-                                                serviceType: finalService
-                                            }
-                                        });
-                                    };
-
-                                    // Construct description with warranty
-                                    const descriptionContent = (
-                                        <>
-                                            {details.desc}
-                                            {warranty && (
-                                                <Typography component="span" sx={{ display: 'block', color: colors.primary, fontWeight: 500, mt: 0.5, fontSize: '0.85rem' }}>
-                                                    Includes {warranty} Warranty
-                                                </Typography>
-                                            )}
-                                        </>
-                                    );
-
-                                    return (
-                                        <RepairCard
-                                            title={type.replace(/-/g, ' ')}
-                                            description={descriptionContent as any} // Temporary cast until interface update
-                                            image={details.image}
-                                            icon={Icon}
-                                        >
-                                            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-                                                {rows.map((r, i) => (
-                                                    <Box
-                                                        key={i}
-                                                        onClick={() => handleRowClick(r['Sub-Type Title'])}
-                                                        sx={{
-                                                            display: 'flex',
-                                                            alignItems: 'center',
-                                                            justifyContent: 'space-between',
-                                                            p: 1.5,
-                                                            borderRadius: 1.5,
-                                                            bgcolor: '#fafafa',
-                                                            cursor: 'pointer',
-                                                            border: '1px solid transparent',
-                                                            transition: 'all 0.2s',
-                                                            '&:hover': {
-                                                                bgcolor: '#f0fdf4',
-                                                                borderColor: colors.primary,
-                                                                '& .price-text': { color: colors.primary }
-                                                            }
-                                                        }}
-                                                    >
-                                                        <Typography variant="body2" sx={{ fontWeight: 600, color: '#2C3E50', fontSize: '0.9rem' }}>
-                                                            {r['Sub-Type Title'] === 'Standard' ? 'Service Price' : r['Sub-Type Title']}
-                                                        </Typography>
-                                                        <Typography className="price-text" variant="body2" sx={{ fontWeight: 700, color: '#2C3E50' }}>
-                                                            {formatPrice(r['Sub-Type Price (USD)'])}
-                                                        </Typography>
-                                                    </Box>
-                                                ))}
-                                            </Box>
-                                        </RepairCard>
-                                    );
-                                };
+                                // Ensure image is a string or undefined, not null
+                                const displayImage = details.image || '';
 
                                 return (
                                     <Grid size={{ xs: 12, sm: 6, md: 4 }} key={type}>
-                                        <RepairCardItem />
+                                        <RepairServiceCard
+                                            title={type.replace(/-/g, ' ')}
+                                            description={
+                                                <>
+                                                    {details.desc}
+                                                    {rows.find(r => r.Warranty)?.Warranty && (
+                                                        <Typography component="span" sx={{ display: 'block', color: colors.primary, fontWeight: 500, mt: 0.5, fontSize: '0.85rem' }}>
+                                                            Includes {rows.find(r => r.Warranty)?.Warranty} Warranty
+                                                        </Typography>
+                                                    )}
+                                                </>
+                                            }
+                                            image={displayImage}
+                                            icon={Icon}
+                                            rows={rows}
+                                            serviceId={serviceId || 'iphone-repair'}
+                                            modelId={model.id}
+                                        />
                                     </Grid>
                                 );
                             });
@@ -266,7 +202,7 @@ const ModelDetail = () => {
     };
 
     return (
-        <Box sx={{ pb: 0, pt: 4 }}>
+        <Box sx={{ pb: 0, pt: 7 }}>
             <SEO
                 title={`${model.name} Repair`}
                 description={`Professional repair services for ${model.name}. Select your specific model for pricing and repair options.`}
@@ -337,6 +273,12 @@ const ModelDetail = () => {
                                                         }
                                                     }
 
+                                                    // Check for specific model image in imagePaths.modelImages
+                                                    let specificImage = null;
+                                                    if ((imagePaths as any).modelImages && (imagePaths as any).modelImages[targetId]) {
+                                                        specificImage = (imagePaths as any).modelImages[targetId];
+                                                    }
+
                                                     return (
                                                         <Grid size={{ xs: 6, sm: 4, md: 2.4 }} key={variant}>
                                                             <Paper
@@ -363,7 +305,7 @@ const ModelDetail = () => {
                                                             >
                                                                 <Box
                                                                     component="img"
-                                                                    src={isSeries && seriesInfo ? (getImagePath(seriesInfo.image) || DEVICE_IMAGE_URL) : DEVICE_IMAGE_URL}
+                                                                    src={specificImage ? getImagePath(specificImage) : (isSeries && seriesInfo ? (getImagePath(seriesInfo.image) || DEVICE_IMAGE_URL) : DEVICE_IMAGE_URL)}
                                                                     alt={targetName}
                                                                     sx={{
                                                                         width: "100%",
@@ -387,7 +329,11 @@ const ModelDetail = () => {
                                             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
                                                 <Box
                                                     component="img"
-                                                    src={isSeries && seriesInfo ? (getImagePath(seriesInfo.image) || DEVICE_IMAGE_URL) : DEVICE_IMAGE_URL}
+                                                    src={
+                                                        model.id && (imagePaths as any).modelImages && (imagePaths as any).modelImages[model.id]
+                                                            ? getImagePath((imagePaths as any).modelImages[model.id])
+                                                            : (isSeries && seriesInfo ? (getImagePath(seriesInfo.image) || DEVICE_IMAGE_URL) : DEVICE_IMAGE_URL)
+                                                    }
                                                     alt={model.name}
                                                     sx={{
                                                         width: 200,

@@ -7,7 +7,7 @@ import { getImagePath } from '../data/imagePaths';
 import RepairServiceLayout from '../components/RepairServiceLayout';
 import { useRepairPricing } from '../hooks/useRepairPricing';
 import { colors } from '../theme/colors';
-import { repairDetails } from '../data/repairDetails';
+import { repairDetails } from '../data/modelSpecificDetails';
 import SEO from '../components/SEO';
 import RepairCard from '../components/RepairCard';
 
@@ -194,7 +194,7 @@ const IphoneRepair = () => {
                     We cover everything from screen replacements and battery swaps to water damage repair and data recovery. Most repairs are done the same day!
                 </Typography>
 
-                <Typography variant="h6" sx={{ color: '#333', mb: 2, fontWeight: 600 }}>
+                <Typography variant="h4" sx={{ color: '#333', mb: 2, fontWeight: 600 }}>
                     Common iPhone Repairs
                 </Typography>
                 <Box component="ul" sx={{ pl: 2, mb: 3, color: '#546E7A' }}>

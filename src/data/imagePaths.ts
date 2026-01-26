@@ -35,7 +35,17 @@ export const imagePaths = {
     'wowslider/slide1-1-1400x550.jpg',
     'wowslider/slide3-1-1400x550.jpg',
     'wowslider/slide2-1.jpg'
-  ]
+  ],
+
+  // Specific Model Images
+  modelImages: {
+    'iphone-17-pro-max': 'iphone 17.jpeg',
+    'iphone-17-pro': 'iphone 17.jpeg',
+    'iphone-17-plus': 'iphone 17.jpeg',
+    'iphone-17': 'iphone 17.jpeg', // Using existing local image for base model
+    'iphone-17-air': 'iphone 17.jpeg',
+    'iphone-17-slim': 'iphone 17.jpeg', // Handle potential alias
+  }
 };
 
 // Helper function to resolve paths including the Base URL for deployment

@@ -32,6 +32,7 @@ const TabletRepair = lazy(() => import('./pages/TabletRepair'));
 
 // Dynamic Details
 const ModelDetail = lazy(() => import('./pages/ModelDetail'));
+const RepairDetail = lazy(() => import('./pages/RepairDetail'));
 
 function App() {
   return (
@@ -68,6 +69,7 @@ function App() {
 
                 {/* Dynamic Route for Model Details - Placed last to avoid conflicts */}
                 <Route path="/:serviceId/:modelId" element={<ModelDetail />} />
+                <Route path="/:serviceId/:modelId/:repairType" element={<RepairDetail />} />
               </Routes>
             </Suspense>
           </Box>

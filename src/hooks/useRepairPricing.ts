@@ -49,7 +49,7 @@ export const useRepairPricing = () => {
 
                 // Process data rows
                 const parsedData: RepairData[] = rows.slice(headerRowIndex + 1).map(row => {
-                    const getVal = (key: string) => row[headers[key]] || '';
+                    const getVal = (key: string) => row[headers[key]]?.trim() || '';
                     
                     // Skip empty rows
                     if (!getVal('Device') && !getVal('Repair Type')) return null;
@@ -74,7 +74,7 @@ export const useRepairPricing = () => {
         });
     }, []);
 
-    const getPriceRange = (deviceType: string, repairTitle: string) => {
+    const getPriceRange = (deviceType: string, repairTitle: string, modelName?: string) => {
         if (loading) return "Loading...";
         if (!data.length) return "Contact for Price";
 
@@ -90,11 +90,16 @@ export const useRepairPricing = () => {
         
         // Filter for specific repair type
         // We match CSV 'Repair Type' against our constructed key
-        const repairRows = deviceRows.filter(row => {
+        let repairRows = deviceRows.filter(row => {
             const rowRepairType = row['Repair Type']?.toLowerCase();
             // Try exact match or match with normalized title
             return rowRepairType === normalizedRepairType || rowRepairType === repairTitle.toLowerCase().replace(/ /g, '-');
         });
+
+        // Filter by Model Name if provided
+        if (modelName) {
+            repairRows = repairRows.filter(row => row['Device Model'] === modelName);
+        }
 
         if (repairRows.length === 0) return "Contact for Price";
 

@@ -25,13 +25,13 @@ const RepairServiceLayout: React.FC<RepairServiceLayoutProps> = ({
                 <Container maxWidth="xl">
                     <Grid container spacing={8}>
                         {/* Left Column: Title and Description */}
-                        <Grid size={{ xs: 12, md: 6 }} sx={{ pl: { md: 30 } }}>
+                        <Grid size={{ xs: 12, md: 7 }} sx={{ pl: { md: 10 } }}>
                             {breadcrumbs}
                             {children}
                         </Grid>
 
                         {/* Right Column: Sidebar Card */}
-                        <Grid size={{ xs: 12, md: 6 }} sx={{ pr: { md: 30 }, mt: { md: 2 } }}>
+                        <Grid size={{ xs: 12, md: 5 }} sx={{ pr: { md: 10 }, mt: { md: 2 } }}>
                             {rightContent || <WhyChoose />}
                         </Grid>
                     </Grid>

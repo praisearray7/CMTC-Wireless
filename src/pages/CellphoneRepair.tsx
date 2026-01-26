@@ -4,7 +4,7 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Smartphone, Zap, Volume2, RefreshCw, Wifi, Maximize } from 'lucide-react';
 import { cellphoneData } from '../data/cellphone';
 import RepairCard from '../components/RepairCard';
-import { repairDetails } from '../data/repairDetails';
+import { repairDetails } from '../data/modelSpecificDetails';
 import RepairServiceLayout from '../components/RepairServiceLayout';
 import { useRepairPricing } from '../hooks/useRepairPricing';
 import { colors } from '../theme/colors';

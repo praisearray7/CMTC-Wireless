@@ -7,7 +7,7 @@ import RepairServiceLayout from '../components/RepairServiceLayout';
 import { useRepairPricing } from '../hooks/useRepairPricing';
 import { colors } from '../theme/colors';
 import RepairCard from '../components/RepairCard';
-import { repairDetails } from '../data/repairDetails';
+import { repairDetails } from '../data/modelSpecificDetails';
 
 import SEO from '../components/SEO';
 
