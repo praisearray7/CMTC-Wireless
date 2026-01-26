@@ -23,15 +23,15 @@ const theme = createTheme({
     fontFamily: '"Open Sans", "Roboto", "Helvetica", "Arial", sans-serif',
     h1: {
       fontWeight: 800,
-      color: '#2C3E50',
+      color: '#000000',
     },
     h2: {
       fontWeight: 700,
-      color: '#2C3E50',
+      color: '#000000',
     },
     h4: {
         fontWeight: 700,
-        color: '#2C3E50',
+        color: '#000000',
         },
     button: {
       textTransform: 'none',
@@ -60,7 +60,7 @@ const theme = createTheme({
         styleOverrides: {
             root: {
                 backgroundColor: '#ffffff',
-                color: '#2C3E50',
+                color: '#000000',
                 boxShadow: '0px 4px 20px rgba(0,0,0,0.05)',
             }
         }

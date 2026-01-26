@@ -110,7 +110,7 @@ const ModelDetail = () => {
                     title={`${model.name} Repair`}
                     description={`Expert repair for ${model.name}. Screen replacement, battery repair, and more. Fast service and warranty included.`}
                 />
-                <Typography variant="h3" align="center" sx={{ fontWeight: 700, mb: 6, color: '#333' }}>
+                <Typography variant="h3" align="center" sx={{ fontWeight: 700, mb: 6, color: '#000000' }}>
                     Most Popular Repairs
                     <Typography variant="h6" component="span" display="block" color="text.secondary" sx={{ mt: 1, fontWeight: 400 }}>
                         for {model.name}
@@ -217,7 +217,7 @@ const ModelDetail = () => {
                 <Grid container spacing={8}>
                     {/* LEFT COLUMN (Main Content) */}
                     <Grid size={{ xs: 12, md: 9 }}>
-                        <Typography variant="h2" component="h1" sx={{ fontWeight: 400, color: '#333', mb: 1, fontSize: '3rem' }}>
+                        <Typography variant="h2" component="h1" sx={{ fontWeight: 400, color: '#000000', mb: 1, fontSize: '3rem' }}>
                             {seriesInfo?.title || `${model.name} Repair`}
                         </Typography>
 
@@ -405,7 +405,7 @@ const ModelDetail = () => {
                             </Typography>
                             {sidebarItems.map((item) => (
                                 <Box key={item.title} sx={{ mb: 3 }}>
-                                    <Typography variant="subtitle1" sx={{ fontWeight: 700, color: '#333', mb: 0.5 }}>
+                                    <Typography variant="subtitle1" sx={{ fontWeight: 700, color: '#000000', mb: 0.5 }}>
                                         {item.title}
                                     </Typography>
                                     <Typography variant="body2" sx={{ color: '#666', lineHeight: 1.6 }}>

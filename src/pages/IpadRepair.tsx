@@ -24,14 +24,14 @@ const IpadRepair = () => {
                 faqCategory="ipad"
                 breadcrumbs={
                     <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb" sx={{ mb: 2 }}>
-                        <Link to="/" style={{ color: '#546E7A', textDecoration: 'none' }}>Home</Link>
+                        <Link to="/" style={{ color: '#000000', textDecoration: 'none' }}>Home</Link>
                         <Typography color="text.primary" fontWeight={600}>iPad Repair</Typography>
                     </Breadcrumbs>
                 }
                 bottomContent={
                     <>
                         <Box sx={{ mb: 8, textAlign: 'center', maxWidth: '1200px', mx: 'auto' }}>
-                            <Typography variant="h5" sx={{ fontWeight: 700, color: '#333', mb: 4 }}>
+                            <Typography variant="h5" sx={{ fontWeight: 700, color: '#000000', mb: 4 }}>
                                 Select your iPad Model
                             </Typography>
 
@@ -80,7 +80,7 @@ const IpadRepair = () => {
                                                         transition: "none",
                                                     }}
                                                 />
-                                                <Typography variant="h6" sx={{ color: "#1a1a1a", fontWeight: 600, textAlign: 'center' }}>{item.title}</Typography>
+                                                <Typography variant="h6" sx={{ color: "#000000", fontWeight: 600, textAlign: 'center' }}>{item.title}</Typography>
                                             </Paper>
                                         </Link>
                                     </Grid>
@@ -92,7 +92,7 @@ const IpadRepair = () => {
 
                         {/* Most Popular Repairs */}
                         <Box sx={{ mb: 8 }}>
-                            <Typography variant="h4" sx={{ fontWeight: 700, color: '#333', mb: 4, textAlign: 'center' }}>
+                            <Typography variant="h4" sx={{ fontWeight: 700, color: '#000000', mb: 4, textAlign: 'center' }}>
                                 Most Popular Repairs
                             </Typography>
                             <Grid container spacing={3}>
@@ -118,7 +118,7 @@ const IpadRepair = () => {
 
                         {/* Common Issues Section */}
                         <Box sx={{ mb: 8 }}>
-                            <Typography variant="h4" sx={{ fontWeight: 700, color: '#333', mb: 4, textAlign: 'center' }}>
+                            <Typography variant="h4" sx={{ fontWeight: 700, color: '#000000', mb: 4, textAlign: 'center' }}>
                                 Common Issues & Solutions
                             </Typography>
                             <Grid container spacing={3}>
@@ -189,26 +189,26 @@ const IpadRepair = () => {
                     </>
                 }
             >
-                <Typography variant="h2" component="h1" sx={{ fontWeight: 400, color: '#333', mb: 2, fontFamily: 'serif' }}>
+                <Typography variant="h2" component="h1" sx={{ fontWeight: 400, color: '#000000', mb: 2, fontFamily: 'serif' }}>
                     iPad Repair
                 </Typography>
 
-                <Typography variant="h6" sx={{ color: '#546E7A', mb: 3, fontWeight: 400 }}>
+                <Typography variant="h6" sx={{ color: '#000000', mb: 3, fontWeight: 400 }}>
                     iPad Repair Services for Schools and Small Businesses
                 </Typography>
 
-                <Typography variant="body1" paragraph sx={{ color: '#546E7A', mb: 3, lineHeight: 1.6 }}>
+                <Typography variant="body1" paragraph sx={{ color: '#000000', mb: 3, lineHeight: 1.6 }}>
                     Keep your classrooms and teams moving. CMTC Wireless provides worry-free depot iPad repairs with clear SLAs, consistent quality, and streamlined shipping to and from our repair facility.
                 </Typography>
 
-                <Typography variant="body1" paragraph sx={{ color: '#546E7A', mb: 3, lineHeight: 1.6 }}>
+                <Typography variant="body1" paragraph sx={{ color: '#000000', mb: 3, lineHeight: 1.6 }}>
                     Our trained technicians have repaired iPads for over ten years. We use professional tools, OEM-grade parts where available, and multi-point testing so devices return ready for use. Choose standard one to three business day turnaround after depot check-in, or ask about accelerated options on approved programs. Shipping time is additional.
                 </Typography>
 
-                <Typography variant="h6" sx={{ color: '#333', mb: 2, fontWeight: 600 }}>
+                <Typography variant="h6" sx={{ color: '#000000', mb: 2, fontWeight: 600 }}>
                     What we repair
                 </Typography>
-                <Box component="ul" sx={{ pl: 2, mb: 3, color: '#546E7A' }}>
+                <Box component="ul" sx={{ pl: 2, mb: 3, color: '#000000' }}>
                     <Box component="li"><Typography variant="body1">Cracked screens and digitizers</Typography></Box>
                     <Box component="li"><Typography variant="body1">Batteries and charging issues</Typography></Box>
                     <Box component="li"><Typography variant="body1">No power and boot failures</Typography></Box>

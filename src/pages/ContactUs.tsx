@@ -102,11 +102,11 @@ const ContactUs = () => {
             <Container maxWidth="lg" sx={{ py: 10 }}>
                 <Box sx={{ textAlign: 'center', mb: 8 }}>
                     <Typography variant="h2" sx={{ fontWeight: 800, mb: 2 }}>
-                        <span style={{ color: '#2C3E50' }}>Get</span>{' '}
+                        <span style={{ color: '#000000' }}>Get</span>{' '}
                         <span style={{ color: colors.primary }}>in</span>{' '}
                         <span style={{ color: colors.primaryBlue }}>Touch</span>
                     </Typography>
-                    <Typography variant="h6" sx={{ color: '#546E7A', fontWeight: 400 }}>
+                    <Typography variant="h6" sx={{ color: '#000000', fontWeight: 400 }}>
                         Have a question or need a quote? We're here to help 24/7.
                     </Typography>
                 </Box>
@@ -153,7 +153,7 @@ const ContactUs = () => {
                                 </CardContent>
                             </Card>
 
-                            <Card sx={{ borderRadius: 4, boxShadow: '0 4px 20px rgba(0,0,0,0.05)', bgcolor: '#2C3E50', color: 'white' }}>
+                            <Card sx={{ borderRadius: 4, boxShadow: '0 4px 20px rgba(0,0,0,0.05)', bgcolor: '#000000', color: 'white' }}>
                                 <CardContent sx={{ p: 4 }}>
                                     <Stack spacing={3}>
                                         <Stack

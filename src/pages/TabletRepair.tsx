@@ -22,15 +22,15 @@ const TabletRepair = () => {
                 faqCategory="tablet"
                 breadcrumbs={
                     <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb" sx={{ mb: 2 }}>
-                        <Link to="/" style={{ color: '#546E7A', textDecoration: 'none' }}>Home</Link>
-                        <Link to="/cell-phone-repair" style={{ color: '#546E7A', textDecoration: 'none' }}>Cell Phone Repair</Link>
+                        <Link to="/" style={{ color: '#000000', textDecoration: 'none' }}>Home</Link>
+                        <Link to="/cell-phone-repair" style={{ color: '#000000', textDecoration: 'none' }}>Cell Phone Repair</Link>
                         <Typography color="text.primary" fontWeight={600}>Tablet Repair</Typography>
                     </Breadcrumbs>
                 }
                 bottomContent={
                     <>
                         <Box sx={{ mb: 8, textAlign: 'center', maxWidth: '1200px', mx: 'auto' }}>
-                            <Typography variant="h5" sx={{ fontWeight: 700, color: '#333', mb: 4 }}>
+                            <Typography variant="h5" sx={{ fontWeight: 700, color: '#000000', mb: 4 }}>
                                 Select your Tablet Brand
                             </Typography>
                             <Grid container spacing={3} justifyContent="center">
@@ -61,7 +61,7 @@ const TabletRepair = () => {
                                                 style={{ textDecoration: 'none' }}
                                             >
                                                 <Box component="img" src={item.image} alt={item.title} sx={{ width: "100%", maxWidth: 200, height: 'auto', objectFit: 'contain', mb: 2 }} />
-                                                <Typography variant="h6" sx={{ fontWeight: 600, color: '#333', textAlign: 'center' }}>{item.title}</Typography>
+                                                <Typography variant="h6" sx={{ fontWeight: 600, color: '#000000', textAlign: 'center' }}>{item.title}</Typography>
                                             </Paper>
                                         </Grid>
                                     );
@@ -73,7 +73,7 @@ const TabletRepair = () => {
 
                         {/* Most Popular Repairs */}
                         <Box sx={{ mb: 8 }}>
-                            <Typography variant="h4" sx={{ fontWeight: 700, color: '#333', mb: 4, textAlign: 'center' }}>
+                            <Typography variant="h4" sx={{ fontWeight: 700, color: '#000000', mb: 4, textAlign: 'center' }}>
                                 Most Popular Repairs
                             </Typography>
                             <Grid container spacing={3}>
@@ -111,7 +111,7 @@ const TabletRepair = () => {
                                                     {loading ? "Loading..." : getPriceRange('tablet', item.title)}
                                                 </Typography>
                                             </Box>
-                                            <Typography variant="h6" sx={{ fontWeight: 600, color: '#333' }}>{item.title}</Typography>
+                                            <Typography variant="h6" sx={{ fontWeight: 600, color: '#000000' }}>{item.title}</Typography>
                                             <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>{item.desc}</Typography>
                                         </Paper>
                                     </Grid>
@@ -123,7 +123,7 @@ const TabletRepair = () => {
 
                         {/* Common Issues Section */}
                         <Box sx={{ mb: 8 }}>
-                            <Typography variant="h4" sx={{ fontWeight: 700, color: '#333', mb: 4, textAlign: 'center' }}>
+                            <Typography variant="h4" sx={{ fontWeight: 700, color: '#000000', mb: 4, textAlign: 'center' }}>
                                 Common Issues & Solutions
                             </Typography>
                             <Grid container spacing={3}>
@@ -194,26 +194,26 @@ const TabletRepair = () => {
                     </>
                 }
             >
-                <Typography variant="h2" component="h1" sx={{ fontWeight: 400, color: '#333', mb: 2, fontFamily: 'serif' }}>
+                <Typography variant="h2" component="h1" sx={{ fontWeight: 400, color: '#000000', mb: 2, fontFamily: 'serif' }}>
                     Tablet Repair
                 </Typography>
 
-                <Typography variant="h6" sx={{ color: '#546E7A', mb: 3, fontWeight: 400 }}>
+                <Typography variant="h6" sx={{ color: '#000000', mb: 3, fontWeight: 400 }}>
                     iPad, Galaxy Tab, Surface & More
                 </Typography>
 
-                <Typography variant="body1" paragraph sx={{ color: '#546E7A', mb: 3, lineHeight: 1.6 }}>
+                <Typography variant="body1" paragraph sx={{ color: '#000000', mb: 3, lineHeight: 1.6 }}>
                     Tablets are your portable entertainment and work hubs. When they break, you need a fast fix. We repair screens, batteries, and charging ports for all major tablet brands.
                 </Typography>
 
-                <Typography variant="body1" paragraph sx={{ color: '#546E7A', mb: 3, lineHeight: 1.6 }}>
+                <Typography variant="body1" paragraph sx={{ color: '#000000', mb: 3, lineHeight: 1.6 }}>
                     From shattered iPad glass to Surface Pros not turning on, our certified technicians have seen it all.
                 </Typography>
 
-                <Typography variant="h6" sx={{ color: '#333', mb: 2, fontWeight: 600 }}>
+                <Typography variant="h6" sx={{ color: '#000000', mb: 2, fontWeight: 600 }}>
                     Common Tablet Services
                 </Typography>
-                <Box component="ul" sx={{ pl: 2, mb: 3, color: '#546E7A' }}>
+                <Box component="ul" sx={{ pl: 2, mb: 3, color: '#000000' }}>
                     <Box component="li"><Typography variant="body1">Glass Digitizer Replacement</Typography></Box>
                     <Box component="li"><Typography variant="body1">LCD Display Replacement</Typography></Box>
                     <Box component="li"><Typography variant="body1">Battery Replacement</Typography></Box>

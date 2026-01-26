@@ -76,10 +76,10 @@ const RepairServiceCard: React.FC<RepairServiceCardProps> = ({
                             }
                         }}
                     >
-                        <Typography variant="body2" sx={{ fontWeight: 600, color: '#2C3E50', fontSize: '0.9rem' }}>
+                        <Typography variant="body2" sx={{ fontWeight: 600, color: '#000000', fontSize: '0.9rem' }}>
                             {r['Sub-Type Title'] === 'Standard' ? 'Service Price' : r['Sub-Type Title']}
                         </Typography>
-                        <Typography className="price-text" variant="body2" sx={{ fontWeight: 700, color: '#2C3E50' }}>
+                        <Typography className="price-text" variant="body2" sx={{ fontWeight: 700, color: '#000000' }}>
                             {formatPrice(r['Sub-Type Price (USD)'])}
                         </Typography>
                     </Box>

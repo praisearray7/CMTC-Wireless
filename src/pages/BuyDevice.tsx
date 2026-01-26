@@ -57,7 +57,7 @@ const BuyDevice = () => {
             <Container maxWidth="xl">
                 <Box sx={{ textAlign: 'center', mb: 8 }}>
                     <Typography variant="h2" sx={{ fontWeight: 800, mb: 2 }}>
-                        <span style={{ color: '#2C3E50' }}>Certified </span>
+                        <span style={{ color: '#000000' }}>Certified </span>
                         <span style={{ color: colors.primary }}>Pre-Owned </span>
                         <span style={{ color: colors.primaryBlue }}>Devices</span>
                     </Typography>

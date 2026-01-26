@@ -15,8 +15,8 @@ const UnlockDevice = () => {
             <Container maxWidth="md">
                 <Box sx={{ textAlign: 'center', mb: 6 }}>
                     <LockOpenIcon sx={{ fontSize: 60, color: colors.primary, mb: 2 }} />
-                    <Typography variant="h2" sx={{ fontWeight: 800, color: '#2C3E50', mb: 2 }}>Unlock Your Device</Typography>
-                    <Typography variant="h6" sx={{ color: '#546E7A', fontWeight: 400 }}>
+                    <Typography variant="h2" sx={{ fontWeight: 800, color: '#000000', mb: 2 }}>Unlock Your Device</Typography>
+                    <Typography variant="h6" sx={{ color: '#000000', fontWeight: 400 }}>
                         Switch carriers freely. Fast, secure, and permanent unlocking for most major brands.
                     </Typography>
                 </Box>

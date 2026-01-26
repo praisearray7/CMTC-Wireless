@@ -49,7 +49,7 @@ const AboutUs = () => {
                         <Grid size={{ xs: 12, sm: 6, md: 3 }} key={index}>
                             <Card sx={{ textAlign: 'center', py: 4, borderRadius: 4, boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
                                 <Box sx={{ mb: 1 }}>{stat.icon}</Box>
-                                <Typography variant="h3" sx={{ fontWeight: 800, color: '#2C3E50', mb: 0.5 }}>
+                                <Typography variant="h3" sx={{ fontWeight: 800, color: '#000000', mb: 0.5 }}>
                                     <CountUpAnimation target={stat.count} suffix={stat.suffix} />
                                 </Typography>
                                 <Typography variant="body1" color="textSecondary" sx={{ fontWeight: 600, textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: 1 }}>{stat.label}</Typography>
@@ -78,8 +78,8 @@ const AboutUs = () => {
                             <Card variant="outlined" sx={{ p: 4, height: '100%', borderRadius: 4, borderColor: '#eee', '&:hover': { borderColor: colors.primary, boxShadow: '0 4px 20px rgba(0,0,0,0.05)' } }}>
                                 <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                                     <Box sx={{ mb: 2 }}>{item.icon}</Box>
-                                    <Typography variant="h5" sx={{ fontWeight: 700, color: '#2C3E50', mb: 2 }}>{item.title}</Typography>
-                                    <Typography variant="body1" sx={{ color: '#546E7A', lineHeight: 1.6 }}>{item.text}</Typography>
+                                    <Typography variant="h5" sx={{ fontWeight: 700, color: '#000000', mb: 2 }}>{item.title}</Typography>
+                                    <Typography variant="body1" sx={{ color: '#000000', lineHeight: 1.6 }}>{item.text}</Typography>
                                 </Box>
                             </Card>
                         </Grid>
@@ -107,7 +107,7 @@ const AboutUs = () => {
                                 }}
                             />
                             <Box sx={{ position: 'absolute', bottom: -20, right: -20, bgcolor: '#ffffff', p: 3, borderRadius: 3, boxShadow: '0 10px 40px rgba(0,0,0,0.1)' }}>
-                                <Typography variant="h6" sx={{ fontWeight: 700, color: '#2C3E50' }}>Authorized Specialists</Typography>
+                                <Typography variant="h6" sx={{ fontWeight: 700, color: '#000000' }}>Authorized Specialists</Typography>
                                 <Stack direction="row" spacing={1} sx={{ mt: 1 }}>
                                     <Box sx={{ width: 10, height: 10, borderRadius: '50%', bgcolor: colors.primary }} />
                                     <Typography variant="body2" color="textSecondary">iPhone</Typography>
@@ -121,11 +121,11 @@ const AboutUs = () => {
                     </Grid>
                     <Grid size={{ xs: 12, md: 6 }}>
                         <Typography variant="overline" sx={{ color: colors.primary, fontWeight: 800, letterSpacing: 2 }}>OUR HISTORY</Typography>
-                        <Typography variant="h3" sx={{ fontWeight: 800, color: '#2C3E50', mb: 3 }}>Deep Roots in the Community</Typography>
-                        <Typography variant="body1" sx={{ color: '#546E7A', mb: 4, lineHeight: 1.8, fontSize: '1.1rem' }}>
+                        <Typography variant="h3" sx={{ fontWeight: 800, color: '#000000', mb: 3 }}>Deep Roots in the Community</Typography>
+                        <Typography variant="body1" sx={{ color: '#000000', mb: 4, lineHeight: 1.8, fontSize: '1.1rem' }}>
                             What started as a small passion project has grown into Minneapolis and St. Paul's most trusted device repair center. We saw a need for transparent, high-quality repairs in an industry often plagued by shortcuts.
                         </Typography>
-                        <Typography variant="body1" sx={{ color: '#546E7A', mb: 4, lineHeight: 1.8, fontSize: '1.1rem' }}>
+                        <Typography variant="body1" sx={{ color: '#000000', mb: 4, lineHeight: 1.8, fontSize: '1.1rem' }}>
                             Our technicians aren't just parts swappers; they are micro-soldering experts and diagnostic specialists dedicated to bringing your dead devices back to life.
                         </Typography>
 

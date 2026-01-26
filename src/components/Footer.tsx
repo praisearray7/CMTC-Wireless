@@ -28,7 +28,7 @@ const Footer = () => {
                     <Grid size={{ xs: 12, md: 3 }}>
                         <Stack spacing={3}>
                             <Typography variant="h4" component="div" sx={{ fontWeight: 900, mb: 2 }}>
-                                <span style={{ color: '#2C3E50' }}>CMTC </span>
+                                <span style={{ color: '#ffffff' }}>CMTC </span>
                                 <span style={{ color: colors.primary }}>WIRE</span>
                                 <span style={{ color: colors.primaryBlue }}>LESS</span>
                             </Typography>

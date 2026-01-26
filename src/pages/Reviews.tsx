@@ -20,9 +20,9 @@ const Reviews = () => {
             />
             <Container maxWidth="lg">
                 <Box sx={{ textAlign: 'center', mb: 8 }}>
-                    <Typography variant="h2" sx={{ fontWeight: 800, color: '#2C3E50', mb: 2 }}>Customer Stories</Typography>
+                    <Typography variant="h2" sx={{ fontWeight: 800, color: '#000000', mb: 2 }}>Customer Stories</Typography>
                     <Stack direction="row" justifyContent="center" alignItems="center" spacing={2} mb={2}>
-                        <Typography variant="h3" sx={{ fontWeight: 800, color: '#2C3E50' }}>4.9</Typography>
+                        <Typography variant="h3" sx={{ fontWeight: 800, color: '#000000' }}>4.9</Typography>
                         <Stack>
                             <Rating value={5} readOnly precision={0.5} size="large" />
                             <Typography variant="caption" color="textSecondary">Based on 1,200+ reviews</Typography>

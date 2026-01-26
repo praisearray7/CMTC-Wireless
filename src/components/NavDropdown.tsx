@@ -47,7 +47,7 @@ const NavDropdown = ({ title, items, getLink }: NavDropdownProps) => {
                 onMouseLeave={handleMenuLeave}
                 endIcon={<KeyboardArrowDownIcon />}
                 sx={{
-                    color: '#2C3E50',
+                    color: '#000000',
                     fontWeight: 600,
                     fontSize: '0.95rem',
                     mx: 0.5,
@@ -106,7 +106,7 @@ const NavDropdown = ({ title, items, getLink }: NavDropdownProps) => {
                             onClick={handleClose}
                             sx={{
                                 textDecoration: 'none',
-                                color: '#2C3E50',
+                                color: '#000000',
                                 py: 1.5,
                                 px: 2,
                                 borderRadius: 1,

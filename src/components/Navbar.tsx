@@ -142,7 +142,7 @@ const Navbar = () => {
                                                     onMouseLeave={handleMenuLeave}
                                                     endIcon={<KeyboardArrowDownIcon />}
                                                     sx={{
-                                                        color: '#2C3E50',
+                                                        color: '#000000',
                                                         fontWeight: 600,
                                                         fontSize: '0.95rem',
                                                         mx: 0.5,
@@ -201,7 +201,7 @@ const Navbar = () => {
                                                                 onClick={handleMenuLeave}
                                                                 sx={{
                                                                     textDecoration: 'none',
-                                                                    color: '#2C3E50',
+                                                                    color: '#000000',
                                                                     py: 1.5,
                                                                     px: 2,
                                                                     borderRadius: 1,
@@ -229,7 +229,7 @@ const Navbar = () => {
                                             component={Link}
                                             to={link.path}
                                             sx={{
-                                                color: '#2C3E50',
+                                                color: '#000000',
                                                 fontWeight: 600,
                                                 fontSize: '0.95rem',
                                                 mx: 0.5,

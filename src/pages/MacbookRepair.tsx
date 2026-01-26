@@ -23,14 +23,14 @@ const MacbookRepair = () => {
                 faqCategory="macbook"
                 breadcrumbs={
                     <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb" sx={{ mb: 2 }}>
-                        <Link to="/" style={{ color: '#546E7A', textDecoration: 'none' }}>Home</Link>
+                        <Link to="/" style={{ color: '#000000', textDecoration: 'none' }}>Home</Link>
                         <Typography color="text.primary" fontWeight={600}>MacBook Repair</Typography>
                     </Breadcrumbs>
                 }
                 bottomContent={
                     <>
                         <Box sx={{ mb: 8, textAlign: 'center', maxWidth: '1200px', mx: 'auto' }}>
-                            <Typography variant="h5" sx={{ fontWeight: 700, color: '#333', mb: 4 }}>
+                            <Typography variant="h5" sx={{ fontWeight: 700, color: '#000000', mb: 4 }}>
                                 Select your MacBook Model
                             </Typography>
                             <Grid container spacing={3} justifyContent="center">
@@ -78,7 +78,7 @@ const MacbookRepair = () => {
                                                         transition: "none",
                                                     }}
                                                 />
-                                                <Typography variant="h6" sx={{ color: "#1a1a1a", fontWeight: 600, textAlign: 'center' }}>{item.title}</Typography>
+                                                <Typography variant="h6" sx={{ color: "#000000", fontWeight: 600, textAlign: 'center' }}>{item.title}</Typography>
                                             </Paper>
                                         </Link>
                                     </Grid>
@@ -90,7 +90,7 @@ const MacbookRepair = () => {
 
                         {/* Most Popular Repairs */}
                         <Box sx={{ mb: 8 }}>
-                            <Typography variant="h4" sx={{ fontWeight: 700, color: '#333', mb: 4, textAlign: 'center' }}>
+                            <Typography variant="h4" sx={{ fontWeight: 700, color: '#000000', mb: 4, textAlign: 'center' }}>
                                 Most Popular Repairs
                             </Typography>
                             <Grid container spacing={3}>
@@ -128,7 +128,7 @@ const MacbookRepair = () => {
                                                     {loading ? "Loading..." : getPriceRange('macbook', item.title)}
                                                 </Typography>
                                             </Box>
-                                            <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: '#2C3E50' }}>{item.title}</Typography>
+                                            <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: '#000000' }}>{item.title}</Typography>
                                             <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>{item.desc}</Typography>
                                         </Paper>
                                     </Grid>
@@ -140,7 +140,7 @@ const MacbookRepair = () => {
 
                         {/* Common Issues Section */}
                         <Box sx={{ mb: 8 }}>
-                            <Typography variant="h4" sx={{ fontWeight: 700, color: '#333', mb: 4, textAlign: 'center' }}>
+                            <Typography variant="h4" sx={{ fontWeight: 700, color: '#000000', mb: 4, textAlign: 'center' }}>
                                 Common Issues & Solutions
                             </Typography>
                             <Grid container spacing={3}>
@@ -211,30 +211,30 @@ const MacbookRepair = () => {
                     </>
                 }
             >
-                <Typography variant="h2" component="h1" sx={{ fontWeight: 400, color: '#333', mb: 2, fontFamily: 'serif' }}>
+                <Typography variant="h2" component="h1" sx={{ fontWeight: 400, color: '#000000', mb: 2, fontFamily: 'serif' }}>
                     MacBook Repair
                 </Typography>
 
-                <Typography variant="h6" sx={{ color: '#546E7A', mb: 3, fontWeight: 400 }}>
+                <Typography variant="h6" sx={{ color: '#000000', mb: 3, fontWeight: 400 }}>
                     MacBook Repair Services for Schools and Small Businesses
                 </Typography>
 
-                <Typography variant="h5" sx={{ color: '#333', mb: 2, fontWeight: 600 }}>
+                <Typography variant="h5" sx={{ color: '#000000', mb: 2, fontWeight: 600 }}>
                     MacBook repairs you can trust
                 </Typography>
 
-                <Typography variant="body1" paragraph sx={{ color: '#546E7A', mb: 3, lineHeight: 1.6 }}>
+                <Typography variant="body1" paragraph sx={{ color: '#000000', mb: 3, lineHeight: 1.6 }}>
                     Your classrooms and teams rely on MacBooks every day. When devices fail, you need a dependable partner that restores uptime fast. CMTC Wireless delivers depot repair programs built for education and small business fleets with clear SLAs, consistent quality, and simple logistics.
                 </Typography>
 
-                <Typography variant="body1" paragraph sx={{ color: '#546E7A', mb: 3, lineHeight: 1.6 }}>
+                <Typography variant="body1" paragraph sx={{ color: '#000000', mb: 3, lineHeight: 1.6 }}>
                     We have repaired Mac laptops for over ten years. Our trained technicians follow documented processes and multi point testing so devices return ready for use. Every repair includes a one year warranty on covered work.
                 </Typography>
 
-                <Typography variant="h6" sx={{ color: '#333', mb: 2, fontWeight: 600 }}>
+                <Typography variant="h6" sx={{ color: '#000000', mb: 2, fontWeight: 600 }}>
                     What we repair
                 </Typography>
-                <Box component="ul" sx={{ pl: 2, mb: 3, color: '#546E7A' }}>
+                <Box component="ul" sx={{ pl: 2, mb: 3, color: '#000000' }}>
                     <Box component="li"><Typography variant="body1">Cracked and damaged displays</Typography></Box>
                     <Box component="li"><Typography variant="body1">Batteries and charging issues</Typography></Box>
                     <Box component="li"><Typography variant="body1">Keyboards, trackpads, and ports</Typography></Box>

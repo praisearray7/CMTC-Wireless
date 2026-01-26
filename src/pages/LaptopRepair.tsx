@@ -22,15 +22,15 @@ const LaptopRepair = () => {
                 faqCategory="laptop"
                 breadcrumbs={
                     <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb" sx={{ mb: 2 }}>
-                        <Link to="/" style={{ color: '#546E7A', textDecoration: 'none' }}>Home</Link>
-                        <Link to="/computer-repair" style={{ color: '#546E7A', textDecoration: 'none' }}>Computer Repair</Link>
+                        <Link to="/" style={{ color: '#000000', textDecoration: 'none' }}>Home</Link>
+                        <Link to="/computer-repair" style={{ color: '#000000', textDecoration: 'none' }}>Computer Repair</Link>
                         <Typography color="text.primary" fontWeight={600}>Laptop Repair</Typography>
                     </Breadcrumbs>
                 }
                 bottomContent={
                     <>
                         <Box sx={{ mb: 8, textAlign: 'center', maxWidth: '1200px', mx: 'auto' }}>
-                            <Typography variant="h5" sx={{ fontWeight: 700, color: '#333', mb: 4 }}>
+                            <Typography variant="h5" sx={{ fontWeight: 700, color: '#000000', mb: 4 }}>
                                 Select your Laptop Brand
                             </Typography>
                             <Grid container spacing={3} justifyContent="center">
@@ -60,7 +60,7 @@ const LaptopRepair = () => {
                                                 style={{ textDecoration: 'none' }}
                                             >
                                                 <Box component="img" src={item.image} alt={item.title} sx={{ width: "100%", maxWidth: 200, height: 'auto', objectFit: 'contain', mb: 2 }} />
-                                                <Typography variant="h6" sx={{ fontWeight: 600, color: '#333', textAlign: 'center' }}>{item.title}</Typography>
+                                                <Typography variant="h6" sx={{ fontWeight: 600, color: '#000000', textAlign: 'center' }}>{item.title}</Typography>
                                             </Paper>
                                         </Grid>
                                     );
@@ -72,7 +72,7 @@ const LaptopRepair = () => {
 
                         {/* Most Popular Repairs */}
                         <Box sx={{ mb: 8 }}>
-                            <Typography variant="h4" sx={{ fontWeight: 700, color: '#333', mb: 4, textAlign: 'center' }}>
+                            <Typography variant="h4" sx={{ fontWeight: 700, color: '#000000', mb: 4, textAlign: 'center' }}>
                                 Most Popular Repairs
                             </Typography>
                             <Grid container spacing={3}>
@@ -110,7 +110,7 @@ const LaptopRepair = () => {
                                                     {loading ? "Loading..." : getPriceRange('laptop', item.title)}
                                                 </Typography>
                                             </Box>
-                                            <Typography variant="h6" sx={{ fontWeight: 600, color: '#333' }}>{item.title}</Typography>
+                                            <Typography variant="h6" sx={{ fontWeight: 600, color: '#000000' }}>{item.title}</Typography>
                                             <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>{item.desc}</Typography>
                                         </Paper>
                                     </Grid>
@@ -122,7 +122,7 @@ const LaptopRepair = () => {
 
                         {/* Common Issues Section */}
                         <Box sx={{ mb: 8 }}>
-                            <Typography variant="h4" sx={{ fontWeight: 700, color: '#333', mb: 4, textAlign: 'center' }}>
+                            <Typography variant="h4" sx={{ fontWeight: 700, color: '#000000', mb: 4, textAlign: 'center' }}>
                                 Common Issues & Solutions
                             </Typography>
                             <Grid container spacing={3}>
@@ -193,26 +193,26 @@ const LaptopRepair = () => {
                     </>
                 }
             >
-                <Typography variant="h2" component="h1" sx={{ fontWeight: 400, color: '#333', mb: 2, fontFamily: 'serif' }}>
+                <Typography variant="h2" component="h1" sx={{ fontWeight: 400, color: '#000000', mb: 2, fontFamily: 'serif' }}>
                     Laptop Repair
                 </Typography>
 
-                <Typography variant="h6" sx={{ color: '#546E7A', mb: 3, fontWeight: 400 }}>
+                <Typography variant="h6" sx={{ color: '#000000', mb: 3, fontWeight: 400 }}>
                     Professional Repair for All Laptop Brands
                 </Typography>
 
-                <Typography variant="body1" paragraph sx={{ color: '#546E7A', mb: 3, lineHeight: 1.6 }}>
+                <Typography variant="body1" paragraph sx={{ color: '#000000', mb: 3, lineHeight: 1.6 }}>
                     From cracked screens and broken hinges to battery replacements, we fix all major laptop brands including Dell, HP, Lenovo, Asus, Acer, and more.
                 </Typography>
 
-                <Typography variant="body1" paragraph sx={{ color: '#546E7A', mb: 3, lineHeight: 1.6 }}>
+                <Typography variant="body1" paragraph sx={{ color: '#000000', mb: 3, lineHeight: 1.6 }}>
                     Our technicians are experts at sourcing hard-to-find parts and performing component-level board repairs when necessary.
                 </Typography>
 
-                <Typography variant="h6" sx={{ color: '#333', mb: 2, fontWeight: 600 }}>
+                <Typography variant="h6" sx={{ color: '#000000', mb: 2, fontWeight: 600 }}>
                     Common Laptop Services
                 </Typography>
-                <Box component="ul" sx={{ pl: 2, mb: 3, color: '#546E7A' }}>
+                <Box component="ul" sx={{ pl: 2, mb: 3, color: '#000000' }}>
                     <Box component="li"><Typography variant="body1">LCD / OLED Screen Replacement</Typography></Box>
                     <Box component="li"><Typography variant="body1">Battery Replacement</Typography></Box>
                     <Box component="li"><Typography variant="body1">Keyboard Replacement</Typography></Box>

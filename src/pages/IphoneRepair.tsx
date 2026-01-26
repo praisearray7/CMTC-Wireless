@@ -24,14 +24,14 @@ const IphoneRepair = () => {
                 faqCategory="iphone"
                 breadcrumbs={
                     <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb" sx={{ mb: 2 }}>
-                        <Link to="/" style={{ color: '#546E7A', textDecoration: 'none' }}>Home</Link>
+                        <Link to="/" style={{ color: '#000000', textDecoration: 'none' }}>Home</Link>
                         <Typography color="text.primary" fontWeight={600}>iPhone Repair</Typography>
                     </Breadcrumbs>
                 }
                 bottomContent={
                     <>
                         <Box sx={{ mb: 8, textAlign: 'center', maxWidth: '1200px', mx: 'auto' }}>
-                            <Typography variant="h5" sx={{ fontWeight: 700, color: '#333', mb: 4 }}>
+                            <Typography variant="h5" sx={{ fontWeight: 700, color: '#000000', mb: 4 }}>
                                 Select your iPhone Model
                             </Typography>
                             <Grid container spacing={3} justifyContent="center">
@@ -70,7 +70,7 @@ const IphoneRepair = () => {
                                                     mb: 2,
                                                 }}
                                             />
-                                            <Typography variant="h6" sx={{ fontWeight: 600, color: '#333', textAlign: 'center', textTransform: 'capitalize' }}>
+                                            <Typography variant="h6" sx={{ fontWeight: 600, color: '#000000', textAlign: 'center', textTransform: 'capitalize' }}>
                                                 {item.title.replace(' Repair', '')}
                                             </Typography>
                                         </Paper>
@@ -83,7 +83,7 @@ const IphoneRepair = () => {
 
                         {/* Most Popular Repairs */}
                         <Box sx={{ mb: 8 }}>
-                            <Typography variant="h4" sx={{ fontWeight: 700, color: '#333', mb: 4, textAlign: 'center' }}>
+                            <Typography variant="h4" sx={{ fontWeight: 700, color: '#000000', mb: 4, textAlign: 'center' }}>
                                 Most Popular Repairs
                             </Typography>
                             <Grid container spacing={3}>
@@ -109,7 +109,7 @@ const IphoneRepair = () => {
 
                         {/* Common Issues Section */}
                         <Box sx={{ mb: 8 }}>
-                            <Typography variant="h4" sx={{ fontWeight: 700, color: '#333', mb: 4, textAlign: 'center' }}>
+                            <Typography variant="h4" sx={{ fontWeight: 700, color: '#000000', mb: 4, textAlign: 'center' }}>
                                 Common Issues & Solutions
                             </Typography>
                             <Grid container spacing={3}>
@@ -178,26 +178,26 @@ const IphoneRepair = () => {
                     </>
                 }
             >
-                <Typography variant="h2" component="h1" sx={{ fontWeight: 400, color: '#333', mb: 2, fontFamily: 'serif' }}>
+                <Typography variant="h2" component="h1" sx={{ fontWeight: 400, color: '#000000', mb: 2, fontFamily: 'serif' }}>
                     iPhone Repair
                 </Typography>
 
-                <Typography variant="h6" sx={{ color: '#546E7A', mb: 3, fontWeight: 400 }}>
+                <Typography variant="h6" sx={{ color: '#000000', mb: 3, fontWeight: 400 }}>
                     Professional iPhone Screen Replacement & Repair Services
                 </Typography>
 
-                <Typography variant="body1" paragraph sx={{ color: '#546E7A', mb: 3, lineHeight: 1.6 }}>
+                <Typography variant="body1" paragraph sx={{ color: '#000000', mb: 3, lineHeight: 1.6 }}>
                     Is your iPhone screen cracked, battery draining fast, or charging port not working? CMTC Wireless offers fast, reliable, and affordable iPhone repair services. Our certified technicians use high-quality parts to ensure your device works like new again.
                 </Typography>
 
-                <Typography variant="body1" paragraph sx={{ color: '#546E7A', mb: 3, lineHeight: 1.6 }}>
+                <Typography variant="body1" paragraph sx={{ color: '#000000', mb: 3, lineHeight: 1.6 }}>
                     We cover everything from screen replacements and battery swaps to water damage repair and data recovery. Most repairs are done the same day!
                 </Typography>
 
-                <Typography variant="h4" sx={{ color: '#333', mb: 2, fontWeight: 600 }}>
+                <Typography variant="h4" sx={{ color: '#000000', mb: 2, fontWeight: 600 }}>
                     Common iPhone Repairs
                 </Typography>
-                <Box component="ul" sx={{ pl: 2, mb: 3, color: '#546E7A' }}>
+                <Box component="ul" sx={{ pl: 2, mb: 3, color: '#000000' }}>
                     <Box component="li"><Typography variant="body1">Screen & LCD Replacement</Typography></Box>
                     <Box component="li"><Typography variant="body1">Battery Replacement</Typography></Box>
                     <Box component="li"><Typography variant="body1">Charging Port Repair</Typography></Box>

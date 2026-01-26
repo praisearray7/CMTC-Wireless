@@ -26,7 +26,7 @@ import { colors } from '../theme/colors';
 const Home = () => {
     // CMTC Brand Colors
     const primaryGreen = colors.primary;
-
+    const primaryBlue = colors.primaryBlue;
     const carouselImages = imagePaths.carousel.map(path => getImagePath(path));
 
     // Hero Carousel Logic
@@ -44,16 +44,16 @@ const Home = () => {
                     <Grid container spacing={8} alignItems="center">
                         {/* Left: Content */}
                         <Grid size={{ xs: 12, md: 6 }} >
-                            <Typography variant="h2" sx={{ fontWeight: 800, mb: 3, fontSize: { xs: '2.5rem', md: '4rem' }, color: '#2C3E50', lineHeight: 1.1 }}>
+                            <Typography variant="h2" sx={{ fontWeight: 800, mb: 3, fontSize: { xs: '2.5rem', md: '4rem' }, color: '#000000', lineHeight: 1.1 }}>
                                 Fast, Reliable <br />
                                 <span style={{ color: primaryGreen }}>Phone Repairs</span>
                                 <br />
-                                <span style={{ color: '#2196F3' }}>Near You.</span>
+                                <span style={{ color: primaryBlue }}>Near You.</span>
                             </Typography>
-                            <Typography variant="h6" sx={{ color: '#546E7A', mb: 3, fontWeight: 400, lineHeight: 1.6, maxWidth: 600 }}>
+                            <Typography variant="h6" sx={{ color: '#000000', mb: 3, fontWeight: 400, lineHeight: 1.6, maxWidth: 600 }}>
                                 Get your phone fixed quickly and efficiently by our expert technicians. We offer same day repairs for most devices, ensuring you stay connected.
                             </Typography>
-                            <Typography variant="h6" sx={{ color: '#546E7A', mb: 3, fontWeight: 400, lineHeight: 1.6, maxWidth: 600 }}>
+                            <Typography variant="h6" sx={{ color: '#000000', mb: 3, fontWeight: 400, lineHeight: 1.6, maxWidth: 600 }}>
                                 📅 <a href="https://calendly.com/martinakinseye/cmtcwireless"> <u style={{ color: 'blue' }}>Get in touch</u></a> today to get exclusive <b>discounts</b> and guaranteed <b>priority service</b>! 💬 Limited slots available — book now and save big before the offer ends!
                             </Typography>
 
@@ -95,7 +95,7 @@ const Home = () => {
                                         }}
                                     >
                                         {stat.icon}
-                                        <Typography variant="h4" sx={{ fontWeight: 800, color: '#2C3E50', mb: 0.5 }}>
+                                        <Typography variant="h4" sx={{ fontWeight: 800, color: '#000000', mb: 0.5 }}>
                                             <CountUpAnimation target={stat.count} suffix={stat.suffix} />
                                         </Typography>
                                         <Typography variant="body2" color="textSecondary" sx={{ fontWeight: 600, fontSize: '0.8rem', lineHeight: 1.2 }}>
@@ -179,10 +179,10 @@ const Home = () => {
                                             filter: 'drop-shadow(0 10px 15px rgba(0,0,0,0.1))'
                                         }}
                                     />
-                                    <Typography variant="h4" sx={{ fontWeight: 600, mb: 2, color: '#1a1a1a' }}>
+                                    <Typography variant="h4" sx={{ fontWeight: 600, mb: 2, color: '#000000' }}>
                                         {item.title}
                                     </Typography>
-                                    <Typography variant="body1" sx={{ mb: 4, color: '#37474f', lineHeight: 1.5 }}>
+                                    <Typography variant="body1" sx={{ mb: 4, color: '#000000', lineHeight: 1.5 }}>
                                         {item.desc}
                                     </Typography>
                                 </Box>
@@ -293,7 +293,7 @@ const Home = () => {
 
             {/* Value Props / Why Choose Us */}
             <Container maxWidth="xl" sx={{ py: 10 }}>
-                <Typography variant="h3" sx={{ textAlign: 'center', mb: 6, fontWeight: 800, color: '#2C3E50' }}>
+                <Typography variant="h3" sx={{ textAlign: 'center', mb: 6, fontWeight: 800, color: '#000000' }}>
                     Why Choose Us
                 </Typography>
                 <Grid container spacing={4}>
@@ -307,7 +307,7 @@ const Home = () => {
                             <Card elevation={0} sx={{ height: '100%', bgcolor: '#F9FAFB', borderRadius: 4, transition: '0.3s', '&:hover': { transform: 'translateY(-5px)' } }}>
                                 <CardContent sx={{ p: 4 }}>
                                     <Box sx={{ mb: 2 }}>{item.icon}</Box>
-                                    <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: '#2C3E50' }}>{item.title}</Typography>
+                                    <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: '#000000' }}>{item.title}</Typography>
                                     <Typography variant="body2" color="textSecondary" sx={{ lineHeight: 1.6 }}>{item.desc}</Typography>
                                 </CardContent>
                             </Card>
@@ -319,7 +319,7 @@ const Home = () => {
             {/* BBB Accreditation Section */}
             <Box sx={{ py: 8 }}>
                 <Container maxWidth="xl" sx={{ textAlign: 'center' }}>
-                    <Typography variant="h4" sx={{ fontWeight: 800, mb: 4, color: '#2C3E50' }}>
+                    <Typography variant="h4" sx={{ fontWeight: 800, mb: 4, color: '#000000' }}>
                         BBB Accreditation
                     </Typography>
                     <Box

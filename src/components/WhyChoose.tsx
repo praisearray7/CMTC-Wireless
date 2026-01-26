@@ -51,7 +51,7 @@ const WhyChoose = () => {
                     <Box key={index} sx={{ display: 'flex', gap: 2, alignItems: 'flex-start' }}>
                         <Box sx={{ mt: 0.5 }}>{item.icon}</Box>
                         <Box>
-                            <Typography variant="h6" sx={{ fontWeight: 700, color: '#2C3E50', lineHeight: 1.2, mb: 0.5 }}>
+                            <Typography variant="h6" sx={{ fontWeight: 700, color: '#000000', lineHeight: 1.2, mb: 0.5 }}>
                                 {item.title}
                             </Typography>
                             <Typography variant="body1" sx={{ lineHeight: 1.5, color: '#37474f' }}>

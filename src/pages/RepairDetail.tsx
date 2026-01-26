@@ -126,7 +126,7 @@ const RepairDetail = () => {
                     });
 
                     return (
-                        <Typography key={index} variant="body1" sx={{ color: '#546E7A', mb: 2, fontSize: '1.1rem', lineHeight: 1.6 }}>
+                        <Typography key={index} variant="body1" sx={{ color: '#000000', mb: 2, fontSize: '1.1rem', lineHeight: 1.6 }}>
                             {content}
                         </Typography>
                     );
@@ -257,7 +257,7 @@ const RepairDetail = () => {
             >
                 <Grid container spacing={4} alignItems="center" sx={{ mb: 6 }}>
                     <Grid size={{ xs: 12 }}>
-                        <Typography variant="h3" component="h1" sx={{ fontWeight: 700, color: '#333', mb: 2 }}>
+                        <Typography variant="h3" component="h1" sx={{ fontWeight: 700, color: '#000000', mb: 2 }}>
                             {displayTitle}
                         </Typography>
 
@@ -292,7 +292,7 @@ const RepairDetail = () => {
                                             bgcolor: idx % 2 === 0 ? '#fafafa' : '#fff'
                                         }}>
                                             <Typography sx={{ width: '40%', fontWeight: 600, color: '#555' }}>{key}</Typography>
-                                            <Typography sx={{ width: '60%', color: '#333' }}>{value as string}</Typography>
+                                            <Typography sx={{ width: '60%', color: '#000000' }}>{value as string}</Typography>
                                         </Box>
                                     ))}
                                 </Paper>

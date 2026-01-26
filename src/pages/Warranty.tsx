@@ -18,7 +18,7 @@ const Warranty = () => {
                 description="We stand behind our work with a one-year warranty on all repairs and certified pre-owned devices. Peace of mind guaranteed."
             />
             {/* Hero Section */}
-            <Box sx={{ bgcolor: '#2C3E50', color: 'white', py: 10, textAlign: 'center' }}>
+            <Box sx={{ bgcolor: '#000000', color: 'white', py: 10, textAlign: 'center' }}>
                 <Container maxWidth="lg">
                     <WarrantyIcon sx={{ fontSize: 80, mb: 2 }} />
                     <Typography variant="h2" sx={{ fontWeight: 800, mb: 2 }}>
@@ -37,10 +37,10 @@ const Warranty = () => {
                     {/* Main Content */}
                     <Grid size={{ xs: 12, md: 8 }}>
                         <Box sx={{ mb: 6 }}>
-                            <Typography variant="h4" sx={{ fontWeight: 700, color: '#2C3E50', mb: 3 }}>
+                            <Typography variant="h4" sx={{ fontWeight: 700, color: '#000000', mb: 3 }}>
                                 One-Year Warranty
                             </Typography>
-                            <Typography variant="body1" sx={{ color: '#546E7A', mb: 3, lineHeight: 1.8 }}>
+                            <Typography variant="body1" sx={{ color: '#000000', mb: 3, lineHeight: 1.8 }}>
                                 At CMTC Wireless, we use only the highest quality parts for our repairs. We are so confident in our craftsmanship that we offer a comprehensive <strong>One-Year Warranty</strong> on all repairs and certified pre-owned devices.
                             </Typography>
                             <Paper sx={{ p: 3, bgcolor: colors.white, borderRadius: 2, borderLeft: `4px solid ${colors.primary}` }}>
@@ -65,10 +65,10 @@ const Warranty = () => {
                         </Box>
 
                         <Box sx={{ mb: 6 }}>
-                            <Typography variant="h4" sx={{ fontWeight: 700, color: '#2C3E50', mb: 3 }}>
+                            <Typography variant="h4" sx={{ fontWeight: 700, color: '#000000', mb: 3 }}>
                                 Exclusions
                             </Typography>
-                            <Typography variant="body1" sx={{ color: '#546E7A', mb: 3 }}>
+                            <Typography variant="body1" sx={{ color: '#000000', mb: 3 }}>
                                 While we cover a lot, our warranty does not cover issues caused by accidental damage after the repair.
                             </Typography>
 
@@ -111,17 +111,17 @@ const Warranty = () => {
                         </Box>
 
                         <Box>
-                            <Typography variant="h4" sx={{ fontWeight: 700, color: '#2C3E50', mb: 3 }}>
+                            <Typography variant="h4" sx={{ fontWeight: 700, color: '#000000', mb: 3 }}>
                                 Return Policy
                             </Typography>
-                            <Typography variant="body1" sx={{ color: '#546E7A', mb: 3 }}>
+                            <Typography variant="body1" sx={{ color: '#000000', mb: 3 }}>
                                 We want you to love your device.
                             </Typography>
                             <Paper sx={{ p: 3, bgcolor: '#E3F2FD', borderRadius: 2 }}>
                                 <Typography variant="h6" sx={{ fontWeight: 600, mb: 1, display: 'flex', alignItems: 'center' }}>
                                     <AssignmentReturnIcon sx={{ color: '#1976D2', mr: 1 }} /> 30-Day Returns
                                 </Typography>
-                                <Typography variant="body2" sx={{ color: '#455A64' }}>
+                                <Typography variant="body2" sx={{ color: '#000000' }}>
                                     You can return any Certified Pre-Owned device within <strong>30 days</strong> for any reason, as long as it is in the same condition as when it was sold. Broken or damaged devices are not eligible for return unless the damage is repaired at the cost of the customer. There are no restocking fees.
                                 </Typography>
                             </Paper>

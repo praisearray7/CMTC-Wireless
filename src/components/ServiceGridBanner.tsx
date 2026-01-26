@@ -98,7 +98,7 @@ const ServiceGridBanner = () => {
                                 <Typography
                                     variant="h6"
                                     sx={{
-                                        color: '#666',
+                                        color: '#000000',
                                         fontWeight: 400,
                                         fontSize: '1rem',
                                         textAlign: 'center'
