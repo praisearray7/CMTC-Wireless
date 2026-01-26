@@ -121,7 +121,7 @@ const ModelDetail = () => {
                     <Grid container spacing={3}>
                         {(() => {
                             // Filter & Group Data
-                            const modelRepairs = rawData.filter(row => row['Device Model'] === model.name);
+                            const modelRepairs = rawData.filter(row => row['Device Model']?.toLowerCase().trim() === model.name.toLowerCase().trim());
 
                             const groupedRepairs: Record<string, typeof rawData> = {};
                             modelRepairs.forEach(row => {
