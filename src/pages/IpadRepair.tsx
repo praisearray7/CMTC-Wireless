@@ -96,29 +96,21 @@ const IpadRepair = () => {
                                 Most Popular Repairs
                             </Typography>
                             <Grid container spacing={3}>
-                                {[
-                                    'glass-replacement', 'lcd-screen-repair', 'battery-replacement',
-                                    'charging-port-repair', 'home-button-repair', 'unlock-services',
-                                    'water-damage-cleaning', 'camera-repair', 'frame-straightening'
-                                ].map((type, index) => {
-                                    const item = repairDetails[type];
-                                    if (!item) return null;
-                                    return (
-                                        <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
-                                            <RepairCard
-                                                title={item.title}
-                                                description={item.desc}
-                                                image={item.image}
-                                                icon={item.icon}
-                                                priceContent={
-                                                    <Typography variant="h6" sx={{ fontWeight: 700, whiteSpace: 'nowrap', color: colors.primary }}>
-                                                        {loading ? "Loading..." : getPriceRange('ipad', item.title)}
-                                                    </Typography>
-                                                }
-                                            />
-                                        </Grid>
-                                    );
-                                })}
+                                {Object.values(repairDetails).map((item: any, index: number) => (
+                                    <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
+                                        <RepairCard
+                                            title={item.title}
+                                            description={item.desc}
+                                            image={item.image}
+                                            icon={item.icon}
+                                            priceContent={
+                                                <Typography variant="h6" sx={{ fontWeight: 700, whiteSpace: 'nowrap', color: colors.primary }}>
+                                                    {loading ? "Loading..." : getPriceRange('ipad', item.title)}
+                                                </Typography>
+                                            }
+                                        />
+                                    </Grid>
+                                ))}
                             </Grid>
                         </Box>
 
