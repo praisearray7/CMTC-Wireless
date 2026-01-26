@@ -18,7 +18,7 @@ const Warranty = () => {
                 description="We stand behind our work with a one-year warranty on all repairs and certified pre-owned devices. Peace of mind guaranteed."
             />
             {/* Hero Section */}
-            <Box sx={{ bgcolor: '#000000', color: 'white', py: 10, textAlign: 'center' }}>
+            <Box sx={{ bgcolor: '#2C3E50', color: 'white', py: 10, textAlign: 'center' }}>
                 <Container maxWidth="lg">
                     <WarrantyIcon sx={{ fontSize: 80, mb: 2 }} />
                     <Typography variant="h2" sx={{ fontWeight: 800, mb: 2 }}>

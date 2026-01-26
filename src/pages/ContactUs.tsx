@@ -153,7 +153,7 @@ const ContactUs = () => {
                                 </CardContent>
                             </Card>
 
-                            <Card sx={{ borderRadius: 4, boxShadow: '0 4px 20px rgba(0,0,0,0.05)', bgcolor: '#000000', color: 'white' }}>
+                            <Card sx={{ borderRadius: 4, boxShadow: '0 4px 20px rgba(0,0,0,0.05)', bgcolor: '#2C3E50', color: 'white' }}>
                                 <CardContent sx={{ p: 4 }}>
                                     <Stack spacing={3}>
                                         <Stack

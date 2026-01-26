@@ -61,7 +61,7 @@ const BuyDevice = () => {
                         <span style={{ color: colors.primary }}>Pre-Owned </span>
                         <span style={{ color: colors.primaryBlue }}>Devices</span>
                     </Typography>
-                    <Typography variant="h6" sx={{ color: '#546E7A', fontWeight: 400, maxWidth: 700, mx: 'auto' }}>
+                    <Typography variant="h6" sx={{ color: '#000000', fontWeight: 400, maxWidth: 700, mx: 'auto' }}>
                         Discover our selection of certified pre-owned phones. All meticulously inspected and restored to like-new condition. Get a reliable phone at a great price!
                     </Typography>
                 </Box>
@@ -161,10 +161,10 @@ const BuyDevice = () => {
 
                 {/* Value Props Section */}
                 <Box sx={{ mt: 12, textAlign: 'center' }}>
-                    <Typography variant="h3" sx={{ fontWeight: 800, color: '#2C3E50', mb: 3 }}>
+                    <Typography variant="h3" sx={{ fontWeight: 800, color: '#000000', mb: 3 }}>
                         We Offer a Variety of Devices
                     </Typography>
-                    <Typography variant="body1" sx={{ color: '#546E7A', mb: 8, maxWidth: 800, mx: 'auto', fontSize: '1.1rem' }}>
+                    <Typography variant="body1" sx={{ color: '#000000', mb: 8, maxWidth: 800, mx: 'auto', fontSize: '1.1rem' }}>
                         Let us know which device you are looking for and we will have one of our device consultants reach out with some of our current deals!
                     </Typography>
 
