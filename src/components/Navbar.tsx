@@ -1,4 +1,6 @@
 
+'use client';
+
 import { useState, useRef } from 'react';
 import type { MouseEvent, KeyboardEvent } from 'react';
 import { AppBar, Toolbar, Button, Container, Box, IconButton, useTheme, useMediaQuery, Stack, Menu, Typography } from '@mui/material';
@@ -7,7 +9,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import MessageIcon from '@mui/icons-material/Message';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { navLinks, repairServices, buyServices } from '../data/repairData';
 import type { RepairCategory } from '../data/repairData';
 import { imagePaths, getImagePath } from '../data/imagePaths';
@@ -107,7 +109,7 @@ const Navbar = () => {
                 <Container maxWidth="xl">
                     <Toolbar disableGutters sx={{ height: 60 }}>
                         {/* Logo */}
-                        <Box component={Link} to="/" sx={{ flexGrow: 0, mr: 4, textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+                        <Box component={Link} href="/" sx={{ flexGrow: 0, mr: 4, textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
                             <img src={getImagePath(imagePaths.logo)} alt="CMTC Wireless" style={{ height: 70, objectFit: 'contain' }} onError={(e) => { e.currentTarget.style.display = 'none'; }} />
                         </Box>
 
@@ -197,7 +199,7 @@ const Navbar = () => {
                                                             <Box
                                                                 key={service.id}
                                                                 component={Link}
-                                                                to={getLink(service, isBuyMenu)}
+                                                                href={getLink(service, isBuyMenu)}
                                                                 onClick={handleMenuLeave}
                                                                 sx={{
                                                                     textDecoration: 'none',
@@ -227,7 +229,7 @@ const Navbar = () => {
                                         <Button
                                             key={link.title}
                                             component={Link}
-                                            to={link.path}
+                                            href={link.path}
                                             sx={{
                                                 color: '#000000',
                                                 fontWeight: 600,

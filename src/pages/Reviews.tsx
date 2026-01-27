@@ -1,3 +1,5 @@
+'use client';
+
 import { Box, Container, Grid, Typography, Card, CardContent, Rating, Avatar, Stack } from '@mui/material';
 import { colors } from '../theme/colors';
 import SEO from '../components/SEO';

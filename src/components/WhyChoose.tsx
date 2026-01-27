@@ -1,6 +1,6 @@
 import { Box, Paper, Typography, Stack, Button } from '@mui/material';
 import StaggerContainer from './animations/StaggerContainer';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import BuildOutlinedIcon from '@mui/icons-material/BuildOutlined';
 import VerifiedUserOutlinedIcon from '@mui/icons-material/VerifiedUserOutlined';
@@ -67,7 +67,7 @@ const WhyChoose = () => {
 
             <Button
                 component={Link}
-                to="/about-us"
+                href="/about-us"
                 variant="contained"
                 disableElevation
                 sx={{

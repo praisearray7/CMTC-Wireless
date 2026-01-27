@@ -1,25 +1,14 @@
+'use client';
+
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { usePathname } from 'next/navigation';
 
 const ScrollToTop = () => {
-    const { pathname, hash } = useLocation();
+    const pathname = usePathname();
 
     useEffect(() => {
-        if (hash) {
-            const element = document.querySelector(hash);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            } else {
-                // Retry after a small delay in case content is loading
-                setTimeout(() => {
-                    const el = document.querySelector(hash);
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }, 100);
-            }
-        } else {
-            window.scrollTo(0, 0);
-        }
-    }, [pathname, hash]);
+        window.scrollTo(0, 0);
+    }, [pathname]);
 
     return null;
 };

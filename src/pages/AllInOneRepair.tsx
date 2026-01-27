@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom';
+'use client';
+
+import Link from 'next/link';
 import { Typography, Grid, Paper, Breadcrumbs, Box, Divider } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Monitor, HardDrive, Zap, Activity, Database, ShieldAlert, Cpu, Layers, Power } from 'lucide-react';
@@ -23,8 +25,8 @@ const AllInOneRepair = () => {
                 faqCategory="aio"
                 breadcrumbs={
                     <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb" sx={{ mb: 2 }}>
-                        <Link to="/" style={{ color: '#546E7A', textDecoration: 'none' }}>Home</Link>
-                        <Link to="/computer-repair" style={{ color: '#546E7A', textDecoration: 'none' }}>Computer Repair</Link>
+                        <Link href="/" style={{ color: '#546E7A', textDecoration: 'none' }}>Home</Link>
+                        <Link href="/computer-repair" style={{ color: '#546E7A', textDecoration: 'none' }}>Computer Repair</Link>
                         <Typography color="text.primary" fontWeight={600}>All-In-One Repair</Typography>
                     </Breadcrumbs>
                 }
@@ -56,7 +58,7 @@ const AllInOneRepair = () => {
                                                     },
                                                 }}
                                                 component={Link}
-                                                to={`/aio-repair/${item.id}`}
+                                                href={`/aio-repair/${item.id}`}
                                                 style={{ textDecoration: 'none' }}
                                             >
                                                 <Box component="img" src={item.image} alt={item.title} sx={{ width: "100%", maxWidth: 200, height: 'auto', objectFit: 'contain', mb: 2 }} />

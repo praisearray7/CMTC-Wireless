@@ -1,4 +1,6 @@
 
+'use client';
+
 import { Box, Container, Typography, Grid, Paper, Accordion, AccordionSummary, AccordionDetails, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import StaggerContainer from '../components/animations/StaggerContainer';
 import FadeIn from '../components/animations/FadeIn';

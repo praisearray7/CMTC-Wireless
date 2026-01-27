@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom';
+'use client';
+
+import Link from 'next/link';
 import { Typography, Grid, Paper, Breadcrumbs, Box, Divider } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Tablet, Battery, Zap, Monitor, Volume2, Camera, Droplets, RefreshCw, PlayCircle, MousePointer, Music } from 'lucide-react';
@@ -23,8 +25,8 @@ const TabletRepair = () => {
                 faqCategory="tablet"
                 breadcrumbs={
                     <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb" sx={{ mb: 2 }}>
-                        <Link to="/" style={{ color: '#000000', textDecoration: 'none' }}>Home</Link>
-                        <Link to="/cell-phone-repair" style={{ color: '#000000', textDecoration: 'none' }}>Cell Phone Repair</Link>
+                        <Link href="/" style={{ color: '#000000', textDecoration: 'none' }}>Home</Link>
+                        <Link href="/cell-phone-repair" style={{ color: '#000000', textDecoration: 'none' }}>Cell Phone Repair</Link>
                         <Typography color="text.primary" fontWeight={600}>Tablet Repair</Typography>
                     </Breadcrumbs>
                 }
@@ -59,7 +61,7 @@ const TabletRepair = () => {
                                                         },
                                                     }}
                                                     component={Link}
-                                                    to={linkPath}
+                                                    href={linkPath}
                                                     style={{ textDecoration: 'none' }}
                                                 >
                                                     <Box component="img" src={item.image} alt={item.title} sx={{ width: "100%", maxWidth: 200, height: 'auto', objectFit: 'contain', mb: 2 }} />

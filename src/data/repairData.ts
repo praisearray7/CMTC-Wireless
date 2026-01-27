@@ -6,6 +6,14 @@ export interface DeviceModel {
 export interface RepairCategory {
   id: string;
   name: string;
+  title?: string; // Optional alias for name or more specific title
+  shortDesc?: string;
+  longDesc?: string;
+  image?: string;
+  priceRange?: string;
+  loading?: boolean;
+  icon?: any;
+  category?: string;
   subCategories?: {
     name: string;
     models: DeviceModel[];

@@ -1,5 +1,7 @@
+'use client';
+
 import { useState, useEffect, useMemo } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useSearchParams } from 'next/navigation';
 import { Box, Container, Grid, Typography, Card, CardContent, TextField, Button, Stack, Autocomplete, Alert } from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
@@ -16,7 +18,10 @@ import { colors } from '../theme/colors';
 import FadeIn from '../components/animations/FadeIn';
 
 const ContactUs = () => {
-    const location = useLocation();
+    const searchParams = useSearchParams();
+
+    // Helper to safely get params
+    const getParam = (key: string) => searchParams ? searchParams.get(key) : null;
 
     // Form State
     // const [selectedCompany, setSelectedCompany] = useState<string | null>(null); // Removed per request
@@ -67,14 +72,17 @@ const ContactUs = () => {
 
     // Handle incoming state from other pages - Immediate Population
     useEffect(() => {
-        if (location.state?.deviceModel) {
+        const deviceModel = getParam('deviceModel');
+        const serviceType = getParam('serviceType') || getParam('serviceNeeded');
+
+        if (deviceModel) {
             // Directly set the text, don't wait for validation
-            setSelectedDevice(location.state.deviceModel);
+            setSelectedDevice(deviceModel);
         }
-        if (location.state?.serviceType) {
-            setSelectedService(location.state.serviceType);
+        if (serviceType) {
+            setSelectedService(serviceType);
         }
-    }, [location.state]);
+    }, [searchParams]);
 
     // Backfill Company information when data becomes available - REMOVED or Simplified logic if needed
     // logic to auto-select company is removed as field is gone

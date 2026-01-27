@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Box, Container, Typography, Accordion, AccordionSummary, AccordionDetails, Button, Stack } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -127,8 +129,7 @@ const FAQ: React.FC<FAQProps> = ({ category = 'default' }) => {
                     <FadeIn delay={0.3}>
                         <Button
                             component={Link}
-                            to="/contact-us"
-                            state={{ serviceNeeded: 'General Inquiry' }}
+                            href="/contact-us?serviceNeeded=General+Inquiry"
                             variant="contained"
                             size="large"
                             sx={{

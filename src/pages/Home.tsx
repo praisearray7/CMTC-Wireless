@@ -1,6 +1,6 @@
+'use client';
 
-
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Container, Grid, Typography, Card, CardContent, Box, Button, Paper } from '@mui/material';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import BuildOutlinedIcon from '@mui/icons-material/BuildOutlined';
@@ -144,8 +144,8 @@ const Home = () => {
                                 desc: 'Broken phone? We fix screens, batteries, charging ports, and more — fast.',
                                 img: getImagePath(imagePaths.homeCardRepair),
                                 btnText: 'Get a Free Quote',
-                                link: '/contact-us',
-                                state: { serviceNeeded: 'Repair Service' } // Added state
+                                link: '/contact-us?service=Repair%20Service',
+                                // state removed, using query param instead
                             },
                             {
                                 title: 'Buy a Device',
@@ -203,8 +203,8 @@ const Home = () => {
                                     <Box>
                                         <Button
                                             component={Link}
-                                            to={item.link}
-                                            state={item.state} // Pass the state
+                                            href={item.link}
+                                            // state refactored to query params
                                             variant="contained"
                                             sx={{
                                                 bgcolor: colors.primary,
@@ -232,7 +232,9 @@ const Home = () => {
             </Container>
 
             {/* Service Grid Banner */}
-            <ServiceGridBanner />
+            <Box id="repair-services" sx={{ pt: 4 }}>
+                <ServiceGridBanner />
+            </Box>
 
             {/* Service Categories Section
             <Box id="repair-services" sx={{ bgcolor: '#ffffff', py: 10 }}>

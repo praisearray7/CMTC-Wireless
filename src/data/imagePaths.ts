@@ -52,5 +52,5 @@ export const imagePaths = {
 export const getImagePath = (path: string) => {
   if (path.startsWith('http')) return path;
   // import.meta.env.BASE_URL is handled by Vite (is '/' in dev, '/repo/' in prod)
-  return `${import.meta.env.BASE_URL}${path}`;
+  return `${process.env.NEXT_PUBLIC_BASE_URL || ''}${path}`;
 };

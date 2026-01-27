@@ -52,7 +52,7 @@ const pcThumbnails = [
     'https://images.pexels.com/photos/18966456/pexels-photo-18966456.jpeg?_gl=1*8sprmr*_ga*ODU3ODg3MjU0LjE3Njg5ODU3OTE.*_ga_8JE65Q40S6*czE3Njg5ODU3OTAkbzEkZzEkdDE3Njg5ODY2OTEkajU5JGwwJGgw'  // 10. Abstract Tech (New)
 ];
 
-const getPath = (path: string) => `${import.meta.env.BASE_URL}${path}`;
+const getPath = (path: string) => `${process.env.NEXT_PUBLIC_BASE_URL || ''}${path}`;
 
 const phoneThumbnails = [
     getPath('cellphone_thumbnails/anton-maksimov-5642-su-R2ljPFJju1s-unsplash.jpg'),
@@ -77,11 +77,11 @@ const macbookThumbnails = [
     'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80', // 7. Tech parts (Fresh)
     'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80', // 8. Screen (Existing - wait duplicated? let's use another)
     'https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80', // 9. Laptop Work (Fresh)
-    macbookThumb // 10. Local Asset (Guaranteed to work)
+    macbookThumb.src // 10. Local Asset (Guaranteed to work)
 ];
 
 const logicBoardThumbnails = [
-    logicBoardThumb, // User's local image - Priority 1
+    logicBoardThumb.src, // User's local image - Priority 1
     'https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80', // Circuit Board
     'https://images.pexels.com/photos/343457/pexels-photo-343457.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', // 3. Electronics (New)
     'https://images.pexels.com/photos/6477209/pexels-photo-6477209.jpeg?_gl=1*dq6yk5*_ga*ODU3ODg3MjU0LjE3Njg5ODU3OTE.*_ga_8JE65Q40S6*czE3Njg5ODU3OTAkbzEkZzEkdDE3Njg5ODczNDkkajUzJGwwJGgw', // 4. Chipset (New)

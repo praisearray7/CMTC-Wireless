@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom';
+'use client';
+
+import Link from 'next/link';
 import { Box, Typography, Grid, Paper, Breadcrumbs, Divider } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Smartphone, Battery, Zap, RefreshCw, Wifi, ScanFace } from 'lucide-react';
@@ -25,7 +27,7 @@ const IphoneRepair = () => {
                 faqCategory="iphone"
                 breadcrumbs={
                     <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb" sx={{ mb: 2 }}>
-                        <Link to="/" style={{ color: '#000000', textDecoration: 'none' }}>Home</Link>
+                        <Link href="/" style={{ color: '#000000', textDecoration: 'none' }}>Home</Link>
                         <Typography color="text.primary" fontWeight={600}>iPhone Repair</Typography>
                     </Breadcrumbs>
                 }
@@ -57,7 +59,7 @@ const IphoneRepair = () => {
                                                     },
                                                 }}
                                                 component={Link}
-                                                to={`/iphone-repair/${item.id}`} // Linking to ModelDetail
+                                                href={`/iphone-repair/${item.id}`} // Linking to ModelDetail
                                                 style={{ textDecoration: 'none' }}
                                             >
                                                 <Box

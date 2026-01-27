@@ -1,3 +1,5 @@
+'use client';
+
 import { Box, Container, Grid, Typography, Card, Divider, Stack, alpha } from '@mui/material';
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import GroupsIcon from '@mui/icons-material/Groups';

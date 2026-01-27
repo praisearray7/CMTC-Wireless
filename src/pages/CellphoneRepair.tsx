@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom';
+'use client';
+
+import Link from 'next/link';
 import { Box, Typography, Grid, Paper, Breadcrumbs, Divider } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Smartphone, Zap, Volume2, RefreshCw, Wifi, Maximize } from 'lucide-react';
@@ -26,7 +28,7 @@ const CellphoneRepair = () => {
                 faqCategory="cell-phone"
                 breadcrumbs={
                     <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb" sx={{ mb: 2 }}>
-                        <Link to="/" style={{ color: '#546E7A', textDecoration: 'none' }}>Home</Link>
+                        <Link href="/" style={{ color: '#546E7A', textDecoration: 'none' }}>Home</Link>
                         <Typography color="text.primary" fontWeight={600}>Cell Phone Repair</Typography>
                     </Breadcrumbs>
                 }
@@ -41,8 +43,7 @@ const CellphoneRepair = () => {
                                     {cellphoneData.map((item) => (
                                         <Grid size={{ xs: 12, sm: 6, md: 4 }} key={item.id} className="cellphone-brand-item">
                                             <Link
-                                                to="/contact-us"
-                                                state={{ deviceModel: item.title, serviceNeeded: 'Repair Service' }}
+                                                href={`/contact-us?deviceModel=${encodeURIComponent(item.title)}&serviceNeeded=Repair+Service`}
                                                 style={{ textDecoration: 'none' }}
                                             >
                                                 <Paper

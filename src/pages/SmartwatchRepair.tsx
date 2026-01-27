@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom';
+'use client';
+
+import Link from 'next/link';
 import { Box, Typography, Grid, Paper, Breadcrumbs, Divider } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Watch, Battery, Zap, Droplets, Activity, Heart, Maximize, RefreshCw } from 'lucide-react';
@@ -24,7 +26,7 @@ const SmartwatchRepair = () => {
                 faqCategory="smartwatch"
                 breadcrumbs={
                     <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb" sx={{ mb: 2 }}>
-                        <Link to="/" style={{ color: '#000000', textDecoration: 'none' }}>Home</Link>
+                        <Link href="/" style={{ color: '#000000', textDecoration: 'none' }}>Home</Link>
                         <Typography color="text.primary" fontWeight={600}>Smart Watch Repair</Typography>
                     </Breadcrumbs>
                 }
@@ -57,7 +59,7 @@ const SmartwatchRepair = () => {
                                                     },
                                                 }}
                                                 component={Link}
-                                                to={`/smart-watch-repair/${item.id}`}
+                                                href={`/smart-watch-repair/${item.id}`}
                                                 style={{ textDecoration: 'none' }}
                                             >
                                                 <Box

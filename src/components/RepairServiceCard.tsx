@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { Box, Typography } from '@mui/material';
 import RepairCard from './RepairCard';
 import { colors } from '../theme/colors';
@@ -23,7 +23,7 @@ const RepairServiceCard: React.FC<RepairServiceCardProps> = ({
     serviceId,
     modelId
 }) => {
-    const navigate = useNavigate();
+    const router = useRouter();
 
     // Helper to format price
     const getPriceValue = (p: string) => {
@@ -43,7 +43,7 @@ const RepairServiceCard: React.FC<RepairServiceCardProps> = ({
         // repairType needs to be slugified from title (e.g. "Screen Replacement" -> "screen-replacement")
 
         const slug = title.toLowerCase().replace(/ /g, '-').replace('/', '-');
-        navigate(`/${serviceId}/${modelId}/${slug}`);
+        router.push(`/${serviceId}/${modelId}/${slug}`);
     };
 
     return (

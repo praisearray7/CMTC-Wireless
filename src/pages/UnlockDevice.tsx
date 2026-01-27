@@ -1,4 +1,6 @@
 
+'use client';
+
 import { Box, Container, Grid, Typography, Card, CardContent, TextField, Button, MenuItem, Stepper, Step, StepLabel } from '@mui/material';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { colors } from '../theme/colors';

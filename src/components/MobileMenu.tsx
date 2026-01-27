@@ -11,7 +11,7 @@ import {
     Typography,
     Stack
 } from '@mui/material';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import CloseIcon from '@mui/icons-material/Close';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
@@ -126,7 +126,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ open, onClose }) => {
                                                 <ListItemButton
                                                     key={service.id}
                                                     component={Link}
-                                                    to={getLink(service, link.title === 'Buy a Device')}
+                                                    href={getLink(service, link.title === 'Buy a Device')}
                                                     onClick={onClose}
                                                     sx={{ pl: 4, py: 1.5 }}
                                                 >
@@ -149,7 +149,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ open, onClose }) => {
                             <ListItem key={link.title} disablePadding>
                                 <ListItemButton
                                     component={Link}
-                                    to={link.path}
+                                    href={link.path}
                                     onClick={onClose}
                                     sx={{ py: 2, borderBottom: '1px solid rgba(0,0,0,0.03)' }}
                                 >

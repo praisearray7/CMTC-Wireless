@@ -1,18 +1,16 @@
 import React from 'react';
 import { Button } from '@mui/material';
 import type { ButtonProps } from '@mui/material';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import RequestQuoteIcon from "@mui/icons-material/RequestQuote"
 import { colors } from '../theme/colors';
 
 interface GetInstantQuoteButtonProps extends ButtonProps {
-    to?: string;
-    state?: any;
+    href?: string;
 }
 
 const GetInstantQuoteButton: React.FC<GetInstantQuoteButtonProps> = ({
-    to = "/contact-us",
-    state = { serviceNeeded: 'Get Instant Quote' },
+    href = "/contact-us?serviceNeeded=Get+Instant+Quote",
     sx,
     children,
     ...props
@@ -20,8 +18,7 @@ const GetInstantQuoteButton: React.FC<GetInstantQuoteButtonProps> = ({
     return (
         <Button
             component={Link}
-            to={to}
-            state={state}
+            href={href}
             variant="contained"
             color="primary"
             sx={{

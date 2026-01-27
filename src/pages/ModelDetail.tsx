@@ -1,4 +1,7 @@
-import { useParams, Link } from 'react-router-dom';
+'use client';
+
+import { useParams } from 'next/navigation';
+import Link from 'next/link';
 import SEO from '../components/SEO';
 import StaggerContainer from '../components/animations/StaggerContainer';
 import { colors } from '../theme/colors';
@@ -28,6 +31,7 @@ import { getImagePath, imagePaths } from '../data/imagePaths';
 
 const DEVICE_IMAGE_URL = "https://www.gophermods.com/wp-content/uploads/2025/06/iPhone-16-Repairs-Minneapolis.jpg";
 
+
 const sidebarItems = [
     {
         title: "Depot Repairs",
@@ -52,7 +56,9 @@ const sidebarItems = [
 ];
 
 const ModelDetail = () => {
-    const { serviceId, modelId } = useParams();
+    const params = useParams();
+    const serviceId = Array.isArray(params?.serviceId) ? params?.serviceId[0] : params?.serviceId;
+    const modelId = Array.isArray(params?.modelId) ? params?.modelId[0] : params?.modelId;
     const { rawData, loading } = useRepairPricing();
 
     // 1. Find the Service Category
@@ -98,7 +104,7 @@ const ModelDetail = () => {
         return (
             <Container sx={{ py: 10, textAlign: 'center' }}>
                 <Typography variant="h4">Device Not Found</Typography>
-                <Button component={Link} to="/" sx={{ mt: 2 }}>Return Home</Button>
+                <Button component={Link} href="/" sx={{ mt: 2 }}>Return Home</Button>
             </Container>
         );
     }
@@ -205,7 +211,7 @@ const ModelDetail = () => {
                 )}
 
                 <Box sx={{ mt: 8, textAlign: 'center' }}>
-                    <Button component={Link} to={`/${serviceId}`} sx={{ color: '#999', textTransform: 'none' }}>
+                    <Button component={Link} href={`/${serviceId}`} sx={{ color: '#999', textTransform: 'none' }}>
                         &larr; Back to {service?.name} Series
                     </Button>
                 </Box>
@@ -238,8 +244,8 @@ const ModelDetail = () => {
             />
             <Container maxWidth="xl">
                 <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb" sx={{ mb: 4 }}>
-                    <Link to="/" style={{ color: '#9E9E9E', textDecoration: 'none' }}>Home</Link>
-                    {service && <Link to={`/${service.id}`} style={{ color: '#9E9E9E', textDecoration: 'none' }}>{service.name}</Link>}
+                    <Link href="/" style={{ color: '#9E9E9E', textDecoration: 'none' }}>Home</Link>
+                    {service && <Link href={`/${service.id}`} style={{ color: '#9E9E9E', textDecoration: 'none' }}>{service.name}</Link>}
                     <Typography color="text.primary" fontWeight={400}>{model.name} Repair</Typography>
                 </Breadcrumbs>
 
@@ -326,7 +332,7 @@ const ModelDetail = () => {
                                                             <Grid size={{ xs: 6, sm: 4, md: 2.4 }} key={variant} className="variant-item">
                                                                 <Paper
                                                                     component={targetId ? Link : 'div'}
-                                                                    to={targetId ? `/${serviceId || 'iphone-repair'}/${targetId}` : '#'}
+                                                                    href={targetId ? `/${serviceId || 'iphone-repair'}/${targetId}` : '#'}
                                                                     elevation={0}
                                                                     sx={{
                                                                         p: 2,
@@ -388,7 +394,7 @@ const ModelDetail = () => {
                                                 />
                                                 <Box sx={{ width: '100%', maxWidth: 400, display: 'flex', flexDirection: 'column', gap: 2 }}>
                                                     <GetInstantQuoteButton
-                                                        state={{ deviceModel: model.name }}
+                                                        href={`/contact-us?deviceModel=${encodeURIComponent(model.name)}`}
                                                         fullWidth
                                                         sx={{ borderRadius: 2 }}
                                                     />
@@ -415,7 +421,7 @@ const ModelDetail = () => {
                                 })}
 
                                 <Typography variant="body1" sx={{ color: colors.primary, mt: 3, fontWeight: 500 }}>
-                                    Ready to set up or expand your program? <Link to="/contact-us" style={{ color: colors.primary, textDecoration: 'none' }}>Request a quote or open an account.</Link>
+                                    Ready to set up or expand your program? <Link href="/contact-us" style={{ color: colors.primary, textDecoration: 'none' }}>Request a quote or open an account.</Link>
                                 </Typography>
                             </Box>
                         </Box>
@@ -444,7 +450,7 @@ const ModelDetail = () => {
                                     </Typography>
                                 </Box>
                             ))}
-                            <Button component={Link} to="/about-us" variant="contained" disableElevation sx={{ bgcolor: '#fff', color: colors.primary, fontWeight: 700, mt: 2, py: 1.5, px: 4, '&:hover': { bgcolor: '#ffebee' } }}>
+                            <Button component={Link} href="/about-us" variant="contained" disableElevation sx={{ bgcolor: '#fff', color: colors.primary, fontWeight: 700, mt: 2, py: 1.5, px: 4, '&:hover': { bgcolor: '#ffebee' } }}>
                                 LEARN MORE
                             </Button>
                         </Paper>

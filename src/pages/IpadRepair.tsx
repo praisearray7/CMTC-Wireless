@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom';
+'use client';
+
+import Link from 'next/link';
 import { Box, Typography, Grid, Paper, Breadcrumbs, Divider } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Tablet, Zap, Volume2, RefreshCw, Maximize, Touchpad } from 'lucide-react';
@@ -25,7 +27,7 @@ const IpadRepair = () => {
                 faqCategory="ipad"
                 breadcrumbs={
                     <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb" sx={{ mb: 2 }}>
-                        <Link to="/" style={{ color: '#000000', textDecoration: 'none' }}>Home</Link>
+                        <Link href="/" style={{ color: '#000000', textDecoration: 'none' }}>Home</Link>
                         <Typography color="text.primary" fontWeight={600}>iPad Repair</Typography>
                     </Breadcrumbs>
                 }
@@ -41,8 +43,7 @@ const IpadRepair = () => {
                                     {ipadData.map((item) => (
                                         <Grid size={{ xs: 6, sm: 6, md: 3 }} key={item.id} className="ipad-model-card">
                                             <Link
-                                                to="/contact-us"
-                                                state={{ deviceModel: item.title, serviceNeeded: "Repair Service" }}
+                                                href={`/contact-us?deviceModel=${encodeURIComponent(item.title)}&serviceNeeded=Repair+Service`}
                                                 style={{ textDecoration: 'none' }}
                                             >
                                                 <Paper

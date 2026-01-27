@@ -1,5 +1,7 @@
+'use client';
+
 import { Box, Container, Grid, Typography, Card, CardContent, Button, Chip, Stack, CardMedia } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import FactCheckOutlinedIcon from '@mui/icons-material/FactCheckOutlined';
 import SavingsOutlinedIcon from '@mui/icons-material/SavingsOutlined';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
@@ -13,7 +15,7 @@ import FadeIn from '../components/animations/FadeIn';
 import StaggerContainer from '../components/animations/StaggerContainer';
 
 const BuyDevice = () => {
-    const navigate = useNavigate();
+    const router = useRouter();
 
     const inventory = [
         {
@@ -123,7 +125,7 @@ const BuyDevice = () => {
                                                             bgcolor: '#f0f0f0'
                                                         }
                                                     }}
-                                                    onClick={() => navigate('/contact-us', { state: { serviceNeeded: 'Check Availability', deviceModel: item.name } })}
+                                                    onClick={() => router.push(`/contact-us?serviceNeeded=Check+Availability&deviceModel=${encodeURIComponent(item.name)}`)}
                                                 >
                                                     Check Availability
                                                 </Button>

@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { Button, Menu, Box, Typography, Stack, useTheme } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import type { RepairCategory } from '../data/repairData';
 import { colors } from '../theme/colors';
 
@@ -102,7 +102,7 @@ const NavDropdown = ({ title, items, getLink }: NavDropdownProps) => {
                         <Box
                             key={service.id}
                             component={Link}
-                            to={getLink(service)}
+                            href={getLink(service)}
                             onClick={handleClose}
                             sx={{
                                 textDecoration: 'none',

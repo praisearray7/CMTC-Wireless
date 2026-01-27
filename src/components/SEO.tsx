@@ -1,4 +1,6 @@
-import { Helmet } from 'react-helmet-async';
+'use client';
+
+import { useEffect } from 'react';
 
 interface SEOProps {
     title: string;
@@ -10,31 +12,54 @@ interface SEOProps {
 }
 
 const SEO = ({ title, description, canonical, type = 'website', name = 'CMTC Wireless', image = '/hero_devices.png' }: SEOProps) => {
-    return (
-        <Helmet>
-            {/* Standard metadata tags */}
-            <title>{title} | CMTC Wireless</title>
-            <meta name='description' content={description} />
-            {canonical && <link rel="canonical" href={canonical} />}
+    useEffect(() => {
+        document.title = title;
 
-            {/* End standard metadata tags */}
+        // Helper to update meta tags
+        const updateMeta = (name: string, content: string) => {
+            let element = document.querySelector(`meta[name="${name}"]`);
+            if (!element) {
+                element = document.createElement('meta');
+                element.setAttribute('name', name);
+                document.head.appendChild(element);
+            }
+            element.setAttribute('content', content);
+        };
 
-            {/* Facebook tags */}
-            <meta property="og:type" content={type} />
-            <meta property="og:title" content={title} />
-            <meta property="og:description" content={description} />
-            <meta property="og:site_name" content={name} />
-            <meta property="og:image" content={image} />
-            {/* End Facebook tags */}
+        const updateProperty = (property: string, content: string) => {
+            let element = document.querySelector(`meta[property="${property}"]`);
+            if (!element) {
+                element = document.createElement('meta');
+                element.setAttribute('property', property);
+                document.head.appendChild(element);
+            }
+            element.setAttribute('content', content);
+        };
 
-            {/* Twitter tags */}
-            <meta name="twitter:creator" content={name} />
-            <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:title" content={title} />
-            <meta name="twitter:description" content={description} />
-            {/* End Twitter tags */}
-        </Helmet>
-    );
+        updateMeta('description', description);
+        updateProperty('og:type', type);
+        updateProperty('og:title', title);
+        updateProperty('og:description', description);
+        updateProperty('og:site_name', name);
+        updateProperty('og:image', image);
+        updateMeta('twitter:card', 'summary_large_image');
+        updateMeta('twitter:creator', name);
+        updateMeta('twitter:title', title);
+        updateMeta('twitter:description', description);
+
+        if (canonical) {
+            let link = document.querySelector('link[rel="canonical"]');
+            if (!link) {
+                link = document.createElement('link');
+                link.setAttribute('rel', 'canonical');
+                document.head.appendChild(link);
+            }
+            link.setAttribute('href', canonical);
+        }
+
+    }, [title, description, canonical, type, name, image]);
+
+    return null;
 };
 
 export default SEO;

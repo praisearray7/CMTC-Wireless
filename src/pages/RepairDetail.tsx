@@ -1,4 +1,7 @@
-import { useParams, Link } from 'react-router-dom';
+'use client';
+
+import { useParams } from 'next/navigation';
+import Link from 'next/link';
 import StaggerContainer from '../components/animations/StaggerContainer';
 import { Box, Container, Typography, Breadcrumbs, Button, Grid, Paper, Divider } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
@@ -12,7 +15,10 @@ import ScheduleAppointmentButton from '../components/ScheduleAppointmentButton';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const RepairDetail = () => {
-    const { serviceId, modelId, repairType } = useParams();
+    const params = useParams();
+    const serviceId = params?.serviceId as string;
+    const modelId = params?.modelId as string;
+    const repairType = params?.repairType as string;
     const { getPriceRange, rawData, loading } = useRepairPricing();
 
     // 1. Resolve Data
@@ -96,7 +102,7 @@ const RepairDetail = () => {
         return (
             <Container sx={{ py: 10, textAlign: 'center' }}>
                 <Typography variant="h4">Repair Not Found</Typography>
-                <Button component={Link} to="/" sx={{ mt: 2 }}>Return Home</Button>
+                <Button component={Link} href="/" sx={{ mt: 2 }}>Return Home</Button>
             </Container>
         );
     }
@@ -146,9 +152,9 @@ const RepairDetail = () => {
                 faqCategory={serviceId === 'iphone-repair' ? 'iphone' : 'default'}
                 breadcrumbs={
                     <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb" sx={{ mb: 4 }}>
-                        <Link to="/" style={{ color: '#718096', textDecoration: 'none' }}>Home</Link>
-                        {service && <Link to={`/${serviceId}`} style={{ color: '#718096', textDecoration: 'none' }}>{service.name}</Link>}
-                        <Link to={`/${serviceId}/${modelId}`} style={{ color: '#718096', textDecoration: 'none' }}>{model.name}</Link>
+                        <Link href="/" style={{ color: '#718096', textDecoration: 'none' }}>Home</Link>
+                        {service && <Link href={`/${serviceId}`} style={{ color: '#718096', textDecoration: 'none' }}>{service.name}</Link>}
+                        <Link href={`/${serviceId}/${modelId}`} style={{ color: '#718096', textDecoration: 'none' }}>{model.name}</Link>
                         <Typography color="text.primary" fontWeight={600}>{genericRepairInfo.title}</Typography>
                     </Breadcrumbs>
                 }
@@ -245,7 +251,7 @@ const RepairDetail = () => {
 
                         <ScheduleAppointmentButton fullWidth sx={{ mb: 2, borderRadius: 2 }} />
                         <GetInstantQuoteButton
-                            state={{ deviceModel: model.name, serviceType: genericRepairInfo.title }}
+                            // state={{ deviceModel: model.name, serviceType: genericRepairInfo.title }}
                             fullWidth
                             sx={{ borderRadius: 2 }}
                             variant="outlined"

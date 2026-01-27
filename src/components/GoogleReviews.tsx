@@ -1,3 +1,5 @@
+'use client';
+
 import { Box, Container, Typography, Rating, Avatar } from '@mui/material';
 import ThumbUpAltOutlinedIcon from '@mui/icons-material/ThumbUpAltOutlined';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
@@ -183,7 +185,7 @@ const GoogleReviews = () => {
                         }}
                         onClick={(e) => e.stopPropagation()} // Prevent card hover effects if necessary, or just good practice
                     >
-                        <Box component="img" src={googleLogo} alt="Google" sx={{ width: 24, height: 24 }} />
+                        <Box component="img" src={googleLogo.src} alt="Google" sx={{ width: 24, height: 24 }} />
                     </Box>
                 </Box>
             </Box>

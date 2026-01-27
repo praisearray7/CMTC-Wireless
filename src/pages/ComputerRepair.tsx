@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom';
+'use client';
+
+import Link from 'next/link';
 import { Box, Typography, Grid, Paper, Breadcrumbs, Divider } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Monitor, HardDrive, Cpu, AlertTriangle, ShieldAlert, Power, Activity, Database, Zap } from 'lucide-react';
@@ -24,7 +26,7 @@ const ComputerRepair = () => {
                 faqCategory="computer"
                 breadcrumbs={
                     <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb" sx={{ mb: 2 }}>
-                        <Link to="/" style={{ color: '#546E7A', textDecoration: 'none' }}>Home</Link>
+                        <Link href="/" style={{ color: '#546E7A', textDecoration: 'none' }}>Home</Link>
                         <Typography color="text.primary" fontWeight={600}>Computer Repair</Typography>
                     </Breadcrumbs>
                 }
@@ -63,7 +65,7 @@ const ComputerRepair = () => {
                                                         },
                                                     }}
                                                     component={Link}
-                                                    to={linkPath}
+                                                    href={linkPath}
                                                     style={{ textDecoration: 'none' }}
                                                 >
                                                     <Box

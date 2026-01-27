@@ -108,7 +108,7 @@ const LandingIntro = ({ onComplete }: LandingIntroProps) => {
                 left: 0,
                 width: '100%',
                 height: '100%',
-                backgroundImage: `url(${logicBoardBg})`,
+                backgroundImage: `url(${logicBoardBg.src})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 opacity: 0.1, // Very subtle tech texture
@@ -138,7 +138,7 @@ const LandingIntro = ({ onComplete }: LandingIntroProps) => {
                 opacity: 0,
                 filter: 'blur(8px) grayscale(30%)' // Blurred and slightly desaturated
             }}>
-                <img src={pixelWatch} alt="Smartwatch" style={{ width: '100%' }} />
+                <img src={pixelWatch.src} alt="Smartwatch" style={{ width: '100%' }} />
             </Box>
 
             <Box className="floating-element" sx={{
@@ -151,7 +151,7 @@ const LandingIntro = ({ onComplete }: LandingIntroProps) => {
                 opacity: 0,
                 filter: 'blur(12px) grayscale(30%)' // Heavily blurred for depth
             }}>
-                <img src={iphoneFloating} alt="iPhone Repair" style={{ width: '100%' }} />
+                <img src={iphoneFloating.src} alt="iPhone Repair" style={{ width: '100%' }} />
             </Box>
 
             <Container maxWidth="md" sx={{ position: 'relative', zIndex: 10 }}>
@@ -289,4 +289,4 @@ const LandingIntro = ({ onComplete }: LandingIntroProps) => {
     );
 };
 
-// export default LandingIntro;
+export default LandingIntro;

@@ -33,7 +33,7 @@ export const smartwatchData: SeriesData[] = [
         id: 'pixel-watch',
         title: 'Pixel Watch Repair',
         subtitle: 'Google Pixel Watch Repair',
-        image: googlePixelWatchImg,
+        image: googlePixelWatchImg.src,
         description: [
             "Google Pixel Watch repair services. Cracked screen? We can fix it.",
             "Fast and reliable service for your Pixel wearable."
