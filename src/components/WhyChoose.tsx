@@ -81,7 +81,7 @@ const WhyChoose = () => {
                     '&:hover': { bgcolor: '#daf3ddff' }
                 }}
             >
-                LEARN MORE
+                Learn More About Us
             </Button>
         </Paper>
     );
