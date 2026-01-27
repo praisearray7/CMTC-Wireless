@@ -34,5 +34,14 @@ export default defineConfig(({ command }) => ({
   base: command === 'serve' ? '/' : '/CMTC-Wireless/',
   build: {
     outDir: 'dist',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+          'vendor-mui': ['@mui/material', '@mui/icons-material', '@emotion/react', '@emotion/styled'],
+          'vendor-utils': ['gsap', 'axios', 'lucide-react']
+        }
+      }
+    }
   },
 }))
