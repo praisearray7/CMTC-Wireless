@@ -4,8 +4,8 @@
 
 export const imagePaths = {
   // Local assets (in public folder)
-  heroDevices: 'hero_devices.png',
-  iphoneRepair: 'iphone_repair.png',
+
+
   logo: 'cmtc_logo.png',
   bbbAccreditation: 'https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/uDmomXFf05qK26VIqjaa/media/68bb1597f3b9973237e8c42e.jpeg',
   homeCardRepair: 'https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/uDmomXFf05qK26VIqjaa/media/68a4c62b034eda4197a199f0.png', // Placeholder for truncated link
@@ -29,13 +29,7 @@ export const imagePaths = {
     'cmtc6.jpg',
     'cmtc2.jpg'
   ],
-  // WowSlider Images
-  wowSlider: [
-    'wowslider/slide-1.png',
-    'wowslider/slide1-1-1400x550.jpg',
-    'wowslider/slide3-1-1400x550.jpg',
-    'wowslider/slide2-1.jpg'
-  ],
+
 
   // Specific Model Images
   modelImages: {
