@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "vitest",
-    "prepare": "husky"
+    "prepare": "husky",
+    "deploy": "cross-env GH_PAGES=true next build && gh-pages -d out"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -48,6 +49,7 @@
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
+    "cross-env": "^10.1.0",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",

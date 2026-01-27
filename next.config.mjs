@@ -13,9 +13,10 @@ const nextConfig = {
 
     // Note: Security headers (CSP, HSTS, etc.) need to be configured at the web server level
     // when using static export mode. The async headers() function is not compatible with output: 'export'.
-    // If hosting on GitHub Pages with a subpath (e.g. /CMTC-Wireless/), uncomment:
-    // basePath: '/CMTC-Wireless',
-    // assetPrefix: '/CMTC-Wireless/',
+
+    // GitHub Pages configuration (only when building for GitHub Pages)
+    basePath: process.env.GH_PAGES === 'true' ? '/CMTC-Wireless' : '',
+    assetPrefix: process.env.GH_PAGES === 'true' ? '/CMTC-Wireless/' : '',
 };
 
 export default nextConfig;
