@@ -37,13 +37,22 @@ const RepairDetail = () => {
         }
     }
 
-    // Find Repair Type Details
     const genericRepairInfo = repairDetails[repairType || ''] || {
         title: repairType?.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) || 'Utol',
         desc: 'Professional repair service.',
         icon: null,
         image: null
     };
+
+    // Early return if model or repairType is missing
+    if (!model || !repairType) {
+        return (
+            <Container sx={{ py: 10, textAlign: 'center' }}>
+                <Typography variant="h4">Repair Not Found</Typography>
+                <Button component={Link} href="/" sx={{ mt: 2 }}>Return Home</Button>
+            </Container>
+        );
+    }
 
     // Helper to format price
     const getPriceValue = (p: string) => {
@@ -96,15 +105,6 @@ const RepairDetail = () => {
 
     if (descriptionPrice) {
         displayDesc = displayDesc.replace(/{price}/g, descriptionPrice);
-    }
-
-    if (!model || !repairType) {
-        return (
-            <Container sx={{ py: 10, textAlign: 'center' }}>
-                <Typography variant="h4">Repair Not Found</Typography>
-                <Button component={Link} href="/" sx={{ mt: 2 }}>Return Home</Button>
-            </Container>
-        );
     }
 
     const bottomSection = (

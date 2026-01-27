@@ -85,7 +85,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ open, onClose }) => {
                 <Typography variant="h6" sx={{ fontWeight: 700, color: '#333' }}>
                     Menu
                 </Typography>
-                <IconButton onClick={onClose} edge="end">
+                <IconButton onClick={onClose} edge="end" aria-label="Close menu">
                     <CloseIcon />
                 </IconButton>
             </Box>

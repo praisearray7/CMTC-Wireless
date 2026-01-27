@@ -125,7 +125,7 @@ const Blogs = () => {
                     <Typography variant="h6" sx={{ fontWeight: 700 }}>
                         Select a Video to Play
                     </Typography>
-                    <IconButton onClick={handleClose}>
+                    <IconButton onClick={handleClose} aria-label="Close video player">
                         <CloseIcon />
                     </IconButton>
                 </Box>
