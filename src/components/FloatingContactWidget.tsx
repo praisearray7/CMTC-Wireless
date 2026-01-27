@@ -6,6 +6,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { colors } from '../theme/colors';
+import { contactInfo } from '../data/contactInfo';
 
 const FloatingContactWidget = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -85,7 +86,7 @@ const FloatingContactWidget = () => {
                 <Tooltip title="Chat on WhatsApp" placement="left" arrow>
                     <IconButton
                         className="action-btn"
-                        href="https://wa.me/16128062779" // Replace with actual number if different
+                        href={contactInfo.whatsapp.link} // Replace with actual number if different
                         target="_blank"
                         rel="noopener noreferrer"
                         sx={{
@@ -109,7 +110,7 @@ const FloatingContactWidget = () => {
                 <Tooltip title="Call Us" placement="left" arrow>
                     <IconButton
                         className="action-btn"
-                        href="tel:6128062779" // Replace with actual number if different
+                        href={contactInfo.phone.link} // Replace with actual number if different
                         sx={{
                             bgcolor: '#FF0000', // Red as requested
                             color: '#fff',
