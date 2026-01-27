@@ -13,6 +13,9 @@ import { ipadData } from '@/data/ipad';
 import { macbookData } from '@/data/macbook';
 import { repairDetails } from '@/data/modelSpecificDetails';
 
+import type { Metadata } from 'next';
+import { getModelData } from '@/data/modelUtils';
+
 export function generateStaticParams() {
     const params: { serviceId: string; modelId: string; repairType: string }[] = [];
     const repairTypes = Object.keys(repairDetails);
@@ -61,6 +64,29 @@ export function generateStaticParams() {
     });
 
     return params;
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ serviceId: string; modelId: string; repairType: string }> }): Promise<Metadata> {
+    const { serviceId, modelId, repairType } = await params;
+    const model = getModelData(serviceId, modelId);
+
+    // Format repair type string (e.g. "screen-repair" -> "Screen Repair")
+    const formattedRepairType = repairType
+        .split('-')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+
+    if (!model) {
+        return {
+            title: `${formattedRepairType} Service | CMTC Wireless`,
+            description: `Expert ${formattedRepairType} services at CMTC Wireless.`
+        };
+    }
+
+    return {
+        title: `${formattedRepairType} for ${model.name} | CMTC Wireless`,
+        description: `Professional ${formattedRepairType} for ${model.name} in Minneapolis. Fast, reliable, and affordable repair services.`,
+    };
 }
 
 export default async function Page({ params }: { params: Promise<{ serviceId: string; modelId: string; repairType: string }> }) {

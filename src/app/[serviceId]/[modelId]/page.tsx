@@ -11,6 +11,9 @@ import { tabletData } from '@/data/tablet';
 import { ipadData } from '@/data/ipad';
 import { macbookData } from '@/data/macbook';
 
+import type { Metadata } from 'next';
+import { getModelData } from '@/data/modelUtils';
+
 export function generateStaticParams() {
     const params: { serviceId: string; modelId: string }[] = [];
 
@@ -52,6 +55,23 @@ export function generateStaticParams() {
     });
 
     return params;
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ serviceId: string; modelId: string }> }): Promise<Metadata> {
+    const { serviceId, modelId } = await params;
+    const model = getModelData(serviceId, modelId);
+
+    if (!model) {
+        return {
+            title: 'Refurbished Device | CMTC Wireless',
+            description: 'Check out our high-quality refurbished devices at CMTC Wireless.'
+        };
+    }
+
+    return {
+        title: `${model.name} Repair Services | CMTC Wireless`,
+        description: `Professional ${model.name} repair in Minneapolis & St. Paul. Screen, battery, and component replacement with warranty.`,
+    };
 }
 
 export default async function Page({ params }: { params: Promise<{ serviceId: string; modelId: string }> }) {

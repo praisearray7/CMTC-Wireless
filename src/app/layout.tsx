@@ -11,6 +11,7 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
     title: 'CMTC Wireless | Expert Device Repair',
     description: 'CMTC Wireless - Expert Phone, Laptop, and Tablet Repair Services in Minneapolis & St. Paul. Fast, reliable, and affordable.',
+    metadataBase: new URL('https://praisearray7.github.io/CMTC-Wireless'),
     icons: {
         icon: `${process.env.NEXT_PUBLIC_BASE_URL || ''}/cmtc_logo.png`,
     },

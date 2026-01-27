@@ -15,10 +15,29 @@ import TabletRepair from '@/pages/TabletRepair';
 import ServiceDetail from '@/pages/ServiceDetail';
 import { repairServices } from '@/data/repairData';
 
+import type { Metadata } from 'next';
+
 export function generateStaticParams() {
     return repairServices.map((service) => ({
         serviceId: service.id,
     }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ serviceId: string }> }): Promise<Metadata> {
+    const { serviceId } = await params;
+    const service = repairServices.find(s => s.id === serviceId);
+
+    if (!service) {
+        return {
+            title: 'Repair Service | CMTC Wireless',
+            description: 'Professional device repair services in Minneapolis & St. Paul.'
+        };
+    }
+
+    return {
+        title: `${service.name} | Expert Repair Services | CMTC Wireless`,
+        description: `Fast and reliable ${service.name} in Minneapolis & St. Paul. We fix screens, batteries, charging ports, and more. specialized in ${service.name}.`,
+    };
 }
 
 // Map service IDs to their specific components
