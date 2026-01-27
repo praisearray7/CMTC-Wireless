@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[43395,["/CMTC-Wireless/_next/static/chunks/211d397032b62f74.js","/CMTC-Wireless/_next/static/chunks/37ef03b90d4d3a71.js","/CMTC-Wireless/_next/static/chunks/993697cf762df24d.js","/CMTC-Wireless/_next/static/chunks/650a1af06d16c214.js","/CMTC-Wireless/_next/static/chunks/eac0e161054defb1.js","/CMTC-Wireless/_next/static/chunks/173381db0d6f8704.js","/CMTC-Wireless/_next/static/chunks/07cf0a67766566d5.js","/CMTC-Wireless/_next/static/chunks/27393f218274a614.js","/CMTC-Wireless/_next/static/chunks/c5bbe7a2cf72703f.js"],"default"]
+3:I[97367,["/CMTC-Wireless/_next/static/chunks/ff1a16fafef87110.js","/CMTC-Wireless/_next/static/chunks/09835ca6a8b1036d.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+0:{"buildId":"MjLIZjGEoUNHszfQbOUlA","rsc":["$","$1","c",{"children":[["$","$L2",null,{}],[["$","script","script-0",{"src":"/CMTC-Wireless/_next/static/chunks/27393f218274a614.js","async":true}],["$","script","script-1",{"src":"/CMTC-Wireless/_next/static/chunks/c5bbe7a2cf72703f.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"loading":null,"isPartial":false}
+5:null

@@ -1,0 +1,9 @@
+1:"$Sreact.fragment"
+2:I[47257,["/CMTC-Wireless/_next/static/chunks/ff1a16fafef87110.js","/CMTC-Wireless/_next/static/chunks/09835ca6a8b1036d.js"],"ClientPageRoot"]
+3:I[76292,["/CMTC-Wireless/_next/static/chunks/211d397032b62f74.js","/CMTC-Wireless/_next/static/chunks/37ef03b90d4d3a71.js","/CMTC-Wireless/_next/static/chunks/993697cf762df24d.js","/CMTC-Wireless/_next/static/chunks/650a1af06d16c214.js","/CMTC-Wireless/_next/static/chunks/eac0e161054defb1.js","/CMTC-Wireless/_next/static/chunks/173381db0d6f8704.js","/CMTC-Wireless/_next/static/chunks/07cf0a67766566d5.js","/CMTC-Wireless/_next/static/chunks/9b9d4a45244a1220.js","/CMTC-Wireless/_next/static/chunks/255a9bc76b1d0685.js","/CMTC-Wireless/_next/static/chunks/a05378b55247fdc1.js"],"default"]
+6:I[97367,["/CMTC-Wireless/_next/static/chunks/ff1a16fafef87110.js","/CMTC-Wireless/_next/static/chunks/09835ca6a8b1036d.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+0:{"buildId":"MjLIZjGEoUNHszfQbOUlA","rsc":["$","$1","c",{"children":[["$","$L2",null,{"Component":"$3","serverProvidedParams":{"searchParams":{},"params":{},"promises":["$@4","$@5"]}}],[["$","script","script-0",{"src":"/CMTC-Wireless/_next/static/chunks/9b9d4a45244a1220.js","async":true}],["$","script","script-1",{"src":"/CMTC-Wireless/_next/static/chunks/255a9bc76b1d0685.js","async":true}],["$","script","script-2",{"src":"/CMTC-Wireless/_next/static/chunks/a05378b55247fdc1.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"loading":null,"isPartial":false}
+4:{}
+5:"$0:rsc:props:children:0:props:serverProvidedParams:params"
+8:null
