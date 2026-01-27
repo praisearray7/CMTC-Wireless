@@ -1,0 +1,13 @@
+node_modules
+dist
+.git
+.gitignore
+.husky
+.vscode
+coverage
+public/mockServiceWorker.js
+README.md
+task.md
+implementation_plan.md
+walkthrough.md
+*.log
