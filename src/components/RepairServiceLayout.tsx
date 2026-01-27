@@ -35,7 +35,11 @@ const RepairServiceLayout: React.FC<RepairServiceLayoutProps> = ({
 
                         {/* Right Column: Sidebar Card */}
                         <Grid size={{ xs: 12, md: 5 }} sx={{ pr: { md: 10 }, mt: { md: 2 } }}>
-                            <FadeIn delay={0.4} direction="left">
+                            <FadeIn
+                                delay={0.4}
+                                direction="left"
+                                sx={{ position: 'sticky', top: 140 }} // Sticky sidebar
+                            >
                                 {rightContent || <WhyChoose />}
                             </FadeIn>
                         </Grid>

@@ -34,48 +34,60 @@ const TabletRepair = lazy(() => import('./pages/TabletRepair'));
 const ModelDetail = lazy(() => import('./pages/ModelDetail'));
 const RepairDetail = lazy(() => import('./pages/RepairDetail'));
 
+import { useState } from 'react';
+import LandingIntro from './components/LandingIntro';
+
+// ... existing imports ...
+
 function App() {
+  const [showIntro, setShowIntro] = useState(true);
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <HashRouter>
-        <ScrollToTop />
-        <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-          <Navbar />
-          <Box component="main" sx={{ flexGrow: 1 }}>
-            <Suspense fallback={<Loading />}>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about-us" element={<AboutUs />} />
-                <Route path="/contact-us" element={<ContactUs />} />
-                <Route path="/buy-device" element={<BuyDevice />} />
-                <Route path="/unlock-device" element={<UnlockDevice />} />
-                <Route path="/warranty" element={<Warranty />} />
-                <Route path="/blogs" element={<Blogs />} />
 
-                <Route path="/reviews" element={<Reviews />} />
-                <Route path="/reviews" element={<Reviews />} />
+      {showIntro ? (
+        <LandingIntro onComplete={() => setShowIntro(false)} />
+      ) : (
+        <HashRouter>
+          <ScrollToTop />
+          <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+            <Navbar />
+            <Box component="main" sx={{ flexGrow: 1 }}>
+              <Suspense fallback={<Loading />}>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/about-us" element={<AboutUs />} />
+                  <Route path="/contact-us" element={<ContactUs />} />
+                  <Route path="/buy-device" element={<BuyDevice />} />
+                  <Route path="/unlock-device" element={<UnlockDevice />} />
+                  <Route path="/warranty" element={<Warranty />} />
+                  <Route path="/blogs" element={<Blogs />} />
 
-                <Route path="/ipad-repair" element={<IpadRepair />} />
-                <Route path="/macbook-repair" element={<MacbookRepair />} />
-                <Route path="/iphone-repair" element={<IphoneRepair />} />
-                <Route path="/cell-phone-repair" element={<CellphoneRepair />} />
-                <Route path="/smart-watch-repair" element={<SmartwatchRepair />} />
-                <Route path="/computer-repair" element={<ComputerRepair />} />
-                <Route path="/desktop-repair" element={<DesktopRepair />} />
-                <Route path="/laptop-repair" element={<LaptopRepair />} />
-                <Route path="/aio-repair" element={<AllInOneRepair />} />
-                <Route path="/tablet-repair" element={<TabletRepair />} />
+                  <Route path="/reviews" element={<Reviews />} />
+                  <Route path="/reviews" element={<Reviews />} />
 
-                {/* Dynamic Route for Model Details - Placed last to avoid conflicts */}
-                <Route path="/:serviceId/:modelId" element={<ModelDetail />} />
-                <Route path="/:serviceId/:modelId/:repairType" element={<RepairDetail />} />
-              </Routes>
-            </Suspense>
+                  <Route path="/ipad-repair" element={<IpadRepair />} />
+                  <Route path="/macbook-repair" element={<MacbookRepair />} />
+                  <Route path="/iphone-repair" element={<IphoneRepair />} />
+                  <Route path="/cell-phone-repair" element={<CellphoneRepair />} />
+                  <Route path="/smart-watch-repair" element={<SmartwatchRepair />} />
+                  <Route path="/computer-repair" element={<ComputerRepair />} />
+                  <Route path="/desktop-repair" element={<DesktopRepair />} />
+                  <Route path="/laptop-repair" element={<LaptopRepair />} />
+                  <Route path="/aio-repair" element={<AllInOneRepair />} />
+                  <Route path="/tablet-repair" element={<TabletRepair />} />
+
+                  {/* Dynamic Route for Model Details - Placed last to avoid conflicts */}
+                  <Route path="/:serviceId/:modelId" element={<ModelDetail />} />
+                  <Route path="/:serviceId/:modelId/:repairType" element={<RepairDetail />} />
+                </Routes>
+              </Suspense>
+            </Box>
+            <Footer />
           </Box>
-          <Footer />
-        </Box>
-      </HashRouter>
+        </HashRouter>
+      )}
     </ThemeProvider>
   );
 }

@@ -157,9 +157,7 @@ const RepairDetail = () => {
                         p: 4,
                         bgcolor: '#fff',
                         border: '1px solid #eee',
-                        borderRadius: 4,
-                        position: 'sticky',
-                        top: 140
+                        borderRadius: 4
                     }}>
                         <Typography variant="h5" sx={{ fontWeight: 700, mb: 3 }}>
                             Repair Summary

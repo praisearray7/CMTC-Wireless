@@ -142,8 +142,12 @@ const Warranty = () => {
 
                     {/* Sidebar */}
                     <Grid size={{ xs: 12, md: 4 }}>
-                        <FadeIn direction="left" delay={0.4}>
-                            <Paper sx={{ p: 4, borderRadius: 4, bgcolor: 'white', boxShadow: '0 4px 20px rgba(0,0,0,0.05)', position: 'sticky', top: 150 }}>
+                        <FadeIn
+                            direction="left"
+                            delay={0.4}
+                            sx={{ position: 'sticky', top: 140 }} // Moved sticky here
+                        >
+                            <Paper sx={{ p: 4, borderRadius: 4, bgcolor: 'white', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
                                 <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>Need to file a claim?</Typography>
                                 <Typography variant="body2" sx={{ color: '#666', mb: 3 }}>
                                     If you are experiencing issues with a repair or device, please visit us immediately. We will inspect it and make it right.
