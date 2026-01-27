@@ -26,6 +26,8 @@ export default function RootLayout({
         <html lang="en">
             <head>
                 <link rel="preconnect" href="https://maps.googleapis.com" />
+                <link rel="preconnect" href="https://maps.gstatic.com" />
+                <link rel="preconnect" href="https://store.storeimages.cdn-apple.com" />
             </head>
             <body className={inter.className}>
                 <ThemeRegistry>
