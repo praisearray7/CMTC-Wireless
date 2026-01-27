@@ -110,7 +110,7 @@ const RepairDetail = () => {
     const bottomSection = (
         <Box sx={{ mt: 8, mb: 8 }}>
             <Box sx={{ mb: 6, pl: '70px', pr: '70px' }}>
-                <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>About This Repair</Typography>
+                <Typography variant="h5" component="h2" sx={{ fontWeight: 700, mb: 2 }}>About This Repair</Typography>
                 {displayDesc.split('\n').filter((p: string) => p.trim().length > 0).map((paragraph: string, index: number) => {
                     const highlightTerms = [
                         model?.name,
@@ -152,9 +152,9 @@ const RepairDetail = () => {
                 faqCategory={serviceId === 'iphone-repair' ? 'iphone' : 'default'}
                 breadcrumbs={
                     <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb" sx={{ mb: 4 }}>
-                        <Link href="/" style={{ color: '#718096', textDecoration: 'none' }}>Home</Link>
-                        {service && <Link href={`/${serviceId}`} style={{ color: '#718096', textDecoration: 'none' }}>{service.name}</Link>}
-                        <Link href={`/${serviceId}/${modelId}`} style={{ color: '#718096', textDecoration: 'none' }}>{model.name}</Link>
+                        <Link href="/" style={{ color: '#4A5568', textDecoration: 'none' }}>Home</Link>
+                        {service && <Link href={`/${serviceId}`} style={{ color: '#4A5568', textDecoration: 'none' }}>{service.name}</Link>}
+                        <Link href={`/${serviceId}/${modelId}`} style={{ color: '#4A5568', textDecoration: 'none' }}>{model.name}</Link>
                         <Typography color="text.primary" fontWeight={600}>{genericRepairInfo.title}</Typography>
                     </Breadcrumbs>
                 }
@@ -165,7 +165,7 @@ const RepairDetail = () => {
                         border: '1px solid #eee',
                         borderRadius: 4
                     }}>
-                        <Typography variant="h5" sx={{ fontWeight: 700, mb: 3 }}>
+                        <Typography variant="h5" component="h2" sx={{ fontWeight: 700, mb: 3 }}>
                             Repair Summary
                         </Typography>
 
@@ -190,6 +190,8 @@ const RepairDetail = () => {
                                     component="img"
                                     src={genericRepairInfo.image}
                                     alt={displayTitle}
+                                    width="170"
+                                    height="170"
                                     sx={{
                                         width: 170,
                                         height: 170,
@@ -271,7 +273,7 @@ const RepairDetail = () => {
                         {/* Specific Specs & Features */}
                         {specificDetails?.features && (
                             <Box sx={{ mb: 4 }}>
-                                <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>Key Features</Typography>
+                                <Typography variant="h5" component="h2" sx={{ fontWeight: 700, mb: 2 }}>Key Features</Typography>
                                 <StaggerContainer childSelector=".feature-item">
                                     <Grid container spacing={2}>
                                         {specificDetails.features.map((feature: string, idx: number) => (
@@ -289,7 +291,7 @@ const RepairDetail = () => {
 
                         {specificDetails?.specs && (
                             <Box sx={{ mb: 4 }}>
-                                <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>Specifications</Typography>
+                                <Typography variant="h5" component="h2" sx={{ fontWeight: 700, mb: 2 }}>Specifications</Typography>
                                 <Paper variant="outlined" sx={{ borderRadius: 2, overflow: 'hidden' }}>
                                     {Object.entries(specificDetails.specs).map(([key, value], idx) => (
                                         <Box key={key} sx={{
@@ -309,7 +311,7 @@ const RepairDetail = () => {
                 </Grid>
 
                 <Box sx={{ mb: 6 }}>
-                    <Typography variant="h5" sx={{ fontWeight: 700, mb: 3 }}>Why Choose Us?</Typography>
+                    <Typography variant="h5" component="h2" sx={{ fontWeight: 700, mb: 3 }}>Why Choose Us?</Typography>
                     <StaggerContainer childSelector=".why-choose-item">
                         <Grid container spacing={2}>
                             {[

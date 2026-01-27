@@ -186,13 +186,14 @@ const ContactForm = () => {
                                     <Button
                                         size="small"
                                         onClick={() => setImage(null)}
+                                        aria-label="Remove selected image"
                                         sx={{
                                             position: 'absolute',
                                             top: -10,
                                             right: -10,
                                             minWidth: 'auto',
-                                            width: 24,
-                                            height: 24,
+                                            width: 32,
+                                            height: 32,
                                             p: 0,
                                             bgcolor: '#ef5350',
                                             color: 'white',
