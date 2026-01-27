@@ -10,6 +10,7 @@ import logicBoardBg from '../assets/logic_board_thumb.jpg';
 import pixelWatch from '../assets/GooglePixelWatch.png';
 import iphoneFloating from '../assets/iphone_floating.png';
 import { repairServices } from '../data/repairData';
+import { imagePaths, getImagePath } from '../data/imagePaths';
 
 interface LandingIntroProps {
     onComplete: () => void;
@@ -177,7 +178,7 @@ const LandingIntro = ({ onComplete }: LandingIntroProps) => {
                     <Box className="intro-element" sx={{ mb: 2 }}>
                         <Box
                             component="img"
-                            src="/cmtc_logo.png"
+                            src={getImagePath(imagePaths.logo)}
                             alt="CMTC Wireless"
                             sx={{
                                 width: { xs: '250px', md: '450px' }, // Slightly smaller for tighter feel
