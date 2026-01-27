@@ -19,9 +19,11 @@ const StaggerContainer = ({
     delay = 0,
     childSelector = "> *", // Target direct children by default
     initialY = 20,
+    triggerStart = "top 80%",
+    toggleActions = "play none none reverse",
     sx,
     ...props
-}: StaggerContainerProps) => {
+}: StaggerContainerProps & { triggerStart?: string; toggleActions?: string }) => {
     const containerRef = useRef<HTMLDivElement>(null);
 
     useGSAP(() => {
@@ -45,12 +47,12 @@ const StaggerContainer = ({
                 ease: "power2.out",
                 scrollTrigger: {
                     trigger: container,
-                    start: "top 80%",
-                    toggleActions: "play none none reverse"
+                    start: triggerStart,
+                    toggleActions: toggleActions
                 }
             }
         );
-    }, { scope: containerRef });
+    }, { scope: containerRef, dependencies: [triggerStart, toggleActions, stagger, delay, initialY] });
 
     return (
         <Box ref={containerRef} sx={sx} {...props}>

@@ -24,7 +24,7 @@ const Footer = () => {
             borderTop: '1px solid rgba(255,255,255,0.05)'
         }}>
             <Container maxWidth="xl">
-                <StaggerContainer childSelector=".footer-column" delay={0.2} stagger={0.1}>
+                <StaggerContainer childSelector=".footer-column" delay={0.2} stagger={0.1} triggerStart="top 90%">
                     <Grid container spacing={6}>
                         {/* Column 1: Logo & Info */}
                         <Grid size={{ xs: 12, md: 3 }} className="footer-column">
