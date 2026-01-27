@@ -111,6 +111,7 @@ export default function TransitionSlider({
                         alt={`Slide ${active + 1}`}
                         className="hero-image ken-burns"
                         draggable={false}
+                        fetchPriority="high"
                     />
                     <div style={styles.overlay} />
                 </figure>

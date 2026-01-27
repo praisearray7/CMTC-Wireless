@@ -7,6 +7,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { colors } from '../theme/colors';
 import { contactInfo } from '../data/contactInfo';
+import { getImagePath } from '../data/imagePaths';
 
 const FloatingContactWidget = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -208,7 +209,7 @@ const FloatingContactWidget = () => {
                     ) : (
                         <Box
                             component="img"
-                            src="https://ongofix.com/images/support-girl.png"
+                            src={getImagePath('support-girl.png')}
                             alt="Support"
                             sx={{
                                 width: '100%',
