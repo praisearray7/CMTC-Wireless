@@ -1,4 +1,4 @@
-
+"use client";
 
 import { useState } from 'react';
 import { Box, Container, Typography, Dialog, DialogContent, IconButton } from '@mui/material';
