@@ -11,7 +11,7 @@ export const imagePaths = {
   homeCardRepair: 'https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/uDmomXFf05qK26VIqjaa/media/68a4c62b034eda4197a199f0.png', // Placeholder for truncated link
   homeCardBuy: 'https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/uDmomXFf05qK26VIqjaa/media/68a4c5c6cadb9644a567e2c1.png',
   homeCardUnlock: 'https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/uDmomXFf05qK26VIqjaa/media/68a4c5c6cadb9644a567e2c1.png',
-  aboutStore: 'store_image.png',
+  aboutStore: 'store_image.jpg',
   
   // External placeholders
   placeholders: {
@@ -25,7 +25,7 @@ export const imagePaths = {
   // Home Page Carousel
   carousel: [
     'cmtc5.jpg',
-    'why_book_ahead.png',
+    'why_book_ahead.jpg',
     'cmtc6.jpg',
     'cmtc2.jpg'
   ],
