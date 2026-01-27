@@ -53,13 +53,16 @@ const sidebarItems = [
 
 const ModelDetail = () => {
     const { serviceId, modelId } = useParams();
+    const { rawData, loading } = useRepairPricing();
 
     // 1. Find the Service Category
     const service = repairServices.find(s => s.id === serviceId);
 
     // 2. Find the Specific Model OR Series
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let model: any = null;
     let isSeries = false;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let seriesInfo: any = null;
 
     // Aggregate all data sources
@@ -100,7 +103,7 @@ const ModelDetail = () => {
         );
     }
 
-    const { rawData, loading } = useRepairPricing();
+
 
     // Logic for Sub-Model Page (Most Popular Repairs Grid Only)
     // Updated: Tiered Pricing (Without Warranty vs With Warranty)
@@ -139,6 +142,29 @@ const ModelDetail = () => {
                                 });
 
                                 const repairTypes = Object.keys(groupedRepairs);
+
+                                // Define preferred order
+                                const preferredOrder = [
+                                    'screen-replacement',
+                                    'back-glass-repair',
+                                    'battery-replacement',
+                                    'charging-port-repair',
+                                    'back-camera-repair',
+                                    'selfie-camera-repair',
+                                    'loud-speaker-repair',
+                                    'power-button-repair',
+                                    'volume-button-repair'
+                                ];
+
+                                repairTypes.sort((a, b) => {
+                                    const indexA = preferredOrder.indexOf(a);
+                                    const indexB = preferredOrder.indexOf(b);
+
+                                    if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+                                    if (indexA !== -1) return -1;
+                                    if (indexB !== -1) return 1;
+                                    return 0;
+                                });
 
                                 if (repairTypes.length === 0) return <Grid size={{ xs: 12 }}><Typography align="center">Contact us for availability on this model.</Typography></Grid>;
 

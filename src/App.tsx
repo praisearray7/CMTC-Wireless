@@ -34,23 +34,22 @@ const TabletRepair = lazy(() => import('./pages/TabletRepair'));
 const ModelDetail = lazy(() => import('./pages/ModelDetail'));
 const RepairDetail = lazy(() => import('./pages/RepairDetail'));
 
-import { useState } from 'react';
-import LandingIntro from './components/LandingIntro';
+// import LandingIntro from './components/LandingIntro';
 
 // ... existing imports ...
 
 import FloatingContactWidget from './components/FloatingContactWidget';
 
 function App() {
-  const [showIntro, setShowIntro] = useState(true);
+  // const [showIntro, setShowIntro] = useState(true);
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
 
-      {showIntro ? (
+      {/* {showIntro ? (
         <LandingIntro onComplete={() => setShowIntro(false)} />
-      ) : (
+      )  ( */}
         <>
           <HashRouter>
             <ScrollToTop />
@@ -92,7 +91,6 @@ function App() {
           </HashRouter>
           <FloatingContactWidget />
         </>
-      )}
     </ThemeProvider>
   );
 }
