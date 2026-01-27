@@ -21,16 +21,16 @@ const FloatingContactWidget = () => {
         const tl = gsap.timeline();
 
         if (isOpen) {
-            // Open animation
+            // Open animation with autoAlpha (combines opacity + visibility)
             tl.to(actionsRef.current, {
-                visibility: 'visible',
+                autoAlpha: 1,
                 duration: 0
             })
                 .fromTo('.action-btn',
-                    { y: 20, opacity: 0, scale: 0.8 },
+                    { y: 20, autoAlpha: 0, scale: 0.8 },
                     {
                         y: 0,
-                        opacity: 1,
+                        autoAlpha: 1,
                         scale: 1,
                         duration: 0.3,
                         stagger: 0.1,
@@ -41,14 +41,14 @@ const FloatingContactWidget = () => {
             // Close animation
             tl.to('.action-btn', {
                 y: 20,
-                opacity: 0,
+                autoAlpha: 0,
                 scale: 0.8,
                 duration: 0.2,
                 stagger: { each: 0.05, from: 'end' },
                 ease: 'power2.in'
             })
                 .to(actionsRef.current, {
-                    visibility: 'hidden',
+                    autoAlpha: 0,
                     duration: 0
                 });
         }
