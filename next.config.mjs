@@ -17,6 +17,11 @@ const nextConfig = {
     // GitHub Pages configuration (only when building for GitHub Pages)
     basePath: process.env.GH_PAGES === 'true' ? '/CMTC-Wireless' : '',
     assetPrefix: process.env.GH_PAGES === 'true' ? '/CMTC-Wireless/' : '',
+
+    // Expose base URL to client-side code
+    env: {
+        NEXT_PUBLIC_BASE_URL: process.env.GH_PAGES === 'true' ? '/CMTC-Wireless/' : '',
+    },
 };
 
 export default nextConfig;
