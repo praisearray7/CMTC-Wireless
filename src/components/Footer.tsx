@@ -212,43 +212,13 @@ const Footer = () => {
                     pt: 4,
                     display: 'flex',
                     flexDirection: { xs: 'column', md: 'row' },
-                    justifyContent: 'space-between',
+                    justifyContent: 'center',
                     alignItems: 'center',
                     gap: 2
                 }}>
-                    <Box>
-                        <IconButton
-                            aria-label="whatsapp"
-                            href="https://wa.me/16123009007"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            sx={{
-                                bgcolor: 'rgba(35, 200, 73, 0.1)',
-                                color: '#23c849',
-                                '&:hover': { bgcolor: 'rgba(35, 200, 73, 0.2)' }
-                            }}
-                        >
-                            <WhatsAppIcon sx={{ fontSize: 32 }} />
-                        </IconButton>
-                    </Box>
-
                     <Typography variant="body2" sx={{ color: '#6b7280', textAlign: 'center' }}>
                         © {new Date().getFullYear()} CMTC Wireless. All Rights Reserved.
                     </Typography>
-
-                    <Box>
-                        <IconButton
-                            aria-label="phone"
-                            href="tel:+16123009007"
-                            sx={{
-                                bgcolor: 'rgba(239, 68, 68, 0.1)',
-                                color: '#ef4444',
-                                '&:hover': { bgcolor: 'rgba(239, 68, 68, 0.2)' }
-                            }}
-                        >
-                            <PhoneIcon size={32} />
-                        </IconButton>
-                    </Box>
                 </Box>
             </Container>
         </Box>
