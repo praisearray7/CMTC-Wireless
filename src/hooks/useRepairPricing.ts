@@ -23,7 +23,7 @@ export const useRepairPricing = () => {
     const CACHE_KEY = 'repair_pricing_data';
     const CACHE_TIMESTAMP_KEY = 'repair_pricing_timestamp';
     const CACHE_VERSION_KEY = 'repair_pricing_version';
-    const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+
     const CURRENT_VERSION = 'v1.1'; // Increment this to force cache clear on deployment
 
     const cachedData = localStorage.getItem(CACHE_KEY);
@@ -31,17 +31,15 @@ export const useRepairPricing = () => {
     const cachedVersion = localStorage.getItem(CACHE_VERSION_KEY);
 
     if (cachedData && cachedTimestamp && cachedVersion === CURRENT_VERSION) {
-      const age = Date.now() - parseInt(cachedTimestamp, 10);
-      if (age < CACHE_DURATION) {
-        try {
-          const parsed = JSON.parse(cachedData);
-          // eslint-disable-next-line react-hooks/set-state-in-effect
-          setData(parsed);
-          setLoading(false);
-          return;
-        } catch (e) {
-          console.error('Failed to parse cached data', e);
-        }
+      // Stale-While-Revalidate: Load cache immediately, but continue to fetch fresh data
+      try {
+        const parsed = JSON.parse(cachedData);
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setData(parsed);
+        setLoading(false);
+        // Do NOT return here. We want to fetch fresh data in background.
+      } catch (e) {
+        console.error('Failed to parse cached data', e);
       }
     }
 
