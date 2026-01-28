@@ -31,6 +31,7 @@ export const useRepairPricing = () => {
             if (age < CACHE_DURATION) {
                 try {
                     const parsed = JSON.parse(cachedData);
+                    // eslint-disable-next-line react-hooks/set-state-in-effect
                     setData(parsed);
                     setLoading(false);
                     return;

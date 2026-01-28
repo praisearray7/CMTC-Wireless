@@ -15,7 +15,7 @@ import RepairCard from '../components/RepairCard';
 import StaggerContainer from '../components/animations/StaggerContainer';
 
 const IphoneRepair = () => {
-    const { getPriceRange, loading } = useRepairPricing();
+    const { getPriceRange, rawData, loading } = useRepairPricing();
 
     return (
         <>
@@ -39,6 +39,7 @@ const IphoneRepair = () => {
                             </Typography>
                             <StaggerContainer childSelector=".model-card">
                                 <Grid container spacing={3} justifyContent="center">
+                                    {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                                     {seriesData.map((item) => (
                                         <Grid size={{ xs: 12, sm: 6, md: 4 }} key={item.id} className="model-card">
                                             <Paper
@@ -93,21 +94,78 @@ const IphoneRepair = () => {
                             </Typography>
                             <StaggerContainer childSelector=".repair-card-item">
                                 <Grid container spacing={3}>
-                                    {Object.values(repairDetails).map((item: any, index: number) => (
-                                        <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index} className="repair-card-item">
-                                            <RepairCard
-                                                title={item.title}
-                                                description={item.desc}
-                                                image={item.image}
-                                                icon={item.icon}
-                                                priceContent={
-                                                    <Typography variant="h6" sx={{ fontWeight: 700, whiteSpace: 'nowrap', color: colors.primary }}>
-                                                        {loading ? "Loading..." : getPriceRange('iphone', item.title)}
-                                                    </Typography>
+                                    {(() => {
+                                        // 1. Get known repairs from hardcoded list
+                                        const knownRepairs = Object.entries(repairDetails).map(([key, item]) => ({
+                                            key,
+                                            title: item.title,
+                                            desc: item.desc,
+                                            image: item.image,
+                                            icon: item.icon
+                                        }));
+
+                                        // 2. Extract dynamic repairs from CSV (rawData)
+                                        // Filter for iPhone and unique Repair Types
+                                        const dynamicRepairs: string[] = [];
+                                        const seenTypes = new Set(knownRepairs.map(r => r.key)); // Match by key (kebab-case) or title
+
+                                        rawData.forEach(row => {
+                                            if (row.Device?.toLowerCase() === 'iphone' && row['Repair Type']) {
+                                                const rawType = row['Repair Type'];
+                                                const normalizedKey = rawType.toLowerCase().replace(/ /g, '-').replace(/\//g, '-');
+
+                                                // Check against known keys AND known titles (to be safe)
+                                                // repairDetails keys are kebab-case usually.
+                                                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                                if (!seenTypes.has(normalizedKey)) {
+                                                    // Also check if we already added it to dynamicRepairs
+                                                    const alreadyAdded = dynamicRepairs.includes(rawType);
+                                                    if (!alreadyAdded) {
+                                                        // Check if it matches a Title in known repairs (reverse lookup)
+                                                        const titleMatch = knownRepairs.find(k => k.title.toLowerCase() === rawType.toLowerCase());
+                                                        if (!titleMatch) {
+                                                            dynamicRepairs.push(rawType);
+                                                            seenTypes.add(normalizedKey); // prevent dupes
+                                                        }
+                                                    }
                                                 }
-                                            />
-                                        </Grid>
-                                    ))}
+                                            }
+                                        });
+
+                                        // 3. Create objects for dynamic repairs
+                                        const defaultImages = [
+                                            'https://guide-images.cdn.ifixit.com/igi/NjBueggZtBoGXWQO.200x150',
+                                            'https://guide-images.cdn.ifixit.com/igi/yrG2tVVOYKoxTyXV.200x150',
+                                            'https://guide-images.cdn.ifixit.com/igi/f4wUBOxiLEFL1Pnr.200x150'
+                                        ];
+
+                                        const extraRepairs = dynamicRepairs.map((type, index) => ({
+                                            key: type.toLowerCase().replace(/ /g, '-'),
+                                            title: type, // Raw type from Excel is usually Title Case e.g. "Screen Replacement"
+                                            desc: "Professional repair service with warranty.",
+                                            image: defaultImages[index % defaultImages.length], // Cycle through images
+                                            icon: Smartphone // Default icon
+                                        }));
+
+                                        // 4. Combine
+                                        const allRepairs = [...knownRepairs, ...extraRepairs];
+
+                                        return allRepairs.map((item, index) => (
+                                            <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index} className="repair-card-item">
+                                                <RepairCard
+                                                    title={item.title}
+                                                    description={item.desc}
+                                                    image={item.image}
+                                                    icon={item.icon}
+                                                    priceContent={
+                                                        <Typography variant="h6" sx={{ fontWeight: 700, whiteSpace: 'nowrap', color: colors.primary }}>
+                                                            {loading ? "Loading..." : getPriceRange('iphone', item.title)}
+                                                        </Typography>
+                                                    }
+                                                />
+                                            </Grid>
+                                        ));
+                                    })()}
                                 </Grid>
                             </StaggerContainer>
                         </Box>

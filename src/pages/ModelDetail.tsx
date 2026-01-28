@@ -174,13 +174,25 @@ const ModelDetail = () => {
 
                                 if (repairTypes.length === 0) return <Grid size={{ xs: 12 }}><Typography align="center">Contact us for availability on this model.</Typography></Grid>;
 
-                                return repairTypes.map((type) => {
+                                // Default images for dynamic repairs
+                                const defaultImages = [
+                                    'https://guide-images.cdn.ifixit.com/igi/NjBueggZtBoGXWQO.200x150',
+                                    'https://guide-images.cdn.ifixit.com/igi/yrG2tVVOYKoxTyXV.200x150',
+                                    'https://guide-images.cdn.ifixit.com/igi/f4wUBOxiLEFL1Pnr.200x150'
+                                ];
+
+                                return repairTypes.map((type: string, index: number) => {
                                     const rows = groupedRepairs[type];
                                     const details = repairDetails[type] || { icon: Smartphone, desc: "Professional repair service with warranty.", image: undefined };
                                     const Icon = details.icon;
 
-                                    // Ensure image is a string or undefined, not null
-                                    const displayImage = details.image || '';
+                                    // Ensure image is a string or undefined, not null. If undefined, cycle through defaults.
+                                    let displayImage = details.image;
+
+                                    if (!displayImage) {
+                                        // Use index to pick a default image cyclically for dynamic repairs
+                                        displayImage = defaultImages[index % defaultImages.length];
+                                    }
 
                                     return (
                                         <Grid size={{ xs: 12, sm: 6, md: 4 }} key={type} className="repair-card-item">
@@ -196,7 +208,7 @@ const ModelDetail = () => {
                                                         )}
                                                     </>
                                                 }
-                                                image={displayImage}
+                                                image={displayImage || ''}
                                                 icon={Icon}
                                                 rows={rows}
                                                 serviceId={serviceId || 'iphone-repair'}
@@ -324,7 +336,9 @@ const ModelDetail = () => {
 
                                                         // Check for specific model image in imagePaths.modelImages
                                                         let specificImage = null;
+                                                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
                                                         if ((imagePaths as any).modelImages && targetId && (imagePaths as any).modelImages[targetId]) {
+                                                            // eslint-disable-next-line @typescript-eslint/no-explicit-any
                                                             specificImage = (imagePaths as any).modelImages[targetId];
                                                         }
 
@@ -380,7 +394,9 @@ const ModelDetail = () => {
                                                 <Box
                                                     component="img"
                                                     src={
+                                                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
                                                         model.id && (imagePaths as any).modelImages && (imagePaths as any).modelImages[model.id]
+                                                            // eslint-disable-next-line @typescript-eslint/no-explicit-any
                                                             ? getImagePath((imagePaths as any).modelImages[model.id])
                                                             : (isSeries && seriesInfo ? (getImagePath(seriesInfo.image) || DEVICE_IMAGE_URL) : DEVICE_IMAGE_URL)
                                                     }

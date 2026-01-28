@@ -1,4 +1,4 @@
-import { Smartphone, Battery, Zap, Camera, ScanFace, Droplets, Speaker, Database } from 'lucide-react';
+import { Smartphone, Battery, Zap, Camera, ScanFace, Droplets, Speaker } from 'lucide-react';
 
 export interface ModelSpecificDetail {
     titleOverride?: string;
@@ -8,6 +8,36 @@ export interface ModelSpecificDetail {
     specs?: Record<string, string>;
     compatibility?: string[];
 }
+
+export const genericRepairTemplate: ModelSpecificDetail = {
+    titleOverride: '{model} {repairName}',
+    descriptionOverride: `Are you looking for {model} {repairName} services or other {model} repair services in Minneapolis, MN?
+When your device is not performing the way it's supposed to for any reason, you probably want it fixed as soon as possible.
+The good news is CMTC Wireless specializes in this particular repair service.
+Bring your device to our service center immediately and allow our technicians to determine which {model} repair service your device needs. We can have your device back to its original working state in no time.
+Before you start thinking to yourself that the {model} {repairName} is an easy enough repair you could perform, or that you should follow one of those do it yourself online video tutorials, I want you to consider the amazingly low price we are offering this service at; {price}
+That is right. Only {price} to fix your {model} issues. Did I mention this price includes labor, and brand-new premium grade parts?
+Premium parts at the most competitive prices
+CMTC Wireless use only premium grade replacement parts to fix your {model}.
+For only {price} you can have your {model} repaired relatively quickly and by a professional.
+CMTC Wireless is one of the most trusted {model} repair specialists in the Twin Cities.
+Thousands of satisfied customers have trusted CMTC Wireless since 2010 with all of their mobile device and electronics repair needs.
+We have successfully repaired mobile phones, game consoles, and laptop computers for our customers establishing ourselves as the premiere Twin Cities, go-to guys, whenever you need repair services.
+I'm sure that your device is fully functional and can be fixed or restored to its original state within 30 minutes or less so go ahead and schedule an appointment immediately.
+CMTC Wireless is your most trusted mobile device repair shop in the Twin Cities.`,
+    features: [
+        'Premium Quality Parts',
+        'Professional Installation',
+        '90-Day Warranty',
+        'Fast Turnaround Time',
+        'Data Safe Repair'
+    ],
+    specs: {
+        'Service Type': 'Professional Repair',
+        'Warranty': '90 Days',
+        'Turnaround': 'Same Day (Most Repairs)'
+    }
+};
 
 export const iphoneRepairTemplates: Record<string, ModelSpecificDetail> = {
     'battery-replacement': {
@@ -308,6 +338,7 @@ export const modelSpecificDetails: Record<string, Record<string, ModelSpecificDe
 export interface RepairDetail {
     title: string;
     desc: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     icon: any;
     image?: string;
 }

@@ -9,7 +9,7 @@ import RepairServiceLayout from '../components/RepairServiceLayout';
 import SEO from '../components/SEO';
 import { repairServices } from '../data/repairData';
 import { useRepairPricing } from '../hooks/useRepairPricing';
-import { modelSpecificDetails, repairDetails, iphoneRepairTemplates } from '../data/modelSpecificDetails';
+import { modelSpecificDetails, repairDetails, iphoneRepairTemplates, genericRepairTemplate } from '../data/modelSpecificDetails';
 import GetInstantQuoteButton from '../components/GetInstantQuoteButton';
 import ScheduleAppointmentButton from '../components/ScheduleAppointmentButton';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
@@ -38,7 +38,7 @@ const RepairDetail = () => {
     }
 
     const genericRepairInfo = repairDetails[repairType || ''] || {
-        title: repairType?.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) || 'Utol',
+        title: repairType?.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) || 'Repair',
         desc: 'Professional repair service.',
         icon: null,
         image: null
@@ -91,8 +91,13 @@ const RepairDetail = () => {
     let specificDetails = modelId && repairType && (modelSpecificDetails as any)[modelId] && (modelSpecificDetails as any)[modelId][repairType];
 
     // Fallback to generic iPhone templates if no specific details found AND it's an iPhone
-    if (!specificDetails && repairType && iphoneRepairTemplates[repairType] && (modelId?.startsWith('iphone') || model?.name.toLowerCase().includes('iphone'))) {
-        specificDetails = iphoneRepairTemplates[repairType];
+    if (!specificDetails) {
+        if (repairType && iphoneRepairTemplates[repairType] && (modelId?.startsWith('iphone') || model?.name.toLowerCase().includes('iphone'))) {
+            specificDetails = iphoneRepairTemplates[repairType];
+        } else {
+            // Universal Fallback for any new repair type
+            specificDetails = genericRepairTemplate;
+        }
     }
 
     let displayTitle = specificDetails?.titleOverride || `${model?.name} ${genericRepairInfo.title}`;
@@ -101,6 +106,12 @@ const RepairDetail = () => {
     if (model) {
         displayTitle = displayTitle.replace(/{model}/g, model.name);
         displayDesc = displayDesc.replace(/{model}/g, model.name);
+    }
+
+    // Replace {repairName} placeholder from generic template
+    if (genericRepairInfo.title) {
+        displayTitle = displayTitle.replace(/{repairName}/g, genericRepairInfo.title);
+        displayDesc = displayDesc.replace(/{repairName}/g, genericRepairInfo.title);
     }
 
     if (descriptionPrice) {

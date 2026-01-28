@@ -5,6 +5,7 @@ interface RepairCardProps {
     title: string;
     description: React.ReactNode;
     image?: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     icon?: any;
     priceContent?: React.ReactNode;
     children?: React.ReactNode;

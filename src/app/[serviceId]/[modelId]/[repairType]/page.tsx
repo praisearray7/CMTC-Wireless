@@ -11,14 +11,19 @@ import { aioData } from '@/data/aio';
 import { tabletData } from '@/data/tablet';
 import { ipadData } from '@/data/ipad';
 import { macbookData } from '@/data/macbook';
-import { repairDetails } from '@/data/modelSpecificDetails';
+
 
 import type { Metadata } from 'next';
 import { getModelData } from '@/data/modelUtils';
 
-export function generateStaticParams() {
+import { getExcelRepairTypes } from '@/utils/getExcelRepairTypes';
+
+// eslint-disable-next-line react-refresh/only-export-components
+export async function generateStaticParams() {
     const params: { serviceId: string; modelId: string; repairType: string }[] = [];
-    const repairTypes = Object.keys(repairDetails);
+
+    // Fetch dynamic repair types from Excel + hardcoded list
+    const repairTypes = await getExcelRepairTypes();
 
     // 1. Add paths from repairServices (Standard Models)
     repairServices.forEach((service) => {
@@ -66,6 +71,7 @@ export function generateStaticParams() {
     return params;
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export async function generateMetadata({ params }: { params: Promise<{ serviceId: string; modelId: string; repairType: string }> }): Promise<Metadata> {
     const { serviceId, modelId, repairType } = await params;
     const model = getModelData(serviceId, modelId);
