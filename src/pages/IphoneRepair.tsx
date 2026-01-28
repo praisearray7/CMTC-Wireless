@@ -47,7 +47,7 @@ const IphoneRepair = () => {
               </Typography>
               <StaggerContainer childSelector='.model-card'>
                 <Grid container spacing={3} justifyContent='center'>
-                  { }
+                  {}
                   {seriesData.map((item) => (
                     <Grid size={{ xs: 12, sm: 6, md: 4 }} key={item.id} className='model-card'>
                       <Paper
@@ -138,7 +138,7 @@ const IphoneRepair = () => {
 
                         // Check against known keys AND known titles (to be safe)
                         // repairDetails keys are kebab-case usually.
-                         
+
                         if (!seenTypes.has(normalizedKey)) {
                           // Also check if we already added it to dynamicRepairs
                           const alreadyAdded = dynamicRepairs.includes(rawType);
