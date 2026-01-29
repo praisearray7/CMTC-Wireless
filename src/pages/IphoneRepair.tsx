@@ -158,16 +158,16 @@ const IphoneRepair = () => {
 
                     // 3. Create objects for dynamic repairs
                     const defaultImages = [
-                      'https://guide-images.cdn.ifixit.com/igi/f4wUBOxiLEFL1Pnr.200x150',
-                      'https://guide-images.cdn.ifixit.com/igi/yrG2tVVOYKoxTyXV.200x150',
                       'https://guide-images.cdn.ifixit.com/igi/NjBueggZtBoGXWQO.200x150',
+                      'https://guide-images.cdn.ifixit.com/igi/yrG2tVVOYKoxTyXV.200x150',
+                      'https://guide-images.cdn.ifixit.com/igi/f4wUBOxiLEFL1Pnr.200x150',
                       'https://guide-images.cdn.ifixit.com/igi/xBsAlmtAuS23eybD.200x150'
                     ];
 
                     const extraRepairs = dynamicRepairs.map((type, index) => ({
                       key: type.toLowerCase().replace(/ /g, '-'),
                       title: type, // Raw type from Excel is usually Title Case e.g. "Screen Replacement"
-                      desc: 'Professional repair service with warranty and without warranty.',
+                      desc: 'Professional repair service with warranty.',
                       image: defaultImages[index % defaultImages.length], // Cycle through images
                       icon: Smartphone // Default icon
                     }));
