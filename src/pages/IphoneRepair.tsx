@@ -158,9 +158,9 @@ const IphoneRepair = () => {
 
                     // 3. Create objects for dynamic repairs
                     const defaultImages = [
-                      'https://guide-images.cdn.ifixit.com/igi/NjBueggZtBoGXWQO.200x150',
-                      'https://guide-images.cdn.ifixit.com/igi/yrG2tVVOYKoxTyXV.200x150',
                       'https://guide-images.cdn.ifixit.com/igi/f4wUBOxiLEFL1Pnr.200x150',
+                      'https://guide-images.cdn.ifixit.com/igi/yrG2tVVOYKoxTyXV.200x150',
+                      'https://guide-images.cdn.ifixit.com/igi/NjBueggZtBoGXWQO.200x150',
                       'https://guide-images.cdn.ifixit.com/igi/xBsAlmtAuS23eybD.200x150'
                     ];
 
