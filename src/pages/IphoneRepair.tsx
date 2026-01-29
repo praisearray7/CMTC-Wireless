@@ -167,7 +167,7 @@ const IphoneRepair = () => {
                     const extraRepairs = dynamicRepairs.map((type, index) => ({
                       key: type.toLowerCase().replace(/ /g, '-'),
                       title: type, // Raw type from Excel is usually Title Case e.g. "Screen Replacement"
-                      desc: 'Professional repair service with warranty.',
+                      desc: 'Professional repair service with warranty and without warranty.',
                       image: defaultImages[index % defaultImages.length], // Cycle through images
                       icon: Smartphone // Default icon
                     }));
