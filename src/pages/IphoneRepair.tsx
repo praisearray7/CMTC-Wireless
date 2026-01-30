@@ -182,7 +182,7 @@ const IphoneRepair = () => {
                         className='repair-card-item'
                       >
                         <RepairCard
-                          title={item.title}
+                          title={item.key.replace(/-/g, ' ')}
                           description={item.desc}
                           image={item.image}
                           icon={item.icon}
