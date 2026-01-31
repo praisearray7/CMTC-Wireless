@@ -33,13 +33,13 @@ const nextConfig = {
     // when using static export mode. The async headers() function is not compatible with output: 'export'.
 
     // GitHub Pages configuration (only when building for GitHub Pages)
-    basePath: process.env.GH_PAGES === 'true' ? '/CMTC-Wireless' : '',
-    assetPrefix: process.env.GH_PAGES === 'true' ? '/CMTC-Wireless/' : '',
+    // basePath: process.env.GH_PAGES === 'true' ? '/CMTC-Wireless' : '',
+    // assetPrefix: process.env.GH_PAGES === 'true' ? '/CMTC-Wireless/' : '',
 
     // Expose base URL to client-side code
-    env: {
-        NEXT_PUBLIC_BASE_URL: process.env.GH_PAGES === 'true' ? '/CMTC-Wireless/' : '',
-    },
+    // env: {
+    //     NEXT_PUBLIC_BASE_URL: process.env.GH_PAGES === 'true' ? '/CMTC-Wireless/' : '',
+    // },
 };
 
 export default nextConfig;
