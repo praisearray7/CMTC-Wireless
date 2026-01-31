@@ -1,4 +1,4 @@
-import RepairDetail from '@/pages/SubCategoryDetail';
+import RepairDetail from '@/components/SubCategoryDetail';
 
 export default function SubCategoryPage() {
   return <RepairDetail />;
