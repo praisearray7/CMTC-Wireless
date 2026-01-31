@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     transpilePackages: ['@mui/material', '@mui/system', '@mui/icons-material'],
-    output: 'export', // Enable static export for Docker/GitHub Pages compatibility
+    // Enable static export for Docker/GitHub Pages compatibility
     images: {
         unoptimized: true, // Required for static export
         formats: ['image/avif', 'image/webp'],
