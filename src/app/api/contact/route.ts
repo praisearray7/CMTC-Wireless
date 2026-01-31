@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 export async function POST(request: Request) {
   try {
@@ -11,6 +13,8 @@ export async function POST(request: Request) {
     const service = formData.get('service') as string;
     const message = formData.get('message') as string;
     const imageFile = formData.get('image') as File | null;
+    console.log(imageFile);
+    console.log(formData);
 
     // Validate required fields
     if (!name || !phone || !email) {
