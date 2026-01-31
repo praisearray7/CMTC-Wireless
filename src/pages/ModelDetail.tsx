@@ -24,7 +24,7 @@ import { aioData } from '../data/aio';
 import { tabletData } from '../data/tablet';
 import { ipadData } from '../data/ipad';
 import { macbookData } from '../data/macbook';
-import { repairDetails } from '../data/modelSpecificDetails'; // Import shared data
+import { getRepairDetail } from '../data/modelSpecificDetails'; // Import shared data
 import RepairServiceCard from '../components/RepairServiceCard';
 
 import { getImagePath, imagePaths } from '../data/imagePaths';
@@ -65,10 +65,10 @@ const ModelDetail = () => {
   const service = repairServices.find((s) => s.id === serviceId);
 
   // 2. Find the Specific Model OR Series
-   
+
   let model: any = null;
   let isSeries = false;
-   
+
   let seriesInfo: any = null;
 
   // Aggregate all data sources
@@ -215,11 +215,7 @@ const ModelDetail = () => {
 
                 return repairTypes.map((type: string, index: number) => {
                   const rows = groupedRepairs[type];
-                  const details = repairDetails[type] || {
-                    icon: Smartphone,
-                    desc: 'Professional repair service with warranty.',
-                    image: undefined
-                  };
+                  const details = getRepairDetail(type, index);
                   const Icon = details.icon;
 
                   // Ensure image is a string or undefined, not null. If undefined, cycle through defaults.
@@ -420,13 +416,12 @@ const ModelDetail = () => {
 
                             // Check for specific model image in imagePaths.modelImages
                             let specificImage = null;
-                             
+
                             if (
                               (imagePaths as any).modelImages &&
                               targetId &&
                               (imagePaths as any).modelImages[targetId]
                             ) {
-                               
                               specificImage = (imagePaths as any).modelImages[targetId];
                             }
 
@@ -510,17 +505,10 @@ const ModelDetail = () => {
                         <Box
                           component='img'
                           src={
-                             
                             model.id &&
-                             
                             (imagePaths as any).modelImages &&
-                             
                             (imagePaths as any).modelImages[model.id]
-                              ?  
-                                getImagePath(
-                                   
-                                  (imagePaths as any).modelImages[model.id]
-                                )
+                              ? getImagePath((imagePaths as any).modelImages[model.id])
                               : isSeries && seriesInfo
                                 ? getImagePath(seriesInfo.image) || DEVICE_IMAGE_URL
                                 : DEVICE_IMAGE_URL

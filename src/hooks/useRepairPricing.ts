@@ -13,6 +13,9 @@ interface RepairData {
   'Sub-Type Title': string;
   'Sub-Type Price (USD)': string;
   Warranty: string;
+  Description?: string;
+  'Key Features'?: string;
+  Specifications?: string;
 }
 
 export const useRepairPricing = () => {
@@ -24,7 +27,7 @@ export const useRepairPricing = () => {
     const CACHE_TIMESTAMP_KEY = 'repair_pricing_timestamp';
     const CACHE_VERSION_KEY = 'repair_pricing_version';
 
-    const CURRENT_VERSION = 'v1.1'; // Increment this to force cache clear on deployment
+    const CURRENT_VERSION = 'v1.2'; // Increment this to force cache clear on deployment
 
     const cachedData = localStorage.getItem(CACHE_KEY);
     const cachedTimestamp = localStorage.getItem(CACHE_TIMESTAMP_KEY);
@@ -43,7 +46,10 @@ export const useRepairPricing = () => {
       }
     }
 
-    Papa.parse(CSV_URL, {
+    // Add cache busting parameter to force fresh fetch
+    const cacheBustUrl = `${CSV_URL}&_t=${Date.now()}`;
+
+    Papa.parse(cacheBustUrl, {
       download: true,
       header: false, // Parse as arrays to handle leading empty rows/columns
       complete: (results) => {
@@ -78,6 +84,7 @@ export const useRepairPricing = () => {
           .slice(headerRowIndex + 1)
           .map((row) => {
             const getVal = (key: string) => row[headers[key]]?.trim() || '';
+            const getOptionalVal = (key: string) => row[headers[key]]?.trim() || undefined;
 
             // Skip empty rows
             if (!getVal('Device') && !getVal('Repair Type')) return null;
@@ -88,8 +95,11 @@ export const useRepairPricing = () => {
               'Repair Type': getVal('Repair Type'),
               'Sub-Type Title': getVal('Sub-Type Title'),
               'Sub-Type Price (USD)': getVal('Sub-Type Price (USD)'),
-              Warranty: getVal('Warranty')
-            };
+              Warranty: getVal('Warranty'),
+              Description: getOptionalVal('Description'),
+              'Key Features': getOptionalVal('Key Features'),
+              Specifications: getOptionalVal('Specifications')
+            } as RepairData;
           })
           .filter((item): item is RepairData => item !== null);
 
