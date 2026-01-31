@@ -10,7 +10,7 @@
     "lint": "next lint",
     "test": "vitest",
     "prepare": "husky",
-    "//deploy": "cross-env GH_PAGES=true next build && gh-pages -d out"
+    "deploy": "cross-env GH_PAGES=true next build && gh-pages -d out"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -22,7 +22,7 @@
       "prettier --write"
     ]
   },
-  "//homepage": "https://praisearray7.github.io/CMTC-Wireless",
+  "homepage": "https://praisearray7.github.io/CMTC-Wireless",
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
